@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
+**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1 done; next 10.2. MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -64,6 +64,23 @@ Principle for every step: code computes weaknesses, scores and routes; the model
 - [ ] **9.2** Streaming: stream the answer to the game and log first-token latency. — check: p50 first token is recorded in logs; the game can show partial text.
 - [ ] **9.3** Voice: audio question in, audio answer out through an audio-capable model on OpenRouter, behind a flag. Read the current OpenRouter audio docs first; record latency and cost per exchange. — check: a recorded question returns a spoken answer in EN, RU and AZ; the AZ output is flagged for native review.
 - [ ] **9.4** Update `docs/GAME_INTEGRATION.md` with the snapshot, focus, plan, road catalog, exam brief and chat contracts, with real examples from tests. — check: every endpoint and error code in the doc exists.
+
+## Phase 10 — QA fixes (from `docs/qa/multilingual-audit-2026-10-09.md`)
+Branch `qa-fixes`. One step per finding group; the owner approves each step before the next. Each check is run in EN, RU and AZ.
+- [x] **10.1** WEB-001 fonts: real family names first in `app/globals.css` so Inter Tight (Cyrillic + `latin-ext` for Ə) sits ahead of next/font's local-Arial fallbacks (Turbopack ignores `adjustFontFallback: false`). — check: `/ru`, `/ru/download`, `/az` headings are heavy with no thin glyphs; EN unchanged.
+- [ ] **10.2** WEB-009 brand: "Roadwise" always renders in English letters (no `ROADWİSE` under `lang="az"` uppercase). — check: logo and headings on `/az` and `/az/download`.
+- [ ] **10.3** WEB-002, WEB-010 AI output: progress list built in code with dictionary labels; grounding rejects internal keys and enum values; prompt gets localized labels, numbers and units. — check: regenerated debrief and plan in each locale contain no `snake_case` keys or band/component enums.
+- [ ] **10.4** WEB-004 login language: the language switcher and `safeNext` keep the chosen locale in `next`. — check: `/az/profile` → login → EN → log in lands on `/en/profile`.
+- [ ] **10.5** WEB-007, WEB-008 units and district names from the dictionaries. — check: `/ru/drives/<id>` shows "км", "км/ч"; AZ "km/saat"; no `baku-center` slug.
+- [ ] **10.6** WEB-003 `lang` only on model-written text in the debrief card. — check: EN debrief on `/az` keeps AZ uppercase headings.
+- [ ] **10.7** WEB-006 landing screenshots per locale (EN, RU, AZ), captured after 10.2–10.6. — check: `/ru` and `/az` show their own language in every image.
+- [ ] **10.8** WEB-005 localized not-found page with the site layout. — check: `/ru/nope` is Russian with nav and language switcher.
+- [ ] **10.9** WEB-017 metadata: `hreflang` alternates, canonical, Open Graph, per-page descriptions. — check: page `<head>` in each locale.
+- [ ] **10.10** WEB-011, WEB-012 forms: required-field errors on login; focus moves to the first invalid field. — check: empty login and sign-up in each locale.
+- [ ] **10.11** WEB-013, WEB-014 no-wrap badges and values; 24 px minimum target for table links. — check: AZ exam history and drive table at 390 px.
+- [ ] **10.12** WEB-015 quiz: natural per-rule wording, no repeated eyebrow/title. — check: quiz in each locale.
+- [ ] **10.13** WEB-018 translation consistency (terminology, plurals, Sign in vs Log in). — check: strings listed in the report.
+- [ ] **10.14** WEB-016 download URL: owner sets `NEXT_PUBLIC_DOWNLOAD_URL` and `NEXT_PUBLIC_GAME_VERSION` in Vercel (config only).
 
 ## Cut lines (drop in this order if behind)
 1. Landing polish. 2. Exam history table and device revoke. 3. Regenerate-in-locale. 4. With/without-history comparison. 5. Voice (9.3). 6. Streaming (9.2).
