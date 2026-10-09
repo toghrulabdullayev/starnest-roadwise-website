@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** Phase 5 done (4.1 live check pending: Gemini key rejected). Next: **6.1** (finalise GAME_INTEGRATION.md).
+**Status:** Phase 6 done (4.1 live check pending: Gemini key rejected). Next: **7.1** (seed demo).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -39,7 +39,7 @@ Rules for whoever executes this plan:
 - [x] **5.3** Landing and download pages. — check: mobile width has no horizontal scroll; all links work.
 
 ## Phase 6 — Game handoff
-- [ ] **6.1** Finalise `docs/GAME_INTEGRATION.md` against the implemented endpoints (copy real request/response examples from tests). — check: every endpoint and error code in the doc exists and matches.
+- [x] **6.1** Finalise `docs/GAME_INTEGRATION.md` against the implemented endpoints (copy real request/response examples from tests). — check: every endpoint and error code in the doc exists and matches.
 
 ## Phase 7 — Evidence and deploy
 - [ ] **7.1** `scripts/seed-demo.ts` through `ingestDrive()`. — check: demo account shows a progress story.

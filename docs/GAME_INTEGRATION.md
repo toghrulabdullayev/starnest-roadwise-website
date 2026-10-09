@@ -1,19 +1,65 @@
 # Roadwise — game integration guide (for the Unity agents)
 
-The website owns accounts, analytics and the AI instructor. The game needs three things: **log in**, **record a drive**, **upload it and show the debrief**. Base URL: `https://<roadwise-site>` (set in a config asset; `http://localhost:3000` for local testing).
+The website owns accounts, analytics and the AI instructor. The game needs three things: **log in**, **record a drive**, **upload it and show the debrief**.
 
-Draft — the web team updates it with real examples once the endpoints ship (PLAN.md step 6.1).
+- Base URL: `https://<roadwise-site>` (keep it in a config asset; `http://localhost:3000` for local testing).
+- All bodies are JSON (`Content-Type: application/json`). Every response is JSON.
+- The examples below are real responses from the implemented endpoints (ids and tokens shortened).
+- Contract versions: device link = Contract A, telemetry = Contract B (`roadwise.drive.v1`). Changing either means a new schema version plus updated fixtures, validation and this guide.
+
+## Endpoints at a glance
+
+| Method & path | Auth | Success | Errors |
+|---|---|---|---|
+| `POST /api/device/start` | none | 200 link | 400 `invalid_request`, 429 `slow_down` |
+| `POST /api/device/token` | none | 200 token | 400 `authorization_pending`, 400 `expired_token`, 400 `invalid_grant` |
+| `GET /api/me` | Bearer | 200 user | 401 `unauthorized` |
+| `POST /api/drives` | Bearer | 200 drive | 401 `unauthorized`, 413 (over 4 MB), 422 `issues` |
+| `GET /api/drives` | Bearer | 200 `{ drives: [...] }` (latest 50) | 401 `unauthorized` |
+| `GET /api/drives/{id}?locale=en\|ru\|az` | Bearer | 200 drive + debrief | 401 `unauthorized`, 404 `not_found` |
 
 ## 1. Log in (device link)
 
-1. `POST /api/device/start` body `{ "client": "roadwise-unity", "client_version": "<Application.version>" }`
-   → `{ device_code, user_code, verify_url, interval, expires_in }`
-2. `Application.OpenURL(verify_url)`; show "Finish signing in in your browser — code ABCD-EFGH".
-3. Every `interval` seconds `POST /api/device/token` `{ "device_code": "..." }`:
-   - 400 `authorization_pending` → keep polling
-   - 400 `expired_token` / `invalid_grant` → stop, offer "Try again"
-   - 200 `{ access_token, token_type: "Bearer", user: { id, display_name, locale } }` → save, show "Signed in as …"
-4. Save the token to `Path.Combine(Application.persistentDataPath, "roadwise_token.json")`. On launch, call `GET /api/me` with `Authorization: Bearer <token>`; 401 → signed out.
+1. Start a link:
+
+   ```http
+   POST /api/device/start
+   {"client":"roadwise-unity","client_version":"0.1.0"}
+   ```
+   ```json
+   200 {"device_code":"jCTntRBf…Y8FA","user_code":"ZRMG-JM8V","expires_in":600,"interval":3,
+        "verify_url":"https://<site>/en/link?code=ZRMG-JM8V"}
+   ```
+
+2. `Application.OpenURL(verify_url)` and show: "Finish signing in in your browser — code **ZRMG-JM8V**". The player logs in (or signs up) and clicks **Authorise this device**.
+
+3. Every `interval` seconds:
+
+   ```http
+   POST /api/device/token
+   {"device_code":"jCTntRBf…Y8FA"}
+   ```
+   | Response | Meaning | Game action |
+   |---|---|---|
+   | `400 {"error":"authorization_pending"}` | not authorised yet | keep polling |
+   | `400 {"error":"expired_token"}` | 10 minutes passed | stop, offer "Try again" |
+   | `400 {"error":"invalid_grant"}` | unknown or already-used code | stop, offer "Try again" |
+   | `200` (below) | signed in | save the token, show "Signed in as …" |
+
+   ```json
+   200 {"access_token":"rw_dY3…","token_type":"Bearer",
+        "user":{"id":"5bb35a17-…","display_name":"Aysel","locale":"az"}}
+   ```
+   A device code can be exchanged **once**; a second exchange returns `invalid_grant`.
+
+4. Save the token to `Path.Combine(Application.persistentDataPath, "roadwise_token.json")`. On launch call `GET /api/me` with `Authorization: Bearer <token>`:
+
+   ```json
+   200 {"id":"5bb35a17-…","display_name":"Aysel","locale":"az"}
+   401 {"error":"unauthorized"}        ← token unknown or revoked by the player: show "Log in"
+   ```
+
+   Players can revoke a game from their profile ("Connected devices"); the next call returns 401.
 
 ```csharp
 IEnumerator PollToken(string deviceCode, float interval) {
@@ -33,25 +79,72 @@ IEnumerator PollToken(string deviceCode, float interval) {
 }
 ```
 
-## 2. Record a drive
+## 2. Record a drive (Contract B, `roadwise.drive.v1`)
 
-- **Samples at 5 Hz** (fixed timer, not per frame): `t` (s since start), `x`, `z` (map metres, +x east, +z south), `speed_kmh`, `limit_kmh`, `throttle` 0..1, `brake` 0..1, `steer` −1..1, `handbrake` 0/1.
-- **Events** with unique ids (`e1`, `e2`, …):
-  - `rule_check` with `rule` ∈ `speeding | red_light | stop_sign | pedestrian_crossing | wrong_way | give_way | collision`, `outcome` `pass | fail`; on fail add `severity`, `fine_azn`, and `detail` (speeding: `speed_kmh`, `limit_kmh`; collision: `with`).
-  - **Passes matter:** emit `pass` when the driver correctly stopped at a STOP line, waited at a red light, yielded at a crossing, or gave way.
+JSON Schema: `contracts/roadwise.drive.v1.schema.json`. Valid examples: `fixtures/*.json` (e.g. `fixtures/red_light_runner.json`).
+
+- `drive`: `client_drive_id` (UUID, generate once per drive — uploads are idempotent on it), `mode` `free|exam`, `district`, `route_id`, `car_type`, `time_of_day` `day|dusk|night`, `started_at` (ISO 8601 UTC), `duration_s`, `distance_m`, `exam` (`null` in free mode; in exam mode `{passed, minor_faults, major_faults, checkpoints_reached, checkpoints_total}`).
+- **Samples at 5 Hz** (fixed timer, not per frame). `fields` must list exactly these nine, each once, and every row must have nine numbers in that order:
+  `t` (s since start), `x`, `z` (map metres, +x east, +z south), `speed_kmh`, `limit_kmh`, `throttle` 0..1, `brake` 0..1, `steer` −1..1, `handbrake` 0/1.
+- **Events**, ids unique per drive (`e1`, `e2`, …):
+  - `rule_check`: `rule` ∈ `speeding | red_light | stop_sign | pedestrian_crossing | wrong_way | give_way | collision`; `outcome` `pass | fail`; `x`, `z`; optional `street`. A `fail` **must** include `severity` (`major|minor`) and `fine_azn`; add `detail` (speeding: `speed_kmh`, `limit_kmh`; collision: `with`).
+  - **Emit passes too**: stopped at a STOP line, waited at a red light, yielded at a crossing, gave way. "Rules followed" is a headline metric and the instructor praises passes.
   - `checkpoint` with `index` (exam mode).
-  - Add `street` when known.
-- At the end, fill `drive` (mode, district, route_id, car_type, time_of_day, started_at ISO UTC, duration_s, distance_m, and `exam` for exam mode).
+- Speeding fines by band over the limit (trigger above +11 km/h): +11–20 → 10 AZN minor · +21–40 → 50 minor · +41–60 → 200 major · +61+ → 300 major.
 
-Full schema and example: `.claude/skills/roadwise-platform/SKILL.md` §8 and `contracts/roadwise.drive.v1.schema.json`.
+```json
+{ "id": "e3", "t": 85.6, "type": "rule_check", "rule": "red_light", "outcome": "fail",
+  "severity": "major", "fine_azn": 100, "x": 560, "z": 280, "street": "Üzeyir Hacıbəyov küç." }
+```
 
 ## 3. Upload and show the debrief
 
 1. Save the JSON to `persistentDataPath/pending/<client_drive_id>.json`.
-2. `POST /api/drives` with the Bearer token. 200 → delete the pending file; 401 → ask to log in; network error → keep the file and retry on next launch (upload is idempotent on `client_drive_id`); 422 → log `issues` (schema bug).
-3. Response gives `id`, `metrics`, `readiness` immediately. Poll `GET /api/drives/{id}?locale=<ui locale>` every 2 s (max 30 s) until `debrief.status` is `ready` or `fallback`.
-4. End-of-drive screen: summary, top 3 issues (title + how_to_fix), `next_drive.focus`, readiness score, and a button "Open full report" → `Application.OpenURL(url)`.
+2. Upload:
+
+   ```http
+   POST /api/drives
+   Authorization: Bearer rw_…
+   <telemetry JSON>
+   ```
+   ```json
+   200 {"id":"1ebfff69-…","created":true,"debrief_status":"pending",
+        "metrics":{"compliance_rate":0.6667,"fines_total_azn":110,"major_count":1, …},
+        "readiness":{"score":46,"band":"not_ready","components":[…]},
+        "history":{…} | null,
+        "url":"https://<site>/az/drives/1ebfff69-…"}
+   ```
+   - Re-uploading the same `client_drive_id` returns the same `id` with `"created": false` — safe to retry.
+   - `401` → ask the player to log in. Network error → keep the file, retry on next launch.
+   - `422` → schema bug; log `issues` (paths point at the bad field):
+     ```json
+     422 {"issues":[{"path":"events.0.rule","message":"Invalid option: expected one of \"speeding\"|\"red_light\"|…"}]}
+     ```
+   - `413` → the file is over 4 MB (should not happen at 5 Hz for drives under ~1 hour).
+   - On 200 delete the pending file.
+
+3. Poll `GET /api/drives/{id}?locale=<ui locale>` every 2 s (max 30 s) until `debrief.status` is `ready` or `fallback`. If the debrief does not exist in the requested language yet, the response contains the one that exists (`debrief.locale` tells which; `debrief_locales` lists all).
+
+   ```json
+   200 {"id":"1ebfff69-…",
+        "debrief":{"status":"fallback","locale":"az","model":"gemini-3.8-flash","prompt_version":"debrief-v1",
+          "content":{
+            "summary":"6 qayda yoxlamasından 4 keçildi, cərimələr 110 AZN təşkil etdi. …",
+            "strengths":[{"text":"…","event_ids":["e1","e2"]}],
+            "issues":[{"title":"Qırmızı işıqda keçmə: Üzeyir Hacıbəyov küç., 01:26","severity":"major","rule":"red_light",
+                       "event_ids":["e3"],"why_it_matters":"…","how_to_fix":"Sarı işığı dayanma siqnalı kimi qəbul edin: …"}],
+            "progress":{"improved":["…"],"worse":[]} ,
+            "next_drive":{"focus":"Qırmızı və sarı işıqda dayanmaq","mode":"free","drills":["…"]},
+            "readiness_comment":"…"}},
+        "debrief_locales":["az"],
+        "readiness":{"score":46,"band":"not_ready", …},
+        "url":"https://<site>/en/drives/1ebfff69-…"}
+   ```
+   `status`: `pending` (still writing) · `ready` (AI debrief that passed the grounding checks) · `fallback` (template debrief built from the same data — show it the same way) · `error` (not used for content; treat like pending timeout). After 90 s a stuck `pending` is replaced by the fallback automatically.
+
+4. End-of-drive screen: `summary`, top 3 `issues` (`title` + `how_to_fix`), `next_drive.focus`, `readiness.score` / `band`, and a button **Open full report** → `Application.OpenURL(url)`.
 
 ## 4. Test without the website team
 
-`fixtures/*.json` in the web repo are valid uploads; compare your output's shape with them.
+- `fixtures/*.json` are valid uploads; compare your output's shape with them. `fixtures/invalid/*.json` must be rejected with 422.
+- `scripts/device-flow.sh` runs the whole login flow against any `BASE_URL`; `scripts/upload.sh <file>` uploads any telemetry file with the saved token.
