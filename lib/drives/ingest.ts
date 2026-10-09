@@ -10,6 +10,7 @@ import { computeReadiness, type Readiness } from "@/lib/readiness";
 import { computeHistory, MAX_PREVIOUS, type History } from "@/lib/history";
 import { READINESS_WEIGHTS } from "@/lib/readiness";
 import { eventStatements } from "@/lib/drives/events";
+import { recordExamComparison } from "@/lib/exam/briefs";
 import type { DriveTelemetry } from "@/lib/telemetry/schema";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -104,5 +105,6 @@ export async function ingestDrive(
     }
     throw err;
   }
+  await recordExamComparison(user.id, id, telemetry);
   return { id, created: true, metrics, readiness, history, debrief_status: "pending", locale: user.locale };
 }
