@@ -92,3 +92,79 @@ h1, h2, h3, .font-display {
 @media (forced-colors: active) {
   .btn { border: 2px solid ButtonText; }
 }
+
+/* ---- decorative side roads (components/SideRoads.tsx) ---- */
+.side-roads { display: none; }
+
+@media (min-width: 1400px) {
+  .side-roads { display: block; }
+  .side-road {
+    --road-w: 64px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    width: var(--road-w);
+    overflow: hidden;
+    pointer-events: none;
+    background: #2a2a2a;
+    border-inline: 3px solid var(--color-text-on-dark);
+    box-shadow: 0 0 0 2px var(--color-surface);
+  }
+  /* centred in the gutter beside the max-w-6xl (72rem) column */
+  .side-road-left  { left:  calc((100vw - 72rem) / 4 - var(--road-w) / 2); }
+  .side-road-right { right: calc((100vw - 72rem) / 4 - var(--road-w) / 2); }
+
+  /* dashed yellow centre line */
+  .side-road-lane {
+    position: absolute;
+    inset: 0 auto 0 50%;
+    width: 4px;
+    translate: -50% 0;
+    background: repeating-linear-gradient(to bottom, #facc15 0 22px, transparent 22px 44px);
+  }
+  /* zebra crossing near the bottom */
+  .side-road-zebra {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 18%;
+    height: 40px;
+    background: repeating-linear-gradient(to right, var(--color-text-on-dark) 0 8px, transparent 8px 14px);
+    opacity: 0.85;
+  }
+
+  /* right-hand traffic: up in the right lane, down in the left lane */
+  .road-car {
+    position: absolute;
+    width: 20px;
+    height: 34px;
+    top: 0;
+    filter: drop-shadow(2px 2px 0 #111111);
+  }
+  .road-car-up   { left: calc(75% - 10px); animation: road-drive-up 13s linear infinite; }
+  .road-car-down { left: calc(25% - 10px); animation: road-drive-down 17s linear infinite; }
+  .road-car-late { animation-delay: -7s; }
+
+  @keyframes road-drive-up {
+    from { transform: translateY(100vh); }
+    to   { transform: translateY(-40px); }
+  }
+  @keyframes road-drive-down {
+    from { transform: translateY(-40px) rotate(180deg); }
+    to   { transform: translateY(100vh) rotate(180deg); }
+  }
+}
+
+/* parked, not driving */
+@media (min-width: 1400px) and (prefers-reduced-motion: reduce) {
+  .road-car { animation: none !important; }
+  .road-car-up   { transform: translateY(55vh); }
+  .road-car-down { transform: translateY(30vh) rotate(180deg); }
+  .road-car-late.road-car-up   { transform: translateY(85vh); }
+  .road-car-late.road-car-down { transform: translateY(10vh) rotate(180deg); }
+}
+
+@media (forced-colors: active) {
+  .side-roads { display: none; }
+}
