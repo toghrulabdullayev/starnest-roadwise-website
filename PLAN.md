@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** Phase 6 done (4.1 live check pending: Gemini key rejected). Next: **7.1** (seed demo).
+**Status:** 7.1 done (4.1 live check pending: Gemini key rejected). Next: **7.2** (eval report).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -42,7 +42,7 @@ Rules for whoever executes this plan:
 - [x] **6.1** Finalise `docs/GAME_INTEGRATION.md` against the implemented endpoints (copy real request/response examples from tests). — check: every endpoint and error code in the doc exists and matches.
 
 ## Phase 7 — Evidence and deploy
-- [ ] **7.1** `scripts/seed-demo.ts` through `ingestDrive()`. — check: demo account shows a progress story.
+- [x] **7.1** `scripts/seed-demo.ts` through `ingestDrive()`. — check: demo account shows a progress story.
 - [ ] **7.2** `npm run eval` → `eval/REPORT.md` + `report.json` (all measures in roadwise-ai-instructor §7, rules-only vs fallback vs AI side by side, with vs without history, failure examples, cost per debrief from logged tokens). — check: report generated from a real run, numbers not hand-written.
 - [ ] **7.3** Deploy: Turso database, Vercel env vars, build command `npm run db:migrate && next build`. — check: `device-flow.sh` and `upload.sh` pass against the production URL; sign-up works there.
 - [ ] **7.4** When real game drives arrive: calibrate thresholds (`eval/CALIBRATION.md`), add them to `eval/real/`, rerun eval.
