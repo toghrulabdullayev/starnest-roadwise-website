@@ -9,7 +9,7 @@
  */
 @theme {
   /*
-   * Each next/font variable is "<Family>", "<Family> Fallback", and that fallback is a local
+   * Every next/font variable is "<Family>", "<Family> Fallback", and that fallback is a local
    * Arial with no unicode-range (Turbopack ignores adjustFontFallback: false). Arial has
    * Cyrillic and Ə, so it would draw them before Inter Tight is reached. The real family
    * names come first so Inter Tight sits ahead of the Arial fallbacks; the variables stay
