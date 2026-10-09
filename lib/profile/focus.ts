@@ -2,13 +2,18 @@ import { ruleKeys, type RuleKey, type Severity } from "../rules/catalog.ts";
 import type { DriveTelemetry } from "../telemetry/schema.ts";
 
 export const RECENCY_DECAY = 0.6;
-export const SEVERITY_FACTOR: Record<Severity, number> = { major: 3, minor: 1 };
+export const QUIZ_FACTOR = 0.5;
+export const SEVERITY_FACTOR: Record<Severity | "quiz", number> = {
+  major: 3,
+  minor: 1,
+  quiz: QUIZ_FACTOR,
+};
 export const TREND_MARGIN = 0.5;
 
 export type DriveFaults = {
   drive_id: string;
   started_at: string;
-  faults: { rule: RuleKey; severity: Severity }[];
+  faults: { rule: RuleKey; severity: Severity | "quiz" }[];
 };
 
 export type Trend = "improved" | "same" | "worse";

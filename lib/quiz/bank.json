@@ -1,0 +1,142 @@
+[
+  {
+    "id": "bank:speeding:1",
+    "rule": "speeding",
+    "correct": 0,
+    "en": {
+      "q": "You see a speed-limit sign that is lower than your current speed. What do you do?",
+      "o": ["Slow down to the posted limit", "Keep your speed until the end of the street", "Slow down only if you see the police", "Speed up to leave the zone quickly"],
+      "e": "The posted limit applies from the sign onwards, so you must slow down to it."
+    },
+    "ru": {
+      "q": "Вы видите знак ограничения скорости, меньшей вашей текущей. Что вы делаете?",
+      "o": ["Снижаю скорость до разрешённой", "Сохраняю скорость до конца улицы", "Снижаю скорость, только если вижу полицию", "Ускоряюсь, чтобы быстрее выехать из зоны"],
+      "e": "Ограничение действует начиная со знака, поэтому нужно снизить скорость до указанной."
+    },
+    "az": {
+      "q": "Cari sürətinizdən aşağı sürət həddi nişanı görürsünüz. Nə edirsiniz?",
+      "o": ["Sürəti göstərilən həddə qədər azaldıram", "Küçənin sonuna qədər sürəti saxlayıram", "Sürəti yalnız polis görsəm azaldıram", "Zonadan tez çıxmaq üçün sürəti artırıram"],
+      "e": "Sürət həddi nişandan etibarən qüvvədədir, ona görə də sürəti həddə qədər azaltmaq lazımdır."
+    }
+  },
+  {
+    "id": "bank:red_light:1",
+    "rule": "red_light",
+    "correct": 0,
+    "en": {
+      "q": "The traffic light is red and no other vehicles are around. What do you do?",
+      "o": ["Stop before the stop line and wait for green", "Slow down and pass if the road is clear", "Pass quickly because nobody is coming", "Switch on the hazard lights and continue"],
+      "e": "You must stop before the stop line on red, even when the road looks empty."
+    },
+    "ru": {
+      "q": "Горит красный сигнал светофора, других машин рядом нет. Что вы делаете?",
+      "o": ["Останавливаюсь перед стоп-линией и жду зелёного", "Снижаю скорость и проезжаю, если дорога свободна", "Быстро проезжаю, потому что никто не едет", "Включаю аварийную сигнализацию и еду дальше"],
+      "e": "На красный сигнал нужно остановиться перед стоп-линией, даже если дорога кажется пустой."
+    },
+    "az": {
+      "q": "Svetofor qırmızıdır və ətrafda başqa nəqliyyat vasitəsi yoxdur. Nə edirsiniz?",
+      "o": ["Dayanma xəttindən əvvəl dayanıb yaşılı gözləyirəm", "Sürəti azaldıb yol boşdursa keçirəm", "Heç kim gəlmədiyi üçün sürətlə keçirəm", "Qəza işıqlarını yandırıb davam edirəm"],
+      "e": "Qırmızı işıqda yol boş görünsə belə dayanma xəttindən əvvəl dayanmaq lazımdır."
+    }
+  },
+  {
+    "id": "bank:stop_sign:1",
+    "rule": "stop_sign",
+    "correct": 0,
+    "en": {
+      "q": "You reach a STOP sign and the road is empty. What must you do?",
+      "o": ["Come to a full stop at the stop line, then check both directions", "Slow down to walking pace and continue", "Stop only if another car is coming", "Sound the horn and continue"],
+      "e": "A STOP sign always requires a full stop at the stop line."
+    },
+    "ru": {
+      "q": "Вы подъехали к знаку «STOP», дорога пуста. Что нужно сделать?",
+      "o": ["Полностью остановиться у стоп-линии и посмотреть в обе стороны", "Снизить скорость до шага и ехать дальше", "Остановиться, только если едет другая машина", "Посигналить и ехать дальше"],
+      "e": "Знак «STOP» всегда требует полной остановки у стоп-линии."
+    },
+    "az": {
+      "q": "STOP nişanına çatdınız və yol boşdur. Nə etməlisiniz?",
+      "o": ["Dayanma xəttində tam dayanıb hər iki istiqamətə baxmalıyam", "Sürəti addım sürətinə qədər azaldıb davam etməliyəm", "Yalnız başqa maşın gəlirsə dayanmalıyam", "Siqnal verib davam etməliyəm"],
+      "e": "STOP nişanı həmişə dayanma xəttində tam dayanmağı tələb edir."
+    }
+  },
+  {
+    "id": "bank:pedestrian_crossing:1",
+    "rule": "pedestrian_crossing",
+    "correct": 0,
+    "en": {
+      "q": "A pedestrian is waiting to cross at a marked crossing. What do you do?",
+      "o": ["Slow down and stop to let them cross", "Speed up to pass before they step out", "Sound the horn so they wait", "Keep your speed if you are on the main road"],
+      "e": "Drivers must give way to pedestrians at a marked crossing."
+    },
+    "ru": {
+      "q": "Пешеход ждёт, чтобы перейти дорогу по пешеходному переходу. Что вы делаете?",
+      "o": ["Снижаю скорость и останавливаюсь, чтобы пропустить его", "Ускоряюсь, чтобы проехать до того, как он выйдет", "Сигналю, чтобы он подождал", "Сохраняю скорость, если еду по главной дороге"],
+      "e": "Водитель обязан уступить дорогу пешеходам на пешеходном переходе."
+    },
+    "az": {
+      "q": "Piyada işarələnmiş keçiddə yolu keçmək üçün gözləyir. Nə edirsiniz?",
+      "o": ["Sürəti azaldıb dayanıram ki, keçsin", "O, yola çıxmamış keçmək üçün sürəti artırıram", "Gözləsin deyə siqnal verirəm", "Əsas yoldayamsa sürəti saxlayıram"],
+      "e": "Sürücülər işarələnmiş piyada keçidində piyadalara yol verməlidir."
+    }
+  },
+  {
+    "id": "bank:wrong_way:1",
+    "rule": "wrong_way",
+    "correct": 0,
+    "en": {
+      "q": "A street is one-way against your direction of travel. What do you do?",
+      "o": ["Do not enter it; choose another way", "Enter it if the street looks empty", "Enter it slowly with the hazard lights on", "Enter it if it saves time"],
+      "e": "Driving against the direction of a one-way street is not allowed."
+    },
+    "ru": {
+      "q": "Улица с односторонним движением, и оно направлено против вашего движения. Что вы делаете?",
+      "o": ["Не въезжаю на неё и выбираю другой путь", "Въезжаю, если улица выглядит пустой", "Медленно въезжаю с включённой аварийной сигнализацией", "Въезжаю, если это экономит время"],
+      "e": "Двигаться против направления одностороннего движения запрещено."
+    },
+    "az": {
+      "q": "Küçədə birtərəfli hərəkət var və o, sizin hərəkət istiqamətinizin əksinədir. Nə edirsiniz?",
+      "o": ["Ora girmirəm, başqa yol seçirəm", "Küçə boş görünürsə girirəm", "Qəza işıqları ilə yavaş girirəm", "Vaxta qənaət edirsə girirəm"],
+      "e": "Birtərəfli küçədə hərəkət istiqamətinin əksinə getmək qadağandır."
+    }
+  },
+  {
+    "id": "bank:give_way:1",
+    "rule": "give_way",
+    "correct": 0,
+    "en": {
+      "q": "You approach a give-way sign. What must you do?",
+      "o": ["Slow down and let traffic on the priority road pass before you go", "Go first because you arrived first", "Flash your lights and go", "Stop only if a truck is coming"],
+      "e": "At a give-way sign, traffic on the priority road goes first."
+    },
+    "ru": {
+      "q": "Вы приближаетесь к знаку «Уступите дорогу». Что нужно сделать?",
+      "o": ["Снизить скорость и пропустить транспорт на главной дороге", "Ехать первым, потому что вы приехали первым", "Мигнуть фарами и ехать", "Остановиться, только если едет грузовик"],
+      "e": "У знака «Уступите дорогу» транспорт на главной дороге проезжает первым."
+    },
+    "az": {
+      "q": "«Yol ver» nişanına yaxınlaşırsınız. Nə etməlisiniz?",
+      "o": ["Sürəti azaldıb əsas yoldakı nəqliyyatı buraxmalıyam", "Birinci gəldiyim üçün birinci getməliyəm", "Fara vurub getməliyəm", "Yalnız yük maşını gəlirsə dayanmalıyam"],
+      "e": "«Yol ver» nişanında əsas yoldakı nəqliyyat birinci keçir."
+    }
+  },
+  {
+    "id": "bank:collision:1",
+    "rule": "collision",
+    "correct": 0,
+    "en": {
+      "q": "How do you best avoid a collision with the car in front?",
+      "o": ["Keep a safe following distance and look further ahead", "Follow closely so nobody cuts in", "Brake only at the last moment", "Drive in the middle of the road"],
+      "e": "A safe distance and looking ahead give you time to react."
+    },
+    "ru": {
+      "q": "Как лучше всего избежать столкновения с машиной впереди?",
+      "o": ["Держать безопасную дистанцию и смотреть дальше вперёд", "Ехать вплотную, чтобы никто не встроился", "Тормозить только в последний момент", "Ехать посередине дороги"],
+      "e": "Безопасная дистанция и взгляд вдаль дают время на реакцию."
+    },
+    "az": {
+      "q": "Qabaqdakı maşınla toqquşmadan necə qaçmaq olar?",
+      "o": ["Təhlükəsiz məsafə saxlayıb daha uzağa baxmaq", "Heç kim araya girməsin deyə yaxın getmək", "Yalnız son anda əyləc basmaq", "Yolun ortası ilə getmək"],
+      "e": "Təhlükəsiz məsafə və uzağa baxmaq reaksiya üçün vaxt verir."
+    }
+  }
+]

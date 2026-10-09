@@ -72,5 +72,26 @@
     "trendImproved": "This is getting better.",
     "trendWorse": "This is getting worse.",
     "trendSame": "This has not changed yet."
+  },
+  "quiz": {
+    "fineQuestion": "What is the fine for this fault: {rule}?",
+    "fineExplain": "The fine for \"{rule}\" is {fine} AZN.",
+    "fineUnit": "{fine} AZN",
+    "severityQuestion": "How is this fault treated in the exam: {rule}?",
+    "severityMajor": "Major fault: the exam fails immediately",
+    "severityMinor": "Minor fault: it counts against you",
+    "severityNone": "No penalty in the exam",
+    "severityWarning": "Only a warning",
+    "severityExplainMajor": "\"{rule}\" is a major fault, so the exam fails immediately.",
+    "severityExplainMinor": "\"{rule}\" is a minor fault; minor faults add up during the exam.",
+    "limitQuestion": "What is the speed limit in this place: {zone}?",
+    "limitExplain": "The limit for \"{zone}\" is {limit} km/h.",
+    "limitUnit": "{limit} km/h",
+    "zones": {
+      "livingZone": "living zone",
+      "city": "city (built-up area)",
+      "outsideBuiltUp": "outside built-up areas",
+      "motorway": "motorway"
+    }
   }
 }

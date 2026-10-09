@@ -73,5 +73,26 @@
     "trendImproved": "Vəziyyət yaxşılaşır.",
     "trendWorse": "Vəziyyət pisləşir.",
     "trendSame": "Hələlik dəyişiklik yoxdur."
+  },
+  "quiz": {
+    "fineQuestion": "Bu pozuntuya görə cərimə nə qədərdir: {rule}?",
+    "fineExplain": "«{rule}» üzrə cərimə {fine} AZN-dir.",
+    "fineUnit": "{fine} AZN",
+    "severityQuestion": "İmtahanda bu pozuntuya necə yanaşılır: {rule}?",
+    "severityMajor": "Ağır pozuntu: imtahan dərhal uğursuz olur",
+    "severityMinor": "Yüngül pozuntu: səhv kimi sayılır",
+    "severityNone": "İmtahanda cəza yoxdur",
+    "severityWarning": "Yalnız xəbərdarlıq",
+    "severityExplainMajor": "«{rule}» ağır pozuntudur, ona görə imtahan dərhal uğursuz olur.",
+    "severityExplainMinor": "«{rule}» yüngül pozuntudur; yüngül pozuntular imtahan boyu toplanır.",
+    "limitQuestion": "Bu yerdə sürət həddi nədir: {zone}?",
+    "limitExplain": "«{zone}» üçün sürət həddi {limit} km/saatdır.",
+    "limitUnit": "{limit} km/saat",
+    "zones": {
+      "livingZone": "yaşayış zonası",
+      "city": "şəhər (məskunlaşmış ərazi)",
+      "outsideBuiltUp": "məskunlaşmış ərazidən kənar",
+      "motorway": "magistral yol"
+    }
   }
 }
