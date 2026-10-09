@@ -37,3 +37,10 @@ export function sameOrigin(req: Request): boolean {
 export function verifyUrl(userCode: string): string {
   return `${siteUrl()}/${defaultLocale}/link?code=${encodeURIComponent(userCode)}`;
 }
+
+export const forbidden = () => json({ error: "forbidden" }, 403);
+export const tooManyRequests = (retryAfterMs: number) =>
+  NextResponse.json(
+    { error: "rate_limited", retry_after_s: Math.ceil(retryAfterMs / 1000) },
+    { status: 429, headers: { "Cache-Control": "no-store", "Retry-After": String(Math.ceil(retryAfterMs / 1000)) } },
+  );
