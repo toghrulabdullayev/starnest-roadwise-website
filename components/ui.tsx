@@ -118,5 +118,5 @@ export function Badge({ tone = "neutral", children }: { tone?: "neutral" | "succ
     danger: "border-danger-ink bg-[#fef2f2] text-danger-ink",
     primary: "border-primary-ink bg-[#eff8ff] text-primary-ink",
   };
-  return <span className={`inline-flex items-center border-2 px-2 py-0.5 font-mono text-xs font-bold uppercase ${tones[tone]}`}>{children}</span>;
+  return <span className={`inline-flex items-center whitespace-nowrap border-2 px-2 py-0.5 font-mono text-xs font-bold uppercase ${tones[tone]}`}>{children}</span>;
 }

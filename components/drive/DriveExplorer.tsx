@@ -190,12 +190,18 @@ function EventTimeline({
             <span className="font-mono text-sm font-bold tabular-nums">{it.time}</span>
             <span className="flex min-w-0 flex-col">
               <span className="font-semibold">{it.title}</span>
-              {(it.street || it.note) && <span className="text-sm text-text-muted">{[it.street, it.note].filter(Boolean).join(" · ")}</span>}
+              {(it.street || it.note) && (
+                <span className="text-sm text-text-muted">
+                  {it.street}
+                  {it.street && it.note ? " · " : ""}
+                  {it.note && <span className="whitespace-nowrap">{it.note}</span>}
+                </span>
+              )}
             </span>
             <span className="justify-self-end">
-              {it.kind === "major" && <span className="font-mono text-xs font-bold uppercase text-danger-ink">◆ {labels.major}</span>}
-              {it.kind === "minor" && <span className="font-mono text-xs font-bold uppercase text-warning-ink">● {labels.minor}</span>}
-              {it.kind === "pass" && <span className="font-mono text-xs font-bold uppercase text-success-ink">✓ {labels.pass}</span>}
+              {it.kind === "major" && <span className="whitespace-nowrap font-mono text-xs font-bold uppercase text-danger-ink">◆ {labels.major}</span>}
+              {it.kind === "minor" && <span className="whitespace-nowrap font-mono text-xs font-bold uppercase text-warning-ink">● {labels.minor}</span>}
+              {it.kind === "pass" && <span className="whitespace-nowrap font-mono text-xs font-bold uppercase text-success-ink">✓ {labels.pass}</span>}
             </span>
           </>
         );
