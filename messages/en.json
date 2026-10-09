@@ -45,5 +45,24 @@
   "profile": {
     "title": "Your profile",
     "welcome": "Welcome, {name}"
+  },
+  "debrief": {
+    "summaryClean": "You completed {checks} rule checks and followed all of them. Keep driving this steadily.",
+    "summaryFaults": "You passed {passed} of {checks} rule checks and received {fines} AZN in fines ({major} major, {minor} minor).",
+    "summaryNoChecks": "No rule checks were recorded in this drive.",
+    "strengthPasses": "You followed {passed} of {checks} rule checks.",
+    "focusClean": "Keep driving smoothly and repeat the same routes.",
+    "focusFault": "Focus on: {rule}.",
+    "whyMajor": "A major fault fails the exam immediately.",
+    "whyMinor": "Repeated minor faults add up and can fail the exam.",
+    "tips": {
+      "speeding": "Check the speed limit sign on each street and keep your speed at or below it.",
+      "red_light": "Start slowing down when the light turns amber and stop before the stop line on red.",
+      "stop_sign": "Come to a full stop at the STOP line, count to two, then check both directions.",
+      "pedestrian_crossing": "Slow down at every crossing and stop for anyone waiting or crossing.",
+      "wrong_way": "Look for one-way and no-entry signs before you turn into a street.",
+      "give_way": "Slow down at give-way signs and let traffic on the priority road pass before you go.",
+      "collision": "Keep a safe distance and look further ahead so you can avoid obstacles."
+    }
   }
 }

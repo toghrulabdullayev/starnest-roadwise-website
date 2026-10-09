@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** 2.2 done (browser walkthrough by the developer pending). Next: 2.3 (device link).
+**Status:** Developer asked to focus on AI tasks only; the main service is built elsewhere and merged later. AI debrief module done (`lib/ai/`); live Gemini check blocked on a valid API key. Next: 3.4/8.x AI modules as pure functions.
 **Scope:** website + API + AI instructor + eval, then the learning loop (weakness profile, practice plan, quiz, adaptive exam brief; Phase 8) and the live in-game instructor (chat and voice; Phase 9). The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -31,8 +31,8 @@ Rules for whoever executes this plan:
 - [ ] **3.4** Mistake records: migration `0002_drive_events.sql` adds `drive_events` (`id`, `drive_id` FK cascade, `user_id`, `rule` catalog key, `severity`, `t_s`, `x`, `z`, `street_id`, `junction_id`, `mode`, `fields` JSON; indexes on `(user_id, rule)` and `(drive_id)`). `ingestDrive()` writes one row per failed check in the same transaction as the drive; re-upload replaces them, never duplicates. — roadwise-web §4, §6 — check: after `upload.sh fixtures/speeder.json` the row count equals the fixture's failed checks; re-upload keeps the count; `DELETE` of the drive removes its events.
 
 ## Phase 4 — AI instructor
-- [ ] **4.1** Read the current Gemini structured-output docs; `prompts/debrief.ts` (PROMPT_VERSION), `instructor.ts` with token/latency logging, locale parameter. — roadwise-ai-instructor §5 — check: `red_light_runner` debrief cites its red-light event in EN, RU and AZ.
-- [ ] **4.2** `grounding.ts` (6 checks) + retry + `fallback.ts`; wire into `after()`; regenerate route. — §6 — check: tests feed bad outputs (unknown event, unknown rule, invented number, uncovered major) and each is rejected; with `GEMINI_API_KEY` unset the drive gets a localized fallback.
+- [~] **4.1** Read the current Gemini structured-output docs; `prompts/debrief.ts` (PROMPT_VERSION), `instructor.ts` with token/latency logging, locale parameter. — roadwise-ai-instructor §5 — check: `red_light_runner` debrief cites its red-light event in EN, RU and AZ. Code done in `lib/ai/`; live check pending a valid Gemini API key (`npm run debrief:demo -- red_light_runner en`).
+- [x] **4.2** `grounding.ts` (6 checks) + retry + `fallback.ts`; wire into `after()`; regenerate route (the `lib/ai/debrief` module is done; wiring belongs to the main service). — §6 — check: tests feed bad outputs (unknown event, unknown rule, invented number, uncovered major) and each is rejected; with `GEMINI_API_KEY` unset the drive gets a localized fallback.
 
 ## Phase 5 — Pages (design skill for every step)
 - [ ] **5.1** Profile: readiness + breakdown, KPI tiles, progress chart, violations by rule, exam history, drive list, devices with Revoke, language preference. — roadwise-web §8 — check: renders with 0, 1, many drives in all locales.

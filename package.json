@@ -12,7 +12,8 @@
     "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.ts",
     "db:reset": "node --env-file-if-exists=.env.local scripts/reset-db.ts && npm run db:migrate",
     "contract:export": "node scripts/export-contract.ts",
-    "fixtures:make": "node scripts/make-fixtures.ts"
+    "fixtures:make": "node scripts/make-fixtures.ts",
+    "debrief:demo": "node --env-file-if-exists=.env.local scripts/debrief-demo.ts"
   },
   "dependencies": {
     "@google/genai": "^2.28.0",

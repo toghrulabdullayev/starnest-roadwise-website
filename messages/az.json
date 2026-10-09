@@ -46,5 +46,24 @@
   "profile": {
     "title": "Profiliniz",
     "welcome": "Xoş gəldiniz, {name}"
+  },
+  "debrief": {
+    "summaryClean": "Siz {checks} qayda yoxlamasını tamamladınız və hamısına əməl etdiniz. Belə davam edin.",
+    "summaryFaults": "Siz {checks} qayda yoxlamasından {passed}-nı keçdiniz və {fines} AZN cərimə aldınız ({major} ağır, {minor} yüngül).",
+    "summaryNoChecks": "Bu sürüşdə qayda yoxlaması qeydə alınmayıb.",
+    "strengthPasses": "Siz {checks} qayda yoxlamasından {passed}-nə əməl etdiniz.",
+    "focusClean": "Hamar sürməyə davam edin və eyni marşrutları təkrarlayın.",
+    "focusFault": "Diqqət edin: {rule}.",
+    "whyMajor": "Ağır pozuntu imtahanı dərhal uğursuz edir.",
+    "whyMinor": "Təkrarlanan yüngül pozuntular yığılır və imtahanı uğursuz edə bilər.",
+    "tips": {
+      "speeding": "Hər küçədə sürət həddi nişanına baxın və sürəti həddən artıq etməyin.",
+      "red_light": "Sarı işıq yananda sürəti azaltmağa başlayın, qırmızıda dayanma xəttindən əvvəl dayanın.",
+      "stop_sign": "STOP xəttində tam dayanın, ikiyə qədər sayın və hər iki istiqamətə baxın.",
+      "pedestrian_crossing": "Hər piyada keçidində sürəti azaldın və gözləyən və ya keçən hər kəsə yol verin.",
+      "wrong_way": "Küçəyə dönməzdən əvvəl birtərəfli hərəkət və giriş qadağan nişanlarına baxın.",
+      "give_way": "«Yol ver» nişanında sürəti azaldın və əsas yolda gedən nəqliyyatı buraxın.",
+      "collision": "Təhlükəsiz məsafə saxlayın və maneələri vaxtında görmək üçün daha uzağa baxın."
+    }
   }
 }
