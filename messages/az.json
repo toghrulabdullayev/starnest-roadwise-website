@@ -43,5 +43,25 @@
       "name_required": "Adınızı daxil edin."
     },
     "loginToContinue": "Davam etmək üçün daxil olun."
+  },
+  "link": {
+    "title": "Oyuna daxil olun",
+    "eyebrow": "Cihazın qoşulması",
+    "lead": "Kodun Roadwise-da göstərilən kodla eyni olduğunu yoxlayın və təsdiq edin.",
+    "codeLabel": "Oyundakı kod",
+    "client": "Cihaz",
+    "unknownClient": "Roadwise oyunu",
+    "authorise": "Bu cihazı təsdiq et",
+    "working": "Təsdiqlənir…",
+    "signedInAs": "{name} kimi daxil olursunuz.",
+    "successTitle": "Cihaz təsdiqləndi",
+    "successBody": "Oyuna qayıdın — bir neçə saniyəyə daxil olacaqsınız.",
+    "expiredTitle": "Kodun müddəti bitib",
+    "expiredBody": "Kod 10 dəqiqə etibarlıdır. Yeni kod üçün oyunda yenidən «Daxil ol» düyməsini basın.",
+    "invalidTitle": "Bu kod tanınmadı",
+    "invalidBody": "Oyundakı kodu yoxlayın və aşağıda daxil edin.",
+    "enterTitle": "Oyundakı kodu daxil edin",
+    "check": "Davam et",
+    "otherAccount": "Bu kod artıq başqa hesab tərəfindən istifadə olunub."
   }
 }

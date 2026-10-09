@@ -31,12 +31,13 @@ export function proxy(request: NextRequest) {
 
   // Remember the language the visitor is reading in.
   const response = NextResponse.next();
-  if (request.cookies.get(LOCALE_COOKIE)?.value !== first) {
+  if (request.method === "GET" && request.cookies.get(LOCALE_COOKIE)?.value !== first) {
     response.cookies.set(LOCALE_COOKIE, first, { path: "/", maxAge: ONE_YEAR, sameSite: "lax" });
   }
   // Sliding session: keep the cookie alive while the DB session (renewed in validateSession) is.
+  // GET only: a Set-Cookie on a server-action POST would make Next re-render the whole page.
   const session = request.cookies.get(SESSION_COOKIE)?.value;
-  if (session) {
+  if (session && request.method === "GET") {
     response.cookies.set(SESSION_COOKIE, session, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

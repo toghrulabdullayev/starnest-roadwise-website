@@ -47,3 +47,4 @@ next-env.d.ts
 
 # browser test artefacts
 /.playwright-mcp/
+/.device-token

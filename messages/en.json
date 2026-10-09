@@ -42,5 +42,25 @@
       "name_required": "Enter your name."
     },
     "loginToContinue": "Log in to continue."
+  },
+  "link": {
+    "title": "Sign in to the game",
+    "eyebrow": "Device link",
+    "lead": "Check that this code matches the one shown in Roadwise, then authorise.",
+    "codeLabel": "Code from the game",
+    "client": "Device",
+    "unknownClient": "Roadwise game",
+    "authorise": "Authorise this device",
+    "working": "Authorising…",
+    "signedInAs": "Signing in as {name}.",
+    "successTitle": "Device authorised",
+    "successBody": "Return to the game — it will sign you in within a few seconds.",
+    "expiredTitle": "This code has expired",
+    "expiredBody": "Codes last 10 minutes. Press Log in in the game again to get a new one.",
+    "invalidTitle": "We don't recognise this code",
+    "invalidBody": "Check the code in the game and type it below.",
+    "enterTitle": "Enter the code from the game",
+    "check": "Continue",
+    "otherAccount": "This code was already used by another account."
   }
 }

@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** 2.2 done. Next: **2.3** (device link + game tokens).
+**Status:** Phase 2 done. Next: **3.1** (metrics).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -22,7 +22,7 @@ Rules for whoever executes this plan:
 ## Phase 2 — Auth
 - [x] **2.1** `password.ts`, `session.ts`, `rateLimit.ts` + tests (hash/verify, wrong password, expiry, renewal). — roadwise-web §5.
 - [x] **2.2** Sign-up, log-in, log-out pages and server actions; `requireUser()`; protected-route redirects that return to the original page. — design skill for UI — check: sign up → `/en/profile`; log out → protected page redirects to login; wrong password shows generic error.
-- [ ] **2.3** Device link: `/api/device/start`, `/[locale]/link` + `approveDevice`, `/api/device/token`, `gameToken.ts`, `/api/me`. — roadwise-platform §7, roadwise-web §5–6 — check: `scripts/device-flow.sh` passes; tests for expired, double-consume and revoked tokens.
+- [x] **2.3** Device link: `/api/device/start`, `/[locale]/link` + `approveDevice`, `/api/device/token`, `gameToken.ts`, `/api/me`. — roadwise-platform §7, roadwise-web §5–6 — check: `scripts/device-flow.sh` passes; tests for expired, double-consume and revoked tokens.
 
 ## Phase 3 — Ingest and analytics
 - [ ] **3.1** `metrics.ts` + one test per metric. — roadwise-ai-instructor §2 — check: fixture expectations match.
