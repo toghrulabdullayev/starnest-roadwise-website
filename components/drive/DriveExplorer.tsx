@@ -296,7 +296,7 @@ function DebriefCard({
   const sectionTitle = "font-sans text-sm font-bold uppercase tracking-wide text-text-muted";
 
   return (
-    <article className="flex flex-col gap-6 border-2 border-surface bg-canvas p-4 shadow-bold sm:p-6" lang={debrief!.locale}>
+    <article className="flex flex-col gap-6 border-2 border-surface bg-canvas p-4 shadow-bold sm:p-6">
       {otherLanguage && (
         <div lang={currentLocale} className="flex flex-wrap items-center justify-between gap-3 border-2 border-primary bg-[#eff8ff] px-4 py-3">
           <p className="font-semibold text-primary-ink">{fill(labels.otherLanguage, { language: localeNames[debrief!.locale] })}</p>
@@ -313,7 +313,7 @@ function DebriefCard({
 
       <section>
         <h3 className={sectionTitle}>{labels.summary}</h3>
-        <p className="mt-1 text-lg">{d.summary}</p>
+        <p lang={debrief!.locale} className="mt-1 text-lg">{d.summary}</p>
       </section>
 
       <section>
@@ -332,15 +332,15 @@ function DebriefCard({
                   </span>
                   <span className="font-mono text-xs text-text-muted">{ruleNames[issue.rule]}</span>
                 </div>
-                <h4 className="mt-1 font-display text-xl">{issue.title}</h4>
+                <h4 lang={debrief!.locale} className="mt-1 font-display text-xl">{issue.title}</h4>
                 <dl className="mt-2 grid gap-2 sm:grid-cols-2">
                   <div>
                     <dt className="text-sm font-bold">{labels.whyItMatters}</dt>
-                    <dd>{issue.why_it_matters}</dd>
+                    <dd lang={debrief!.locale}>{issue.why_it_matters}</dd>
                   </div>
                   <div>
                     <dt className="text-sm font-bold">{labels.howToFix}</dt>
-                    <dd>{issue.how_to_fix}</dd>
+                    <dd lang={debrief!.locale}>{issue.how_to_fix}</dd>
                   </div>
                 </dl>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -370,7 +370,7 @@ function DebriefCard({
                 <span aria-hidden="true" className="font-bold text-success-ink">
                   ✓
                 </span>
-                <span>{s.text}</span>
+                <span lang={debrief!.locale}>{s.text}</span>
               </li>
             ))}
           </ul>
@@ -386,7 +386,7 @@ function DebriefCard({
                 <span className="font-mono font-bold text-success-ink">▲</span>
                 <span>
                   <span className="sr-only">{labels.improved}: </span>
-                  {s}
+                  <span lang={debrief!.locale}>{s}</span>
                 </span>
               </li>
             ))}
@@ -395,7 +395,7 @@ function DebriefCard({
                 <span className="font-mono font-bold text-danger-ink">▼</span>
                 <span>
                   <span className="sr-only">{labels.worse}: </span>
-                  {s}
+                  <span lang={debrief!.locale}>{s}</span>
                 </span>
               </li>
             ))}
@@ -408,17 +408,17 @@ function DebriefCard({
           <h3 className="font-sans text-sm font-bold uppercase tracking-wide text-primary-on-dark">
             {labels.nextDrive} · {labels.nextMode[d.next_drive.mode]}
           </h3>
-          <p className="mt-1 font-display text-xl">{d.next_drive.focus}</p>
+          <p lang={debrief!.locale} className="mt-1 font-display text-xl">{d.next_drive.focus}</p>
           <p className="mt-3 text-sm font-bold text-text-on-dark-muted">{labels.drills}</p>
           <ul className="mt-1 list-disc pl-5">
             {d.next_drive.drills.map((s, i) => (
-              <li key={i}>{s}</li>
+              <li key={i} lang={debrief!.locale}>{s}</li>
             ))}
           </ul>
         </section>
         <section>
           <h3 className={sectionTitle}>{labels.readiness}</h3>
-          <p className="mt-1">{d.readiness_comment}</p>
+          <p lang={debrief!.locale} className="mt-1">{d.readiness_comment}</p>
         </section>
       </div>
 
