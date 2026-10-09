@@ -16,6 +16,13 @@ const PRIMARY = "#0077bc";
 const GRID = "#e5e7eb";
 const MUTED = "#4b5563";
 
+/** Round axis ticks: 0 and four clean steps covering the max. */
+function niceTicks(max: number): number[] {
+  const steps = [5, 10, 20, 25, 50, 100, 200, 250, 500, 1000];
+  const step = steps.find((s) => s * 4 >= max) ?? Math.ceil(max / 4 / 1000) * 1000;
+  return [0, step, step * 2, step * 3, step * 4];
+}
+
 function ChartTooltip({ active, payload, unit, driveLabel }: TooltipContentProps<number, string> & { unit: string; driveLabel: (n: number) => string }) {
   if (!active || !payload?.length) return null;
   const p = payload[0].payload as ProgressPoint;
@@ -44,10 +51,12 @@ function SmallMultiple({
   dataKey: MetricKey;
   title: string;
   unit: string;
-  domain: [number, number | "auto"];
+  domain: [number, number] | "nice";
   driveLabel: (n: number) => string;
 }) {
   const last = [...data].reverse().find((d) => d[dataKey] !== null);
+  const ticks = domain === "nice" ? niceTicks(Math.max(1, ...data.map((d) => d[dataKey] ?? 0))) : [0, 25, 50, 75, 100];
+  const yDomain: [number, number] = domain === "nice" ? [0, ticks[ticks.length - 1]] : domain;
   return (
     <figure className="flex min-w-0 flex-col gap-2 border-2 border-surface bg-canvas p-4">
       <figcaption className="flex items-baseline justify-between gap-2">
@@ -64,7 +73,7 @@ function SmallMultiple({
           <LineChart data={data} margin={{ top: 8, right: 12, bottom: 0, left: -12 }}>
             <CartesianGrid vertical={false} stroke={GRID} strokeWidth={1} />
             <XAxis dataKey="n" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fill: MUTED, fontSize: 12 }} interval="preserveStartEnd" />
-            <YAxis domain={domain} tickLine={false} axisLine={false} tick={{ fill: MUTED, fontSize: 12 }} width={44} allowDecimals={false} />
+            <YAxis domain={yDomain} ticks={ticks} tickLine={false} axisLine={false} tick={{ fill: MUTED, fontSize: 12 }} width={44} allowDecimals={false} />
             <Tooltip
               cursor={{ stroke: "#111827", strokeWidth: 1 }}
               content={(props) => <ChartTooltip {...(props as TooltipContentProps<number, string>)} unit={unit} driveLabel={driveLabel} />}
@@ -103,7 +112,7 @@ export function ProgressCharts({
       <div className="grid gap-4 md:grid-cols-3">
         <SmallMultiple data={data} dataKey="compliance" title={labels.compliance} unit="%" domain={[0, 100]} driveLabel={driveLabel} />
         <SmallMultiple data={data} dataKey="composure" title={labels.composure} unit="" domain={[0, 100]} driveLabel={driveLabel} />
-        <SmallMultiple data={data} dataKey="fines" title={labels.fines} unit="" domain={[0, "auto"]} driveLabel={driveLabel} />
+        <SmallMultiple data={data} dataKey="fines" title={labels.fines} unit="" domain="nice" driveLabel={driveLabel} />
       </div>
     </div>
   );

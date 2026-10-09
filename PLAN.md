@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** 5.2 done (4.1 live check pending: Gemini key rejected). Next: **5.3** (landing + download).
+**Status:** Phase 5 done (4.1 live check pending: Gemini key rejected). Next: **6.1** (finalise GAME_INTEGRATION.md).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -36,7 +36,7 @@ Rules for whoever executes this plan:
 ## Phase 5 — Pages (design skill for every step)
 - [x] **5.1** Profile: readiness + breakdown, KPI tiles, progress chart, violations by rule, exam history, drive list, devices with Revoke, language preference. — roadwise-web §8 — check: renders with 0, 1, many drives in all locales.
 - [x] **5.2** Drive page: TraceMap, EventTimeline, metrics, DebriefCard, deltas, pending polling, regenerate, sample badge. — check: clicking an issue highlights its marker and timeline row.
-- [ ] **5.3** Landing and download pages. — check: mobile width has no horizontal scroll; all links work.
+- [x] **5.3** Landing and download pages. — check: mobile width has no horizontal scroll; all links work.
 
 ## Phase 6 — Game handoff
 - [ ] **6.1** Finalise `docs/GAME_INTEGRATION.md` against the implemented endpoints (copy real request/response examples from tests). — check: every endpoint and error code in the doc exists and matches.

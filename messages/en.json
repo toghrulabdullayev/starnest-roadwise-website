@@ -319,5 +319,74 @@
       "free": "Free drive",
       "exam": "Exam"
     }
+  },
+  "landing": {
+    "eyebrow": "Baku driving simulator · AI instructor",
+    "title": "Learn to drive in Baku before you take the wheel",
+    "lead": "Drive real Baku streets under real Azerbaijani traffic rules. After every drive, an AI instructor explains exactly what happened, which rule it was, and what to practise next.",
+    "ctaSignup": "Create free account",
+    "ctaDownload": "Download the game",
+    "heroAlt": "Roadwise debrief: the instructor's summary, issues linked to the moment they happened, and the next drill",
+    "problemTitle": "A fine tells you what. It does not tell you why.",
+    "problemBody": "Learner drivers practise for hours but get little feedback they can act on. A list of fines does not say which habit caused them, which mistake would fail the exam, or whether you are getting better.",
+    "howTitle": "How it works",
+    "how": [
+      {
+        "title": "Drive",
+        "body": "Free drive or a checkpoint exam through central Baku. The examiner checks red lights, STOP lines, crossings, one-way streets, giving way, speed and collisions — and records what you did right too."
+      },
+      {
+        "title": "Debrief",
+        "body": "Roadwise measures the drive itself: rules followed, time over the limit, harsh braking, steering. The AI instructor explains those numbers, cites the exact moment and rule, and plans your next drive."
+      },
+      {
+        "title": "Progress",
+        "body": "Your profile tracks every drive, compares it with the previous ones and shows an exam-readiness score with a full breakdown of how it was calculated."
+      }
+    ],
+    "shotsTitle": "See what you get",
+    "shots": {
+      "debrief": "The debrief cites the moment, the street and the rule.",
+      "route": "Every rule check on the route — select one to see it in the timeline.",
+      "readiness": "An exam-readiness score you can audit, point by point.",
+      "progress": "Progress across drives: rules followed, composure, fines."
+    },
+    "rulesTitle": "Real Baku streets. Real Azerbaijani rules.",
+    "rulesLead": "The city is built from OpenStreetMap data and enforces right-hand traffic. Fines follow the rates of the Azerbaijani Administrative Offences Code (İXM); some are still provisional.",
+    "rulesCols": {
+      "rule": "Rule",
+      "severity": "In the exam",
+      "fine": "Fine"
+    },
+    "byBand": "By speed band",
+    "bandNote": "Speeding: +11–20 km/h 10 AZN · +21–40 50 AZN · +41–60 200 AZN (major) · +61 or more 300 AZN (major).",
+    "major": "Major — instant fail",
+    "minor": "Minor",
+    "provisional": "provisional",
+    "honestTitle": "Built to be honest",
+    "honest": [
+      "Every number comes from measured drive data, never from the AI.",
+      "Each debrief is checked against the drive before you see it; if it does not pass, you get a plain template instead of a guess.",
+      "Composure is estimated from driving signals — it does not measure stress."
+    ],
+    "finalTitle": "Ready for your first drive?",
+    "finalBody": "Create an account, download the game and log in from it in under a minute."
+  },
+  "download": {
+    "title": "Download Roadwise",
+    "lead": "The desktop game is free. Your progress lives in your Roadwise account.",
+    "button": "Download the latest release",
+    "unavailable": "The download link is not configured yet.",
+    "version": "Version {version}",
+    "releases": "Hosted on GitHub Releases.",
+    "unsignedTitle": "Your computer may warn you",
+    "unsignedBody": "Early builds are not code-signed, so Windows SmartScreen or macOS may show a warning. On Windows choose More info → Run anyway; on macOS right-click the app and choose Open.",
+    "stepsTitle": "Log in from the game",
+    "steps": [
+      "Open Roadwise and press Log in. Your browser opens with a short code.",
+      "Log in to the website (or create an account) and click Authorise this device.",
+      "Return to the game — it says Signed in as your name. Every drive now uploads to your profile."
+    ],
+    "noAccount": "No account yet?"
   }
 }

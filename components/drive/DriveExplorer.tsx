@@ -36,7 +36,7 @@ function MarkerShape({ m, r, selected }: { m: TraceMarker; r: number; selected: 
   const rr = selected ? r * 1.5 : m.kind === "pass" ? r * 0.7 : r;
   const ring = r * 0.35;
   if (m.kind === "major") {
-    const d = rr * 1.25;
+    const d = rr * 1.9;
     return (
       <rect
         x={m.x - d / 2}

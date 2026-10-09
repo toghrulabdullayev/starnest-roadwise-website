@@ -320,5 +320,74 @@
       "free": "Sərbəst sürüş",
       "exam": "İmtahan"
     }
+  },
+  "landing": {
+    "eyebrow": "Bakı sürücülük simulyatoru · Süni intellekt təlimatçısı",
+    "title": "Sükan arxasına keçməzdən əvvəl Bakıda sürməyi öyrənin",
+    "lead": "Bakının real küçələrində Azərbaycanın real yol qaydaları ilə sürün. Hər sürüşdən sonra süni intellekt təlimatçısı nə baş verdiyini, hansı qayda olduğunu və növbəti dəfə nəyi məşq etməli olduğunuzu izah edir.",
+    "ctaSignup": "Pulsuz hesab yarat",
+    "ctaDownload": "Oyunu yüklə",
+    "heroAlt": "Roadwise təhlili: təlimatçının xülasəsi, anla bağlı səhvlər və növbəti məşq",
+    "problemTitle": "Cərimə «nə» olduğunu deyir. «Niyə» olduğunu demir.",
+    "problemBody": "Sürücülük öyrənənlər saatlarla məşq edir, amma faydalı rəy az alırlar. Cərimələrin siyahısı onlara hansı vərdişin səbəb olduğunu, hansı səhvin imtahanı kəsəcəyini və irəliləyişin olub-olmadığını demir.",
+    "howTitle": "Necə işləyir",
+    "how": [
+      {
+        "title": "Sürüş",
+        "body": "Bakı mərkəzində sərbəst sürüş və ya nəzarət nöqtələri ilə imtahan. İmtahançı svetoforları, STOP xəttlərini, keçidləri, birtərəfli küçələri, yol verməyi, sürəti və toqquşmaları yoxlayır — düzgün etdiklərinizi də qeyd edir."
+      },
+      {
+        "title": "Təhlil",
+        "body": "Roadwise sürüşün özünü ölçür: əməl edilən qaydalar, həddən artıq sürət vaxtı, kəskin əyləc, sükan idarəsi. Süni intellekt təlimatçısı bu rəqəmləri izah edir, dəqiq anı və qaydanı göstərir, növbəti sürüşü planlaşdırır."
+      },
+      {
+        "title": "İrəliləyiş",
+        "body": "Profiliniz hər sürüşü saxlayır, əvvəlkilərlə müqayisə edir və hesablamanın tam izahı ilə imtahana hazırlıq balını göstərir."
+      }
+    ],
+    "shotsTitle": "Nə əldə edirsiniz",
+    "shots": {
+      "debrief": "Təhlil anı, küçəni və qaydanı göstərir.",
+      "route": "Marşrutdakı hər qayda yoxlaması — xronologiyada görmək üçün seçin.",
+      "readiness": "Bənd-bənd yoxlana bilən hazırlıq balı.",
+      "progress": "Sürüşlər üzrə irəliləyiş: qaydalar, sakitlik, cərimələr."
+    },
+    "rulesTitle": "Bakının real küçələri. Azərbaycanın real qaydaları.",
+    "rulesLead": "Şəhər OpenStreetMap məlumatlarından qurulub, hərəkət sağtərəflidir. Cərimələr Azərbaycanın İnzibati Xətalar Məcəlləsinə (İXM) uyğundur; bəziləri hələ ilkindir.",
+    "rulesCols": {
+      "rule": "Qayda",
+      "severity": "İmtahanda",
+      "fine": "Cərimə"
+    },
+    "byBand": "Sürət həddinə görə",
+    "bandNote": "Sürət aşımı: +11–20 km/saat 10 AZN · +21–40 50 AZN · +41–60 200 AZN (ciddi) · +61 və çox 300 AZN (ciddi).",
+    "major": "Ciddi — imtahan kəsilir",
+    "minor": "Kiçik",
+    "provisional": "ilkin",
+    "honestTitle": "Dürüstlük üçün qurulub",
+    "honest": [
+      "Bütün rəqəmlər süni intellektdən deyil, ölçülmüş sürüş məlumatlarından gəlir.",
+      "Hər təhlil göstərilməzdən əvvəl sürüş məlumatları ilə yoxlanılır; yoxlamadan keçməsə, təxmin yerinə sadə şablon alırsınız.",
+      "Sakitlik sürüş siqnallarından qiymətləndirilir — stressi ölçmür."
+    ],
+    "finalTitle": "İlk sürüşə hazırsınız?",
+    "finalBody": "Bir dəqiqədən az müddətdə hesab yaradın, oyunu yükləyin və oyundan daxil olun."
+  },
+  "download": {
+    "title": "Roadwise-ı yüklə",
+    "lead": "Kompüter oyunu pulsuzdur. İrəliləyişiniz Roadwise hesabınızda saxlanılır.",
+    "button": "Son versiyanı yüklə",
+    "unavailable": "Yükləmə linki hələ qurulmayıb.",
+    "version": "Versiya {version}",
+    "releases": "GitHub Releases-də yerləşdirilib.",
+    "unsignedTitle": "Kompüteriniz xəbərdarlıq edə bilər",
+    "unsignedBody": "İlkin versiyalar imzalanmayıb, ona görə Windows SmartScreen və ya macOS xəbərdarlıq göstərə bilər. Windows-da «Ətraflı» → «Hər halda işə sal» seçin; macOS-da tətbiqə sağ klikləyib «Aç» seçin.",
+    "stepsTitle": "Oyundan daxil olun",
+    "steps": [
+      "Roadwise-ı açın və «Daxil ol» düyməsini basın. Brauzer qısa kodla açılacaq.",
+      "Sayta daxil olun (və ya hesab yaradın) və «Bu cihazı təsdiq et» düyməsini basın.",
+      "Oyuna qayıdın — orada adınızla «Daxil olunub» yazılacaq. İndi hər sürüş profilinizə yüklənir."
+    ],
+    "noAccount": "Hələ hesabınız yoxdur?"
   }
 }
