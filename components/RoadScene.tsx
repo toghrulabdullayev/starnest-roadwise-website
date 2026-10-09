@@ -14,6 +14,12 @@ import { usePathname } from "next/navigation";
  * static under prefers-reduced-motion, hidden in forced-colors mode (CSS).
  */
 
+/*
+ * The world is laid out in units 1/SCALE the size of page pixels and drawn with
+ * a SCALE canvas transform, so one number shrinks or grows the whole scene
+ * (roads, cars, signs, speeds) while it stays aligned with the page layout.
+ */
+const SCALE = 0.8;
 const CONTENT_W = 1152; // max-w-6xl
 const ROAD_HALF = 32; // side road: two 32px lanes
 const CROSS_HALF = 22; // crossroad: two 22px lanes
@@ -142,8 +148,9 @@ function findSeams(vw: number): number[] {
     const a = blocks[i].getBoundingClientRect();
     const b = blocks[i + 1].getBoundingClientRect();
     if (Math.abs(a.bottom - b.top) > 1 || a.width < vw - 2 || b.width < vw - 2) continue;
-    if (roomAt(blocks[i], "bottom") < CROSS_HALF + 4 || roomAt(blocks[i + 1], "top") < CROSS_HALF + 4) continue;
-    seams.push(Math.round(a.bottom + window.scrollY));
+    const need = (CROSS_HALF + 4) * SCALE;
+    if (roomAt(blocks[i], "bottom") < need || roomAt(blocks[i + 1], "top") < need) continue;
+    seams.push((a.bottom + window.scrollY) / SCALE);
   }
   return seams;
 }
@@ -177,7 +184,7 @@ function makeCar(axis: Axis, dir: 1 | -1, road: number, lane: number, pos: numbe
 }
 
 function build(vw: number, docH: number, crosses: number[]): World {
-  const gutter = (vw - CONTENT_W) / 2;
+  const gutter = (vw - CONTENT_W / SCALE) / 2;
   const roads = [Math.round(gutter / 2), Math.round(vw - gutter / 2)];
   const room = gutter / 2 - ROAD_HALF; // free space either side of a side road
   const nearCross = (y: number, pad: number) => crosses.some((c) => Math.abs(y - c) < CROSS_HALF + pad);
@@ -708,11 +715,12 @@ function drawCrash(ctx: CanvasRenderingContext2D, k: Crash, t: number) {
 }
 
 function draw(ctx: CanvasRenderingContext2D, w: World, t: number, scrollY: number, viewH: number, font: string) {
-  const top = scrollY;
-  const bottom = scrollY + viewH;
+  const top = scrollY / SCALE;
+  const bottom = (scrollY + viewH) / SCALE;
   const inView = (y: number) => y > top - 60 && y < bottom + 60;
   ctx.save();
   ctx.translate(0, -scrollY);
+  ctx.scale(SCALE, SCALE);
   drawRoads(ctx, w, top, bottom);
 
   for (const c of w.cars) if (inView(c.axis === "v" ? c.pos : c.lane)) drawCar(ctx, c, t);
@@ -771,7 +779,7 @@ export function RoadScene() {
       last = now;
       if (world) {
         t += dt;
-        step(world, t, dt, window.scrollY, window.scrollY + canvas.clientHeight);
+        step(world, t, dt, window.scrollY / SCALE, (window.scrollY + canvas.clientHeight) / SCALE);
       }
       render();
       raf = requestAnimationFrame(frame);
@@ -795,7 +803,7 @@ export function RoadScene() {
       const sig = `${vw}|${docH}|${seams.join(",")}`;
       if (sig !== signature) {
         signature = sig;
-        world = build(vw, docH, seams);
+        world = build(vw / SCALE, docH / SCALE, seams);
       }
       render();
       if (!reduced.matches) {
@@ -823,7 +831,7 @@ export function RoadScene() {
       // dev helpers: __roads.crash() forces a crash in view
       (window as unknown as { __roads: unknown }).__roads = {
         crash: () =>
-          world ? triggerCrash(world, t, window.scrollY, window.scrollY + canvas.clientHeight, true) : false,
+          world ? triggerCrash(world, t, window.scrollY / SCALE, (window.scrollY + canvas.clientHeight) / SCALE, true) : false,
       };
     }
 
