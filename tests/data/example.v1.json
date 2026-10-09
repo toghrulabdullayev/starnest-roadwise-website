@@ -1,0 +1,27 @@
+{
+  "schema": "roadwise.drive.v1",
+  "client": { "name": "roadwise-unity", "version": "0.1.0" },
+  "drive": {
+    "client_drive_id": "6f1b8e2a-3c4d-4e5f-8a9b-0c1d2e3f4a5b",
+    "mode": "free",
+    "district": "baku-center",
+    "route_id": null,
+    "car_type": "sedan",
+    "time_of_day": "day",
+    "started_at": "2026-10-09T15:00:00Z",
+    "duration_s": 412.6,
+    "distance_m": 3120.4,
+    "exam": null
+  },
+  "samples": {
+    "hz": 5,
+    "fields": ["t", "x", "z", "speed_kmh", "limit_kmh", "throttle", "brake", "steer", "handbrake"],
+    "rows": [[0.0, 12.3, -40.1, 0.0, 60, 0.0, 0.0, 0.0, 0]]
+  },
+  "events": [
+    { "id": "e1", "t": 34.2, "type": "rule_check", "rule": "stop_sign", "outcome": "pass", "x": 80.1, "z": -12.0, "street": "Nizami küç." },
+    { "id": "e2", "t": 51.0, "type": "rule_check", "rule": "speeding", "outcome": "fail", "severity": "minor", "fine_azn": 50, "x": 140.0, "z": -15.2, "street": "Bakıxanov küç.", "detail": { "speed_kmh": 84, "limit_kmh": 60 } },
+    { "id": "e3", "t": 77.4, "type": "rule_check", "rule": "collision", "outcome": "fail", "severity": "major", "fine_azn": 100, "x": 210.0, "z": -30.0, "detail": { "with": "building" } },
+    { "id": "e4", "t": 90.0, "type": "checkpoint", "index": 3 }
+  ]
+}
