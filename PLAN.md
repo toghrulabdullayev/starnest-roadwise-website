@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** Phase 3 done. Next: **4.1** (Gemini instructor).
+**Status:** 4.1 done (live check pending: Gemini key rejected). Next: **4.2** (grounding, retry, fallback).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -30,7 +30,7 @@ Rules for whoever executes this plan:
 - [x] **3.3** `lib/drives/ingest.ts`; `POST/GET /api/drives`, `GET /api/drives/:id`. — roadwise-web §6 — check: `scripts/upload.sh fixtures/speeder.json` → 200; re-upload → same id; broken file → 422.
 
 ## Phase 4 — AI instructor
-- [ ] **4.1** Read the current Gemini structured-output docs; `prompts/debrief.ts` (PROMPT_VERSION), `instructor.ts` with token/latency logging, locale parameter. — roadwise-ai-instructor §5 — check: `red_light_runner` debrief cites its red-light event in EN, RU and AZ.
+- [x] **4.1** Read the current Gemini structured-output docs; `prompts/debrief.ts` (PROMPT_VERSION), `instructor.ts` with token/latency logging, locale parameter. — roadwise-ai-instructor §5 — check: `red_light_runner` debrief cites its red-light event in EN, RU and AZ. **Live check PENDING:** the `GEMINI_API_KEY` in `.env.local` is rejected by Gemini (401 UNAUTHENTICATED); run `npm run gemini:check` with a valid AI Studio key, then `npm run eval`.
 - [ ] **4.2** `grounding.ts` (6 checks) + retry + `fallback.ts`; wire into `after()`; regenerate route. — §6 — check: tests feed bad outputs (unknown event, unknown rule, invented number, uncovered major) and each is rejected; with `GEMINI_API_KEY` unset the drive gets a localized fallback.
 
 ## Phase 5 — Pages (design skill for every step)
