@@ -8,7 +8,6 @@ import { fmt } from "@/lib/i18n/getDictionary";
 import { fmtDate } from "@/lib/i18n/format";
 import { lastQuizResult } from "@/lib/quiz/store";
 import { RULE_KEYS, ruleName } from "@/lib/rules/catalog";
-import { Eyebrow } from "@/components/ui";
 import { QuizRunner } from "@/components/quiz/QuizRunner";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/quiz">): Promise<Metadata> {
@@ -33,7 +32,6 @@ export default async function QuizPage({ params }: PageProps<"/[locale]/quiz">) 
         <Link href={`/${locale}/profile`} className="inline-flex min-h-11 w-fit items-center font-bold text-primary-ink underline decoration-2 underline-offset-4">
           ← {t.quizBack}
         </Link>
-        <Eyebrow>{t.quizTitle}</Eyebrow>
         <h1 className="text-4xl uppercase leading-tight sm:text-5xl">{t.quizTitle}</h1>
         <p className="text-text-muted">{t.quizLead}</p>
         {last && (

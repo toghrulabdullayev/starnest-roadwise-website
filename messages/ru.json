@@ -419,17 +419,17 @@
     "trendSame": "Пока без изменений."
   },
   "quiz": {
-    "fineQuestion": "Каков штраф за это нарушение: {rule}?",
+    "fineQuestion": "Каков штраф за нарушение «{rule}»?",
     "fineExplain": "Штраф за «{rule}» — {fine} AZN.",
     "fineUnit": "{fine} AZN",
-    "severityQuestion": "Как эта ошибка оценивается на экзамене: {rule}?",
+    "severityQuestion": "Как на экзамене оценивается «{rule}»?",
     "severityMajor": "Грубая ошибка: экзамен сразу не сдан",
     "severityMinor": "Мелкая ошибка: снижает результат",
     "severityNone": "На экзамене без последствий",
     "severityWarning": "Только предупреждение",
     "severityExplainMajor": "«{rule}» — грубая ошибка, поэтому экзамен сразу считается не сданным.",
     "severityExplainMinor": "«{rule}» — мелкая ошибка; такие ошибки накапливаются во время экзамена.",
-    "limitQuestion": "Какое ограничение скорости действует здесь: {zone}?",
+    "limitQuestion": "Какое ограничение скорости действует для «{zone}»?",
     "limitExplain": "Ограничение для «{zone}» — {limit} км/ч.",
     "limitUnit": "{limit} км/ч",
     "zones": {
