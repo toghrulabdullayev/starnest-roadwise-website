@@ -1,5 +1,5 @@
 /**
- * Deterministic template debrief (roadwise-ai-instructor §6): used when Gemini is not
+ * Deterministic template debrief (roadwise-ai-instructor §6): used when the model is not
  * configured, fails, or produces output the grounding validator rejects twice.
  * Built only from the model input, so it always passes the validator itself.
  */

@@ -1,6 +1,6 @@
 import type { Locale } from "../../i18n/config";
 import type { FocusEntry } from "../../profile/focus";
-import type { GenerateJson } from "../gemini";
+import type { GenerateJson } from "../llm";
 import { runGrounded } from "../runner";
 import { ruleTips } from "../tips";
 import { buildFallbackReply, type ChatDictionary } from "./fallback";
@@ -60,6 +60,7 @@ export async function answerDrivingQuestion(options: {
     configured: options.configured,
     maxAttempts: CHAT_MAX_ATTEMPTS,
     temperature: 0.3,
+    thinking: "minimal",
   });
 
   let reply = outcome.value;

@@ -1,9 +1,8 @@
 /**
- * Gemini call via @google/genai `interactions.create` with structured output
- * (response_format: text / application/json / schema), as documented at
- * https://ai.google.dev/gemini-api/docs/structured-output for the installed SDK.
+ * LLM client for the debrief: OpenRouter chat completions with a JSON-schema response, through the shared
+ * lib/ai/llm.ts call. Injectable (LlmClient) so tests and the eval run without the network.
  */
-import { GoogleGenAI } from "@google/genai";
+import { aiModel, generateJson, isAiConfigured } from "@/lib/ai/llm";
 import { debriefJsonSchema } from "@/lib/prompts/debrief";
 
 export interface LlmResult {
@@ -14,44 +13,36 @@ export interface LlmResult {
   latency_ms: number;
 }
 
-/** Injectable so tests and the eval can run without the network. */
 export interface LlmClient {
   readonly model: string;
   generate(args: { system: string; input: string }): Promise<LlmResult>;
 }
 
-export const DEFAULT_MODEL = "gemini-3.8-flash";
 export const TEMPERATURE = 0.2;
 
-export function geminiConfigured(): boolean {
-  return Boolean(process.env.GEMINI_API_KEY);
+export function llmConfigured(): boolean {
+  return isAiConfigured();
 }
 
-export function createGeminiClient(): LlmClient | null {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) return null;
-  const model = process.env.GEMINI_MODEL || DEFAULT_MODEL;
-  const client = new GoogleGenAI({ apiKey });
+export function createLlmClient(): LlmClient | null {
+  if (!isAiConfigured()) return null;
   return {
-    model,
+    model: aiModel(),
     async generate({ system, input }) {
-      const t0 = Date.now();
-      const interaction = await client.interactions.create({
-        model,
+      const out = await generateJson({
+        system,
         input,
-        system_instruction: system,
-        response_format: { type: "text", mime_type: "application/json", schema: debriefJsonSchema },
-        generation_config: { temperature: TEMPERATURE },
-        store: false,
+        schema: debriefJsonSchema,
+        temperature: TEMPERATURE,
+        schemaName: "debrief",
+        thinking: "low",
       });
-      const u = interaction.usage;
       return {
-        text: interaction.output_text ?? "",
-        model,
-        input_tokens: u?.total_input_tokens ?? 0,
-        // thinking tokens are billed as output
-        output_tokens: (u?.total_output_tokens ?? 0) + (u?.total_thought_tokens ?? 0),
-        latency_ms: Date.now() - t0,
+        text: out.text,
+        model: out.model,
+        input_tokens: out.inputTokens ?? 0,
+        output_tokens: out.outputTokens ?? 0,
+        latency_ms: out.latencyMs,
       };
     },
   };

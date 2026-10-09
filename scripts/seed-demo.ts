@@ -2,7 +2,7 @@
  * Demo account with a progress story, built through the real pipeline (ingestDrive + debrief).
  *   npm run seed:demo            create demo@roadwise.app if missing and ingest the story
  *   npm run seed:demo -- --reset delete the demo user's drives first, then reseed
- * Uses DATABASE_URL (local file in dev, Turso when pointed at production) and GEMINI_API_KEY
+ * Uses DATABASE_URL (local file in dev, Turso when pointed at production) and OPENROUTER_API_KEY
  * if set (otherwise debriefs are the template fallback).
  */
 import "./env";
@@ -12,7 +12,7 @@ import { createUser, findUserByEmail } from "../lib/auth/users";
 import { ingestDrive } from "../lib/drives/ingest";
 import { parseTelemetry } from "../lib/telemetry/schema";
 import { generateAndStoreDebrief } from "../lib/instructor/store";
-import { createGeminiClient } from "../lib/instructor/llm";
+import { createLlmClient } from "../lib/instructor/llm";
 import { locales } from "../lib/i18n/config";
 
 export const DEMO_EMAIL = "demo@roadwise.app";
@@ -28,8 +28,8 @@ async function main() {
     (await createUser({ email: DEMO_EMAIL, password: DEMO_PASSWORD, displayName: "Demo Student", locale: "en" }));
   if (reset) await run("DELETE FROM drives WHERE user_id = ?", [user.id]);
 
-  const client = createGeminiClient();
-  console.log(`demo user ${DEMO_EMAIL} (${user.id}); debriefs via ${client ? client.model : "template fallback (no GEMINI_API_KEY)"}`);
+  const client = createLlmClient();
+  console.log(`demo user ${DEMO_EMAIL} (${user.id}); debriefs via ${client ? client.model : "template fallback (no OPENROUTER_API_KEY)"}`);
 
   const today = new Date();
   for (const [i, name] of STORY.entries()) {
