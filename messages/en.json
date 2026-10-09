@@ -50,7 +50,8 @@
       "generic": "Something went wrong. Please try again.",
       "invalid_email": "Enter a valid email address.",
       "password_short": "Use at least 8 characters.",
-      "name_required": "Enter your name."
+      "name_required": "Enter your name.",
+      "password_required": "Enter your password."
     },
     "loginToContinue": "Log in to continue."
   },
