@@ -1,8 +1,8 @@
 {
   "_review": true,
   "meta": {
-    "title": "Roadwise — Bakıda sürməyi öyrənin",
-    "description": "Hər sürüşü izah edən və imtahana hazırlığınızı izləyən süni intellekt təlimatçısı ilə Bakı sürücülük simulyatoru."
+    "title": "Roadwise — Bakıda maşın sürməyi öyrənin",
+    "description": "Hər sürüşü izah edən və imtahana hazırlığınızı izləyən süni intellekt təlimatçısı olan Bakı sürücülük simulyatoru."
   },
   "nav": {
     "home": "Ana səhifə",
@@ -16,7 +16,7 @@
     "mainNav": "Əsas naviqasiya"
   },
   "footer": {
-    "tagline": "Bakının real küçələri. Azərbaycanın real qaydaları.",
+    "tagline": "Bakının real küçələri. Azərbaycanın real yol qaydaları.",
     "provisional": "Rus və Azərbaycan dilində tərcümələr ilkindir."
   },
   "auth": {
@@ -35,7 +35,7 @@
     "noAccount": "Roadwise-da yenisiniz?",
     "errors": {
       "invalid_credentials": "E-poçt və ya şifrə yanlışdır.",
-      "rate_limited": "Çox sayda cəhd. Bir neçə dəqiqə gözləyin.",
+      "rate_limited": "Həddən çox cəhd edildi. Bir neçə dəqiqə gözləyib yenidən cəhd edin.",
       "email_taken": "Bu e-poçtla hesab artıq mövcuddur. Daxil olun.",
       "generic": "Xəta baş verdi. Yenidən cəhd edin.",
       "invalid_email": "Düzgün e-poçt ünvanı daxil edin.",
@@ -71,93 +71,93 @@
       "ready": "İmtahana hazır"
     },
     "components": {
-      "majors": "Ciddi səhvlər",
-      "minors": "Kiçik səhvlər",
+      "majors": "Kobud səhvlər",
+      "minors": "Yüngül səhvlər",
       "compliance": "Qaydalara riayət",
-      "overspeed": "Həddən artıq sürət vaxtı",
-      "harsh": "Kəskin əyləc və sürətlənmə",
-      "composure": "Sakitlik (sürüş siqnallarına görə)",
-      "exam_bonus": "Keçilmiş imtahan bonusu"
+      "overspeed": "Sürət həddinin aşıldığı vaxt",
+      "harsh": "Kəskin əyləcləmə və sürətlənmə",
+      "composure": "Təmkin (sürüş siqnallarına görə)",
+      "exam_bonus": "İmtahandan keçmə bonusu"
     }
   },
   "history": {
     "keys": {
       "compliance_rate": "Qaydalara riayət",
       "fines_azn": "Cərimələr",
-      "overspeed_time_share": "Həddən artıq sürət vaxtı",
-      "harsh_per_10min": "Kəskin əyləc və sürətlənmə",
-      "composure_index": "Sakitlik"
+      "overspeed_time_share": "Sürət həddinin aşıldığı vaxt",
+      "harsh_per_10min": "Kəskin əyləcləmə və sürətlənmə",
+      "composure_index": "Təmkin"
     },
     "improved": "Yaxşılaşıb",
     "worse": "Pisləşib",
     "same": "Dəyişməyib"
   },
   "instructor": {
-    "summaryClean": "Təmiz sürüş: bütün qayda yoxlamaları ({passed}) keçildi, cərimə yoxdur.",
+    "summaryClean": "Təmiz sürüş: {passed} qayda yoxlamasının hamısından keçdiniz, cərimə yoxdur.",
     "summaryNoChecks": "Bu sürüşdə qayda yoxlaması qeydə alınmayıb.",
-    "summaryFaults": "{total} qayda yoxlamasından {passed} keçildi, cərimələr {fines} AZN təşkil etdi. Düzəldilməli ən vacib səhv: {rule}.",
+    "summaryFaults": "{total} qayda yoxlamasından {passed} uğurlu oldu, cərimələr cəmi {fines} AZN təşkil etdi. Düzəltməli olduğunuz ən vacib səhv: {rule}.",
     "issueTitle": "{rule}, {time}",
     "issueTitleStreet": "{rule}: {street}, {time}",
     "issueRepeated": "{rule}: sürüş zamanı təkrarlandı",
     "strengthPasses": "Düzgün: {rules}.",
     "strengthNoSpeeding": "Sürət həddini aşmadınız.",
-    "strengthComposure": "Sakit və rəvan idarəetmə (sakitlik {composure}).",
+    "strengthComposure": "Sakit və rəvan idarəetmə (təmkin {composure}).",
     "progressItem": "{label}: {direction}",
     "readinessComment": "Hazırlıq balı {score}. Ən çox bal bunlara görə çıxıldı: {list}.",
-    "readinessClean": "Hazırlıq balı {score}, nəzərəçarpan azalma yoxdur.",
+    "readinessClean": "Hazırlıq balı {score}, nəzərəçarpan bal itkisi yoxdur.",
     "cleanFocus": "Eyni sakit üslubu saxlayın və imtahan marşrutunu sınayın.",
     "cleanDrill": "İmtahan marşrutunu bugünkü kimi təmiz keçin.",
     "composureFocus": "Rəvan və inamlı idarəetmə",
-    "composureDrill": "Əyləcə daha tez başlayın və pedalı yumşaq buraxın; döngələr arasında sükanı sabit saxlayın.",
+    "composureDrill": "Daha tez əyləcləməyə başlayın və pedalı yumşaq buraxın; döngələr arasında sükanı sabit saxlayın.",
     "rules": {
       "speeding": {
-        "why": "Sürət reaksiya vaxtını və qəzanın ağırlığını müəyyən edir; açıq-aşkar sürət aşımı imtahanda kəsilmə səbəbidir.",
-        "how": "Hər nişan və yolayrıcından sonra spidometrə baxın; qazı vaxtında buraxın və həddi saxlayın.",
+        "why": "Sürət reaksiya üçün nə qədər vaxtınız olacağını və qəzanın nə qədər ağır olacağını müəyyən edir; sürət həddini açıq-aşkar aşsanız, imtahandan kəsilirsiniz.",
+        "how": "Hər nişandan və yolayrıcından sonra spidometrə baxın; qazı vaxtında buraxın və sürəti həddə saxlayın, sonradan sürətlənib vaxtı qaytarmağa çalışmayın.",
         "focus": "Sürət həddinə əməl etmək",
-        "drill": "Marşrut boyu hər sürət nişanında spidometri yoxlayın və həddi aşmayın.",
+        "drill": "Bir marşrut boyu hər sürət həddi nişanında spidometri yoxlayın və həddi aşmayın.",
         "topic": "Sürət həddi"
       },
       "red_light": {
-        "why": "Qırmızı işıqda keçmə imtahanı kəsən ciddi səhvdir və yan zərbəli qəzaların əsas səbəbidir.",
-        "how": "Sarı işığı dayanma siqnalı kimi qəbul edin: yolayrıcına yaxınlaşanda ayağınızı əyləcin üstündə saxlayın və xəttdə dayanın.",
+        "why": "Qırmızı işıqda keçmək imtahandan kəsilməyə səbəb olan kobud səhvdir və yandan toqquşmalara gətirib çıxarır.",
+        "how": "Sarı işığı dayanma siqnalı kimi qəbul edin: yolayrıcına yaxınlaşanda ayağınızı əyləcin üstündə saxlayın və dayanma xəttinin qarşısında dayanın.",
         "focus": "Qırmızı və sarı işıqda dayanmaq",
-        "drill": "Tənzimlənən yolayrıclarına ayağınız əyləcin üstündə yaxınlaşın və sarı işıqda xəttdə dayanın.",
+        "drill": "Nizamlanan yolayrıclarına ayağınız əyləcin üstündə yaxınlaşın və sarı işıqda dayanma xəttinin qarşısında dayanın.",
         "topic": "Svetofor"
       },
       "stop_sign": {
-        "why": "STOP nişanında avtomobil xəttdə tam dayanmalıdır; dayanmadan keçmək imtahan səhvidir.",
-        "how": "Rəvan əyləc edin ki, xəttdən əvvəl tam dayanasınız, bir saniyə gözləyin, sonra hər iki tərəfə baxın.",
+        "why": "STOP nişanında avtomobil dayanma xəttinin qarşısında tam dayanmalıdır; tam dayanmadan keçmək imtahanda səhv sayılır.",
+        "how": "Tədricən əyləcləyin ki, avtomobil xəttə çatmamış tam dayansın, bir saniyə gözləyin, sonra hər iki tərəfə baxın.",
         "focus": "STOP nişanında tam dayanma",
-        "drill": "Bir neçə STOP nişanında xəttdə tam dayanmanı məşq edin, hər dəfə bir saniyə gözləyin.",
+        "drill": "Bir neçə STOP nişanında dayanma xəttinin qarşısında tam dayanmağı məşq edin, hər dəfə tam bir saniyə gözləyin.",
         "topic": "STOP nişanı"
       },
       "pedestrian_crossing": {
-        "why": "Keçiddə piyadaların üstünlüyü var; yol verməmək ən həssas yol iştirakçılarını təhlükəyə atır.",
-        "how": "Keçidə yaxınlaşanda hər iki səkiyə baxın, sürəti əvvəlcədən azaldın və kimsə gözləyirsə və ya keçirsə dayanın.",
+        "why": "Keçiddəki piyadaların üstünlüyü var; onlara yol verməmək ən müdafiəsiz yol hərəkəti iştirakçılarını təhlükəyə atır.",
+        "how": "Keçidə yaxınlaşanda hər iki səkiyə baxın, sürəti əvvəlcədən azaldın və kimsə gözləyirsə və ya yolu keçirsə, dayanın.",
         "focus": "Piyada keçidlərində yol vermək",
         "drill": "Keçidləri olan marşrutda hər keçiddən əvvəl sürəti azaldın və kiminsə gözləyib-gözləmədiyini ucadan deyin.",
         "topic": "Piyada keçidi"
       },
       "wrong_way": {
-        "why": "Birtərəfli yolda əks istiqamətdə hərəkət baş-başa toqquşma riski yaradır və imtahanı kəsir.",
-        "how": "Dönməzdən əvvəl birtərəfli hərəkət və girişi qadağan edən nişanlara baxın, marşrutu əvvəlcədən planlayın.",
-        "focus": "Birtərəfli hərəkət və giriş qadağası nişanları",
+        "why": "Birtərəfli yolda əks istiqamətdə hərəkət qarşı-qarşıya toqquşma riski yaradır və imtahandan kəsilməyə səbəb olur.",
+        "how": "Dönməzdən əvvəl «Birtərəfli hərəkət» və «Giriş qadağandır» nişanlarına baxın, marşrutu əvvəlcədən planlaşdırın.",
+        "focus": "«Birtərəfli hərəkət» və «Giriş qadağandır» nişanlarına diqqət",
         "drill": "Hər dönmədən əvvəl ona icazə verən nişanı deyin; İçərişəhərin dar küçələrində məşq edin.",
         "topic": "Birtərəfli yol"
       },
       "give_way": {
-        "why": "Yol verməmək digərlərini əyləc etməyə və ya yayınmağa məcbur edir və imtahanda ciddi səhvdir.",
-        "how": "Yol ver xəttindən əvvəl sürəti azaldın, əsas yoldakı hərəkəti yoxlayın və yalnız yol boş olanda girin.",
+        "why": "Yol verməmək digər sürücüləri əyləcləməyə və ya kənara burulmağa məcbur edir və imtahanda kobud səhvdir.",
+        "how": "«Yol ver» xəttinə çatmamış sürəti azaldın, əsas yoldakı hərəkəti yoxlayın və yalnız yol boş olduqda hərəkətə davam edin.",
         "focus": "Yolayrıclarında yol vermək",
-        "drill": "Hər yol ver nişanlı yolayrıcında sürəti piyada sürətinə endirin və hər iki tərəfə baxın.",
+        "drill": "«Yol ver» nişanı olan hər yolayrıcında sürəti piyada sürətinə qədər azaldın və daxil olmazdan əvvəl hər iki istiqamətə baxın.",
         "topic": "Yol vermək"
       },
       "collision": {
-        "why": "Toqquşma ciddi səhvdir və avtomobilin bu vəziyyətdə nəzarətdə olmadığını göstərir.",
-        "how": "Daha çox məsafə saxlayın, maneələrin yanında sürəti azaldın və gördüyünüz məsafədə dayana bilmək üçün irəli baxın.",
+        "why": "Toqquşma kobud səhvdir və avtomobilin həmin vəziyyətdə nəzarətdə olmadığını göstərir.",
+        "how": "Daha böyük məsafə saxlayın, maneələrə yaxınlaşanda sürəti azaldın və daha uzağa baxın ki, gördüyünüz məsafə daxilində dayana biləsiniz.",
         "focus": "Maneələr yanında məsafə və sürət nəzarəti",
         "drill": "Sərbəst rejimdə geniş məsafə saxlayaraq sürün, park edilmiş maşınlar və dar döngələr qarşısında yavaşlayın.",
-        "topic": "Toqquşmadan qaçmaq"
+        "topic": "Toqquşmanın qarşısını almaq"
       }
     }
   },
@@ -166,11 +166,11 @@
     "greeting": "Salam, {name}",
     "lead": "Oyundan yüklədiyiniz hər sürüş burada görünür.",
     "readinessTitle": "İmtahana hazırlıq",
-    "readinessBasis": "Son sürüşlərə əsasən: {n}.",
+    "readinessBasis": "Son {n} sürüşə əsasən.",
     "readinessBreakdown": "Bal necə hesablanır",
-    "readinessStart": "Başlanğıc bal 100",
+    "readinessStart": "100 baldan başlayır",
     "points": "bal",
-    "noDeduction": "Azalma yoxdur",
+    "noDeduction": "Bal çıxılmayıb",
     "kpi": {
       "drives": "Sürüşlər",
       "distance": "Məsafə",
@@ -178,10 +178,10 @@
       "fines": "Cərimələr (simulyasiya)"
     },
     "progressTitle": "Sürüşlər üzrə irəliləyiş",
-    "progressLead": "Köhnələr solda, yenilər sağda.",
+    "progressLead": "Ən köhnəsi solda, ən yenisi sağda.",
     "chart": {
       "compliance": "Qaydalara riayət (%)",
-      "composure": "Sakitlik (sürüş siqnallarına görə)",
+      "composure": "Təmkin (sürüş siqnallarına görə)",
       "fines": "Sürüş üzrə cərimələr (AZN)",
       "drive": "Sürüş {n}",
       "needTwo": "Dinamikanı görmək üçün daha bir sürüş yükləyin."
@@ -192,11 +192,11 @@
     "examTitle": "İmtahan tarixçəsi",
     "examEmpty": "Hələ imtahan sürüşü yoxdur. Oyunda imtahan rejimini sınayın.",
     "passed": "Keçdi",
-    "failed": "Kəsildi",
+    "failed": "Keçmədi",
     "examCols": {
       "date": "Tarix",
       "result": "Nəticə",
-      "faults": "Səhvlər (ciddi / kiçik)",
+      "faults": "Səhvlər (kobud / yüngül)",
       "checkpoints": "Nəzarət nöqtələri"
     },
     "drivesTitle": "Sürüşləriniz",
@@ -207,7 +207,7 @@
       "district": "Rayon",
       "compliance": "Qaydalar",
       "fines": "Cərimələr",
-      "composure": "Sakitlik",
+      "composure": "Təmkin",
       "readiness": "Hazırlıq"
     },
     "modes": {
@@ -227,7 +227,7 @@
     "lastUsed": "Son istifadə: {date}",
     "neverUsed": "Hələ istifadə olunmayıb",
     "connected": "Qoşulub: {date}",
-    "revoke": "Ləğv et",
+    "revoke": "Əlaqəni kəs",
     "unknownDevice": "Roadwise oyunu",
     "languageTitle": "Təhlil dili",
     "languageLead": "Yeni təhlillər bu dildə yazılır.",
@@ -238,21 +238,21 @@
     "back": "Profilə qayıt",
     "title": "Sürüşün təhlili",
     "sample": "Nümunə məlumat",
-    "sampleNote": "Real sürüşlərlə eyni sistemlə təhlil edilmiş yaradılmış test sürüşü.",
+    "sampleNote": "Süni yaradılmış test sürüşü; real sürüşlərlə eyni sistemlə təhlil edilib.",
     "duration": "Müddət",
     "distance": "Məsafə",
     "date": "Tarix",
     "district": "Rayon",
-    "passed": "İmtahan keçildi",
-    "failed": "İmtahan kəsildi",
+    "passed": "İmtahandan keçdi",
+    "failed": "İmtahandan keçmədi",
     "mapTitle": "Marşrut",
-    "mapLead": "Hadisəni xronologiyada tapmaq üçün nişanı seçin.",
-    "mapLabel": "Qayda yoxlaması nişanları ilə marşrutun xəritəsi",
+    "mapLead": "Hadisəni xronologiyada tapmaq üçün xəritədəki işarəni seçin.",
+    "mapLabel": "Qayda yoxlaması işarələri olan marşrut xəritəsi",
     "legend": {
       "route": "Marşrut",
-      "overspeed": "Həddən artıq (+11 km/saat)",
-      "major": "Ciddi səhv",
-      "minor": "Kiçik səhv",
+      "overspeed": "Sürət həddinin aşılması (+11 km/saat)",
+      "major": "Kobud səhv",
+      "minor": "Yüngül səhv",
       "pass": "Qaydaya əməl edildi",
       "start": "Başlanğıc"
     },
@@ -261,8 +261,8 @@
     "checkpoint": "Nəzarət nöqtəsi {n}",
     "pass": "Əməl edildi",
     "fail": "Pozuldu",
-    "major": "Ciddi",
-    "minor": "Kiçik",
+    "major": "Kobud",
+    "minor": "Yüngül",
     "metricsTitle": "Bu sürüşdə ölçülənlər",
     "metricsNote": "Süni intellekt deyil, Roadwise tərəfindən sürüş telemetriyasından hesablanıb.",
     "groups": {
@@ -270,37 +270,37 @@
       "speed": "Sürət",
       "smoothness": "Rəvanlıq",
       "control": "İdarəetmə",
-      "composure": "Sakitlik (sürüş siqnallarına görə)"
+      "composure": "Təmkin (sürüş siqnallarına görə)"
     },
     "metrics": {
-      "checks": "Keçilən yoxlamalar",
+      "checks": "Uğurlu yoxlamalar",
       "compliance": "Qaydalara riayət",
       "fines": "Cərimələr (simulyasiya)",
-      "faults": "Səhvlər (ciddi / kiçik)",
+      "faults": "Səhvlər (kobud / yüngül)",
       "avgSpeed": "Orta sürət",
       "maxSpeed": "Maksimal sürət",
-      "overspeed": "Həddən artıq sürət vaxtı",
-      "meanOver": "Orta həddi aşma",
-      "harshBrake": "Kəskin əyləc",
+      "overspeed": "Sürət həddinin aşıldığı vaxt",
+      "meanOver": "Sürət həddinin orta aşılması",
+      "harshBrake": "Kəskin əyləcləmə",
       "harshAccel": "Kəskin sürətlənmə",
-      "jerk": "Silkələnmə (RMS)",
-      "reversals": "Dəqiqədə sükan dəyişmələri",
+      "jerk": "Təkanlar (RMS)",
+      "reversals": "Sükanın dəqiqədə istiqamət dəyişməsi",
       "collisions": "Toqquşmalar",
-      "handbrake": "Əl əyləci",
+      "handbrake": "Əl əyləcindən istifadə",
       "hesitation": "Tərəddüdlü dayanmalar",
       "speedCv": "Sürət dəyişkənliyi",
-      "composureIndex": "Sakitlik indeksi"
+      "composureIndex": "Təmkin indeksi"
     },
     "deltasTitle": "Əvvəlki sürüşlərinizlə müqayisə",
     "deltasFirst": "Bu sizin ilk sürüşünüzdür — müqayisə növbətidən başlayacaq.",
-    "deltasBasis": "Əvvəlki sürüşlərin ortası: {n}.",
-    "previous": "əvvəl",
+    "deltasBasis": "Əvvəlki {n} sürüşün orta göstəricisi.",
+    "previous": "əvvəlki",
     "debriefTitle": "Təlimatçınız",
     "pending": "Təlimatçı sürüşü nəzərdən keçirir…",
     "pendingNote": "Bu adətən bir neçə saniyə çəkir.",
     "summary": "Xülasə",
-    "issues": "Nəyi düzəltməli",
-    "strengths": "Nə yaxşı alındı",
+    "issues": "Düzəldilməli olanlar",
+    "strengths": "Yaxşı alınanlar",
     "progress": "İrəliləyiş",
     "improved": "Yaxşılaşıb",
     "worse": "Pisləşib",
@@ -308,14 +308,14 @@
     "drills": "Məşqlər",
     "readiness": "Hazırlıq",
     "whyItMatters": "Niyə vacibdir",
-    "howToFix": "Necə düzəltməli",
+    "howToFix": "Necə düzəltmək olar",
     "seeEvent": "{time} anını xəritədə göstər",
     "noIssues": "Bu sürüşdə düzəldiləcək səhv yoxdur.",
     "sourceAi": "Süni intellekt təhlili · {model} · sürüş məlumatları ilə yoxlanılıb",
     "sourceFallback": "Sürüş məlumatlarından hazırlanmış şablon təhlil (süni intellekt təlimatçısı əlçatan deyildi).",
-    "regenerate": "Bu dildə yenidən yarat: {language}",
+    "regenerate": "{language} yenidən yarat",
     "regenerating": "Yaradılır…",
-    "otherLanguage": "Bu təhlil bu dildədir: {language}.",
+    "otherLanguage": "Bu təhlilin dili: {language}.",
     "nextMode": {
       "free": "Sərbəst sürüş",
       "exam": "İmtahan"
@@ -323,22 +323,22 @@
   },
   "landing": {
     "eyebrow": "Bakı sürücülük simulyatoru · Süni intellekt təlimatçısı",
-    "title": "Sükan arxasına keçməzdən əvvəl Bakıda sürməyi öyrənin",
-    "lead": "Bakının real küçələrində Azərbaycanın real yol qaydaları ilə sürün. Hər sürüşdən sonra süni intellekt təlimatçısı nə baş verdiyini, hansı qayda olduğunu və növbəti dəfə nəyi məşq etməli olduğunuzu izah edir.",
+    "title": "Sükan arxasına keçməzdən əvvəl Bakıda maşın sürməyi öyrənin",
+    "lead": "Bakının real küçələrində Azərbaycanın real yol hərəkəti qaydaları ilə maşın sürün. Hər sürüşdən sonra süni intellekt təlimatçısı nə baş verdiyini, hansı qaydaya aid olduğunu və növbəti dəfə nəyi məşq etməli olduğunuzu dəqiq izah edir.",
     "ctaSignup": "Pulsuz hesab yarat",
     "ctaDownload": "Oyunu yüklə",
-    "heroAlt": "Roadwise təhlili: təlimatçının xülasəsi, anla bağlı səhvlər və növbəti məşq",
-    "problemTitle": "Cərimə «nə» olduğunu deyir. «Niyə» olduğunu demir.",
-    "problemBody": "Sürücülük öyrənənlər saatlarla məşq edir, amma faydalı rəy az alırlar. Cərimələrin siyahısı onlara hansı vərdişin səbəb olduğunu, hansı səhvin imtahanı kəsəcəyini və irəliləyişin olub-olmadığını demir.",
+    "heroAlt": "Roadwise təhlili: təlimatçının xülasəsi, baş verdiyi anla əlaqələndirilmiş səhvlər və növbəti məşq",
+    "problemTitle": "Cərimə nəyin səhv olduğunu deyir, amma səbəbini demir.",
+    "problemBody": "Sürücülük öyrənənlər saatlarla məşq edir, amma işə yarayan rəy az alırlar. Cərimələrin siyahısı onlara hansı vərdişin səbəb olduğunu, hansı səhvə görə imtahandan kəsilə biləcəyinizi və irəliləyiş olub-olmadığını demir.",
     "howTitle": "Necə işləyir",
     "how": [
       {
         "title": "Sürüş",
-        "body": "Bakı mərkəzində sərbəst sürüş və ya nəzarət nöqtələri ilə imtahan. İmtahançı svetoforları, STOP xəttlərini, keçidləri, birtərəfli küçələri, yol verməyi, sürəti və toqquşmaları yoxlayır — düzgün etdiklərinizi də qeyd edir."
+        "body": "Bakının mərkəzində sərbəst sürüş və ya nəzarət nöqtələri üzrə imtahan. İmtahan götürən svetoforları, STOP xətlərini, piyada keçidlərini, birtərəfli küçələri, yol verməyi, sürəti və toqquşmaları yoxlayır — düzgün etdiklərinizi də qeyd edir."
       },
       {
         "title": "Təhlil",
-        "body": "Roadwise sürüşün özünü ölçür: əməl edilən qaydalar, həddən artıq sürət vaxtı, kəskin əyləc, sükan idarəsi. Süni intellekt təlimatçısı bu rəqəmləri izah edir, dəqiq anı və qaydanı göstərir, növbəti sürüşü planlaşdırır."
+        "body": "Roadwise sürüşün özünü ölçür: qaydalara riayət, sürət həddinin aşıldığı vaxt, kəskin əyləcləmə, sükanı idarəetmə. Süni intellekt təlimatçısı bu rəqəmləri izah edir, dəqiq anı və qaydanı göstərir, növbəti sürüşünüzü planlaşdırır."
       },
       {
         "title": "İrəliləyiş",
@@ -350,25 +350,25 @@
       "debrief": "Təhlil anı, küçəni və qaydanı göstərir.",
       "route": "Marşrutdakı hər qayda yoxlaması — xronologiyada görmək üçün seçin.",
       "readiness": "Bənd-bənd yoxlana bilən hazırlıq balı.",
-      "progress": "Sürüşlər üzrə irəliləyiş: qaydalar, sakitlik, cərimələr."
+      "progress": "Sürüşlər üzrə irəliləyiş: qaydalara riayət, təmkin, cərimələr."
     },
-    "rulesTitle": "Bakının real küçələri. Azərbaycanın real qaydaları.",
-    "rulesLead": "Şəhər OpenStreetMap məlumatlarından qurulub, hərəkət sağtərəflidir. Cərimələr Azərbaycanın İnzibati Xətalar Məcəlləsinə (İXM) uyğundur; bəziləri hələ ilkindir.",
+    "rulesTitle": "Bakının real küçələri. Azərbaycanın real yol qaydaları.",
+    "rulesLead": "Şəhər OpenStreetMap məlumatları əsasında qurulub, hərəkət sağtərəflidir. Cərimələr Azərbaycan Respublikasının İnzibati Xətalar Məcəlləsinə (İXM) uyğundur; bəziləri hələ ilkindir.",
     "rulesCols": {
       "rule": "Qayda",
       "severity": "İmtahanda",
       "fine": "Cərimə"
     },
-    "byBand": "Sürət həddinə görə",
-    "bandNote": "Sürət aşımı: +11–20 km/saat 10 AZN · +21–40 50 AZN · +41–60 200 AZN (ciddi) · +61 və çox 300 AZN (ciddi).",
-    "major": "Ciddi — imtahan kəsilir",
-    "minor": "Kiçik",
+    "byBand": "Həddin aşılma dərəcəsinə görə",
+    "bandNote": "Sürət həddinin aşılması: +11–20 km/saat 10 AZN · +21–40 50 AZN · +41–60 200 AZN (kobud) · +61 və daha çox 300 AZN (kobud).",
+    "major": "Kobud — imtahan dərhal uğursuz bitir",
+    "minor": "Yüngül",
     "provisional": "ilkin",
-    "honestTitle": "Dürüstlük üçün qurulub",
+    "honestTitle": "Dürüstlük əsasında qurulub",
     "honest": [
       "Bütün rəqəmlər süni intellektdən deyil, ölçülmüş sürüş məlumatlarından gəlir.",
       "Hər təhlil göstərilməzdən əvvəl sürüş məlumatları ilə yoxlanılır; yoxlamadan keçməsə, təxmin yerinə sadə şablon alırsınız.",
-      "Sakitlik sürüş siqnallarından qiymətləndirilir — stressi ölçmür."
+      "Təmkin sürüş siqnallarına əsasən qiymətləndirilir — stressi ölçmür."
     ],
     "finalTitle": "İlk sürüşə hazırsınız?",
     "finalBody": "Bir dəqiqədən az müddətdə hesab yaradın, oyunu yükləyin və oyundan daxil olun."
@@ -381,7 +381,7 @@
     "version": "Versiya {version}",
     "releases": "GitHub Releases-də yerləşdirilib.",
     "unsignedTitle": "Kompüteriniz xəbərdarlıq edə bilər",
-    "unsignedBody": "İlkin versiyalar imzalanmayıb, ona görə Windows SmartScreen və ya macOS xəbərdarlıq göstərə bilər. Windows-da «Ətraflı» → «Hər halda işə sal» seçin; macOS-da tətbiqə sağ klikləyib «Aç» seçin.",
+    "unsignedBody": "İlkin versiyalar rəqəmsal imza ilə imzalanmayıb, ona görə Windows SmartScreen və ya macOS xəbərdarlıq göstərə bilər. Windows-da «Ətraflı» → «Hər halda işə sal» seçin; macOS-da tətbiqin üzərinə sağ klikləyib «Aç» seçin.",
     "stepsTitle": "Oyundan daxil olun",
     "steps": [
       "Roadwise-ı açın və «Daxil ol» düyməsini basın. Brauzer qısa kodla açılacaq.",
@@ -393,7 +393,7 @@
   "plan": {
     "summary": "Hazırda əsas zəif nöqtələriniz: {rules}.",
     "empty": "Hələ təkrarlanan pozuntu yoxdur. Müxtəlif marşrutlarda məşq etməyə davam edin.",
-    "why": "Qeydə alınma sayı: {count}; sonuncu dəfə: {last}.",
+    "why": "{count} dəfə qeydə alınıb; sonuncu dəfə: {last}.",
     "trendImproved": "Vəziyyət yaxşılaşır.",
     "trendWorse": "Vəziyyət pisləşir.",
     "trendSame": "Hələlik dəyişiklik yoxdur."
@@ -402,21 +402,21 @@
     "fineQuestion": "Bu pozuntuya görə cərimə nə qədərdir: {rule}?",
     "fineExplain": "«{rule}» üzrə cərimə {fine} AZN-dir.",
     "fineUnit": "{fine} AZN",
-    "severityQuestion": "İmtahanda bu pozuntuya necə yanaşılır: {rule}?",
-    "severityMajor": "Ağır pozuntu: imtahan dərhal uğursuz olur",
-    "severityMinor": "Yüngül pozuntu: səhv kimi sayılır",
+    "severityQuestion": "İmtahanda bu səhv necə qiymətləndirilir: {rule}?",
+    "severityMajor": "Kobud səhv: imtahan dərhal uğursuz bitir",
+    "severityMinor": "Yüngül səhv: əleyhinizə sayılır",
     "severityNone": "İmtahanda cəza yoxdur",
     "severityWarning": "Yalnız xəbərdarlıq",
-    "severityExplainMajor": "«{rule}» ağır pozuntudur, ona görə imtahan dərhal uğursuz olur.",
-    "severityExplainMinor": "«{rule}» yüngül pozuntudur; yüngül pozuntular imtahan boyu toplanır.",
-    "limitQuestion": "Bu yerdə sürət həddi nədir: {zone}?",
+    "severityExplainMajor": "«{rule}» kobud səhvdir, ona görə imtahan dərhal uğursuz bitir.",
+    "severityExplainMinor": "«{rule}» yüngül səhvdir; yüngül səhvlər imtahan boyu toplanır.",
+    "limitQuestion": "Bu ərazidə sürət həddi nə qədərdir: {zone}?",
     "limitExplain": "«{zone}» üçün sürət həddi {limit} km/saatdır.",
     "limitUnit": "{limit} km/saat",
     "zones": {
       "living_zone": "yaşayış zonası",
-      "city": "şəhər (məskunlaşmış ərazi)",
-      "outside_built_up": "məskunlaşmış ərazidən kənar",
-      "motorway": "magistral yol"
+      "city": "şəhər (yaşayış məntəqəsi)",
+      "outside_built_up": "yaşayış məntəqələrindən kənarda",
+      "motorway": "avtomagistral"
     }
   },
   "chat": {
