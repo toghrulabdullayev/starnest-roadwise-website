@@ -18,5 +18,30 @@
   "footer": {
     "tagline": "Bakının real küçələri. Azərbaycanın real qaydaları.",
     "provisional": "Rus və Azərbaycan dilində tərcümələr ilkindir."
+  },
+  "auth": {
+    "signupTitle": "Hesab yaradın",
+    "signupLead": "Hər sürüşü izləyin, süni intellektdən təhlil alın və imtahana nə vaxt hazır olduğunuzu görün.",
+    "loginTitle": "Yenidən xoş gəldiniz",
+    "loginLead": "Sürüşlərinizi və təlimatçının rəyini görmək üçün daxil olun.",
+    "displayName": "Adınız",
+    "email": "E-poçt",
+    "password": "Şifrə",
+    "passwordHint": "Ən azı 8 simvol.",
+    "signupButton": "Hesab yarat",
+    "loginButton": "Daxil ol",
+    "working": "Gözləyin…",
+    "haveAccount": "Artıq hesabınız var?",
+    "noAccount": "Roadwise-da yenisiniz?",
+    "errors": {
+      "invalid_credentials": "E-poçt və ya şifrə yanlışdır.",
+      "rate_limited": "Çox sayda cəhd. Bir neçə dəqiqə gözləyin.",
+      "email_taken": "Bu e-poçtla hesab artıq mövcuddur. Daxil olun.",
+      "generic": "Xəta baş verdi. Yenidən cəhd edin.",
+      "invalid_email": "Düzgün e-poçt ünvanı daxil edin.",
+      "password_short": "Ən azı 8 simvol istifadə edin.",
+      "name_required": "Adınızı daxil edin."
+    },
+    "loginToContinue": "Davam etmək üçün daxil olun."
   }
 }

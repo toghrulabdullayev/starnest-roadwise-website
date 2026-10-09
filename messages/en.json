@@ -17,5 +17,30 @@
   "footer": {
     "tagline": "Real Baku streets. Real Azerbaijani rules.",
     "provisional": "Russian and Azerbaijani translations are provisional."
+  },
+  "auth": {
+    "signupTitle": "Create your account",
+    "signupLead": "Track every drive, get an AI debrief and see when you are exam-ready.",
+    "loginTitle": "Welcome back",
+    "loginLead": "Log in to see your drives and your instructor's feedback.",
+    "displayName": "Your name",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 8 characters.",
+    "signupButton": "Create account",
+    "loginButton": "Log in",
+    "working": "Working…",
+    "haveAccount": "Already have an account?",
+    "noAccount": "New to Roadwise?",
+    "errors": {
+      "invalid_credentials": "Email or password is incorrect.",
+      "rate_limited": "Too many attempts. Wait a few minutes and try again.",
+      "email_taken": "An account with this email already exists. Log in instead.",
+      "generic": "Something went wrong. Please try again.",
+      "invalid_email": "Enter a valid email address.",
+      "password_short": "Use at least 8 characters.",
+      "name_required": "Enter your name."
+    },
+    "loginToContinue": "Log in to continue."
   }
 }

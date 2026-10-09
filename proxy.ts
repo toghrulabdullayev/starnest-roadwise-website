@@ -2,6 +2,9 @@ import { NextResponse, type NextRequest } from "next/server";
 import { LOCALE_COOKIE, defaultLocale, isLocale, matchAcceptLanguage } from "@/lib/i18n/config";
 
 const ONE_YEAR = 60 * 60 * 24 * 365;
+const SESSION_COOKIE = "rw_session";
+/** Pages that need an account. Proxy only checks the cookie exists; pages do the real check. */
+const PROTECTED = /^\/(en|ru|az)\/(profile|link|drives)(\/|$)/;
 
 export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
@@ -19,10 +22,28 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  if (PROTECTED.test(pathname) && !request.cookies.get(SESSION_COOKIE)?.value) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${first}/login`;
+    url.search = `?next=${encodeURIComponent(pathname + search)}`;
+    return NextResponse.redirect(url);
+  }
+
   // Remember the language the visitor is reading in.
   const response = NextResponse.next();
   if (request.cookies.get(LOCALE_COOKIE)?.value !== first) {
     response.cookies.set(LOCALE_COOKIE, first, { path: "/", maxAge: ONE_YEAR, sameSite: "lax" });
+  }
+  // Sliding session: keep the cookie alive while the DB session (renewed in validateSession) is.
+  const session = request.cookies.get(SESSION_COOKIE)?.value;
+  if (session) {
+    response.cookies.set(SESSION_COOKIE, session, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+    });
   }
   return response;
 }
