@@ -14,7 +14,8 @@
     "contracts": "tsx scripts/export-schema.ts",
     "fixtures": "tsx scripts/make-fixtures.ts",
     "gemini:check": "tsx scripts/gemini-check.ts",
-    "seed:demo": "tsx scripts/seed-demo.ts"
+    "seed:demo": "tsx scripts/seed-demo.ts",
+    "eval": "tsx eval/run.ts"
   },
   "dependencies": {
     "@google/genai": "^2.28.0",
