@@ -114,43 +114,50 @@
         "why": "Sürət reaksiya vaxtını və qəzanın ağırlığını müəyyən edir; açıq-aşkar sürət aşımı imtahanda kəsilmə səbəbidir.",
         "how": "Hər nişan və yolayrıcından sonra spidometrə baxın; qazı vaxtında buraxın və həddi saxlayın.",
         "focus": "Sürət həddinə əməl etmək",
-        "drill": "Marşrut boyu hər sürət nişanında spidometri yoxlayın və həddi aşmayın."
+        "drill": "Marşrut boyu hər sürət nişanında spidometri yoxlayın və həddi aşmayın.",
+        "topic": "Sürət həddi"
       },
       "red_light": {
         "why": "Qırmızı işıqda keçmə imtahanı kəsən ciddi səhvdir və yan zərbəli qəzaların əsas səbəbidir.",
         "how": "Sarı işığı dayanma siqnalı kimi qəbul edin: yolayrıcına yaxınlaşanda ayağınızı əyləcin üstündə saxlayın və xəttdə dayanın.",
         "focus": "Qırmızı və sarı işıqda dayanmaq",
-        "drill": "Tənzimlənən yolayrıclarına ayağınız əyləcin üstündə yaxınlaşın və sarı işıqda xəttdə dayanın."
+        "drill": "Tənzimlənən yolayrıclarına ayağınız əyləcin üstündə yaxınlaşın və sarı işıqda xəttdə dayanın.",
+        "topic": "Svetofor"
       },
       "stop_sign": {
         "why": "STOP nişanında avtomobil xəttdə tam dayanmalıdır; dayanmadan keçmək imtahan səhvidir.",
         "how": "Rəvan əyləc edin ki, xəttdən əvvəl tam dayanasınız, bir saniyə gözləyin, sonra hər iki tərəfə baxın.",
         "focus": "STOP nişanında tam dayanma",
-        "drill": "Bir neçə STOP nişanında xəttdə tam dayanmanı məşq edin, hər dəfə bir saniyə gözləyin."
+        "drill": "Bir neçə STOP nişanında xəttdə tam dayanmanı məşq edin, hər dəfə bir saniyə gözləyin.",
+        "topic": "STOP nişanı"
       },
       "pedestrian_crossing": {
         "why": "Keçiddə piyadaların üstünlüyü var; yol verməmək ən həssas yol iştirakçılarını təhlükəyə atır.",
         "how": "Keçidə yaxınlaşanda hər iki səkiyə baxın, sürəti əvvəlcədən azaldın və kimsə gözləyirsə və ya keçirsə dayanın.",
         "focus": "Piyada keçidlərində yol vermək",
-        "drill": "Keçidləri olan marşrutda hər keçiddən əvvəl sürəti azaldın və kiminsə gözləyib-gözləmədiyini ucadan deyin."
+        "drill": "Keçidləri olan marşrutda hər keçiddən əvvəl sürəti azaldın və kiminsə gözləyib-gözləmədiyini ucadan deyin.",
+        "topic": "Piyada keçidi"
       },
       "wrong_way": {
         "why": "Birtərəfli yolda əks istiqamətdə hərəkət baş-başa toqquşma riski yaradır və imtahanı kəsir.",
         "how": "Dönməzdən əvvəl birtərəfli hərəkət və girişi qadağan edən nişanlara baxın, marşrutu əvvəlcədən planlayın.",
         "focus": "Birtərəfli hərəkət və giriş qadağası nişanları",
-        "drill": "Hər dönmədən əvvəl ona icazə verən nişanı deyin; İçərişəhərin dar küçələrində məşq edin."
+        "drill": "Hər dönmədən əvvəl ona icazə verən nişanı deyin; İçərişəhərin dar küçələrində məşq edin.",
+        "topic": "Birtərəfli yol"
       },
       "give_way": {
         "why": "Yol verməmək digərlərini əyləc etməyə və ya yayınmağa məcbur edir və imtahanda ciddi səhvdir.",
         "how": "Yol ver xəttindən əvvəl sürəti azaldın, əsas yoldakı hərəkəti yoxlayın və yalnız yol boş olanda girin.",
         "focus": "Yolayrıclarında yol vermək",
-        "drill": "Hər yol ver nişanlı yolayrıcında sürəti piyada sürətinə endirin və hər iki tərəfə baxın."
+        "drill": "Hər yol ver nişanlı yolayrıcında sürəti piyada sürətinə endirin və hər iki tərəfə baxın.",
+        "topic": "Yol vermək"
       },
       "collision": {
         "why": "Toqquşma ciddi səhvdir və avtomobilin bu vəziyyətdə nəzarətdə olmadığını göstərir.",
         "how": "Daha çox məsafə saxlayın, maneələrin yanında sürəti azaldın və gördüyünüz məsafədə dayana bilmək üçün irəli baxın.",
         "focus": "Maneələr yanında məsafə və sürət nəzarəti",
-        "drill": "Sərbəst rejimdə geniş məsafə saxlayaraq sürün, park edilmiş maşınlar və dar döngələr qarşısında yavaşlayın."
+        "drill": "Sərbəst rejimdə geniş məsafə saxlayaraq sürün, park edilmiş maşınlar və dar döngələr qarşısında yavaşlayın.",
+        "topic": "Toqquşmadan qaçmaq"
       }
     }
   },
@@ -226,5 +233,92 @@
     "languageLead": "Yeni təhlillər bu dildə yazılır.",
     "save": "Yadda saxla",
     "saved": "Yadda saxlanıldı"
+  },
+  "drive": {
+    "back": "Profilə qayıt",
+    "title": "Sürüşün təhlili",
+    "sample": "Nümunə məlumat",
+    "sampleNote": "Real sürüşlərlə eyni sistemlə təhlil edilmiş yaradılmış test sürüşü.",
+    "duration": "Müddət",
+    "distance": "Məsafə",
+    "date": "Tarix",
+    "district": "Rayon",
+    "passed": "İmtahan keçildi",
+    "failed": "İmtahan kəsildi",
+    "mapTitle": "Marşrut",
+    "mapLead": "Hadisəni xronologiyada tapmaq üçün nişanı seçin.",
+    "mapLabel": "Qayda yoxlaması nişanları ilə marşrutun xəritəsi",
+    "legend": {
+      "route": "Marşrut",
+      "overspeed": "Həddən artıq (+11 km/saat)",
+      "major": "Ciddi səhv",
+      "minor": "Kiçik səhv",
+      "pass": "Qaydaya əməl edildi",
+      "start": "Başlanğıc"
+    },
+    "timelineTitle": "Xronologiya",
+    "timelineEmpty": "Heç bir hadisə qeydə alınmayıb.",
+    "checkpoint": "Nəzarət nöqtəsi {n}",
+    "pass": "Əməl edildi",
+    "fail": "Pozuldu",
+    "major": "Ciddi",
+    "minor": "Kiçik",
+    "metricsTitle": "Bu sürüşdə ölçülənlər",
+    "metricsNote": "Süni intellekt deyil, Roadwise tərəfindən sürüş telemetriyasından hesablanıb.",
+    "groups": {
+      "rules": "Qaydalar",
+      "speed": "Sürət",
+      "smoothness": "Rəvanlıq",
+      "control": "İdarəetmə",
+      "composure": "Sakitlik (sürüş siqnallarına görə)"
+    },
+    "metrics": {
+      "checks": "Keçilən yoxlamalar",
+      "compliance": "Qaydalara riayət",
+      "fines": "Cərimələr (simulyasiya)",
+      "faults": "Səhvlər (ciddi / kiçik)",
+      "avgSpeed": "Orta sürət",
+      "maxSpeed": "Maksimal sürət",
+      "overspeed": "Həddən artıq sürət vaxtı",
+      "meanOver": "Orta həddi aşma",
+      "harshBrake": "Kəskin əyləc",
+      "harshAccel": "Kəskin sürətlənmə",
+      "jerk": "Silkələnmə (RMS)",
+      "reversals": "Dəqiqədə sükan dəyişmələri",
+      "collisions": "Toqquşmalar",
+      "handbrake": "Əl əyləci",
+      "hesitation": "Tərəddüdlü dayanmalar",
+      "speedCv": "Sürət dəyişkənliyi",
+      "composureIndex": "Sakitlik indeksi"
+    },
+    "deltasTitle": "Əvvəlki sürüşlərinizlə müqayisə",
+    "deltasFirst": "Bu sizin ilk sürüşünüzdür — müqayisə növbətidən başlayacaq.",
+    "deltasBasis": "Əvvəlki sürüşlərin ortası: {n}.",
+    "previous": "əvvəl",
+    "debriefTitle": "Təlimatçınız",
+    "pending": "Təlimatçı sürüşü nəzərdən keçirir…",
+    "pendingNote": "Bu adətən bir neçə saniyə çəkir.",
+    "summary": "Xülasə",
+    "issues": "Nəyi düzəltməli",
+    "strengths": "Nə yaxşı alındı",
+    "progress": "İrəliləyiş",
+    "improved": "Yaxşılaşıb",
+    "worse": "Pisləşib",
+    "nextDrive": "Növbəti sürüş",
+    "drills": "Məşqlər",
+    "readiness": "Hazırlıq",
+    "whyItMatters": "Niyə vacibdir",
+    "howToFix": "Necə düzəltməli",
+    "seeEvent": "{time} anını xəritədə göstər",
+    "noIssues": "Bu sürüşdə düzəldiləcək səhv yoxdur.",
+    "sourceAi": "Süni intellekt təhlili · {model} · sürüş məlumatları ilə yoxlanılıb",
+    "sourceFallback": "Sürüş məlumatlarından hazırlanmış şablon təhlil (süni intellekt təlimatçısı əlçatan deyildi).",
+    "regenerate": "Bu dildə yenidən yarat: {language}",
+    "regenerating": "Yaradılır…",
+    "otherLanguage": "Bu təhlil bu dildədir: {language}.",
+    "nextMode": {
+      "free": "Sərbəst sürüş",
+      "exam": "İmtahan"
+    }
   }
 }

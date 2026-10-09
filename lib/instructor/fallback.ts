@@ -78,7 +78,7 @@ export function buildFallbackDebrief(input: DebriefInput, locale: Locale): Debri
   for (const e of input.events) if (e.outcome === "pass" && !passByRule.has(e.rule)) passByRule.set(e.rule, e);
   const passes = [...passByRule.values()].slice(0, 3);
   if (passes.length)
-    strengths.push({ text: fmt(t.strengthPasses, { rules: passes.map((e) => ruleName(e.rule)).join(", ") }), event_ids: passes.map((e) => e.id) });
+    strengths.push({ text: fmt(t.strengthPasses, { rules: passes.map((e) => t.rules[e.rule].topic).join(", ") }), event_ids: passes.map((e) => e.id) });
   if (m.checks_total && !ranked.some((g) => g.rule === "speeding") && (m.overspeed_time_pct ?? 0) === 0)
     strengths.push({ text: t.strengthNoSpeeding, event_ids: [] });
   if ((m.composure_index ?? 0) >= 75) strengths.push({ text: fmt(t.strengthComposure, { composure: m.composure_index ?? 0 }), event_ids: [] });

@@ -113,43 +113,50 @@
         "why": "Speed decides how much time you have to react and how hard a crash is; examiners fail clear overspeeding.",
         "how": "Check the speedometer after every sign and junction; lift off early and hold the limit instead of catching up.",
         "focus": "Holding the posted speed limit",
-        "drill": "Drive one route checking the speedometer at every limit sign and staying under it."
+        "drill": "Drive one route checking the speedometer at every limit sign and staying under it.",
+        "topic": "Speed limit"
       },
       "red_light": {
         "why": "Running a red light is a major fault that fails the exam and causes side-impact crashes.",
         "how": "Treat amber as a stop signal: cover the brake when approaching junctions and stop at the line.",
         "focus": "Stopping for red and amber lights",
-        "drill": "Approach signal-controlled junctions with your foot covering the brake and stop at the line on amber."
+        "drill": "Approach signal-controlled junctions with your foot covering the brake and stop at the line on amber.",
+        "topic": "Traffic light"
       },
       "stop_sign": {
         "why": "At a STOP sign the car must stop completely at the line; rolling through is an exam fault.",
         "how": "Brake progressively so the car stops fully before the line, hold the stop for a second, then look both ways.",
         "focus": "Full stops at STOP signs",
-        "drill": "Practise full stops at the line at several STOP signs, holding each stop for a full second."
+        "drill": "Practise full stops at the line at several STOP signs, holding each stop for a full second.",
+        "topic": "STOP sign"
       },
       "pedestrian_crossing": {
         "why": "Pedestrians on a crossing have priority; not yielding endangers the most vulnerable road users.",
         "how": "Scan both pavements as you approach a crossing, slow down early and stop if anyone is waiting or crossing.",
         "focus": "Yielding at pedestrian crossings",
-        "drill": "On a route with crossings, slow down before each one and say out loud whether anyone is waiting."
+        "drill": "On a route with crossings, slow down before each one and say out loud whether anyone is waiting.",
+        "topic": "Pedestrian crossing"
       },
       "wrong_way": {
         "why": "Driving against the traffic on a one-way street risks a head-on collision and fails the exam.",
         "how": "Look for one-way and no-entry signs before turning and plan the route in advance.",
         "focus": "Reading one-way and no-entry signs",
-        "drill": "Before each turn, name the sign that allows it; practise in the narrow Old City streets."
+        "drill": "Before each turn, name the sign that allows it; practise in the narrow Old City streets.",
+        "topic": "One-way street"
       },
       "give_way": {
         "why": "Not giving way forces others to brake or swerve and is a major exam fault.",
         "how": "Slow down before the give-way line, check traffic on the priority road and go only when it is clear.",
         "focus": "Giving way at junctions",
-        "drill": "At every give-way junction, slow to walking pace and check both directions before entering."
+        "drill": "At every give-way junction, slow to walking pace and check both directions before entering.",
+        "topic": "Give way"
       },
       "collision": {
         "why": "A collision is a major fault and shows the car was not under control for the situation.",
         "how": "Leave more space, slow down near obstacles and look further ahead so you can stop within the distance you can see.",
         "focus": "Space and speed control near obstacles",
-        "drill": "Drive in free mode keeping a generous gap and slowing before every parked car or tight turn."
+        "drill": "Drive in free mode keeping a generous gap and slowing before every parked car or tight turn.",
+        "topic": "Collision avoidance"
       }
     }
   },
@@ -225,5 +232,92 @@
     "languageLead": "New debriefs are written in this language.",
     "save": "Save",
     "saved": "Saved"
+  },
+  "drive": {
+    "back": "Back to profile",
+    "title": "Drive debrief",
+    "sample": "Sample data",
+    "sampleNote": "Generated test drive, analysed by the same pipeline as real drives.",
+    "duration": "Duration",
+    "distance": "Distance",
+    "date": "Date",
+    "district": "District",
+    "passed": "Exam passed",
+    "failed": "Exam failed",
+    "mapTitle": "Route",
+    "mapLead": "Select a marker to find the event in the timeline.",
+    "mapLabel": "Map of the route with rule-check markers",
+    "legend": {
+      "route": "Route",
+      "overspeed": "Over the limit (+11 km/h)",
+      "major": "Major fault",
+      "minor": "Minor fault",
+      "pass": "Rule followed",
+      "start": "Start"
+    },
+    "timelineTitle": "Timeline",
+    "timelineEmpty": "No events were recorded.",
+    "checkpoint": "Checkpoint {n}",
+    "pass": "Followed",
+    "fail": "Broken",
+    "major": "Major",
+    "minor": "Minor",
+    "metricsTitle": "Measured on this drive",
+    "metricsNote": "Computed by Roadwise from the drive telemetry, not by the AI.",
+    "groups": {
+      "rules": "Rules",
+      "speed": "Speed",
+      "smoothness": "Smoothness",
+      "control": "Control",
+      "composure": "Composure (from driving signals)"
+    },
+    "metrics": {
+      "checks": "Checks passed",
+      "compliance": "Rules followed",
+      "fines": "Fines (simulated)",
+      "faults": "Faults (major / minor)",
+      "avgSpeed": "Average speed",
+      "maxSpeed": "Top speed",
+      "overspeed": "Time over the limit",
+      "meanOver": "Average excess over the limit",
+      "harshBrake": "Harsh braking",
+      "harshAccel": "Harsh acceleration",
+      "jerk": "Jerk (RMS)",
+      "reversals": "Steering reversals per minute",
+      "collisions": "Collisions",
+      "handbrake": "Handbrake uses",
+      "hesitation": "Hesitation stops",
+      "speedCv": "Speed variation",
+      "composureIndex": "Composure index"
+    },
+    "deltasTitle": "Compared with your previous drives",
+    "deltasFirst": "This is your first drive — the comparison starts with the next one.",
+    "deltasBasis": "Mean of your previous {n} drives.",
+    "previous": "before",
+    "debriefTitle": "Your instructor",
+    "pending": "Your instructor is reviewing the drive…",
+    "pendingNote": "This usually takes a few seconds.",
+    "summary": "Summary",
+    "issues": "What to fix",
+    "strengths": "What went well",
+    "progress": "Progress",
+    "improved": "Improved",
+    "worse": "Worse",
+    "nextDrive": "Next drive",
+    "drills": "Drills",
+    "readiness": "Readiness",
+    "whyItMatters": "Why it matters",
+    "howToFix": "How to fix it",
+    "seeEvent": "Show {time} on the map",
+    "noIssues": "No faults to fix on this drive.",
+    "sourceAi": "AI debrief · {model} · checked against the drive data",
+    "sourceFallback": "Template debrief built from your drive data (the AI instructor was unavailable).",
+    "regenerate": "Regenerate in {language}",
+    "regenerating": "Regenerating…",
+    "otherLanguage": "This debrief is in {language}.",
+    "nextMode": {
+      "free": "Free drive",
+      "exam": "Exam"
+    }
   }
 }
