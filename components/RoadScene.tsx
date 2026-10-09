@@ -21,7 +21,7 @@ import { usePathname } from "next/navigation";
  * a SCALE canvas transform, so one number shrinks or grows the whole scene
  * (roads, cars, signs, speeds) while it stays aligned with the page layout.
  */
-const SCALE = 0.8;
+const SCALE = 0.72;
 const OVERDRAW = 400; // px drawn above and below the viewport
 const CONTENT_W = 1152; // max-w-6xl
 const ROAD_HALF = 32; // side road: two 32px lanes
