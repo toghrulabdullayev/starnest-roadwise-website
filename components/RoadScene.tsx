@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { usePathname } from "next/navigation";
 
 /*
@@ -8,10 +8,12 @@ import { usePathname } from "next/navigation";
  * seam between full-width sections, with traffic lights, zebra crossings,
  * signs, pedestrians and the occasional (rare) fender-bender.
  *
- * One fixed, aria-hidden canvas with no pointer events; the world is laid out
- * in document coordinates and drawn offset by scrollY, so the roads scroll with
- * the page. Only on screens >= 1400px wide (where the gutters are empty);
- * static under prefers-reduced-motion, hidden in forced-colors mode (CSS).
+ * One aria-hidden canvas with no pointer events, placed in the page itself (not
+ * position: fixed) and moved to the scroll position each frame with OVERDRAW px
+ * of margin. Being ordinary page content, it scrolls and rubber-bands with the
+ * page; the margin hides any frame where scrolling gets ahead of the redraw.
+ * Only on screens >= 1400px wide (where the gutters are empty); static under
+ * prefers-reduced-motion, hidden in forced-colors mode.
  */
 
 /*
@@ -20,6 +22,7 @@ import { usePathname } from "next/navigation";
  * (roads, cars, signs, speeds) while it stays aligned with the page layout.
  */
 const SCALE = 0.8;
+const OVERDRAW = 400; // px drawn above and below the viewport
 const CONTENT_W = 1152; // max-w-6xl
 const ROAD_HALF = 32; // side road: two 32px lanes
 const CROSS_HALF = 22; // crossroad: two 22px lanes
@@ -714,12 +717,12 @@ function drawCrash(ctx: CanvasRenderingContext2D, k: Crash, t: number) {
   }
 }
 
-function draw(ctx: CanvasRenderingContext2D, w: World, t: number, scrollY: number, viewH: number, font: string) {
-  const top = scrollY / SCALE;
-  const bottom = (scrollY + viewH) / SCALE;
+function draw(ctx: CanvasRenderingContext2D, w: World, t: number, originY: number, height: number, font: string) {
+  const top = originY / SCALE;
+  const bottom = (originY + height) / SCALE;
   const inView = (y: number) => y > top - 60 && y < bottom + 60;
   ctx.save();
-  ctx.translate(0, -scrollY);
+  ctx.translate(0, -originY);
   ctx.scale(SCALE, SCALE);
   drawRoads(ctx, w, top, bottom);
 
@@ -746,7 +749,30 @@ function draw(ctx: CanvasRenderingContext2D, w: World, t: number, scrollY: numbe
 
 /* ---------- component ---------- */
 
+// Inline on purpose: the layer is page content (absolute, page-tall, not
+// fixed), so it scrolls and rubber-bands with the page. Shown only when wide
+// enough and not in forced-colors mode (decided in relayout()).
+const TRACK_STYLE: CSSProperties = {
+  display: "none",
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  overflow: "clip",
+  zIndex: 10,
+  pointerEvents: "none",
+};
+const CANVAS_STYLE: CSSProperties = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  display: "block",
+  width: "100%",
+  willChange: "transform",
+};
+
 export function RoadScene() {
+  const trackRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const relayoutRef = useRef<() => void>(() => {});
   const pathname = usePathname();
@@ -757,6 +783,7 @@ export function RoadScene() {
     if (!canvas || !ctx) return;
     const wide = window.matchMedia("(min-width: 1400px)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const forced = window.matchMedia("(forced-colors: active)");
     const font = getComputedStyle(document.body).fontFamily;
     let world: World | null = null;
     let signature = "";
@@ -771,7 +798,9 @@ export function RoadScene() {
       if (!world) return;
       const dpr = window.devicePixelRatio || 1;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      draw(ctx, world, t, window.scrollY, canvas.clientHeight, font);
+      const origin = Math.max(0, window.scrollY - OVERDRAW);
+      canvas.style.transform = `translateY(${origin}px)`;
+      draw(ctx, world, t, origin, canvas.clientHeight, font);
     };
 
     const frame = (now: number) => {
@@ -779,7 +808,7 @@ export function RoadScene() {
       last = now;
       if (world) {
         t += dt;
-        step(world, t, dt, window.scrollY / SCALE, (window.scrollY + canvas.clientHeight) / SCALE);
+        step(world, t, dt, window.scrollY / SCALE, (window.scrollY + window.innerHeight) / SCALE);
       }
       render();
       raf = requestAnimationFrame(frame);
@@ -788,17 +817,24 @@ export function RoadScene() {
     const relayout = () => {
       cancelAnimationFrame(raf);
       raf = 0;
-      if (!wide.matches) {
+      const track = trackRef.current;
+      const show = wide.matches && !forced.matches && track !== null;
+      if (track) track.style.display = show ? "block" : "none";
+      if (!show) {
         world = null;
         signature = "";
         render();
         return;
       }
       const dpr = window.devicePixelRatio || 1;
+      const h = window.innerHeight + 2 * OVERDRAW;
+      canvas.style.height = `${h}px`;
       canvas.width = Math.round(canvas.clientWidth * dpr);
-      canvas.height = Math.round(canvas.clientHeight * dpr);
+      canvas.height = Math.round(h * dpr);
       const vw = canvas.clientWidth;
+      track.style.height = "0px"; // measure the page without the track itself
       const docH = document.documentElement.scrollHeight;
+      track.style.height = `${docH}px`;
       const seams = findSeams(vw);
       const sig = `${vw}|${docH}|${seams.join(",")}`;
       if (sig !== signature) {
@@ -826,12 +862,13 @@ export function RoadScene() {
     window.addEventListener("scroll", onScroll, { passive: true });
     wide.addEventListener("change", relayout);
     reduced.addEventListener("change", relayout);
+    forced.addEventListener("change", relayout);
 
     if (process.env.NODE_ENV !== "production") {
       // dev helpers: __roads.crash() forces a crash in view
       (window as unknown as { __roads: unknown }).__roads = {
         crash: () =>
-          world ? triggerCrash(world, t, window.scrollY / SCALE, (window.scrollY + canvas.clientHeight) / SCALE, true) : false,
+          world ? triggerCrash(world, t, window.scrollY / SCALE, (window.scrollY + window.innerHeight) / SCALE, true) : false,
       };
     }
 
@@ -844,6 +881,7 @@ export function RoadScene() {
       window.removeEventListener("scroll", onScroll);
       wide.removeEventListener("change", relayout);
       reduced.removeEventListener("change", relayout);
+      forced.removeEventListener("change", relayout);
     };
   }, []);
 
@@ -851,5 +889,9 @@ export function RoadScene() {
     relayoutRef.current();
   }, [pathname]);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="road-scene" />;
+  return (
+    <div ref={trackRef} aria-hidden="true" style={TRACK_STYLE}>
+      <canvas ref={canvasRef} style={CANVAS_STYLE} />
+    </div>
+  );
 }
