@@ -97,3 +97,12 @@ export async function setLocaleAction(locale: Locale): Promise<void> {
   const user = await getCurrentUser();
   if (user && user.locale !== locale) await setUserLocale(user.id, locale);
 }
+
+/** Profile: explicit debrief-language preference; also switches the site to that language. */
+export async function setPreferredLocaleAction(formData: FormData): Promise<void> {
+  const locale = formData.get("preferred");
+  const user = await getCurrentUser();
+  if (!user || !isLocale(locale)) return;
+  await setUserLocale(user.id, locale);
+  redirect(`/${locale}/profile?saved=1`);
+}

@@ -1,4 +1,4 @@
-import { Archivo, Archivo_Black, JetBrains_Mono } from "next/font/google";
+import { Archivo, Archivo_Black, Inter_Tight, JetBrains_Mono } from "next/font/google";
 
 // Design skill: primary/display = Archivo Black, mono = JetBrains Mono.
 // Body copy uses Archivo (same family, variable weights 100–900) for legibility.
@@ -21,4 +21,15 @@ export const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const fontVariables = `${archivoBlack.variable} ${archivo.variable} ${jetbrainsMono.variable}`;
+/**
+ * Archivo / Archivo Black have no Cyrillic. Inter Tight (a close grotesque) is loaded with
+ * Cyrillic subsets only and sits second in both stacks, so Russian text is drawn per glyph
+ * in a matching heavy face instead of a thin system fallback.
+ */
+export const interTightCyrillic = Inter_Tight({
+  subsets: ["cyrillic", "cyrillic-ext"],
+  variable: "--font-cyrillic",
+  display: "swap",
+});
+
+export const fontVariables = `${archivoBlack.variable} ${archivo.variable} ${jetbrainsMono.variable} ${interTightCyrillic.variable}`;

@@ -152,5 +152,78 @@
         "drill": "Drive in free mode keeping a generous gap and slowing before every parked car or tight turn."
       }
     }
+  },
+  "profile": {
+    "title": "Your progress",
+    "greeting": "Hi, {name}",
+    "lead": "Every drive you upload from the game shows up here.",
+    "readinessTitle": "Exam readiness",
+    "readinessBasis": "Based on your last {n} drives.",
+    "readinessBreakdown": "How the score is built",
+    "readinessStart": "Starts at 100",
+    "points": "pts",
+    "noDeduction": "No deduction",
+    "kpi": {
+      "drives": "Drives",
+      "distance": "Distance",
+      "compliance": "Rules followed",
+      "fines": "Fines (simulated)"
+    },
+    "progressTitle": "Progress per drive",
+    "progressLead": "Oldest on the left, newest on the right.",
+    "chart": {
+      "compliance": "Rules followed (%)",
+      "composure": "Composure (from driving signals)",
+      "fines": "Fines per drive (AZN)",
+      "drive": "Drive {n}",
+      "needTwo": "Upload one more drive to see a trend."
+    },
+    "violationsTitle": "Violations by rule",
+    "violationsEmpty": "No rules broken yet. Keep it up.",
+    "times": "×",
+    "examTitle": "Exam history",
+    "examEmpty": "No exam drives yet. Try exam mode in the game.",
+    "passed": "Passed",
+    "failed": "Failed",
+    "examCols": {
+      "date": "Date",
+      "result": "Result",
+      "faults": "Faults (major / minor)",
+      "checkpoints": "Checkpoints"
+    },
+    "drivesTitle": "Your drives",
+    "open": "Open",
+    "driveCols": {
+      "date": "Date",
+      "mode": "Mode",
+      "district": "District",
+      "compliance": "Rules followed",
+      "fines": "Fines",
+      "composure": "Composure",
+      "readiness": "Readiness"
+    },
+    "modes": {
+      "free": "Free drive",
+      "exam": "Exam"
+    },
+    "sample": "Sample data",
+    "emptyTitle": "No drives yet",
+    "emptyBody": "Download Roadwise, log in from the game and finish a drive. Your instructor's debrief appears here a few seconds later.",
+    "emptySteps": [
+      "Download and install the game.",
+      "Press Log in in the game and authorise it in your browser.",
+      "Drive — free mode or exam — and finish the drive."
+    ],
+    "devicesTitle": "Connected devices",
+    "devicesEmpty": "No game is signed in to your account.",
+    "lastUsed": "Last used {date}",
+    "neverUsed": "Not used yet",
+    "connected": "Connected {date}",
+    "revoke": "Revoke",
+    "unknownDevice": "Roadwise game",
+    "languageTitle": "Debrief language",
+    "languageLead": "New debriefs are written in this language.",
+    "save": "Save",
+    "saved": "Saved"
   }
 }

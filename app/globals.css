@@ -8,8 +8,8 @@
  * for fills, borders and large display type.
  */
 @theme {
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-archivo-black), var(--font-archivo), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-archivo), var(--font-cyrillic), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo-black), var(--font-cyrillic), ui-sans-serif, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* brand */
@@ -62,8 +62,12 @@ body {
   color: var(--color-text);
 }
 
+/* Archivo Black ships one weight (400). Weight 900 selects the heavy Cyrillic fallback;
+   font-synthesis: none stops the browser faux-bolding Archivo Black itself. */
 h1, h2, h3, .font-display {
   font-family: var(--font-display);
+  font-weight: 900;
+  font-synthesis: none;
   letter-spacing: -0.01em;
 }
 

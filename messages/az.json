@@ -153,5 +153,78 @@
         "drill": "Sərbəst rejimdə geniş məsafə saxlayaraq sürün, park edilmiş maşınlar və dar döngələr qarşısında yavaşlayın."
       }
     }
+  },
+  "profile": {
+    "title": "İrəliləyişiniz",
+    "greeting": "Salam, {name}",
+    "lead": "Oyundan yüklədiyiniz hər sürüş burada görünür.",
+    "readinessTitle": "İmtahana hazırlıq",
+    "readinessBasis": "Son sürüşlərə əsasən: {n}.",
+    "readinessBreakdown": "Bal necə hesablanır",
+    "readinessStart": "Başlanğıc bal 100",
+    "points": "bal",
+    "noDeduction": "Azalma yoxdur",
+    "kpi": {
+      "drives": "Sürüşlər",
+      "distance": "Məsafə",
+      "compliance": "Qaydalara riayət",
+      "fines": "Cərimələr (simulyasiya)"
+    },
+    "progressTitle": "Sürüşlər üzrə irəliləyiş",
+    "progressLead": "Köhnələr solda, yenilər sağda.",
+    "chart": {
+      "compliance": "Qaydalara riayət (%)",
+      "composure": "Sakitlik (sürüş siqnallarına görə)",
+      "fines": "Sürüş üzrə cərimələr (AZN)",
+      "drive": "Sürüş {n}",
+      "needTwo": "Dinamikanı görmək üçün daha bir sürüş yükləyin."
+    },
+    "violationsTitle": "Qaydalar üzrə pozuntular",
+    "violationsEmpty": "Hələ heç bir qayda pozulmayıb. Belə davam edin.",
+    "times": "×",
+    "examTitle": "İmtahan tarixçəsi",
+    "examEmpty": "Hələ imtahan sürüşü yoxdur. Oyunda imtahan rejimini sınayın.",
+    "passed": "Keçdi",
+    "failed": "Kəsildi",
+    "examCols": {
+      "date": "Tarix",
+      "result": "Nəticə",
+      "faults": "Səhvlər (ciddi / kiçik)",
+      "checkpoints": "Nəzarət nöqtələri"
+    },
+    "drivesTitle": "Sürüşləriniz",
+    "open": "Aç",
+    "driveCols": {
+      "date": "Tarix",
+      "mode": "Rejim",
+      "district": "Rayon",
+      "compliance": "Qaydalar",
+      "fines": "Cərimələr",
+      "composure": "Sakitlik",
+      "readiness": "Hazırlıq"
+    },
+    "modes": {
+      "free": "Sərbəst sürüş",
+      "exam": "İmtahan"
+    },
+    "sample": "Nümunə məlumat",
+    "emptyTitle": "Hələ sürüş yoxdur",
+    "emptyBody": "Roadwise-ı yükləyin, oyundan daxil olun və sürüşü bitirin. Təlimatçının təhlili bir neçə saniyə sonra burada görünəcək.",
+    "emptySteps": [
+      "Oyunu yükləyin və quraşdırın.",
+      "Oyunda «Daxil ol» düyməsini basın və brauzerdə təsdiq edin.",
+      "Sürün — sərbəst və ya imtahan rejimində — və sürüşü bitirin."
+    ],
+    "devicesTitle": "Qoşulmuş cihazlar",
+    "devicesEmpty": "Hesabınıza heç bir oyun qoşulmayıb.",
+    "lastUsed": "Son istifadə: {date}",
+    "neverUsed": "Hələ istifadə olunmayıb",
+    "connected": "Qoşulub: {date}",
+    "revoke": "Ləğv et",
+    "unknownDevice": "Roadwise oyunu",
+    "languageTitle": "Təhlil dili",
+    "languageLead": "Yeni təhlillər bu dildə yazılır.",
+    "save": "Yadda saxla",
+    "saved": "Yadda saxlanıldı"
   }
 }

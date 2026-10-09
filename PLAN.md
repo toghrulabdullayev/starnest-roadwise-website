@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** Phase 4 done (4.1 live check pending: Gemini key rejected). Next: **5.1** (profile page).
+**Status:** 5.1 done (4.1 live check pending: Gemini key rejected). Next: **5.2** (drive page).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -34,7 +34,7 @@ Rules for whoever executes this plan:
 - [x] **4.2** `grounding.ts` (6 checks) + retry + `fallback.ts`; wire into `after()`; regenerate route. — §6 — check: tests feed bad outputs (unknown event, unknown rule, invented number, uncovered major) and each is rejected; with `GEMINI_API_KEY` unset the drive gets a localized fallback.
 
 ## Phase 5 — Pages (design skill for every step)
-- [ ] **5.1** Profile: readiness + breakdown, KPI tiles, progress chart, violations by rule, exam history, drive list, devices with Revoke, language preference. — roadwise-web §8 — check: renders with 0, 1, many drives in all locales.
+- [x] **5.1** Profile: readiness + breakdown, KPI tiles, progress chart, violations by rule, exam history, drive list, devices with Revoke, language preference. — roadwise-web §8 — check: renders with 0, 1, many drives in all locales.
 - [ ] **5.2** Drive page: TraceMap, EventTimeline, metrics, DebriefCard, deltas, pending polling, regenerate, sample badge. — check: clicking an issue highlights its marker and timeline row.
 - [ ] **5.3** Landing and download pages. — check: mobile width has no horizontal scroll; all links work.
 
