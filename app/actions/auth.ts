@@ -69,7 +69,7 @@ export async function logInAction(_prev: AuthFormState, formData: FormData): Pro
   const locale = localeOf(formData);
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const password = String(formData.get("password") ?? "");
-  const next = safeNext(formData.get("next"), `/${locale}/profile`);
+  const next = safeNext(formData.get("next"), `/${locale}/profile`, locale);
   const values = { email };
   const key = `${email}|${await clientIp()}`;
   if (!loginLimiter.hit(key).allowed) return { error: "rate_limited", values };
