@@ -3,6 +3,7 @@ import type { FocusEntry } from "../../profile/focus";
 import type { RuleKey } from "../../rules/catalog";
 import type { GenerateJson } from "../llm";
 import { runGrounded } from "../runner";
+import { localizeDecimals } from "../style";
 import { ruleTips } from "../tips";
 import { buildFallbackPlan, type PlanDictionary } from "./fallback";
 import { validatePlan } from "./grounding";
@@ -44,7 +45,7 @@ export async function generateLearningPlan(options: {
           buildInput: (errors) => planUserMessage(input, errors),
           schema: planJsonSchema(),
           validate: (raw) => {
-            const checked = validatePlan(raw, input);
+            const checked = validatePlan(raw, input, locale);
             return checked.ok
               ? { ok: true, value: checked.plan }
               : { ok: false, errors: checked.errors };
@@ -54,7 +55,13 @@ export async function generateLearningPlan(options: {
           maxAttempts: PLAN_MAX_ATTEMPTS,
         });
 
-  let plan = outcome?.value ?? null;
+  const t = (s: string) => localizeDecimals(s, locale);
+  let plan: LearningPlan | null = outcome?.value
+    ? {
+        summary: t(outcome.value.summary),
+        priorities: outcome.value.priorities.map((p) => ({ ...p, why: t(p.why), practice: t(p.practice) })),
+      }
+    : null;
   if (!plan) {
     let dictionary = options.dictionary;
     if (!dictionary) {

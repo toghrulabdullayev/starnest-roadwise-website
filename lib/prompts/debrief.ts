@@ -5,8 +5,9 @@
 import { z } from "zod";
 import { RULE_KEYS } from "@/lib/rules/catalog";
 import type { Locale } from "@/lib/i18n/config";
+import { styleRules } from "@/lib/ai/style";
 
-export const PROMPT_VERSION = "debrief-v1";
+export const PROMPT_VERSION = "debrief-v2";
 
 export const LANGUAGE_NAME: Record<Locale, string> = { en: "English", ru: "Russian", az: "Azerbaijani" };
 
@@ -21,6 +22,7 @@ export function systemPrompt(locale: Locale): string {
     "Give concrete, actionable advice tied to the street and moment of each event.",
     "`progress` must be null when `history` is null; otherwise list what improved and what got worse using the history directions.",
     "`readiness_comment` explains the given readiness score through its largest components; do not recompute it.",
+    ...styleRules(locale),
     `Write all text in ${LANGUAGE_NAME[locale]}.`,
     "Output JSON only.",
   ].join("\n");

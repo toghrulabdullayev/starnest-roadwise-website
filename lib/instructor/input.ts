@@ -1,13 +1,16 @@
 /**
  * Builds the model input from deterministic outputs only (never raw samples, email or name).
  * Numbers appear here in the forms the debrief may quote (grounding check 5 compares against this).
+ * Every key the model might mention travels with its localized `label`/`name`, so the text can
+ * use words instead of identifiers (grounding check 7).
  */
 import type { DriveMetrics } from "@/lib/metrics";
 import type { Readiness } from "@/lib/readiness";
 import type { History } from "@/lib/history";
-import { RULES, type RuleKey } from "@/lib/rules/catalog";
+import { RULES, ruleName, type RuleKey } from "@/lib/rules/catalog";
 import { isRuleCheck, type DriveTelemetry } from "@/lib/telemetry/schema";
 import type { Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/getDictionary";
 
 export const MAX_PASSES_IN_INPUT = 10;
 
@@ -33,6 +36,7 @@ export interface DebriefEvent {
 export interface DebriefInput {
   context: {
     mode: "free" | "exam";
+    /** localized district name; null when the game sends a district the dictionary does not know */
     district: string | null;
     time_of_day: string;
     duration: string;
@@ -40,12 +44,18 @@ export interface DebriefInput {
     exam: DriveTelemetry["drive"]["exam"];
   };
   metrics: Record<string, number | null>;
-  readiness: { score: number; band: string; components: { key: string; value: number; points: number }[] };
+  readiness: {
+    score: number;
+    band: string;
+    band_label: string;
+    components: { key: string; label: string; value: number; points: number }[];
+  };
   history: {
     previous_drives: number;
-    changes: { key: string; current: number; previous_mean: number; direction: string }[];
-    rules: { rule: string; current: number; previous_mean: number; direction: string }[];
+    changes: { key: string; label: string; current: number; previous_mean: number; direction: string }[];
+    rules: { rule: string; name: string; current: number; previous_mean: number; direction: string }[];
   } | null;
+  units: { speed: string; distance: string; money: string };
   events: DebriefEvent[];
   rules: { key: RuleKey; name: string; severity: string; fine_azn: number | null }[];
 }
@@ -60,6 +70,8 @@ export function buildDebriefInput(args: {
   withHistory?: boolean;
 }): DebriefInput {
   const { telemetry, metrics: m, readiness, locale } = args;
+  const dict = getDictionary(locale);
+  const districts: Record<string, string> = dict.districts;
   const history = args.withHistory === false ? null : args.history;
   const checks = telemetry.events.filter(isRuleCheck);
   const failed = checks.filter((e) => e.outcome === "fail");
@@ -82,7 +94,7 @@ export function buildDebriefInput(args: {
   return {
     context: {
       mode: telemetry.drive.mode,
-      district: telemetry.drive.district ?? null,
+      district: (telemetry.drive.district && districts[telemetry.drive.district]) || null,
       time_of_day: telemetry.drive.time_of_day,
       duration: mmss(telemetry.drive.duration_s),
       distance_km: r1(telemetry.drive.distance_m / 1000),
@@ -106,19 +118,37 @@ export function buildDebriefInput(args: {
       composure_index: m.composure_index,
       collisions: m.collisions,
     },
-    readiness: { score: readiness.score, band: readiness.band, components: readiness.components },
+    readiness: {
+      score: readiness.score,
+      band: readiness.band,
+      band_label: dict.readiness.bands[readiness.band],
+      components: readiness.components.map((c) => ({
+        key: c.key,
+        label: dict.readiness.components[c.key as keyof typeof dict.readiness.components] ?? c.key,
+        value: c.value,
+        points: c.points,
+      })),
+    },
     history: history
       ? {
           previous_drives: history.previous_count,
           changes: history.deltas.map((d) => ({
             key: d.key,
+            label: dict.history.keys[d.key as keyof typeof dict.history.keys] ?? d.key,
             current: d.key === "compliance_rate" || d.key === "overspeed_time_share" ? pct(d.current)! : r1(d.current),
             previous_mean: d.key === "compliance_rate" || d.key === "overspeed_time_share" ? pct(d.previous_mean)! : r1(d.previous_mean),
             direction: d.direction,
           })),
-          rules: history.rules.map((r) => ({ rule: r.rule, current: r.current, previous_mean: r.previous_mean, direction: r.direction })),
+          rules: history.rules.map((r) => ({
+            rule: r.rule,
+            name: ruleName(r.rule, locale),
+            current: r.current,
+            previous_mean: r.previous_mean,
+            direction: r.direction,
+          })),
         }
       : null,
+    units: { speed: dict.units.kmh, distance: dict.units.km, money: "AZN" },
     events,
     rules: present.map((key) => ({
       key,

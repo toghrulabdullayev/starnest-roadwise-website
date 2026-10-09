@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T13:17:45.888Z",
+  "generated_at": "2026-10-09T13:36:53.313Z",
   "model": "google/gemini-3.5-flash-lite",
   "prompt_versions": {
     "plan": "plan-1",
@@ -7,7 +7,7 @@
     "chat": "chat-1"
   },
   "config": {
-    "runs": 1,
+    "runs": 2,
     "locales": [
       "en",
       "ru",
@@ -32,64 +32,64 @@
   },
   "measures": {
     "plan": {
-      "runs": 18,
-      "accepted_pct": 94.4,
-      "first_attempt_clean_pct": 94.4,
+      "runs": 36,
+      "accepted_pct": 91.7,
+      "first_attempt_clean_pct": 66.7,
       "schema_validity_first_attempt_pct": 100,
-      "invented_number_first_attempt_pct": 5.6,
+      "invented_number_first_attempt_pct": 0,
       "covers_every_weak_rule_pct": 100,
-      "heaviest_rule_first_pct": 88.2,
+      "heaviest_rule_first_pct": 97,
       "wrong_severity_claims": {
-        "plans_checked": 6,
+        "plans_checked": 12,
         "claims": 0
       },
       "language_ok_pct": 100,
-      "fallback_pct": 5.6,
-      "calls_with_usage": 18,
+      "fallback_pct": 8.3,
+      "calls_with_usage": 36,
       "latency_ms": {
-        "p50": 2537,
-        "p95": 4528,
-        "max": 5240
+        "p50": 1333,
+        "p95": 3056,
+        "max": 3350
       },
-      "input_tokens_p50": 362,
-      "output_tokens_p50": 280,
+      "input_tokens_p50": 499,
+      "output_tokens_p50": 283,
       "cost_usd": {
-        "p50": 0.0008071,
-        "max": 0.002145,
-        "total": 0.0155336
+        "p50": 0.0008572,
+        "max": 0.0026991,
+        "total": 0.0389894
       }
     },
     "quiz": {
-      "calls": 12,
-      "accepted_pct": 75,
-      "first_attempt_clean_pct": 66.7,
+      "calls": 24,
+      "accepted_pct": 87.5,
+      "first_attempt_clean_pct": 79.2,
       "schema_validity_first_attempt_pct": 100,
-      "invented_number_first_attempt_pct": 25,
-      "questions": 27,
-      "fact_checkable": 16,
+      "invented_number_first_attempt_pct": 20.8,
+      "questions": 63,
+      "fact_checkable": 26,
       "fact_check_pass_pct": 100,
       "wrong_answer_rate_pct": 0,
       "duplicates_of_bank": 0,
       "correct_index_distribution": [
-        8,
-        10,
-        7,
-        2
+        17,
+        23,
+        15,
+        8
       ],
       "language_ok_pct": 100,
-      "fallback_pct": 25,
-      "calls_with_usage": 12,
+      "fallback_pct": 12.5,
+      "calls_with_usage": 24,
       "latency_ms": {
-        "p50": 2270,
-        "p95": 3183,
-        "max": 6260
+        "p50": 1250,
+        "p95": 2216,
+        "max": 2454
       },
-      "input_tokens_p50": 631,
-      "output_tokens_p50": 349,
+      "input_tokens_p50": 494,
+      "output_tokens_p50": 322,
       "cost_usd": {
-        "p50": 0.0010557000000000001,
-        "max": 0.0022047,
-        "total": 0.014567099999999998
+        "p50": 0.0009498999999999999,
+        "max": 0.0020946999999999997,
+        "total": 0.0268413
       }
     },
     "chat": {
@@ -99,7 +99,7 @@
         "model_answer_pct": 100,
         "kind_as_expected_pct": 100,
         "rules_cited_when_expected_pct": 100,
-        "language_ok_pct": 94.4
+        "language_ok_pct": 100
       },
       "exam": {
         "n": 18,
@@ -114,16 +114,16 @@
       "reached_model": 36,
       "calls_with_usage": 36,
       "latency_ms": {
-        "p50": 1151,
-        "p95": 1918,
-        "max": 2845
+        "p50": 993,
+        "p95": 1252,
+        "max": 1551
       },
       "input_tokens_p50": 444,
-      "output_tokens_p50": 49,
+      "output_tokens_p50": 46,
       "cost_usd": {
-        "p50": 0.00025,
+        "p50": 0.0002522,
         "max": 0.00036829999999999995,
-        "total": 0.009527400000000002
+        "total": 0.0095224
       }
     }
   },
@@ -278,44 +278,42 @@
     {
       "feature": "plan",
       "case": "series_1",
-      "locale": "az",
-      "reasons": [
-        "number \"3\" does not appear in the input"
-      ],
-      "final_status": "fallback",
-      "rejected_output": "{\n  \"summary\": \"İmtahana hazırlaşmaq üçün səhvlərimizi təhlil edib əsas diqqətimizi sürət həddi, STOP nişanı və piyada keçidlərinə yönəltməliyik.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Sürət həddinin aşılması 2026-10-06 tarixində sonuncu dəfə qeydə alınmaqla ümumilikdə 2 dəfə baş verib və bu, imtahanda ciddi xətalara səbəb ola bilər.\",\n      \"practice\": \"İşarələrə diqqət yetirərək sürəti məhdudiyyətlərə uyğun tənzimləmək üçün şəhər küçələrində hərəkət məşqi edin.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"STOP nişanında dayanmamaq qayda pozuntusu 2026-10-06 tarixində son dəfə görünmüş və 1 dəfə tkrarlanmışdır, bu da imtahan zamanı diqqətsizlik kimi qiymətləndirilir.\",\n      \"practice\": \"Hər bir STOP xəttində tam dayanaraq 3 saniyə gözləməklə bağlı vərdiş yaradın.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Piyadalara yol verməmək xətası 1 dəfə qeydə alınıb və sonuncu dəfə 2026-10-06 tarixində görünmüşdür ki, bu da piyada təhlükəsizliyi baxımından vacibdir.\",\n      \"practice\": \"Piyada keçidlərinə yaxınlaşarkən sürəti azaldın və piyadaların keçməsinə hər zaman şərait yaradın.\"\n    }\n  ]\n}"
-    },
-    {
-      "feature": "quiz",
-      "case": "speed_stop_pedestrian",
-      "locale": "az",
-      "reasons": [
-        "questions.0 uses number \"30\" which does not appear in the input",
-        "questions.1 uses number \"30\" which does not appear in the input"
-      ],
-      "final_status": "fallback",
-      "rejected_output": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Yaşayış məntəqəsində hərəkət edərkən STOP nişanının tələbini pozaraq dayanmamağa görə cərimə məbləği qanunvericiliklə necə müəyyən edilir?\",\"options\":[\"30 AZN miqdarında cərimə edilir\",\"40 AZN miqdarında cərimə edilir\",\"50 AZN miqdarında cərimə edilir\",\"60 AZN miqdarında cərimə edilir\"],\"correct_index\":1,\"explanation\":\"STOP nişanında dayanmamaq qaydasının pozulmasına görə 40 AZN cərimə nəzərdə tutulur.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Piyada keçidində piyadalara yol verməmək qaydasının pozulmasına görə tətbiq edilən cərimə məbləği nə qədərdir?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"60 AZN\"],\"correct_index\":2,\"explanation\":\"Piyadalara yol verməmək qaydasına görə 50 AZN məbləğində cərimə müəyyən edilmişdir.\"},{\"rule\":\"speeding\",\"question\":\"Bakı şəhərində avtomobil idarə edərkən şəhər daxilində müəyyən edilmiş maksimum sürət həddi neçə km/saat təşkil edir?\",\"options\":[\"20 km/saat\",\"60 km/saat\",\"90 km/saat\",\"110 km/saat\"],\"correct_index\":1,\"explanation\":\"Şəhər daxilində sürət həddi 60 km/saat müəyyən edilmişdir.\"}]}"
-    },
-    {
-      "feature": "quiz",
-      "case": "light_wrongway_giveway",
-      "locale": "en",
-      "reasons": [
-        "questions.2 uses number \"50\" which does not appear in the input",
-        "questions.2 uses number \"200\" which does not appear in the input"
-      ],
-      "final_status": "fallback",
-      "rejected_output": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"You approach an intersection and the traffic light turns red. What should you do?\",\"options\":[\"Accelerate to pass quickly\",\"Stop before the stop line\",\"Turn around immediately\",\"Proceed with caution without stopping\"],\"correct_index\":1,\"explanation\":\"Running a red light is a major violation that incurs a fine of 100 AZN.\"},{\"rule\":\"wrong_way\",\"question\":\"You notice a sign indicating a one-way street pointing against your direction of travel. What should you do?\",\"options\":[\"Enter the street slowly\",\"Reverse down the lane\",\"Do not enter the street in that direction\",\"Turn off your headlights and drive through\"],\"correct_index\":2,\"explanation\":\"Driving the wrong way on a one-way street is a major violation with a fine of 150 AZN.\"},{\"rule\":\"red_light\",\"question\":\"What is the fine for running a red light in Baku?\",\"options\":[\"50 AZN\",\"100 AZN\",\"150 AZN\",\"200 AZN\"],\"correct_index\":1,\"explanation\":\"Running a red light carries a fine of 100 AZN.\"}]}"
-    },
-    {
-      "feature": "quiz",
-      "case": "light_wrongway_giveway",
       "locale": "ru",
       "reasons": [
-        "expected exactly 3 questions but got 2"
+        "the text contains the internal key \"minor\"; write the name from the input instead"
       ],
       "final_status": "ready",
-      "rejected_output": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"При подъезде к перекрестку загорелся запрещающий красный сигнал светофора. Ваши действия?\",\"options\":[\"Проехать перекресток без остановки\",\"Остановиться перед стоп-линией\",\"Увеличить скорость\",\"Продолжить движение с осторожностью\"],\"correct_index\":1,\"explanation\":\"Проезд на красный свет запрещен, поэтому необходимо остановиться.\"},{\"rule\":\"wrong_way\",\"question\":\"Вы оказались на дороге с односторонним движением, где поток направлен против вашего хода. Что следует сделать?\",\"options\":[\"Продолжать движение\",\"Развернуться и продолжить движение в правильном направлении\",\"Увеличить скорость\",\"Оставаться на полосе\"],\"correct_index\":1,\"explanation\":\"Движение во встречном направлении по односторонней дороге запрещено, поэтому нужно изменить направление.\"}]}"
+      "rejected_output": "{\n  \"summary\": \"Инструктор подготовил план для вашей поездки перед экзаменом в Баку.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Нарушение Превышение скорости произошло 2 раза, последний раз 6 окт. 2026 г., что критично для экзамена.\",\n      \"practice\": \"Следите за спидометром во время поездки.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Нарушение Проезд знака «STOP» без остановки зафиксировано 1 раз, последний раз 6 окт. 2026 г., и имеет статус minor.\",\n      \"practice\": \"Останавливайтесь полностью перед каждым знаком.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Нарушение Непредоставление преимущества пешеходам произошло 1 раз, последний раз 6 окт. 2026 г., имея статус minor.\",\n      \"practice\": \"Заблаговременно снижайте скорость перед пешеходными переходами.\"\n    }\n  ]\n}"
+    },
+    {
+      "feature": "plan",
+      "case": "series_1",
+      "locale": "az",
+      "reasons": [
+        "the text contains the internal key \"minor\"; write the name from the input instead"
+      ],
+      "final_status": "ready",
+      "rejected_output": "{\"summary\":\"Təlimatçı olaraq imtahana hazırlaşmağın üçün sürüş zamanı təkrarlanan səhvlərinə diqqət yetirməliyik. Səhvlərini düzəltmək üçün növbəti addımları tətbiq edəcəyik.\",\"priorities\":[{\"rule\":\"speeding\",\"why\":\"Sürət həddinin aşılması səhvi 6 okt 2026 tarixində sonuncu dəfə olmaqla 2 dəfə təkrarlandı və bu, təhlükəsizlik üçün vacibdir.\",\"practice\":\"Sürət nişanlarına diqqət etməklə təlimatçı nəzarətində sabit sürət saxlamaq məşqi edin.\"},{\"rule\":\"stop_sign\",\"why\":\"STOP nişanında dayanmamaq səhvi 6 okt 2026 tarixində sonuncu dəfə olmaqla 1 dəfə qeydə alındı və qaydalara riayət etməyi tələb edir.\",\"practice\":\"Hər STOP nişanında tam dayanaraq təkrar hərəkət etmə məşqi edin.\"},{\"rule\":\"pedestrian_crossing\",\"why\":\"Piyadalara yol verməmək minor səhvi 6 okt 2026 tarixində sonuncu dəfə olmaqla 1 dəfə baş verdi və piyada təhlükəsizliyinə təsir edir.\",\"practice\":\"Piyada keçidlərində yaxınlaşarkən sürəti azaldıb piyadalara yol vermək məşqi edin.\"}]}"
+    },
+    {
+      "feature": "plan",
+      "case": "series_1_2",
+      "locale": "en",
+      "reasons": [
+        "the text contains the internal key \"by_band\"; write the name from the input instead"
+      ],
+      "final_status": "ready",
+      "rejected_output": "{\"summary\":\"Focus on your driving exam preparation in Baku by addressing your recent faults, paying close attention to your Speeding which happened 3 times and was last seen on 7 Oct 2026.\",\"priorities\":[{\"rule\":\"speeding\",\"why\":\"This happened 3 times and was last seen on 7 Oct 2026, and since its severity is by_band, it requires careful monitoring.\",\"practice\":\"Practice maintaining a steady speed within the limit along Nizami street.\"},{\"rule\":\"stop_sign\",\"why\":\"This happened 1 time and was last seen on 6 Oct 2026, and it is classified as a minor issue.\",\"practice\":\"Practice coming to a complete, full stop at every marked intersection on your route.\"},{\"rule\":\"pedestrian_crossing\",\"why\":\"This happened 1 time and was last seen on 6 Oct 2026, and it is classified as a minor issue.\",\"practice\":\"Practice scanning ahead for crosswalks and yielding smoothly to pedestrians.\"}]}"
+    },
+    {
+      "feature": "plan",
+      "case": "series_1_2",
+      "locale": "ru",
+      "reasons": [
+        "the text contains the internal key \"minor\"; write the name from the input instead"
+      ],
+      "final_status": "fallback",
+      "rejected_output": "{\n  \"summary\": \"Инструктор подготовил план для подготовки к экзамену в Баку, основанный на текущих результатах поездка.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Нарушение зафиксировано 3 раз, последний раз наблюдалось 7 окт. 2026 г., так как это влияет на безопасность движения в городе.\",\n      \"practice\": \"Контролируйте скорость по спидометру и следите за ограничением в км/ч.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Ошибка произошла 1 раз и была замечена 6 окт. 2026 г., что относится к категории minor.\",\n      \"practice\": \"Отработайте полную остановку перед стоп-линией на перекрестках.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Зафиксировано 1 раз, последний случай был 6 окт. 2026 г., имеет категорию minor.\",\n      \"practice\": \"Заблаговременно снижайте скорость перед пешеходными переходами.\"\n    }\n  ]\n}"
     }
   ],
   "records": {
@@ -326,9 +324,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 348,
-        "output_tokens": 280,
-        "latency_ms": 3763,
+        "input_tokens": 415,
+        "output_tokens": 282,
+        "latency_ms": 1095,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "series_1",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 415,
+        "output_tokens": 231,
+        "latency_ms": 1597,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -346,9 +364,55 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 362,
-        "output_tokens": 237,
-        "latency_ms": 2053,
+        "input_tokens": 498,
+        "output_tokens": 277,
+        "latency_ms": 1597,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1",
+        "locale": "ru",
+        "run": 2,
+        "status": "ready",
+        "attempts": 2,
+        "input_tokens": 1030,
+        "output_tokens": 502,
+        "latency_ms": 2422,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"minor\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Инструктор подготовил план для вашей поездки перед экзаменом в Баку.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Нарушение Превышение скорости произошло 2 раза, последний раз 6 окт. 2026 г., что критично для экзамена.\",\n      \"practice\": \"Следите за спидометром во время поездки.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Нарушение Проезд знака «STOP» без остановки зафиксировано 1 раз, последний раз 6 окт. 2026 г., и имеет статус minor.\",\n      \"practice\": \"Останавливайтесь полностью перед каждым знаком.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Нарушение Непредоставление преимущества пешеходам произошло 1 раз, последний раз 6 окт. 2026 г., имея статус minor.\",\n      \"practice\": \"Заблаговременно снижайте скорость перед пешеходными переходами.\"\n    }\n  ]\n}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 490,
+        "output_tokens": 299,
+        "latency_ms": 1333,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -363,27 +427,99 @@
       {
         "set": "series_1",
         "locale": "az",
-        "run": 1,
-        "status": "fallback",
+        "run": 2,
+        "status": "ready",
         "attempts": 2,
-        "input_tokens": 750,
-        "output_tokens": 768,
-        "latency_ms": 4528,
+        "input_tokens": 1014,
+        "output_tokens": 751,
+        "latency_ms": 2670,
         "validation_errors": [
           [
-            "number \"3\" does not appear in the input"
-          ],
-          [
-            "number \"3\" does not appear in the input"
+            "the text contains the internal key \"minor\"; write the name from the input instead"
           ]
         ],
         "first_try_clean": false,
         "first_schema_ok": true,
-        "first_invented_number": true,
+        "first_invented_number": false,
         "first_errors": [
-          "number \"3\" does not appear in the input"
+          "the text contains the internal key \"minor\"; write the name from the input instead"
         ],
-        "first_raw": "{\n  \"summary\": \"İmtahana hazırlaşmaq üçün səhvlərimizi təhlil edib əsas diqqətimizi sürət həddi, STOP nişanı və piyada keçidlərinə yönəltməliyik.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Sürət həddinin aşılması 2026-10-06 tarixində sonuncu dəfə qeydə alınmaqla ümumilikdə 2 dəfə baş verib və bu, imtahanda ciddi xətalara səbəb ola bilər.\",\n      \"practice\": \"İşarələrə diqqət yetirərək sürəti məhdudiyyətlərə uyğun tənzimləmək üçün şəhər küçələrində hərəkət məşqi edin.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"STOP nişanında dayanmamaq qayda pozuntusu 2026-10-06 tarixində son dəfə görünmüş və 1 dəfə tkrarlanmışdır, bu da imtahan zamanı diqqətsizlik kimi qiymətləndirilir.\",\n      \"practice\": \"Hər bir STOP xəttində tam dayanaraq 3 saniyə gözləməklə bağlı vərdiş yaradın.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Piyadalara yol verməmək xətası 1 dəfə qeydə alınıb və sonuncu dəfə 2026-10-06 tarixində görünmüşdür ki, bu da piyada təhlükəsizliyi baxımından vacibdir.\",\n      \"practice\": \"Piyada keçidlərinə yaxınlaşarkən sürəti azaldın və piyadaların keçməsinə hər zaman şərait yaradın.\"\n    }\n  ]\n}",
+        "first_raw": "{\"summary\":\"Təlimatçı olaraq imtahana hazırlaşmağın üçün sürüş zamanı təkrarlanan səhvlərinə diqqət yetirməliyik. Səhvlərini düzəltmək üçün növbəti addımları tətbiq edəcəyik.\",\"priorities\":[{\"rule\":\"speeding\",\"why\":\"Sürət həddinin aşılması səhvi 6 okt 2026 tarixində sonuncu dəfə olmaqla 2 dəfə təkrarlandı və bu, təhlükəsizlik üçün vacibdir.\",\"practice\":\"Sürət nişanlarına diqqət etməklə təlimatçı nəzarətində sabit sürət saxlamaq məşqi edin.\"},{\"rule\":\"stop_sign\",\"why\":\"STOP nişanında dayanmamaq səhvi 6 okt 2026 tarixində sonuncu dəfə olmaqla 1 dəfə qeydə alındı və qaydalara riayət etməyi tələb edir.\",\"practice\":\"Hər STOP nişanında tam dayanaraq təkrar hərəkət etmə məşqi edin.\"},{\"rule\":\"pedestrian_crossing\",\"why\":\"Piyadalara yol verməmək minor səhvi 6 okt 2026 tarixində sonuncu dəfə olmaqla 1 dəfə baş verdi və piyada təhlükəsizliyinə təsir edir.\",\"practice\":\"Piyada keçidlərində yaxınlaşarkən sürəti azaldıb piyadalara yol vermək məşqi edin.\"}]}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 424,
+        "output_tokens": 268,
+        "latency_ms": 944,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "series_1_2",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 2,
+        "input_tokens": 884,
+        "output_tokens": 578,
+        "latency_ms": 2527,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"by_band\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"by_band\"; write the name from the input instead"
+        ],
+        "first_raw": "{\"summary\":\"Focus on your driving exam preparation in Baku by addressing your recent faults, paying close attention to your Speeding which happened 3 times and was last seen on 7 Oct 2026.\",\"priorities\":[{\"rule\":\"speeding\",\"why\":\"This happened 3 times and was last seen on 7 Oct 2026, and since its severity is by_band, it requires careful monitoring.\",\"practice\":\"Practice maintaining a steady speed within the limit along Nizami street.\"},{\"rule\":\"stop_sign\",\"why\":\"This happened 1 time and was last seen on 6 Oct 2026, and it is classified as a minor issue.\",\"practice\":\"Practice coming to a complete, full stop at every marked intersection on your route.\"},{\"rule\":\"pedestrian_crossing\",\"why\":\"This happened 1 time and was last seen on 6 Oct 2026, and it is classified as a minor issue.\",\"practice\":\"Practice scanning ahead for crosswalks and yielding smoothly to pedestrians.\"}]}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "series_1_2",
+        "locale": "ru",
+        "run": 1,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 1048,
+        "output_tokens": 555,
+        "latency_ms": 2146,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ],
+          [
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"minor\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Инструктор подготовил план для подготовки к экзамену в Баку, основанный на текущих результатах поездка.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Нарушение зафиксировано 3 раз, последний раз наблюдалось 7 окт. 2026 г., так как это влияет на безопасность движения в городе.\",\n      \"practice\": \"Контролируйте скорость по спидометру и следите за ограничением в км/ч.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Ошибка произошла 1 раз и была замечена 6 окт. 2026 г., что относится к категории minor.\",\n      \"practice\": \"Отработайте полную остановку перед стоп-линией на перекрестках.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Зафиксировано 1 раз, последний случай был 6 окт. 2026 г., имеет категорию minor.\",\n      \"practice\": \"Заблаговременно снижайте скорость перед пешеходными переходами.\"\n    }\n  ]\n}",
         "covers_all": true,
         "top_matches_heaviest": null,
         "language_ok": true,
@@ -391,41 +527,30 @@
       },
       {
         "set": "series_1_2",
-        "locale": "en",
-        "run": 1,
-        "status": "ready",
-        "attempts": 1,
-        "input_tokens": 357,
-        "output_tokens": 226,
-        "latency_ms": 3263,
-        "validation_errors": [],
-        "first_try_clean": true,
-        "first_schema_ok": true,
-        "first_invented_number": false,
-        "first_errors": [],
-        "first_raw": null,
-        "covers_all": true,
-        "top_matches_heaviest": true,
-        "language_ok": true,
-        "wrong_severity_claims": 0
-      },
-      {
-        "set": "series_1_2",
         "locale": "ru",
-        "run": 1,
-        "status": "ready",
-        "attempts": 1,
-        "input_tokens": 371,
-        "output_tokens": 332,
-        "latency_ms": 1448,
-        "validation_errors": [],
-        "first_try_clean": true,
+        "run": 2,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 1048,
+        "output_tokens": 528,
+        "latency_ms": 2774,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ],
+          [
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
         "first_schema_ok": true,
         "first_invented_number": false,
-        "first_errors": [],
-        "first_raw": null,
+        "first_errors": [
+          "the text contains the internal key \"minor\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Инструктор подготовил план для поездки, основываясь на текущих результатах.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Нарушение зафиксировано 3 раз, последний раз наблюдалось 7 окт. 2026 г., что влияет на общие баллы.\",\n      \"practice\": \"Контролируйте ограничение скорости в км/ч на спидометре во время движения.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Этоminor нарушение произошло 1 раз и последний раз было отмечено 6 окт. 2026 г.\",\n      \"practice\": \"Останавливайтесь полностью перед знаком остановки.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Данное minor нарушение зафиксировано 1 раз, последний раз замечено 6 окт. 2026 г.\",\n      \"practice\": \"Заблаговременно снижайте скорость перед пешеходным переходом.\"\n    }\n  ]\n}",
         "covers_all": true,
-        "top_matches_heaviest": true,
+        "top_matches_heaviest": null,
         "language_ok": true,
         "wrong_severity_claims": null
       },
@@ -434,10 +559,36 @@
         "locale": "az",
         "run": 1,
         "status": "ready",
+        "attempts": 2,
+        "input_tokens": 1032,
+        "output_tokens": 647,
+        "latency_ms": 3106,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"minor\"; write the name from the input instead"
+        ],
+        "first_raw": "{\"summary\": \"İmtahana hazırlaşarkən təhlükəsiz sürücülük vərdişlərinizi təkmilləşdirmək üçün sürüş zamanı buraxdığınız səhvlərə diqqət yetirməliyik.\", \"priorities\": [{\"rule\": \"speeding\", \"why\": \"Sürət həddinin aşılması 7 okt 2026 tarixində son dəfə müşahidə olunub və ümumilikdə 3 dəfə təkrarlanıb, bu da imtahanda sürüş təhlükəsizliyinə birbaşa təsir edir.\", \"practice\": \"Təlimatçı ilə birlikdə nişanlara diqqət yetirərək icazə verilən km/saat hədlərini qorumaq üçün xüsusi sürüş məşqləri edin.\"}, {\"rule\": \"stop_sign\", \"why\": \"STOP nişanında dayanmamaq səhvi 6 okt 2026 tarixində 1 dəfə qeydə alınıb və bu, minor dərəcəli pozuntudur.\", \"practice\": \"Hər bir STOP nişanında tam dayanma qaydasına əməl etmək üçün təkrar park və dayanma məşqləri icra edin.\"}, {\"rule\": \"pedestrian_crossing\", \"why\": \"Piyadalara yol verməmək 6 okt 2026 tarixində 1 dəfə baş verib və minor səhv kimi qeyd olunub.\", \"practice\": \"Piyada keçidlərinə yaxınlaşarkən sürəti azaldaraq piyadalara yol vermək vərdişini gücləndirin.\"}]}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
         "attempts": 1,
-        "input_tokens": 370,
-        "output_tokens": 465,
-        "latency_ms": 1449,
+        "input_tokens": 499,
+        "output_tokens": 335,
+        "latency_ms": 1223,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -455,9 +606,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 357,
-        "output_tokens": 280,
-        "latency_ms": 3339,
+        "input_tokens": 424,
+        "output_tokens": 219,
+        "latency_ms": 1165,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "series_1_2_3",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 424,
+        "output_tokens": 210,
+        "latency_ms": 1087,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -474,10 +645,36 @@
         "locale": "ru",
         "run": 1,
         "status": "ready",
+        "attempts": 2,
+        "input_tokens": 1048,
+        "output_tokens": 556,
+        "latency_ms": 2144,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"minor\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Ваш инструктор подготовил план для подготовки к экзамену в Баку, основанный на текущих результатах поездка.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Нарушение Превышение скорости зафиксировано 3 раз, последний раз наблюдалось 7 окт. 2026 г., что критично для безопасности движения.\",\n      \"practice\": \"Практикуйте контроль скорости на участках с разным ограничением, следя за показателями спидометра.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Проезд знака «STOP» без остановки отмечено 1 раз, последний раз зафиксировано 6 окт. 2026 г., и это minor нарушение правил.\",\n      \"practice\": \"Отработайте полную остановку перед стоп-линией на перекрестках до начала движения.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Непредоставление преимущества пешеходам произошло 1 раз, последний раз отмечено 6 окт. 2026 г., что относится к minor нарушениям.\",\n      \"practice\": \"Тренируйте заблаговременное снижение скорости перед пешеходными переходами для оценки появления пешеходов.\"\n    }\n  ]\n}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2_3",
+        "locale": "ru",
+        "run": 2,
+        "status": "ready",
         "attempts": 1,
-        "input_tokens": 371,
-        "output_tokens": 279,
-        "latency_ms": 1173,
+        "input_tokens": 507,
+        "output_tokens": 212,
+        "latency_ms": 2135,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -495,9 +692,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 370,
-        "output_tokens": 375,
-        "latency_ms": 5240,
+        "input_tokens": 499,
+        "output_tokens": 297,
+        "latency_ms": 1072,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2_3",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 499,
+        "output_tokens": 283,
+        "latency_ms": 1367,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -515,9 +732,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 259,
-        "output_tokens": 94,
-        "latency_ms": 1062,
+        "input_tokens": 332,
+        "output_tokens": 89,
+        "latency_ms": 1114,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "speeder",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 332,
+        "output_tokens": 70,
+        "latency_ms": 1373,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -535,9 +772,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 261,
-        "output_tokens": 100,
-        "latency_ms": 1151,
+        "input_tokens": 397,
+        "output_tokens": 102,
+        "latency_ms": 1113,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "speeder",
+        "locale": "ru",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 397,
+        "output_tokens": 113,
+        "latency_ms": 1250,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -555,9 +812,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 265,
-        "output_tokens": 166,
-        "latency_ms": 2537,
+        "input_tokens": 400,
+        "output_tokens": 165,
+        "latency_ms": 1258,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "speeder",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 400,
+        "output_tokens": 152,
+        "latency_ms": 860,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -575,9 +852,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 303,
-        "output_tokens": 159,
-        "latency_ms": 1891,
+        "input_tokens": 373,
+        "output_tokens": 150,
+        "latency_ms": 1005,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "red_light_runner",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 373,
+        "output_tokens": 184,
+        "latency_ms": 1028,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -593,11 +890,43 @@
         "set": "red_light_runner",
         "locale": "ru",
         "run": 1,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 938,
+        "output_tokens": 413,
+        "latency_ms": 1977,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"major\"; write the name from the input instead",
+            "the text contains the internal key \"by_band\"; write the name from the input instead"
+          ],
+          [
+            "the text contains the internal key \"major\"; write the name from the input instead",
+            "the text contains the internal key \"by_band\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"major\"; write the name from the input instead",
+          "the text contains the internal key \"by_band\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Инструктор подготовил план для поездки, основываясь на текущих результатах.\",\n  \"priorities\": [\n    {\n      \"rule\": \"red_light\",\n      \"why\": \"Нарушение Проезд на красный свет зафиксировано 1 раз, последний раз это произошло 3 окт. 2026 г., и это major нарушение, которое может привести к серьезной опасности.\",\n      \"practice\": \"Отработайте плавную остановку перед светофором на перекрестках.\"\n    },\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Нарушение Превышение скорости произошло 1 раз и последний раз наблюдалось 3 окт. 2026 г., степень тяжести оценивается как by_band.\",\n      \"practice\": \"Следите за ограничениями км/ч и удерживайте стабильную скорость движения.\"\n    }\n  ]\n}",
+        "covers_all": true,
+        "top_matches_heaviest": null,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "red_light_runner",
+        "locale": "ru",
+        "run": 2,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 306,
-        "output_tokens": 217,
-        "latency_ms": 2836,
+        "input_tokens": 442,
+        "output_tokens": 207,
+        "latency_ms": 1112,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -615,9 +944,29 @@
         "run": 1,
         "status": "ready",
         "attempts": 1,
-        "input_tokens": 313,
-        "output_tokens": 263,
-        "latency_ms": 2854,
+        "input_tokens": 445,
+        "output_tokens": 240,
+        "latency_ms": 1141,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "red_light_runner",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 445,
+        "output_tokens": 240,
+        "latency_ms": 981,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -634,39 +983,99 @@
         "locale": "en",
         "run": 1,
         "status": "ready",
+        "attempts": 2,
+        "input_tokens": 986,
+        "output_tokens": 563,
+        "latency_ms": 3056,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"by_band\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"by_band\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Here is your learning plan to help you prepare for the Baku driving exam based on your recent sessions.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Speeding happened 3 times and was last seen on 2 Oct 2026, and because its severity is by_band, it matters for maintaining proper control.\",\n      \"practice\": \"Practice monitoring your speedometer consistently while driving along straight roads.\"\n    },\n    {\n      \"rule\": \"wrong_way\",\n      \"why\": \"Wrong way on a one-way street is a major fault that happened 1 time and was last seen on 5 Oct 2026.\",\n      \"practice\": \"Practice checking entry signs carefully before turning onto any street.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Not stopping at STOP is a minor fault that happened 1 time and was last seen on 5 Oct 2026.\",\n      \"practice\": \"Practice coming to a complete, full stop at every marked stop line.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Not yielding to pedestrians is a minor fault that happened 1 time and was last seen on 5 Oct 2026.\",\n      \"practice\": \"Practice scanning crosswalks early to ensure pedestrians have safely cleared the road.\"\n    }\n  ]\n}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 2,
+        "input_tokens": 986,
+        "output_tokens": 650,
+        "latency_ms": 3350,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"by_band\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"by_band\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Let us review your recent performance in Baku and focus on the areas that need improvement for your driving exam.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Speeding happened 3 times and was last seen on 2 Oct 2026, and because its severity is by_band, it is crucial to manage your speed carefully.\",\n      \"practice\": \"Practice monitoring your speedometer constantly while navigating familiar Baku streets.\"\n    },\n    {\n      \"rule\": \"wrong_way\",\n      \"why\": \"Wrong way on a one-way street is a major fault that happened 1 time and was last seen on 5 Oct 2026.\",\n      \"practice\": \"Practice scanning road signs carefully before turning onto any street.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Not stopping at STOP is a minor fault that happened 1 time and was last seen on 5 Oct 2026.\",\n      \"practice\": \"Practice coming to a complete stop at every designated intersection.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Not yielding to pedestrians is a minor fault that happened 1 time and was last seen on 5 Oct 2026.\",\n      \"practice\": \"Practice looking out for pedestrians near crosswalks and slowing down early.\"\n    }\n  ]\n}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
         "attempts": 1,
-        "input_tokens": 411,
-        "output_tokens": 295,
-        "latency_ms": 1582,
+        "input_tokens": 565,
+        "output_tokens": 284,
+        "latency_ms": 1015,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
         "first_invented_number": false,
         "first_errors": [],
         "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "locale": "ru",
+        "run": 2,
+        "status": "ready",
+        "attempts": 2,
+        "input_tokens": 1182,
+        "output_tokens": 771,
+        "latency_ms": 2295,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"major\"; write the name from the input instead",
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"major\"; write the name from the input instead",
+          "the text contains the internal key \"minor\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"План подготовки к экзамену в Баку: разбор основных ошибок, допущенных во время поездки, для успешной сдачи экзамена.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Ошибка Превышение скорости зафиксирована 3 раз, последний раз наблюдалась 2 окт. 2026 г., так как контроль скоростного режима критически важен для безопасности на дороге.\",\n      \"practice\": \"Выполняйте упражнение на плавное поддержание разрешенной скорости без резких ускорений.\"\n    },\n    {\n      \"rule\": \"wrong_way\",\n      \"why\": \"Ошибка Движение во встречном направлении по односторонней дороге отнесена к категории major, случилась 1 раз и последний раз наблюдалась 5 окт. 2026 г., что создает критическую аварийную ситуацию.\",\n      \"practice\": \"Отработайте внимательное чтение дорожных знаков и разметки перед въездом на участки с односторонним движением.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"Ошибка Проезд знака «STOP» без остановки отнесена к категории minor, произошла 1 раз и была зафиксирована 5 окт. 2026 г., влияя на общую дисциплину вождения.\",\n      \"practice\": \"Практикуйте полную остановку у каждого знака остановки независимо от наличия других участников движения.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Ошибка Непредоставление преимущества пешеходам отнесена к категории minor, отмечена 1 раз и последний раз замечена 5 окт. 2026 г., требуя повышенного внимания к пешеходным зонам.\",\n      \"practice\": \"Тренируйте заблаговременное снижение скорости перед пешеходными переходами.\"\n    }\n  ]\n}",
         "covers_all": true,
         "top_matches_heaviest": false,
         "language_ok": true,
-        "wrong_severity_claims": 0
-      },
-      {
-        "set": "exam_fail_and_speeder",
-        "locale": "ru",
-        "run": 1,
-        "status": "ready",
-        "attempts": 1,
-        "input_tokens": 429,
-        "output_tokens": 379,
-        "latency_ms": 2354,
-        "validation_errors": [],
-        "first_try_clean": true,
-        "first_schema_ok": true,
-        "first_invented_number": false,
-        "first_errors": [],
-        "first_raw": null,
-        "covers_all": true,
-        "top_matches_heaviest": false,
-        "language_ok": true,
         "wrong_severity_claims": null
       },
       {
@@ -674,10 +1083,38 @@
         "locale": "az",
         "run": 1,
         "status": "ready",
+        "attempts": 2,
+        "input_tokens": 1172,
+        "output_tokens": 939,
+        "latency_ms": 2610,
+        "validation_errors": [
+          [
+            "the text contains the internal key \"major\"; write the name from the input instead",
+            "the text contains the internal key \"minor\"; write the name from the input instead"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "the text contains the internal key \"major\"; write the name from the input instead",
+          "the text contains the internal key \"minor\"; write the name from the input instead"
+        ],
+        "first_raw": "{\n  \"summary\": \"Salam tələbə, Bakıdakı imtahana hazırlaşmaq üçün təlimatçı olaraq sürüş zamanı təkrar olunan səhvlərinizə baxdıq və növbəti addımları müəyyənləşdirdik.\",\n  \"priorities\": [\n    {\n      \"rule\": \"speeding\",\n      \"why\": \"Sürət həddinin aşılması 3 dəfə təkrarlandı və sonuncu dəfə 2 okt 2026 tarixində müşahidə olundu.\",\n      \"practice\": \"Yol nişanlarına diqqət edərək sürəti nəzarətdə saxlayın.\"\n    },\n    {\n      \"rule\": \"wrong_way\",\n      \"why\": \"Birtərəfli yolda əks istiqamətdə hərəkət major xəta olaraq 1 dəfə baş verdi və 5 okt 2026 tarixində son dəfə görüldü.\",\n      \"practice\": \"Nişanlanma xətlərinə və yol göstəricilərinə diqqət edin.\"\n    },\n    {\n      \"rule\": \"stop_sign\",\n      \"why\": \"STOP nişanında dayanmamaq minor xəta kimi 1 dəfə qeydə alındı və 5 okt 2026 tarixində son dəfə görüldü.\",\n      \"practice\": \"Hər bir STOP xəttində tam dayanın.\"\n    },\n    {\n      \"rule\": \"pedestrian_crossing\",\n      \"why\": \"Piyadalara yol verməmək minor xəta olaraq 1 dəfə baş verdi və sonuncu dəfə 5 okt 2026 tarixində görüldü.\",\n      \"practice\": \"Piyada keçidlərində sürəti azaldın və piyadalara üstünlük verin.\"\n    }\n  ]\n}",
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
         "attempts": 1,
-        "input_tokens": 434,
-        "output_tokens": 502,
-        "latency_ms": 2969,
+        "input_tokens": 560,
+        "output_tokens": 483,
+        "latency_ms": 938,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -698,8 +1135,8 @@
         "status": "ready",
         "attempts": 1,
         "input_tokens": 453,
-        "output_tokens": 261,
-        "latency_ms": 1134,
+        "output_tokens": 278,
+        "latency_ms": 1533,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -723,8 +1160,47 @@
           },
           {
             "rule": "speeding",
+            "correct_index": 0,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "speed_stop_pedestrian",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 453,
+        "output_tokens": 405,
+        "latency_ms": 1377,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "stop_sign",
             "correct_index": 1,
-            "fact": true,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 1,
+            "fact": null,
             "duplicate_of_bank": false,
             "language_ok": true
           }
@@ -737,8 +1213,47 @@
         "status": "ready",
         "attempts": 1,
         "input_tokens": 483,
-        "output_tokens": 345,
-        "latency_ms": 1177,
+        "output_tokens": 322,
+        "latency_ms": 1377,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "stop_sign",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 3,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "speed_stop_pedestrian",
+        "locale": "ru",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 483,
+        "output_tokens": 382,
+        "latency_ms": 1686,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -762,8 +1277,8 @@
           },
           {
             "rule": "speeding",
-            "correct_index": 2,
-            "fact": true,
+            "correct_index": 0,
+            "fact": null,
             "duplicate_of_bank": false,
             "language_ok": true
           }
@@ -773,17 +1288,61 @@
         "set": "speed_stop_pedestrian",
         "locale": "az",
         "run": 1,
-        "status": "fallback",
+        "status": "ready",
         "attempts": 2,
         "input_tokens": 1124,
-        "output_tokens": 747,
-        "latency_ms": 6260,
+        "output_tokens": 703,
+        "latency_ms": 2216,
         "validation_errors": [
           [
             "questions.0 uses number \"30\" which does not appear in the input",
-            "questions.1 uses number \"30\" which does not appear in the input"
-          ],
+            "questions.1 uses number \"80\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": true,
+        "first_errors": [
+          "questions.0 uses number \"30\" which does not appear in the input",
+          "questions.1 uses number \"80\" which does not appear in the input"
+        ],
+        "first_raw": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Yaşayış məntəqəsində hərəkət edərkən STOP nişanının tələbini pozub dayanmamağa görə cərimə məbləği nə qədərdir?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"60 AZN\"],\"correct_index\":1,\"explanation\":\"STOP nişanında dayanmamaq qaydasına görə cərimə 40 AZN təşkil edir.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Piyadalara yol verməmək qaydasının pozulmasına görə tətbiq olunan cərimə məbləği nə qədərdir?\",\"options\":[\"40 AZN\",\"50 AZN\",\"60 AZN\",\"80 AZN\"],\"correct_index\":1,\"explanation\":\"Piyadalara yol verməmək qayda pozuntusuna görə cərimə 50 AZN-dir.\"},{\"rule\":\"speeding\",\"question\":\"Şəhərdə avtomobil idarə edərkən müəyyən edilmiş ümumi sürət həddi neçə km/saat təşkil edir?\",\"options\":[\"20 km/saat\",\"60 km/saat\",\"90 km/saat\",\"110 km/saat\"],\"correct_index\":1,\"explanation\":\"Şəhər ərazisində sürət həddi 60 km/saat müəyyən edilmişdir.\"}]}",
+        "questions": [
+          {
+            "rule": "stop_sign",
+            "correct_index": 0,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "speed_stop_pedestrian",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
+        "attempts": 2,
+        "input_tokens": 1124,
+        "output_tokens": 681,
+        "latency_ms": 2128,
+        "validation_errors": [
           [
+            "questions.0 uses number \"30\" which does not appear in the input",
             "questions.1 uses number \"30\" which does not appear in the input"
           ]
         ],
@@ -794,59 +1353,46 @@
           "questions.0 uses number \"30\" which does not appear in the input",
           "questions.1 uses number \"30\" which does not appear in the input"
         ],
-        "first_raw": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Yaşayış məntəqəsində hərəkət edərkən STOP nişanının tələbini pozaraq dayanmamağa görə cərimə məbləği qanunvericiliklə necə müəyyən edilir?\",\"options\":[\"30 AZN miqdarında cərimə edilir\",\"40 AZN miqdarında cərimə edilir\",\"50 AZN miqdarında cərimə edilir\",\"60 AZN miqdarında cərimə edilir\"],\"correct_index\":1,\"explanation\":\"STOP nişanında dayanmamaq qaydasının pozulmasına görə 40 AZN cərimə nəzərdə tutulur.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Piyada keçidində piyadalara yol verməmək qaydasının pozulmasına görə tətbiq edilən cərimə məbləği nə qədərdir?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"60 AZN\"],\"correct_index\":2,\"explanation\":\"Piyadalara yol verməmək qaydasına görə 50 AZN məbləğində cərimə müəyyən edilmişdir.\"},{\"rule\":\"speeding\",\"question\":\"Bakı şəhərində avtomobil idarə edərkən şəhər daxilində müəyyən edilmiş maksimum sürət həddi neçə km/saat təşkil edir?\",\"options\":[\"20 km/saat\",\"60 km/saat\",\"90 km/saat\",\"110 km/saat\"],\"correct_index\":1,\"explanation\":\"Şəhər daxilində sürət həddi 60 km/saat müəyyən edilmişdir.\"}]}",
-        "questions": []
+        "first_raw": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Yaşayış məntəqəsində hərəkət edərkən STOP nişanının tələbini pozub dayanmamağa görə cərimə məbləği nə qədərdir?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"60 AZN\"],\"correct_index\":1,\"explanation\":\"STOP nişanında dayanmamaq qaydasına görə cərimə 40 AZN təşkil edir.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Piyada keçidində piyadalara yol verməmək qaydasının pozulmasına görə tətbiq olunan cərimə məbləği nə qədərdir?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"90 AZN\"],\"correct_index\":2,\"explanation\":\"Piyadalara yol verməmək qaydasına görə cərimə 50 AZN-dir.\"},{\"rule\":\"speeding\",\"question\":\"Şəhərdə avtomobil idarə edərkən tətbiq olunan əsas sürət həddi neçə kilometr/saatdır?\",\"options\":[\"20 km/s\",\"60 km/s\",\"90 km/s\",\"110 km/s\"],\"correct_index\":1,\"explanation\":\"Şəhər ərazisində sürət həddi 60 km/s müəyyən edilmişdir.\"}]}",
+        "questions": [
+          {
+            "rule": "speeding",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "stop_sign",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
       },
       {
         "set": "light_wrongway_giveway",
         "locale": "en",
         "run": 1,
-        "status": "fallback",
-        "attempts": 2,
-        "input_tokens": 969,
-        "output_tokens": 645,
-        "latency_ms": 2439,
-        "validation_errors": [
-          [
-            "questions.2 uses number \"50\" which does not appear in the input",
-            "questions.2 uses number \"200\" which does not appear in the input"
-          ],
-          [
-            "questions.2 uses number \"50\" which does not appear in the input",
-            "questions.2 uses number \"200\" which does not appear in the input"
-          ]
-        ],
-        "first_try_clean": false,
-        "first_schema_ok": true,
-        "first_invented_number": true,
-        "first_errors": [
-          "questions.2 uses number \"50\" which does not appear in the input",
-          "questions.2 uses number \"200\" which does not appear in the input"
-        ],
-        "first_raw": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"You approach an intersection and the traffic light turns red. What should you do?\",\"options\":[\"Accelerate to pass quickly\",\"Stop before the stop line\",\"Turn around immediately\",\"Proceed with caution without stopping\"],\"correct_index\":1,\"explanation\":\"Running a red light is a major violation that incurs a fine of 100 AZN.\"},{\"rule\":\"wrong_way\",\"question\":\"You notice a sign indicating a one-way street pointing against your direction of travel. What should you do?\",\"options\":[\"Enter the street slowly\",\"Reverse down the lane\",\"Do not enter the street in that direction\",\"Turn off your headlights and drive through\"],\"correct_index\":2,\"explanation\":\"Driving the wrong way on a one-way street is a major violation with a fine of 150 AZN.\"},{\"rule\":\"red_light\",\"question\":\"What is the fine for running a red light in Baku?\",\"options\":[\"50 AZN\",\"100 AZN\",\"150 AZN\",\"200 AZN\"],\"correct_index\":1,\"explanation\":\"Running a red light carries a fine of 100 AZN.\"}]}",
-        "questions": []
-      },
-      {
-        "set": "light_wrongway_giveway",
-        "locale": "ru",
-        "run": 1,
         "status": "ready",
-        "attempts": 2,
-        "input_tokens": 991,
-        "output_tokens": 472,
-        "latency_ms": 2277,
-        "validation_errors": [
-          [
-            "expected exactly 3 questions but got 2"
-          ]
-        ],
-        "first_try_clean": false,
+        "attempts": 1,
+        "input_tokens": 458,
+        "output_tokens": 247,
+        "latency_ms": 1013,
+        "validation_errors": [],
+        "first_try_clean": true,
         "first_schema_ok": true,
         "first_invented_number": false,
-        "first_errors": [
-          "expected exactly 3 questions but got 2"
-        ],
-        "first_raw": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"При подъезде к перекрестку загорелся запрещающий красный сигнал светофора. Ваши действия?\",\"options\":[\"Проехать перекресток без остановки\",\"Остановиться перед стоп-линией\",\"Увеличить скорость\",\"Продолжить движение с осторожностью\"],\"correct_index\":1,\"explanation\":\"Проезд на красный свет запрещен, поэтому необходимо остановиться.\"},{\"rule\":\"wrong_way\",\"question\":\"Вы оказались на дороге с односторонним движением, где поток направлен против вашего хода. Что следует сделать?\",\"options\":[\"Продолжать движение\",\"Развернуться и продолжить движение в правильном направлении\",\"Увеличить скорость\",\"Оставаться на полосе\"],\"correct_index\":1,\"explanation\":\"Движение во встречном направлении по односторонней дороге запрещено, поэтому нужно изменить направление.\"}]}",
+        "first_errors": [],
+        "first_raw": null,
         "questions": [
           {
             "rule": "red_light",
@@ -857,14 +1403,14 @@
           },
           {
             "rule": "wrong_way",
-            "correct_index": 1,
+            "correct_index": 2,
             "fact": null,
             "duplicate_of_bank": false,
             "language_ok": true
           },
           {
             "rule": "red_light",
-            "correct_index": 0,
+            "correct_index": 1,
             "fact": null,
             "duplicate_of_bank": false,
             "language_ok": true
@@ -873,19 +1419,131 @@
       },
       {
         "set": "light_wrongway_giveway",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 458,
+        "output_tokens": 255,
+        "latency_ms": 1250,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "wrong_way",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "red_light",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "light_wrongway_giveway",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 482,
+        "output_tokens": 326,
+        "latency_ms": 1114,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "wrong_way",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "red_light",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "light_wrongway_giveway",
+        "locale": "ru",
+        "run": 2,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 1054,
+        "output_tokens": 606,
+        "latency_ms": 2454,
+        "validation_errors": [
+          [
+            "questions.0 uses number \"50\" which does not appear in the input",
+            "questions.0 uses number \"200\" which does not appear in the input",
+            "questions.1 uses number \"50\" which does not appear in the input",
+            "questions.1 uses number \"200\" which does not appear in the input"
+          ],
+          [
+            "expected exactly 3 questions but got 2",
+            "questions.0 uses number \"50\" which does not appear in the input",
+            "questions.1 uses number \"200\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": true,
+        "first_errors": [
+          "questions.0 uses number \"50\" which does not appear in the input",
+          "questions.0 uses number \"200\" which does not appear in the input",
+          "questions.1 uses number \"50\" which does not appear in the input",
+          "questions.1 uses number \"200\" which does not appear in the input"
+        ],
+        "first_raw": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"Вы подъехали к перекрестку, и загорелся запрещающий сигнал светофора. Каков размер штрафа за проезд на красный свет?\",\"options\":[\"Штраф 50 манатов\",\"Штраф 100 манатов\",\"Штраф 150 манатов\",\"Штраф 200 манатов\"],\"correct_index\":1,\"explanation\":\"За проезд на красный свет предусмотрен штраф в размере 100 манатов.\"},{\"rule\":\"wrong_way\",\"question\":\"Вы случайно оказались на дороге с односторонним движением и едете во встречном направлении. Каков размер штрафа за это нарушение?\",\"options\":[\"Штраф 50 манатов\",\"Штраф 100 манатов\",\"Штраф 150 манатов\",\"Штраф 200 манатов\"],\"correct_index\":2,\"explanation\":\"Движение во встречном направлении по односторонней дороге влечет штраф в размере 150 манатов.\"},{\"rule\":\"red_light\",\"question\":\"Перед перекрестком горит красный свет светофора. Что должен сделать водитель?\",\"options\":[\"Продолжить движение без остановки\",\"Увеличить скорость\",\"Остановиться и дождаться разрешающего сигнала\",\"Посигналить и продолжить движение\"],\"correct_index\":2,\"explanation\":\"При красном свете светофора необходимо остановиться, так как проезд на красный свет запрещен.\"}]}",
+        "questions": []
+      },
+      {
+        "set": "light_wrongway_giveway",
         "locale": "az",
         "run": 1,
         "status": "fallback",
         "attempts": 2,
         "input_tokens": 1179,
-        "output_tokens": 617,
-        "latency_ms": 2270,
+        "output_tokens": 672,
+        "latency_ms": 1987,
         "validation_errors": [
           [
             "questions.0 uses number \"50\" which does not appear in the input",
             "questions.0 uses number \"200\" which does not appear in the input",
             "questions.1 uses number \"120\" which does not appear in the input",
-            "questions.1 uses number \"250\" which does not appear in the input"
+            "questions.1 uses number \"200\" which does not appear in the input"
           ],
           [
             "questions.0 uses number \"50\" which does not appear in the input",
@@ -901,9 +1559,42 @@
           "questions.0 uses number \"50\" which does not appear in the input",
           "questions.0 uses number \"200\" which does not appear in the input",
           "questions.1 uses number \"120\" which does not appear in the input",
-          "questions.1 uses number \"250\" which does not appear in the input"
+          "questions.1 uses number \"200\" which does not appear in the input"
         ],
-        "first_raw": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"Svetoforun qırmızı işığında hərəkəti davam etdirməyin cəriməsi nə qədərdir?\",\"options\":[\"50 AZN\",\"100 AZN\",\"150 AZN\",\"200 AZN\"],\"correct_index\":1,\"explanation\":\"Qırmızı işıqda keçmək qaydasının cəriməsi 100 AZN təşkil edir.\"},{\"rule\":\"wrong_way\",\"question\":\"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi neçə manatdır?\",\"options\":[\"100 AZN\",\"120 AZN\",\"150 AZN\",\"250 AZN\"],\"correct_index\":2,\"explanation\":\"Birtərəfli yolda əks istiqamətdə hərəkət etməyə görə 150 AZN cərimə nəzərdə tutulur.\"},{\"rule\":\"red_light\",\"question\":\"Svetoforun qırmızı işığında keçmək hansı növ pozuntuya aiddir?\",\"options\":[\"Ağır pozuntu\",\"Yüngül pozuntu\",\"Orta pozuntu\",\"Pozuntu deyil\"],\"correct_index\":0,\"explanation\":\"Qırmızı işıqda keçmək ağır səviyyəli pozuntudur.\"}]}",
+        "first_raw": "{\"questions\": [{\"rule\": \"red_light\", \"question\": \"Svetoforun qırmızı işığında hərəkəti davam etdirməyin cəriməsi nə qədərdir?\", \"options\": [\"50 AZN\", \"100 AZN\", \"150 AZN\", \"200 AZN\"], \"correct_index\": 1, \"explanation\": \"Qırmızı işıqda keçmək qaydasının pozulmasına görə cərimə 100 AZN təşkil edir.\"}, {\"rule\": \"wrong_way\", \"question\": \"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi nə qədərdir?\", \"options\": [\"100 AZN\", \"120 AZN\", \"150 AZN\", \"200 AZN\"], \"correct_index\": 2, \"explanation\": \"Birtərəfli yolda əks istiqamətdə hərəkət etməyə görə cərimə 150 AZN-dir.\"}, {\"rule\": \"red_light\", \"question\": \"Svetoforun qırmızı işığı yanarkən nə etmək lazımdır?\", \"options\": [\"Sürəti azaldıb keçmək\", \"Dayanmaq\", \"Siqnal verib hərəkət etmək\", \"Yolu diqqətlə keçmək\"], \"correct_index\": 1, \"explanation\": \"Qırmızı işıqda keçmək qadağandır və 100 AZN cərimə tətbiq olunur.\"}]}",
+        "questions": []
+      },
+      {
+        "set": "light_wrongway_giveway",
+        "locale": "az",
+        "run": 2,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 1179,
+        "output_tokens": 622,
+        "latency_ms": 2158,
+        "validation_errors": [
+          [
+            "questions.0 uses number \"50\" which does not appear in the input",
+            "questions.0 uses number \"200\" which does not appear in the input",
+            "questions.1 uses number \"120\" which does not appear in the input",
+            "questions.1 uses number \"200\" which does not appear in the input"
+          ],
+          [
+            "questions.0 uses number \"50\" which does not appear in the input",
+            "questions.0 uses number \"200\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": true,
+        "first_errors": [
+          "questions.0 uses number \"50\" which does not appear in the input",
+          "questions.0 uses number \"200\" which does not appear in the input",
+          "questions.1 uses number \"120\" which does not appear in the input",
+          "questions.1 uses number \"200\" which does not appear in the input"
+        ],
+        "first_raw": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"Svetoforun qırmızı işığında hərəkəti davam etdirməyin cəriməsi nə qədərdir?\",\"options\":[\"50 AZN\",\"100 AZN\",\"150 AZN\",\"200 AZN\"],\"correct_index\":1,\"explanation\":\"Qırmızı işıqda keçmək qaydasının cəriməsi 100 AZN təşkil edir.\"},{\"rule\":\"wrong_way\",\"question\":\"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi neçə manatdır?\",\"options\":[\"100 AZN\",\"120 AZN\",\"150 AZN\",\"200 AZN\"],\"correct_index\":2,\"explanation\":\"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi 150 AZN-dir.\"},{\"rule\":\"red_light\",\"question\":\"Svetoforun qırmızı işığı yanarkən nə etmək lazımdır?\",\"options\":[\"Sürəti azaldıb keçmək\",\"Dayanmaq\",\"Siqnal verib hərəkət etmək\",\"Yolu diqqətlə keçmək\"],\"correct_index\":1,\"explanation\":\"Qırmızı işıqda keçmək qadağandır və sürücü dayanmalıdır.\"}]}",
         "questions": []
       },
       {
@@ -913,8 +1604,8 @@
         "status": "ready",
         "attempts": 1,
         "input_tokens": 414,
-        "output_tokens": 229,
-        "latency_ms": 3183,
+        "output_tokens": 236,
+        "latency_ms": 1251,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -947,13 +1638,91 @@
       },
       {
         "set": "collision_speeding",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 414,
+        "output_tokens": 204,
+        "latency_ms": 1237,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "speeding",
+            "correct_index": 3,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 0,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "collision_speeding",
         "locale": "ru",
         "run": 1,
         "status": "ready",
         "attempts": 1,
         "input_tokens": 434,
-        "output_tokens": 229,
-        "latency_ms": 1499,
+        "output_tokens": 232,
+        "latency_ms": 1773,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "speeding",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 3,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "collision_speeding",
+        "locale": "ru",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 434,
+        "output_tokens": 233,
+        "latency_ms": 1118,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -991,8 +1760,47 @@
         "status": "ready",
         "attempts": 1,
         "input_tokens": 494,
-        "output_tokens": 349,
-        "latency_ms": 1228,
+        "output_tokens": 364,
+        "latency_ms": 1176,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "speeding",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 3,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "collision_speeding",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 494,
+        "output_tokens": 303,
+        "latency_ms": 1096,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -1030,8 +1838,47 @@
         "status": "ready",
         "attempts": 1,
         "input_tokens": 591,
-        "output_tokens": 230,
-        "latency_ms": 1157,
+        "output_tokens": 253,
+        "latency_ms": 1008,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "stop_sign",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 3,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "all_rules",
+        "locale": "en",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 591,
+        "output_tokens": 234,
+        "latency_ms": 1017,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -1041,8 +1888,8 @@
         "questions": [
           {
             "rule": "speeding",
-            "correct_index": 1,
-            "fact": null,
+            "correct_index": 0,
+            "fact": true,
             "duplicate_of_bank": false,
             "language_ok": true
           },
@@ -1069,8 +1916,47 @@
         "status": "ready",
         "attempts": 1,
         "input_tokens": 631,
+        "output_tokens": 390,
+        "latency_ms": 1197,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "stop_sign",
+            "correct_index": 0,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "all_rules",
+        "locale": "ru",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 631,
         "output_tokens": 349,
-        "latency_ms": 1310,
+        "latency_ms": 1056,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -1094,7 +1980,7 @@
           },
           {
             "rule": "pedestrian_crossing",
-            "correct_index": 2,
+            "correct_index": 3,
             "fact": null,
             "duplicate_of_bank": false,
             "language_ok": true
@@ -1108,8 +1994,8 @@
         "status": "ready",
         "attempts": 1,
         "input_tokens": 694,
-        "output_tokens": 339,
-        "latency_ms": 3040,
+        "output_tokens": 296,
+        "latency_ms": 1215,
         "validation_errors": [],
         "first_try_clean": true,
         "first_schema_ok": true,
@@ -1139,6 +2025,45 @@
             "language_ok": true
           }
         ]
+      },
+      {
+        "set": "all_rules",
+        "locale": "az",
+        "run": 2,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 694,
+        "output_tokens": 290,
+        "latency_ms": 1164,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 2,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "stop_sign",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
       }
     ],
     "chat": [
@@ -1154,8 +2079,8 @@
         ],
         "attempts": 1,
         "input_tokens": 416,
-        "output_tokens": 66,
-        "latency_ms": 1210,
+        "output_tokens": 64,
+        "latency_ms": 1252,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1176,7 +2101,7 @@
         "attempts": 1,
         "input_tokens": 442,
         "output_tokens": 65,
-        "latency_ms": 2637,
+        "latency_ms": 1223,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1196,8 +2121,8 @@
         ],
         "attempts": 1,
         "input_tokens": 455,
-        "output_tokens": 86,
-        "latency_ms": 1309,
+        "output_tokens": 89,
+        "latency_ms": 1223,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1217,8 +2142,8 @@
         ],
         "attempts": 1,
         "input_tokens": 402,
-        "output_tokens": 57,
-        "latency_ms": 1157,
+        "output_tokens": 64,
+        "latency_ms": 1223,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1238,8 +2163,8 @@
         ],
         "attempts": 1,
         "input_tokens": 426,
-        "output_tokens": 55,
-        "latency_ms": 1151,
+        "output_tokens": 63,
+        "latency_ms": 1053,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1259,8 +2184,8 @@
         ],
         "attempts": 1,
         "input_tokens": 435,
-        "output_tokens": 62,
-        "latency_ms": 1257,
+        "output_tokens": 76,
+        "latency_ms": 1124,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1280,8 +2205,8 @@
         ],
         "attempts": 1,
         "input_tokens": 401,
-        "output_tokens": 67,
-        "latency_ms": 1121,
+        "output_tokens": 46,
+        "latency_ms": 948,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1301,8 +2226,8 @@
         ],
         "attempts": 1,
         "input_tokens": 425,
-        "output_tokens": 49,
-        "latency_ms": 1041,
+        "output_tokens": 46,
+        "latency_ms": 990,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1322,8 +2247,8 @@
         ],
         "attempts": 1,
         "input_tokens": 434,
-        "output_tokens": 79,
-        "latency_ms": 1095,
+        "output_tokens": 74,
+        "latency_ms": 1199,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1344,8 +2269,8 @@
         ],
         "attempts": 1,
         "input_tokens": 403,
-        "output_tokens": 69,
-        "latency_ms": 1299,
+        "output_tokens": 67,
+        "latency_ms": 1551,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1366,8 +2291,8 @@
         ],
         "attempts": 1,
         "input_tokens": 427,
-        "output_tokens": 86,
-        "latency_ms": 969,
+        "output_tokens": 84,
+        "latency_ms": 993,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1389,7 +2314,7 @@
         "attempts": 1,
         "input_tokens": 436,
         "output_tokens": 95,
-        "latency_ms": 1463,
+        "latency_ms": 1390,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1409,8 +2334,8 @@
         ],
         "attempts": 1,
         "input_tokens": 405,
-        "output_tokens": 50,
-        "latency_ms": 1085,
+        "output_tokens": 57,
+        "latency_ms": 1001,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1430,8 +2355,8 @@
         ],
         "attempts": 1,
         "input_tokens": 429,
-        "output_tokens": 65,
-        "latency_ms": 1142,
+        "output_tokens": 53,
+        "latency_ms": 932,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1451,8 +2376,8 @@
         ],
         "attempts": 1,
         "input_tokens": 438,
-        "output_tokens": 89,
-        "latency_ms": 1248,
+        "output_tokens": 94,
+        "latency_ms": 1067,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1472,13 +2397,13 @@
         ],
         "attempts": 1,
         "input_tokens": 399,
-        "output_tokens": 41,
-        "latency_ms": 1799,
+        "output_tokens": 55,
+        "latency_ms": 849,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
         "rules_as_expected": true,
-        "language_ok": false,
+        "language_ok": true,
         "first_raw": null
       },
       {
@@ -1488,11 +2413,13 @@
         "expect": "answer",
         "status": "ready",
         "kind": "answer",
-        "rules": [],
+        "rules": [
+          "speeding"
+        ],
         "attempts": 1,
         "input_tokens": 423,
-        "output_tokens": 49,
-        "latency_ms": 1639,
+        "output_tokens": 77,
+        "latency_ms": 947,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1512,8 +2439,8 @@
         ],
         "attempts": 1,
         "input_tokens": 432,
-        "output_tokens": 91,
-        "latency_ms": 1435,
+        "output_tokens": 93,
+        "latency_ms": 931,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1531,8 +2458,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 447,
-        "output_tokens": 39,
-        "latency_ms": 942,
+        "output_tokens": 27,
+        "latency_ms": 884,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1550,8 +2477,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 471,
-        "output_tokens": 44,
-        "latency_ms": 1080,
+        "output_tokens": 28,
+        "latency_ms": 1102,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1569,8 +2496,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 480,
-        "output_tokens": 36,
-        "latency_ms": 949,
+        "output_tokens": 49,
+        "latency_ms": 1006,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1588,8 +2515,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 448,
-        "output_tokens": 34,
-        "latency_ms": 1033,
+        "output_tokens": 26,
+        "latency_ms": 988,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1607,8 +2534,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 474,
-        "output_tokens": 43,
-        "latency_ms": 1918,
+        "output_tokens": 44,
+        "latency_ms": 962,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1626,8 +2553,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 487,
-        "output_tokens": 50,
-        "latency_ms": 1166,
+        "output_tokens": 40,
+        "latency_ms": 1034,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1646,7 +2573,7 @@
         "attempts": 1,
         "input_tokens": 445,
         "output_tokens": 39,
-        "latency_ms": 1178,
+        "latency_ms": 878,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1664,8 +2591,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 469,
-        "output_tokens": 42,
-        "latency_ms": 1026,
+        "output_tokens": 39,
+        "latency_ms": 1035,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1684,7 +2611,7 @@
         "attempts": 1,
         "input_tokens": 478,
         "output_tokens": 38,
-        "latency_ms": 966,
+        "latency_ms": 1108,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1702,8 +2629,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 431,
-        "output_tokens": 39,
-        "latency_ms": 1236,
+        "output_tokens": 38,
+        "latency_ms": 846,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1721,8 +2648,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 455,
-        "output_tokens": 39,
-        "latency_ms": 975,
+        "output_tokens": 41,
+        "latency_ms": 983,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1740,8 +2667,8 @@
         "rules": [],
         "attempts": 1,
         "input_tokens": 464,
-        "output_tokens": 47,
-        "latency_ms": 2845,
+        "output_tokens": 38,
+        "latency_ms": 898,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1760,7 +2687,7 @@
         "attempts": 1,
         "input_tokens": 444,
         "output_tokens": 32,
-        "latency_ms": 969,
+        "latency_ms": 981,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1779,7 +2706,7 @@
         "attempts": 1,
         "input_tokens": 468,
         "output_tokens": 32,
-        "latency_ms": 1850,
+        "latency_ms": 923,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1798,7 +2725,7 @@
         "attempts": 1,
         "input_tokens": 477,
         "output_tokens": 33,
-        "latency_ms": 1031,
+        "latency_ms": 1068,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1817,7 +2744,7 @@
         "attempts": 1,
         "input_tokens": 445,
         "output_tokens": 32,
-        "latency_ms": 1115,
+        "latency_ms": 876,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1836,7 +2763,7 @@
         "attempts": 1,
         "input_tokens": 469,
         "output_tokens": 24,
-        "latency_ms": 1128,
+        "latency_ms": 969,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,
@@ -1855,7 +2782,7 @@
         "attempts": 1,
         "input_tokens": 478,
         "output_tokens": 32,
-        "latency_ms": 1007,
+        "latency_ms": 982,
         "validation_errors": [],
         "kind_as_expected": true,
         "guard_holds": true,

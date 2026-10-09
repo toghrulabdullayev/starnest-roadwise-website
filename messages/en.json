@@ -92,6 +92,13 @@
     "worse": "Worse",
     "same": "Same"
   },
+  "units": {
+    "kmh": "km/h",
+    "km": "km"
+  },
+  "districts": {
+    "baku-center": "central Baku"
+  },
   "instructor": {
     "summaryClean": "Clean drive: all {passed} rule checks passed with no fines.",
     "summaryNoChecks": "No rule checks were recorded on this drive.",

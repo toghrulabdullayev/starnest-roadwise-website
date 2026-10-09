@@ -372,7 +372,7 @@ function renderMarkdown(r: any): string {
   L.push(`|---|---|---|`);
   L.push(`| Pipeline runs | ${r.totals.pipeline_runs} (${r.totals.ai_ready} AI, ${r.totals.fallback} fallback) | cases × runs × languages |`);
   L.push(`| Schema validity | ${v(m.schema_validity_first_attempt_pct, "%")} | model output valid JSON matching the schema on the first attempt |`);
-  L.push(`| **Grounding rate** | **${v(m.grounding_rate_first_attempt_pct, "%")}** | first attempt passes all 6 validator checks |`);
+  L.push(`| **Grounding rate** | **${v(m.grounding_rate_first_attempt_pct, "%")}** | first attempt passes all 7 validator checks |`);
   L.push(`| Hallucinated references | events ${m.hallucinated_references_first_attempt.unknown_event} · rules ${m.hallucinated_references_first_attempt.unknown_rule} · numbers ${m.hallucinated_references_first_attempt.invented_number} | unknown event ids / rule keys / unseen numbers on first attempts |`);
   L.push(`| Major-fault recall | AI ${v(m.major_fault_recall_ai_pct, "%")} · fallback ${v(m.major_fault_recall_fallback_pct, "%")} | major failed checks covered by an issue |`);
   L.push(`| Prioritisation | ${v(m.prioritisation_ai_pct, "%")} | issue #1 is the most severe fault (AI) |`);

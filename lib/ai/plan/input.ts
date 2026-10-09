@@ -1,4 +1,5 @@
 import type { Locale } from "../../i18n/config";
+import { fmtDate } from "../../i18n/format";
 import type { FocusEntry } from "../../profile/focus";
 import { RULES, ruleName, type RuleKey } from "../../rules/catalog";
 
@@ -11,6 +12,7 @@ export type PlanInput = {
     severity: string;
     weight: number;
     count: number;
+    /** localized date ("7 Oct 2026"), the form the plan text may quote */
     last_seen: string;
     trend: FocusEntry["trend"];
   }[];
@@ -24,7 +26,7 @@ export function buildPlanInput(focus: FocusEntry[], locale: Locale): PlanInput {
       severity: RULES[f.rule].severity ?? "by_band",
       weight: f.weight,
       count: f.count,
-      last_seen: f.last_seen.slice(0, 10),
+      last_seen: fmtDate(locale, f.last_seen, false),
       trend: f.trend,
     })),
   };

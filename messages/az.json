@@ -93,6 +93,13 @@
     "worse": "Pisləşib",
     "same": "Dəyişməyib"
   },
+  "units": {
+    "kmh": "km/saat",
+    "km": "km"
+  },
+  "districts": {
+    "baku-center": "Bakının mərkəzi"
+  },
   "instructor": {
     "summaryClean": "Təmiz sürüş: {passed} qayda yoxlamasının hamısından keçdiniz, cərimə yoxdur.",
     "summaryNoChecks": "Bu sürüşdə qayda yoxlaması qeydə alınmayıb.",

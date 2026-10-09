@@ -78,6 +78,27 @@ describe("grounding validator", () => {
   it("6. rejects a debrief that does not cover a major failed check", () => {
     expect(kinds({ ...good, issues: [good.issues[1]] })).toContain("uncovered_major");
   });
+  it("7. rejects internal keys: snake_case anywhere, key words in Russian and Azerbaijani text", () => {
+    expect(kinds({ ...good, readiness_comment: "Band: not_ready." })).toContain("internal_key");
+    expect(kinds({ ...good, progress: { improved: ["compliance_rate"], worse: [] } })).toContain("internal_key");
+    expect(kinds({ ...good, readiness_comment: "Most points went on minors." })).toContain("internal_key");
+    expect(check({ ...good, readiness_comment: "Harsh braking and compliance cost the most; you are almost ready." })).toMatchObject({ ok: true });
+    // `good` is written in English, so only the field under test is judged as Russian text
+    const ruKeys = (text: string) => {
+      const r = validateDebrief(JSON.stringify({ ...good, readiness_comment: text }), input, "ru");
+      return r.ok ? [] : r.errors.filter((e) => e.message.startsWith("readiness_comment")).map((e) => e.check);
+    };
+    expect(ruKeys("Категория almost, компоненты harsh и compliance.")).toEqual(["internal_key", "internal_key", "internal_key"]);
+    expect(ruKeys("Больше всего баллов снято за грубые ошибки на Nizami küç.")).toEqual([]);
+  });
+  it("input carries localized labels, units and district names instead of bare keys", () => {
+    const ru = inputFor("progress_series_3", "ru", ["progress_series_1", "progress_series_2"]);
+    expect(ru.readiness.band_label).toMatch(/[А-Яа-я]/);
+    expect(ru.readiness.components.every((c) => /[А-Яа-я]/.test(c.label))).toBe(true);
+    expect(ru.history!.changes.every((c) => /[А-Яа-я]/.test(c.label))).toBe(true);
+    expect(ru.units.speed).toBe("км/ч");
+    expect(ru.context.district).toBe("центр Баку");
+  });
 });
 
 describe("fallback debrief", () => {
@@ -86,7 +107,7 @@ describe("fallback debrief", () => {
     for (const l of ["en", "ru", "az"] as const)
       it(`${n} (${l}) passes its own validator`, () => {
         const input = inputFor(n, l);
-        const r = validateDebrief(JSON.stringify(buildFallbackDebrief(input, l)), input);
+        const r = validateDebrief(JSON.stringify(buildFallbackDebrief(input, l)), input, l);
         expect(r.ok ? [] : r.errors).toEqual([]);
       });
   it("with history it lists improvements (progress_series_3)", () => {

@@ -1,4 +1,6 @@
+import type { Locale } from "../../i18n/config";
 import { ungroundedNumbers } from "../numbers";
+import { internalKeys } from "../style";
 import type { PlanInput } from "./input";
 import { planSchema, type LearningPlan } from "./schema";
 
@@ -6,7 +8,7 @@ export type PlanValidation =
   | { ok: true; plan: LearningPlan }
   | { ok: false; errors: string[] };
 
-export function validatePlan(raw: string, input: PlanInput): PlanValidation {
+export function validatePlan(raw: string, input: PlanInput, locale: Locale = "en"): PlanValidation {
   let json: unknown;
   try {
     json = JSON.parse(raw);
@@ -43,6 +45,9 @@ export function validatePlan(raw: string, input: PlanInput): PlanValidation {
   const texts = [plan.summary, ...plan.priorities.flatMap((p) => [p.why, p.practice])];
   for (const n of ungroundedNumbers(texts, JSON.stringify(input))) {
     errors.push(`number "${n}" does not appear in the input`);
+  }
+  for (const key of new Set(texts.flatMap((t) => internalKeys(t, locale)))) {
+    errors.push(`the text contains the internal key "${key}"; write the name from the input instead`);
   }
 
   return errors.length === 0 ? { ok: true, plan } : { ok: false, errors };

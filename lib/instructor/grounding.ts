@@ -6,12 +6,23 @@
  *  4. an issue cites an event that is not a failed check (or of another rule); a strength cites a non-pass
  *  5. its free text contains a number that does not appear in the serialised input (mm:ss allowed if present)
  *  6. a major failed check in the input is not covered by any issue
+ *  7. its free text shows an internal identifier (snake_case key, or a band/component/rule key
+ *     as a Latin word in Russian or Azerbaijani text) instead of the label from the input
  */
 import { debriefSchema, type Debrief } from "@/lib/prompts/debrief";
 import { isRuleKey } from "@/lib/rules/catalog";
+import { internalKeys } from "@/lib/ai/style";
+import type { Locale } from "@/lib/i18n/config";
 import type { DebriefInput } from "./input";
 
-export type GroundingCheck = "schema" | "unknown_event" | "unknown_rule" | "wrong_event_kind" | "invented_number" | "uncovered_major";
+export type GroundingCheck =
+  | "schema"
+  | "unknown_event"
+  | "unknown_rule"
+  | "wrong_event_kind"
+  | "invented_number"
+  | "uncovered_major"
+  | "internal_key";
 
 export interface GroundingError {
   check: GroundingCheck;
@@ -70,7 +81,7 @@ function freeTexts(d: Debrief): { where: string; text: string }[] {
   return out;
 }
 
-export function validateDebrief(raw: string, input: DebriefInput): GroundingResult {
+export function validateDebrief(raw: string, input: DebriefInput, locale: Locale = "en"): GroundingResult {
   // 1. JSON + schema
   let json: unknown;
   try {
@@ -135,6 +146,11 @@ export function validateDebrief(raw: string, input: DebriefInput): GroundingResu
   for (const e of input.events)
     if (e.outcome === "fail" && e.severity === "major" && !cited.has(e.id))
       errors.push({ check: "uncovered_major", message: `Major failed check "${e.id}" (${e.rule} at ${e.time}) is not covered by any issue.` });
+
+  // 7: no internal identifiers in text the student reads
+  for (const { where, text } of freeTexts(d))
+    for (const key of internalKeys(text, locale))
+      errors.push({ check: "internal_key", message: `${where} contains the internal key "${key}"; write the label from the input instead.` });
 
   return errors.length ? { ok: false, errors, debrief: d } : { ok: true, debrief: d };
 }

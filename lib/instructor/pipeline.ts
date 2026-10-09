@@ -3,6 +3,7 @@
  * Pure apart from the injected LLM client, so the eval harness runs it directly.
  */
 import { PROMPT_VERSION, type Debrief } from "@/lib/prompts/debrief";
+import { localizeDecimals } from "@/lib/ai/style";
 import type { Locale } from "@/lib/i18n/config";
 import { buildFallbackDebrief } from "./fallback";
 import { validateDebrief, type GroundingError } from "./grounding";
@@ -37,6 +38,20 @@ export interface PipelineResult {
   validation_errors: string[];
 }
 
+/** Decimal comma in RU/AZ text (the validator reads 9,7 and 9.7 as the same number). */
+function localizeDebriefText(d: Debrief, locale: Locale): Debrief {
+  const t = (s: string) => localizeDecimals(s, locale);
+  return {
+    ...d,
+    summary: t(d.summary),
+    strengths: d.strengths.map((s) => ({ ...s, text: t(s.text) })),
+    issues: d.issues.map((i) => ({ ...i, title: t(i.title), why_it_matters: t(i.why_it_matters), how_to_fix: t(i.how_to_fix) })),
+    progress: d.progress && { improved: d.progress.improved.map(t), worse: d.progress.worse.map(t) },
+    next_drive: { ...d.next_drive, focus: t(d.next_drive.focus), drills: d.next_drive.drills.map(t) },
+    readiness_comment: t(d.readiness_comment),
+  };
+}
+
 export async function runDebriefPipeline(input: DebriefInput, locale: Locale, client: LlmClient | null): Promise<PipelineResult> {
   const log: AttemptRecord[] = [];
   const reasons: string[] = [];
@@ -64,7 +79,7 @@ export async function runDebriefPipeline(input: DebriefInput, locale: Locale, cl
       totals.input_tokens += result.input_tokens;
       totals.output_tokens += result.output_tokens;
       totals.latency_ms += result.latency_ms;
-      const check = validateDebrief(result.text, input);
+      const check = validateDebrief(result.text, input, locale);
       log.push({
         attempt,
         ok: check.ok,
@@ -74,7 +89,7 @@ export async function runDebriefPipeline(input: DebriefInput, locale: Locale, cl
         output_tokens: result.output_tokens,
         latency_ms: result.latency_ms,
       });
-      if (check.ok) return done("ready", check.debrief);
+      if (check.ok) return done("ready", localizeDebriefText(check.debrief, locale));
       previous = check.errors.map((e) => e.message);
       reasons.push(...check.errors.map((e) => `attempt ${attempt} [${e.check}] ${e.message}`));
     } catch (err) {

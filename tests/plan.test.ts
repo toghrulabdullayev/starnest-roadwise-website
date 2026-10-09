@@ -53,7 +53,9 @@ function fake(responses: unknown[]) {
 describe("plan input", () => {
   it("carries localized names, dates and at most five rules", () => {
     expect(input.focus[0].name.length).toBeGreaterThan(0);
-    expect(input.focus[0].last_seen).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(input.focus[0].last_seen).toMatch(/^\d{1,2} [A-Z][a-z]{2} \d{4}$/);
+    expect(buildPlanInput(focus, "ru").focus[0].last_seen).toMatch(/^\d{1,2} [а-я]+\.? \d{4} г\.$/);
+    expect(buildPlanInput(focus, "az").focus[0].last_seen).toMatch(/^\d{1,2} [a-zəğıöüçş]+ \d{4}$/);
     const many = buildPlanInput(
       Array.from({ length: 7 }, () => focus[0]),
       "en",
@@ -79,6 +81,12 @@ describe("plan grounding", () => {
     const foreign = goodPlan();
     (foreign.priorities as { rule: string }[])[0].rule = "wrong_way";
     expect(errorsOf(foreign).join()).toContain("is not in the input");
+  });
+
+  it("rejects internal keys in the text", () => {
+    expect(errorsOf(goodPlan({ summary: "Your stop_sign faults matter most." })).join()).toContain('internal key "stop_sign"');
+    const ru = validatePlan(JSON.stringify(goodPlan({ summary: "Ошибка minor, тренд improved." })), input, "ru");
+    expect(ru.ok ? [] : ru.errors.join()).toContain('internal key "improved"');
   });
 
   it("rejects invented numbers but allows numbers from the input", () => {

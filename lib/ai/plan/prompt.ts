@@ -1,7 +1,8 @@
 import type { Locale } from "../../i18n/config";
 import type { PlanInput } from "./input";
+import { styleRules } from "../style";
 
-export const PLAN_PROMPT_VERSION = "plan-1";
+export const PLAN_PROMPT_VERSION = "plan-2";
 
 const LANGUAGE: Record<Locale, string> = {
   en: "English",
@@ -18,6 +19,7 @@ export function planSystemPrompt(locale: Locale): string {
     "Use only the data provided. Never compute or invent numbers; quote numbers and dates only exactly as they appear in the input.",
     "Never mention weights, scores or internal fields. Talk about how many times a fault happened and when it was last seen.",
     "Each fault has a `severity` (major, minor, or by_band, which means it depends on how far over the limit the driver was): do not call a fault major or minor unless the input says so.",
+    ...styleRules(locale),
     `Write all text in ${LANGUAGE[locale]}.`,
     "Output JSON only.",
   ].join(" ");
