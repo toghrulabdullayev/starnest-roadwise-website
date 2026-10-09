@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { LearningData } from "@/lib/learning/page";
 import type { Locale } from "@/lib/i18n/config";
-import { fmt, type Dictionary } from "@/lib/i18n/getDictionary";
+import { fmt, plural, type Dictionary } from "@/lib/i18n/getDictionary";
 import { fmtDate, fmtKm, fmtNumber } from "@/lib/i18n/format";
 import type { Trend } from "@/lib/profile/focus";
 import { ruleName } from "@/lib/rules/catalog";
@@ -148,7 +148,7 @@ export function ExamComparisonCard({
         <li key={r.rule} className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-2 border-surface bg-canvas px-4 py-3">
           <div className="min-w-0">
             <p className="font-bold">{ruleName(r.rule, locale)}</p>
-            <p className="text-sm text-text-muted">{r.faults_in_exam === 0 ? t.compareNone : fmt(t.compareFaults, { n: r.faults_in_exam })}</p>
+            <p className="text-sm text-text-muted">{r.faults_in_exam === 0 ? t.compareNone : fmt(plural(locale, t.compareFaults, r.faults_in_exam), { n: r.faults_in_exam })}</p>
           </div>
           <Badge tone={tone[r.outcome]}>
             <span aria-hidden="true">{mark[r.outcome]} </span>

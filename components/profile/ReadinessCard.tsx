@@ -1,6 +1,6 @@
 import type { Readiness, ReadinessBand } from "@/lib/readiness";
 import type { Dictionary } from "@/lib/i18n/getDictionary";
-import { fmt } from "@/lib/i18n/getDictionary";
+import { fmt, plural } from "@/lib/i18n/getDictionary";
 import { fmtNumber } from "@/lib/i18n/format";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -40,7 +40,7 @@ export function ReadinessCard({ readiness, locale, dict }: { readiness: Readines
           >
             <div className={`h-3 ${s.fill}`} style={{ width: `${readiness.score}%` }} />
           </div>
-          <p className="text-sm text-text-on-dark-muted">{fmt(t.readinessBasis, { n: readiness.drives_considered })}</p>
+          <p className="text-sm text-text-on-dark-muted">{fmt(plural(locale, t.readinessBasis, readiness.drives_considered), { n: readiness.drives_considered })}</p>
         </div>
         <div>
           <h3 className="mb-2 font-sans text-sm font-bold uppercase tracking-wide text-text-on-dark-muted">{t.readinessBreakdown}</h3>
@@ -60,7 +60,7 @@ export function ReadinessCard({ readiness, locale, dict }: { readiness: Readines
                       c.points < 0 ? "text-[#fca5a5]" : c.points > 0 ? "text-[#86efac]" : "text-text-on-dark-muted"
                     }`}
                   >
-                    {c.points === 0 ? t.noDeduction : `${c.points > 0 ? "+" : "−"}${fmtNumber(locale, Math.abs(c.points), 1)} ${t.points}`}
+                    {c.points === 0 ? t.noDeduction : `${c.points > 0 ? "+" : "−"}${fmtNumber(locale, Math.abs(c.points), 1)} ${plural(locale, t.points, Math.abs(c.points))}`}
                   </td>
                 </tr>
               ))}

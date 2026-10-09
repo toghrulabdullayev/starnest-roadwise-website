@@ -33,3 +33,14 @@ describe("safeNext keeps the chosen language", () => {
     expect(safeNext("//evil.com", "/x", "en")).toBe("/x");
   });
 });
+
+import { plural } from "@/lib/i18n/getDictionary";
+describe("plural forms", () => {
+  it("English and Azerbaijani: one|other; Russian: one|few|many|other; no pipe = same for all", () => {
+    expect(plural("en", "{n} fault|{n} faults", 1)).toBe("{n} fault");
+    expect(plural("en", "{n} fault|{n} faults", 0)).toBe("{n} faults");
+    const ru = "балл|балла|баллов|балла";
+    expect([1, 2, 5, 9.7, 21].map((n) => plural("ru", ru, n))).toEqual(["балл", "балла", "баллов", "балла", "балл"]);
+    expect(plural("az", "bal", 7)).toBe("bal");
+  });
+});

@@ -1,7 +1,7 @@
 import type { DriveMetrics } from "@/lib/metrics";
 import type { History } from "@/lib/history";
 import type { Dictionary } from "@/lib/i18n/getDictionary";
-import { fmt } from "@/lib/i18n/getDictionary";
+import { fmt, plural } from "@/lib/i18n/getDictionary";
 import type { Locale } from "@/lib/i18n/config";
 import { fmtAzn, fmtKmh, fmtNumber, fmtPercent } from "@/lib/i18n/format";
 import { ruleName } from "@/lib/rules/catalog";
@@ -97,7 +97,7 @@ export function Deltas({ history, locale, dict }: { history: History | null; loc
   ];
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-sm text-text-muted">{fmt(t.deltasBasis, { n: history.previous_count })}</p>
+      <p className="text-sm text-text-muted">{fmt(plural(locale, t.deltasBasis, history.previous_count), { n: history.previous_count })}</p>
       <ul className="grid min-w-0 gap-2 lg:grid-cols-2">
         {rows.map((r) => (
           <li key={r.key} className="flex min-w-0 flex-wrap items-center justify-between gap-x-3 gap-y-1 border-2 border-surface bg-canvas px-3 py-2">

@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { startQuizAction, submitQuizAction } from "@/app/actions/learning";
 import { Alert, Badge, Button, buttonClass, Card } from "@/components/ui";
 import type { Locale } from "@/lib/i18n/config";
-import { fmt, type Dictionary } from "@/lib/i18n/getDictionary";
+import { fmt, plural, type Dictionary } from "@/lib/i18n/getDictionary";
 import type { AnsweredQuiz, PublicQuiz } from "@/lib/quiz/store";
 
 type Stage = "idle" | "loading" | "active" | "checking" | "done";
@@ -108,7 +108,7 @@ export function QuizRunner({ locale, labels, ruleNames }: { locale: Locale; labe
               </li>
             ))}
           </ol>
-          {answered < total && <p className="text-text-muted">{fmt(t.quizUnanswered, { n: total - answered })}</p>}
+          {answered < total && <p className="text-text-muted">{fmt(plural(locale, t.quizUnanswered, total - answered), { n: total - answered })}</p>}
           <Button variant="primary" onClick={submit} loading={stage === "checking"} loadingLabel={t.quizChecking} className="w-fit">
             {t.quizSubmit}
           </Button>
