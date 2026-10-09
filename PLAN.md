@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** MVP code done through 7.2. AI provider switched from Gemini to OpenAI (light model, plain fetch). Branch `ai-routes`: wired 3.4 drive_events, GET /api/me/focus, GET /api/me/exam-brief (remembers briefs; exam drives are compared with them), POST /api/me/plan + GET /api/me/plan/latest, GET /api/quiz/next + POST /api/quiz/answer, POST /api/chat. Live OpenAI checks blocked: the key is valid but the account has no credits (429). Next: document the new endpoints in GAME_INTEGRATION.md (9.4), pages 8.6, 8.7 eval, 7.3 deploy.
+**Status:** MVP code done through 7.2; `ai` branch merged (learning-loop libraries 8.1/8.2/8.4/8.5 and examiner chat 9.1, not yet wired to routes/pages). Blocked on secrets: 7.3 deploy (Turso token, Vercel), Gemini key for the 4.1 live check and 7.2 AI measures. Next unblocked work: **3.4** mistake records, then wiring Phase 8 routes and **8.6** pages.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:

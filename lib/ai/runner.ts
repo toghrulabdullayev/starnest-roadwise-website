@@ -3,7 +3,7 @@ import {
   generateJson,
   isAiConfigured,
   type GenerateJson,
-} from "./llm";
+} from "./gemini";
 
 export type RunnerOutcome<T> = {
   status: "ready" | "fallback";

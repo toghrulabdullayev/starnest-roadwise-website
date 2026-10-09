@@ -7,7 +7,7 @@ import { listDrives } from "@/lib/drives/queries";
 import { json, siteUrl, unauthorized } from "@/lib/http";
 import { parseTelemetry } from "@/lib/telemetry/schema";
 
-/** The debrief (OpenAI, up to 2 attempts) runs in after(); give it room. */
+/** The debrief (Gemini, up to 2 attempts) runs in after(); give it room. */
 export const maxDuration = 60;
 
 const MAX_BYTES = 4 * 1024 * 1024;

@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import type { GenerateJson } from "../lib/ai/llm";
+import type { GenerateJson } from "../lib/ai/gemini";
 import { validatePlan } from "../lib/ai/plan/grounding";
 import { buildPlanInput } from "../lib/ai/plan/input";
 import { generateLearningPlan, PLAN_MAX_ATTEMPTS } from "../lib/ai/plan/planner";

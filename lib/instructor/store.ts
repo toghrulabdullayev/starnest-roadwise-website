@@ -6,7 +6,7 @@ import type { Readiness } from "@/lib/readiness";
 import type { History } from "@/lib/history";
 import type { DriveTelemetry } from "@/lib/telemetry/schema";
 import { buildDebriefInput } from "./input";
-import { createLlmClient, type LlmClient } from "./llm";
+import { createGeminiClient, type LlmClient } from "./llm";
 import { runDebriefPipeline, type PipelineResult } from "./pipeline";
 
 /** A pending debrief older than this is treated as lost (function timed out) and replaced by the fallback. */
@@ -64,7 +64,7 @@ export async function loadDebriefInput(driveId: string, locale: Locale) {
 export async function generateAndStoreDebrief(
   driveId: string,
   locale: Locale,
-  client: LlmClient | null = createLlmClient(),
+  client: LlmClient | null = createGeminiClient(),
 ): Promise<PipelineResult | null> {
   const input = await loadDebriefInput(driveId, locale);
   if (!input) return null;

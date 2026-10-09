@@ -146,7 +146,7 @@ describe("pipeline: retry and fallback", () => {
     expect(r).toMatchObject({ status: "fallback", attempts: 1 });
     expect(r.validation_errors[0]).toContain("api_error");
   });
-  it("OPENAI_API_KEY unset → localized fallback", async () => {
+  it("GEMINI_API_KEY unset → localized fallback", async () => {
     const r = await runDebriefPipeline(inputFor("red_light_runner", "ru"), "ru", null);
     expect(r).toMatchObject({ status: "fallback", attempts: 0, model: null });
     expect(r.debrief.summary).toMatch(/[А-Яа-я]/);

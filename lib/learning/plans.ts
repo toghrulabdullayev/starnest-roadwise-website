@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { query, queryOne, run } from "@/lib/db";
-import type { GenerateJson } from "@/lib/ai/llm";
+import type { GenerateJson } from "@/lib/ai/gemini";
 import { generateLearningPlan } from "@/lib/ai/plan/planner";
 import type { LearningPlan } from "@/lib/ai/plan/schema";
 import type { Locale } from "@/lib/i18n/config";

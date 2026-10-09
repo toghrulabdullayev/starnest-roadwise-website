@@ -1,6 +1,6 @@
 ---
 name: roadwise-ai-instructor
-description: Use when working on Roadwise analytics and AI — deterministic driving metrics, the exam-readiness score, cross-drive history, the LLM debrief (prompt, JSON schema, grounding validator, retry, template fallback), EN/RU/AZ output, token and cost logging, and the evaluation harness that produces the quality-testing evidence. Assumes roadwise-platform is loaded.
+description: Use when working on Roadwise analytics and AI — deterministic driving metrics, the exam-readiness score, cross-drive history, the Gemini debrief (prompt, JSON schema, grounding validator, retry, template fallback), EN/RU/AZ output, token and cost logging, and the evaluation harness that produces the quality-testing evidence. Assumes roadwise-platform is loaded.
 ---
 
 # Roadwise — metrics and AI instructor
@@ -9,7 +9,7 @@ description: Use when working on Roadwise analytics and AI — deterministic dri
 
 ```
 upload ─► zod validate ─► metrics.ts ─► readiness.ts ─► history.ts ─► instructor.ts ─► grounding.ts ─► store
-                          pure + tested   pure + tested   previous ≤4     LLM             reject → 1 retry → fallback.ts
+                          pure + tested   pure + tested   previous ≤4     Gemini          reject → 1 retry → fallback.ts
 ```
 
 - `POST /api/drives` runs validate → metrics → readiness → history synchronously and returns them. The debrief runs inside `after()` (from `next/server`) and is read with `GET /api/drives/:id` (`status: pending | ready | fallback | error`).
@@ -57,11 +57,11 @@ Return `{ score, band, components: [{ key, value, points }] }`; the UI renders t
 
 Current drive vs mean of up to 4 previous drives: compliance_rate, fines, overspeed share, harsh events/10 min, composure, per-rule counts. Each delta: `improved | worse | same` with a minimum-change threshold. First drive → `null`.
 
-## 5. LLM debrief (`lib/instructor/`, shared call in `lib/ai/llm.ts`)
+## 5. Gemini debrief (`lib/instructor.ts`)
 
-- Provider: OpenAI chat completions through plain `fetch` (no SDK) with `response_format: json_schema` (`strict: false`; our zod validators are the real check). Light model by default (`gpt-4.1-mini`; any chat model via `OPENAI_MODEL`). Reasoning models (`gpt-5*`, `o*`) get `reasoning_effort: low` and no temperature.
-- Env: `OPENAI_API_KEY`, `OPENAI_MODEL`.
-- Temperature 0.2. Log `model, prompt_version, input_tokens, output_tokens, latency_ms, attempts` per call. Cost per debrief = logged tokens × the current OpenAI price page; never hard-code prices.
+- SDK: `@google/genai`. **Check the current structured-output API before coding** at https://ai.google.dev/gemini-api/docs/structured-output (recent docs show `client.interactions.create({ model, input, response_format: { type: "text", mime_type: "application/json", schema } })` and `z.fromJSONSchema`). Use whichever the installed SDK version documents.
+- Env: `GEMINI_API_KEY`, `GEMINI_MODEL` (default to the current Flash model in the docs, e.g. `gemini-3.8-flash`).
+- Temperature 0.2. Log `model, prompt_version, input_tokens, output_tokens, latency_ms, attempts` per call. Cost per debrief = logged tokens × current price page; never hard-code prices.
 
 **Input** (never raw samples, email or name): context, metrics, readiness breakdown, history deltas, events trimmed to failed checks + up to 10 passes (`id, time mm:ss, rule, outcome, severity, street, detail`), and a rules glossary for the rules present (key, localized name, fine, severity).
 
@@ -103,7 +103,7 @@ Store every rejection reason in `validation_errors` — these are the "examples 
 
 **Real drives:** export recorded drives (no personal data) to `eval/real/`.
 
-**`npm run eval`** (needs `OPENAI_API_KEY`): each fixture/real drive × 3 runs × each language → `eval/REPORT.md` + `eval/report.json`:
+**`npm run eval`** (needs `GEMINI_API_KEY`): each fixture/real drive × 3 runs × each language → `eval/REPORT.md` + `eval/report.json`:
 
 | Measure | Definition |
 |---|---|

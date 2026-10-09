@@ -127,7 +127,7 @@ JSON Schema: `contracts/roadwise.drive.v1.schema.json`. Valid examples: `fixture
 
    ```json
    200 {"id":"1ebfff69-…",
-        "debrief":{"status":"fallback","locale":"az","model":"gpt-4.1-mini","prompt_version":"debrief-v1",
+        "debrief":{"status":"fallback","locale":"az","model":"gemini-3.8-flash","prompt_version":"debrief-v1",
           "content":{
             "summary":"6 qayda yoxlamasından 4 keçildi, cərimələr 110 AZN təşkil etdi. …",
             "strengths":[{"text":"…","event_ids":["e1","e2"]}],

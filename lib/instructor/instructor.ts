@@ -1,5 +1,5 @@
 /**
- * AI instructor: one LLM request for a debrief, logged with
+ * AI instructor: one Gemini request for a debrief, logged with
  * model, prompt_version, tokens, latency and attempt (roadwise-ai-instructor §5).
  */
 import { PROMPT_VERSION, systemPrompt } from "@/lib/prompts/debrief";

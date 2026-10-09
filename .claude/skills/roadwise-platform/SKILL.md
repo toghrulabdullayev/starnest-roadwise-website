@@ -68,7 +68,7 @@ Vercel: Next.js (App Router, TypeScript) — website + API
   lib/db        libSQL (SQLite): local file in dev, Turso in production
   lib/metrics   deterministic, tested
   lib/readiness deterministic score with breakdown
-  lib/instructor LLM (OpenAI) → JSON debrief → grounding validator → fallback
+  lib/instructor Gemini → JSON debrief → grounding validator → fallback
 Game installers: GitHub Releases (link only)
 ```
 

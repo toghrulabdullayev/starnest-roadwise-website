@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { GenerateJson } from "../lib/ai/llm";
+import type { GenerateJson } from "../lib/ai/gemini";
 import { CHAT_LIMIT, chatLimiter } from "../lib/ai/chat/rateLimit";
 import { buildChatInput } from "../lib/ai/chat/input";
 import { validateChatReply } from "../lib/ai/chat/grounding";

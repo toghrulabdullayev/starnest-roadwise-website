@@ -1,7 +1,7 @@
 import type { Locale } from "../../i18n/config";
 import type { QuizQuestion } from "../../quiz/types";
 import type { RuleKey } from "../../rules/catalog";
-import type { GenerateJson } from "../llm";
+import type { GenerateJson } from "../gemini";
 import { runGrounded } from "../runner";
 import { validateGeneratedQuiz } from "./grounding";
 import { buildQuizGenInput } from "./input";

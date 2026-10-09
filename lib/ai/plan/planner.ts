@@ -1,7 +1,7 @@
 import type { Locale } from "../../i18n/config";
 import type { FocusEntry } from "../../profile/focus";
 import type { RuleKey } from "../../rules/catalog";
-import type { GenerateJson } from "../llm";
+import type { GenerateJson } from "../gemini";
 import { runGrounded } from "../runner";
 import { ruleTips } from "../tips";
 import { buildFallbackPlan, type PlanDictionary } from "./fallback";
