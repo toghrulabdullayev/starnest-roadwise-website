@@ -389,5 +389,40 @@
       "Oyuna qayıdın — orada adınızla «Daxil olunub» yazılacaq. İndi hər sürüş profilinizə yüklənir."
     ],
     "noAccount": "Hələ hesabınız yoxdur?"
+  },
+  "plan": {
+    "summary": "Hazırda əsas zəif nöqtələriniz: {rules}.",
+    "empty": "Hələ təkrarlanan pozuntu yoxdur. Müxtəlif marşrutlarda məşq etməyə davam edin.",
+    "why": "Qeydə alınma sayı: {count}; sonuncu dəfə: {last}.",
+    "trendImproved": "Vəziyyət yaxşılaşır.",
+    "trendWorse": "Vəziyyət pisləşir.",
+    "trendSame": "Hələlik dəyişiklik yoxdur."
+  },
+  "quiz": {
+    "fineQuestion": "Bu pozuntuya görə cərimə nə qədərdir: {rule}?",
+    "fineExplain": "«{rule}» üzrə cərimə {fine} AZN-dir.",
+    "fineUnit": "{fine} AZN",
+    "severityQuestion": "İmtahanda bu pozuntuya necə yanaşılır: {rule}?",
+    "severityMajor": "Ağır pozuntu: imtahan dərhal uğursuz olur",
+    "severityMinor": "Yüngül pozuntu: səhv kimi sayılır",
+    "severityNone": "İmtahanda cəza yoxdur",
+    "severityWarning": "Yalnız xəbərdarlıq",
+    "severityExplainMajor": "«{rule}» ağır pozuntudur, ona görə imtahan dərhal uğursuz olur.",
+    "severityExplainMinor": "«{rule}» yüngül pozuntudur; yüngül pozuntular imtahan boyu toplanır.",
+    "limitQuestion": "Bu yerdə sürət həddi nədir: {zone}?",
+    "limitExplain": "«{zone}» üçün sürət həddi {limit} km/saatdır.",
+    "limitUnit": "{limit} km/saat",
+    "zones": {
+      "living_zone": "yaşayış zonası",
+      "city": "şəhər (məskunlaşmış ərazi)",
+      "outside_built_up": "məskunlaşmış ərazidən kənar",
+      "motorway": "magistral yol"
+    }
+  },
+  "chat": {
+    "fallbackGeneric": "Hazırda cavab verə bilmirəm. Ən yaxın nişana baxın və sürət həddinə əməl edin.",
+    "fallbackFault": "Son pozuntunuz ({rule}) haqqında: {tip}",
+    "examRefusal": "İmtahan zamanı yalnız istiqamətlə bağlı kömək edə bilərəm. Marşruta və nişanlara əməl edin.",
+    "rateLimited": "Yenidən soruşmazdan əvvəl bir az gözləyin."
   }
 }

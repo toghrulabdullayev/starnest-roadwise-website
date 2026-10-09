@@ -388,5 +388,40 @@
       "Return to the game — it says Signed in as your name. Every drive now uploads to your profile."
     ],
     "noAccount": "No account yet?"
+  },
+  "plan": {
+    "summary": "Your main weak spots right now: {rules}.",
+    "empty": "No recurring faults yet. Keep practising on varied routes.",
+    "why": "Recorded {count} time(s); last seen {last}.",
+    "trendImproved": "This is getting better.",
+    "trendWorse": "This is getting worse.",
+    "trendSame": "This has not changed yet."
+  },
+  "quiz": {
+    "fineQuestion": "What is the fine for this fault: {rule}?",
+    "fineExplain": "The fine for \"{rule}\" is {fine} AZN.",
+    "fineUnit": "{fine} AZN",
+    "severityQuestion": "How is this fault treated in the exam: {rule}?",
+    "severityMajor": "Major fault: the exam fails immediately",
+    "severityMinor": "Minor fault: it counts against you",
+    "severityNone": "No penalty in the exam",
+    "severityWarning": "Only a warning",
+    "severityExplainMajor": "\"{rule}\" is a major fault, so the exam fails immediately.",
+    "severityExplainMinor": "\"{rule}\" is a minor fault; minor faults add up during the exam.",
+    "limitQuestion": "What is the speed limit in this place: {zone}?",
+    "limitExplain": "The limit for \"{zone}\" is {limit} km/h.",
+    "limitUnit": "{limit} km/h",
+    "zones": {
+      "living_zone": "living zone",
+      "city": "city (built-up area)",
+      "outside_built_up": "outside built-up areas",
+      "motorway": "motorway"
+    }
+  },
+  "chat": {
+    "fallbackGeneric": "I can't answer that right now. Check the nearest sign and keep to the speed limit.",
+    "fallbackFault": "About your last fault ({rule}): {tip}",
+    "examRefusal": "During the exam I can only help with directions. Follow the route and the signs.",
+    "rateLimited": "Please wait a moment before asking again."
   }
 }
