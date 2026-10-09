@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { requireUser } from "@/lib/auth/currentUser";
@@ -19,7 +20,10 @@ import { ExamBriefCard, PlanCard, QuizCta, WeakSpots } from "@/components/profil
 import { LanguagePreference } from "@/components/profile/LanguagePreference";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/profile">): Promise<Metadata> {
-  return { title: getDictionary((await params).locale).nav.profile };
+  const { locale: l } = await params;
+  const locale = isLocale(l) ? l : defaultLocale;
+  const dict = getDictionary(locale);
+  return pageMetadata(locale, "/profile", { title: dict.nav.profile, index: false });
 }
 
 function Section({ id, title, lead, children }: { id: string; title: string; lead?: string; children: ReactNode }) {

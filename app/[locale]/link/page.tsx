@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { requireUser } from "@/lib/auth/currentUser";
 import { lookupUserCode, normalizeUserCode } from "@/lib/auth/deviceLink";
 import { isLocale, defaultLocale } from "@/lib/i18n/config";
@@ -7,7 +8,10 @@ import { buttonClass, Card, Eyebrow } from "@/components/ui";
 import { ApproveForm } from "@/components/link/ApproveForm";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/link">): Promise<Metadata> {
-  return { title: getDictionary((await params).locale).link.title };
+  const { locale: l } = await params;
+  const locale = isLocale(l) ? l : defaultLocale;
+  const dict = getDictionary(locale);
+  return pageMetadata(locale, "/link", { title: dict.link.title, index: false });
 }
 
 export default async function LinkPage({ params, searchParams }: PageProps<"/[locale]/link">) {

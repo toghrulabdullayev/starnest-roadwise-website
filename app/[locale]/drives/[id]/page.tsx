@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/auth/currentUser";
@@ -18,7 +19,10 @@ import { Deltas, MetricGroups } from "@/components/drive/MetricGroups";
 import type { Debrief } from "@/lib/prompts/debrief";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/drives/[id]">): Promise<Metadata> {
-  return { title: getDictionary((await params).locale).drive.title };
+  const { locale: l } = await params;
+  const locale = isLocale(l) ? l : defaultLocale;
+  const dict = getDictionary(locale);
+  return pageMetadata(locale, "/drives", { title: dict.drive.title, index: false });
 }
 
 export default async function DrivePage({ params }: PageProps<"/[locale]/drives/[id]">) {

@@ -2,7 +2,12 @@
   "_review": true,
   "meta": {
     "title": "Roadwise — Bakıda maşın sürməyi öyrənin",
-    "description": "Hər sürüşü izah edən və imtahana hazırlığınızı izləyən süni intellekt təlimatçısı olan Bakı sürücülük simulyatoru."
+    "description": "Hər sürüşü izah edən və imtahana hazırlığınızı izləyən süni intellekt təlimatçısı olan Bakı sürücülük simulyatoru.",
+    "pages": {
+      "download": "Bakı üçün pulsuz Roadwise sürücülük simulyatorunu yükləyin və bir dəqiqədən az müddətdə oyundan daxil olun.",
+      "login": "Sürüşlərinizi, təlimatçının təhlilini və imtahana hazırlığınızı görmək üçün Roadwise-a daxil olun.",
+      "signup": "Hər sürüşü izləmək və imtahana nə vaxt hazır olduğunuzu görmək üçün pulsuz Roadwise hesabı yaradın."
+    }
   },
   "nav": {
     "home": "Ana səhifə",

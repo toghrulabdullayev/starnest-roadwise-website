@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { redirect } from "next/navigation";
 import { AuthShell } from "@/components/auth/AuthShell";
 import { AuthForm } from "@/components/auth/AuthForm";
@@ -7,7 +8,10 @@ import { isLocale, defaultLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/signup">): Promise<Metadata> {
-  return { title: getDictionary((await params).locale).nav.signup };
+  const { locale: l } = await params;
+  const locale = isLocale(l) ? l : defaultLocale;
+  const dict = getDictionary(locale);
+  return pageMetadata(locale, "/signup", { title: dict.nav.signup, index: false, description: dict.meta.pages.signup });
 }
 
 export default async function SignupPage({ params }: PageProps<"/[locale]/signup">) {
