@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { logInAction, signUpAction, type AuthFormState } from "@/app/actions/auth";
 import { Alert, Button, Field } from "@/components/ui";
@@ -23,8 +23,16 @@ export function AuthForm({
     {},
   );
   const fe = state.fields ?? {};
+  const formRef = useRef<HTMLFormElement>(null);
+  // After a failed submit, move focus to the first field with an error (or the form-level alert).
+  useEffect(() => {
+    const form = formRef.current;
+    if (!form || (!state.error && !state.fields)) return;
+    const target = form.querySelector<HTMLElement>('[aria-invalid="true"]') ?? form.querySelector<HTMLElement>('[role="alert"]');
+    target?.focus();
+  }, [state]);
   return (
-    <form action={action} noValidate className="flex flex-col gap-6">
+    <form ref={formRef} action={action} noValidate className="flex flex-col gap-6">
       <input type="hidden" name="locale" value={locale} />
       {next && <input type="hidden" name="next" value={next} />}
       {state.error && <Alert>{t.errors[state.error]}</Alert>}

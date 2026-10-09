@@ -22,7 +22,7 @@ import { clientIp, userAgent } from "@/lib/request";
 /** Error codes; the form translates them with the dictionary. */
 export type AuthFormState = {
   error?: "invalid_credentials" | "rate_limited" | "email_taken" | "generic";
-  fields?: Partial<Record<"email" | "password" | "displayName", "invalid_email" | "password_short" | "name_required">>;
+  fields?: Partial<Record<"email" | "password" | "displayName", "invalid_email" | "password_short" | "name_required" | "password_required">>;
   values?: { email?: string; displayName?: string };
 };
 
@@ -71,6 +71,11 @@ export async function logInAction(_prev: AuthFormState, formData: FormData): Pro
   const password = String(formData.get("password") ?? "");
   const next = safeNext(formData.get("next"), `/${locale}/profile`, locale);
   const values = { email };
+  // Missing fields are reported per field and do not count as a login attempt.
+  const missing: NonNullable<AuthFormState["fields"]> = {};
+  if (!emailSchema.safeParse(email).success) missing.email = "invalid_email";
+  if (!password) missing.password = "password_required";
+  if (Object.keys(missing).length) return { fields: missing, values };
   const key = `${email}|${await clientIp()}`;
   if (!loginLimiter.hit(key).allowed) return { error: "rate_limited", values };
 

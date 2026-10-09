@@ -51,7 +51,8 @@
       "generic": "Xəta baş verdi. Yenidən cəhd edin.",
       "invalid_email": "Düzgün e-poçt ünvanı daxil edin.",
       "password_short": "Ən azı 8 simvol istifadə edin.",
-      "name_required": "Adınızı daxil edin."
+      "name_required": "Adınızı daxil edin.",
+      "password_required": "Şifrənizi daxil edin."
     },
     "loginToContinue": "Davam etmək üçün daxil olun."
   },

@@ -82,7 +82,7 @@ export function Alert({ tone = "danger", children }: { tone?: "danger" | "succes
     warning: "border-warning bg-[#fffbeb] text-warning-ink",
   };
   return (
-    <div role={tone === "danger" ? "alert" : "status"} className={`border-l-8 border-2 px-4 py-3 font-semibold ${tones[tone]}`}>
+    <div role={tone === "danger" ? "alert" : "status"} tabIndex={-1} className={`border-l-8 border-2 px-4 py-3 font-semibold focus-visible:outline-offset-2 ${tones[tone]}`}>
       {children}
     </div>
   );
