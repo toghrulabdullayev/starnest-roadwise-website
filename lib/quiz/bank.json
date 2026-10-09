@@ -9,7 +9,7 @@
       "e": "The posted limit applies from the sign onwards, so you must slow down to it."
     },
     "ru": {
-      "q": "Вы видите знак ограничения скорости, меньшей вашей текущей. Что вы делаете?",
+      "q": "Вы видите знак ограничения скорости ниже вашей текущей скорости. Что вы делаете?",
       "o": ["Снижаю скорость до разрешённой", "Сохраняю скорость до конца улицы", "Снижаю скорость, только если вижу полицию", "Ускоряюсь, чтобы быстрее выехать из зоны"],
       "e": "Ограничение действует начиная со знака, поэтому нужно снизить скорость до указанной."
     },
@@ -35,7 +35,7 @@
     },
     "az": {
       "q": "Svetofor qırmızıdır və ətrafda başqa nəqliyyat vasitəsi yoxdur. Nə edirsiniz?",
-      "o": ["Dayanma xəttindən əvvəl dayanıb yaşılı gözləyirəm", "Sürəti azaldıb yol boşdursa keçirəm", "Heç kim gəlmədiyi üçün sürətlə keçirəm", "Qəza işıqlarını yandırıb davam edirəm"],
+      "o": ["Dayanma xəttindən əvvəl dayanıb yaşıl işığı gözləyirəm", "Sürəti azaldıb yol boşdursa keçirəm", "Heç kim gəlmədiyi üçün sürətlə keçirəm", "Qəza siqnalını yandırıb davam edirəm"],
       "e": "Qırmızı işıqda yol boş görünsə belə dayanma xəttindən əvvəl dayanmaq lazımdır."
     }
   },
@@ -55,7 +55,7 @@
     },
     "az": {
       "q": "STOP nişanına çatdınız və yol boşdur. Nə etməlisiniz?",
-      "o": ["Dayanma xəttində tam dayanıb hər iki istiqamətə baxmalıyam", "Sürəti addım sürətinə qədər azaldıb davam etməliyəm", "Yalnız başqa maşın gəlirsə dayanmalıyam", "Siqnal verib davam etməliyəm"],
+      "o": ["Dayanma xəttində tam dayanıb hər iki istiqamətə baxmalıyam", "Sürəti piyada sürətinə qədər azaldıb davam etməliyəm", "Yalnız başqa maşın gəlirsə dayanmalıyam", "Səs siqnalı verib davam etməliyəm"],
       "e": "STOP nişanı həmişə dayanma xəttində tam dayanmağı tələb edir."
     }
   },
@@ -69,13 +69,13 @@
       "e": "Drivers must give way to pedestrians at a marked crossing."
     },
     "ru": {
-      "q": "Пешеход ждёт, чтобы перейти дорогу по пешеходному переходу. Что вы делаете?",
+      "q": "Пешеход ждёт у размеченного пешеходного перехода, чтобы перейти дорогу. Что вы делаете?",
       "o": ["Снижаю скорость и останавливаюсь, чтобы пропустить его", "Ускоряюсь, чтобы проехать до того, как он выйдет", "Сигналю, чтобы он подождал", "Сохраняю скорость, если еду по главной дороге"],
       "e": "Водитель обязан уступить дорогу пешеходам на пешеходном переходе."
     },
     "az": {
       "q": "Piyada işarələnmiş keçiddə yolu keçmək üçün gözləyir. Nə edirsiniz?",
-      "o": ["Sürəti azaldıb dayanıram ki, keçsin", "O, yola çıxmamış keçmək üçün sürəti artırıram", "Gözləsin deyə siqnal verirəm", "Əsas yoldayamsa sürəti saxlayıram"],
+      "o": ["Sürəti azaldıb dayanıram ki, keçsin", "Piyada yola çıxmamış keçib getmək üçün sürəti artırıram", "Gözləsin deyə səs siqnalı verirəm", "Əsas yoldayamsa sürəti saxlayıram"],
       "e": "Sürücülər işarələnmiş piyada keçidində piyadalara yol verməlidir."
     }
   },
@@ -95,7 +95,7 @@
     },
     "az": {
       "q": "Küçədə birtərəfli hərəkət var və o, sizin hərəkət istiqamətinizin əksinədir. Nə edirsiniz?",
-      "o": ["Ora girmirəm, başqa yol seçirəm", "Küçə boş görünürsə girirəm", "Qəza işıqları ilə yavaş girirəm", "Vaxta qənaət edirsə girirəm"],
+      "o": ["Ora girmirəm, başqa yol seçirəm", "Küçə boş görünürsə girirəm", "Qəza siqnalını yandırıb yavaş girirəm", "Vaxta qənaət edirsə girirəm"],
       "e": "Birtərəfli küçədə hərəkət istiqamətinin əksinə getmək qadağandır."
     }
   },
@@ -110,12 +110,12 @@
     },
     "ru": {
       "q": "Вы приближаетесь к знаку «Уступите дорогу». Что нужно сделать?",
-      "o": ["Снизить скорость и пропустить транспорт на главной дороге", "Ехать первым, потому что вы приехали первым", "Мигнуть фарами и ехать", "Остановиться, только если едет грузовик"],
+      "o": ["Снизить скорость и пропустить транспорт на главной дороге", "Ехать первым, потому что подъехал первым", "Мигнуть фарами и ехать", "Остановиться, только если едет грузовик"],
       "e": "У знака «Уступите дорогу» транспорт на главной дороге проезжает первым."
     },
     "az": {
       "q": "«Yol ver» nişanına yaxınlaşırsınız. Nə etməlisiniz?",
-      "o": ["Sürəti azaldıb əsas yoldakı nəqliyyatı buraxmalıyam", "Birinci gəldiyim üçün birinci getməliyəm", "Fara vurub getməliyəm", "Yalnız yük maşını gəlirsə dayanmalıyam"],
+      "o": ["Sürəti azaldıb əsas yoldakı nəqliyyata yol verməliyəm", "Birinci gəldiyim üçün birinci getməliyəm", "Faralarla işarə verib getməliyəm", "Yalnız yük maşını gəlirsə dayanmalıyam"],
       "e": "«Yol ver» nişanında əsas yoldakı nəqliyyat birinci keçir."
     }
   },
@@ -135,7 +135,7 @@
     },
     "az": {
       "q": "Qabaqdakı maşınla toqquşmadan necə qaçmaq olar?",
-      "o": ["Təhlükəsiz məsafə saxlayıb daha uzağa baxmaq", "Heç kim araya girməsin deyə yaxın getmək", "Yalnız son anda əyləc basmaq", "Yolun ortası ilə getmək"],
+      "o": ["Təhlükəsiz məsafə saxlayıb daha uzağa baxmaq", "Heç kim araya girməsin deyə qabaqdakı maşına çox yaxın getmək", "Yalnız son anda əyləc basmaq", "Yolun ortası ilə getmək"],
       "e": "Təhlükəsiz məsafə və uzağa baxmaq reaksiya üçün vaxt verir."
     }
   }

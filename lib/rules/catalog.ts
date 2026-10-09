@@ -37,14 +37,14 @@ export const RULES: Record<RuleKey, RuleDef> = {
   },
   red_light: {
     key: "red_light",
-    names: { en: "Running a red light", ru: "Проезд на красный свет", az: "Qırmızı işıqda keçmə" },
+    names: { en: "Running a red light", ru: "Проезд на красный свет", az: "Qırmızı işıqda keçmək" },
     severity: "major",
     fineAzn: 100,
     provisionalFine: false,
   },
   stop_sign: {
     key: "stop_sign",
-    names: { en: "Not stopping at STOP", ru: "Непроезд знака «STOP» без остановки", az: "STOP nişanında dayanmamaq" },
+    names: { en: "Not stopping at STOP", ru: "Проезд знака «STOP» без остановки", az: "STOP nişanında dayanmamaq" },
     severity: "minor",
     fineAzn: 40,
     provisionalFine: false,
