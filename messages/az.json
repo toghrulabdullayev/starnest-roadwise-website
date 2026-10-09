@@ -1,0 +1,21 @@
+{
+  "_review": true,
+  "meta": {
+    "title": "Roadwise",
+    "description": "Bakı üçün süni intellektli instruktoru olan sürücülük simulyatoru."
+  },
+  "nav": {
+    "home": "Ana səhifə",
+    "download": "Yüklə",
+    "login": "Daxil ol",
+    "signup": "Qeydiyyat",
+    "menu": "Əsas naviqasiya"
+  },
+  "language": {
+    "label": "Dil"
+  },
+  "home": {
+    "title": "Roadwise",
+    "tagline": "Bakıda sür. Qaydaları öyrən. Süni intellektli instruktorla məşq et."
+  }
+}

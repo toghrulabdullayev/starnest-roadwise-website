@@ -39,7 +39,7 @@ app/
     drives/route.ts            POST (game) · GET list
     drives/[id]/route.ts       GET
     drives/[id]/regenerate/route.ts  POST (cookie) — debrief in current locale
-middleware.ts                  locale redirect (/ → /en), cookie-presence redirect for protected pages
+proxy.ts                       locale redirect (/ → /en), cookie-presence redirect for protected pages
 lib/
   db.ts                        libSQL client singleton
   auth/password.ts session.ts gameToken.ts rateLimit.ts
@@ -138,7 +138,7 @@ CREATE TABLE drive_debriefs (
 - **Passwords:** `scrypt(password, salt16, 64, { N: 16384, r: 8, p: 1 })`; store `scrypt$16384$8$1$<salt>$<hash>`; verify with `timingSafeEqual`. Min length 8; email validated and lower-cased.
 - **Sessions:** on sign-up/log-in create 32 random bytes → cookie `rw_session` (httpOnly, `secure` in production, `sameSite: lax`, path `/`, 30 days); store only its SHA-256 in `auth_sessions`. `getCurrentUser()` (server-only, cached per request) looks it up and checks expiry; sliding renewal when < 15 days left. Log out deletes the row and the cookie. Changing password deletes all sessions.
 - **Forms:** server actions with zod; generic error "Email or password is incorrect"; in-memory per-instance rate limit on login (5 tries / 10 min per email+IP) — documented as best-effort.
-- **Protection:** `middleware.ts` only redirects when the cookie is absent (no DB in middleware); every protected page and API route calls `requireUser()` / `requireGameUser()` for the real check.
+- **Protection:** `proxy.ts` (Next 16 name for middleware) only redirects when the cookie is absent (no DB in middleware); every protected page and API route calls `requireUser()` / `requireGameUser()` for the real check.
 - **CSRF:** server actions are origin-checked by Next. Cookie-authenticated `POST` route handlers verify `Origin` equals `NEXT_PUBLIC_SITE_URL`.
 - **Game tokens:** `rw_` + 32 random bytes base64url; SHA-256 in `game_tokens`; `requireGameUser(req)` reads `Authorization: Bearer`, rejects revoked, updates `last_used_at`. User codes: 8 chars from `ABCDEFGHJKLMNPQRSTUVWXYZ23456789`, shown `XXXX-XXXX`.
 

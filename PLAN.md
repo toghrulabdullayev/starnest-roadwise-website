@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** 0.2 done. Next: 0.3 (i18n).
+**Status:** Phase 0 done. Next: 1.1 (rule catalog).
 **Scope:** website + API + AI instructor + eval, then the learning loop (weakness profile, practice plan, quiz, adaptive exam brief; Phase 8) and the live in-game instructor (chat and voice; Phase 9). The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -12,7 +12,7 @@ Rules for whoever executes this plan:
 ## Phase 0 — Scaffold
 - [x] **0.1** Next.js (App Router, TS strict, ESLint) in the repo root; Vitest; zod; `@libsql/client`; `@google/genai`; Recharts; styling per design skill. `.env.example`, `.gitignore` (`data/`, `.env*.local`). — skills: roadwise-web §1–3, design — check: `npm run dev` serves a page; `npm run typecheck` green.
 - [x] **0.2** `lib/db.ts`, `db/migrations/0001_init.sql`, `scripts/migrate.ts`, npm scripts `db:migrate`, `db:reset`. — roadwise-web §4 — check: migrate twice locally, second run is a no-op; tables exist.
-- [ ] **0.3** i18n: `[locale]` segment, middleware redirect, `messages/{en,ru,az}.json`, `getDictionary`, language switcher in layout. — roadwise-web §7 — check: `/` → `/en`; switching to `/ru` and `/az` changes nav text.
+- [x] **0.3** i18n: `[locale]` segment, middleware redirect, `messages/{en,ru,az}.json`, `getDictionary`, language switcher in layout. — roadwise-web §7 — check: `/` → `/en`; switching to `/ru` and `/az` changes nav text.
 
 ## Phase 1 — Contracts and fixtures
 - [ ] **1.1** `lib/rules/catalog.ts` (keys, EN/RU/AZ names, severities, fines, speeding bands). — roadwise-platform §3.
