@@ -20,6 +20,11 @@
     "tagline": "Bakının real küçələri. Azərbaycanın real yol qaydaları.",
     "provisional": "Rus və Azərbaycan dilində tərcümələr ilkindir."
   },
+  "notFound": {
+    "title": "Səhifə tapılmadı",
+    "body": "Bu ünvan mövcud deyil və ya səhifə köçürülüb.",
+    "home": "Ana səhifəyə qayıt"
+  },
   "auth": {
     "signupTitle": "Hesab yaradın",
     "signupLead": "Hər sürüşü izləyin, süni intellektdən təhlil alın və imtahana nə vaxt hazır olduğunuzu görün.",

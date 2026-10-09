@@ -19,6 +19,11 @@
     "tagline": "Real Baku streets. Real Azerbaijani rules.",
     "provisional": "Russian and Azerbaijani translations are provisional."
   },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This address does not exist, or the page has moved.",
+    "home": "Back to the home page"
+  },
   "auth": {
     "signupTitle": "Create your account",
     "signupLead": "Track every drive, get an AI debrief and see when you are exam-ready.",
