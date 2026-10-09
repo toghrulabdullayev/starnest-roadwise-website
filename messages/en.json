@@ -62,5 +62,95 @@
     "enterTitle": "Enter the code from the game",
     "check": "Continue",
     "otherAccount": "This code was already used by another account."
+  },
+  "readiness": {
+    "bands": {
+      "not_ready": "Not ready",
+      "almost": "Almost ready",
+      "ready": "Exam ready"
+    },
+    "components": {
+      "majors": "Major faults",
+      "minors": "Minor faults",
+      "compliance": "Rule compliance",
+      "overspeed": "Time over the limit",
+      "harsh": "Harsh braking & acceleration",
+      "composure": "Composure (from driving signals)",
+      "exam_bonus": "Exam passed bonus"
+    }
+  },
+  "history": {
+    "keys": {
+      "compliance_rate": "Rule compliance",
+      "fines_azn": "Fines",
+      "overspeed_time_share": "Time over the limit",
+      "harsh_per_10min": "Harsh braking & acceleration",
+      "composure_index": "Composure"
+    },
+    "improved": "Improved",
+    "worse": "Worse",
+    "same": "Same"
+  },
+  "instructor": {
+    "summaryClean": "Clean drive: all {passed} rule checks passed with no fines.",
+    "summaryNoChecks": "No rule checks were recorded on this drive.",
+    "summaryFaults": "{passed} of {total} rule checks passed and the fines came to {fines} AZN. The most important fault to fix: {rule}.",
+    "issueTitle": "{rule} at {time}",
+    "issueTitleStreet": "{rule} on {street} at {time}",
+    "issueRepeated": "{rule}: repeated during the drive",
+    "strengthPasses": "Correct at: {rules}.",
+    "strengthNoSpeeding": "You stayed within the speed limits.",
+    "strengthComposure": "Calm, smooth control (composure {composure}).",
+    "progressItem": "{label}: {direction}",
+    "readinessComment": "Readiness score {score}. Largest deductions: {list}.",
+    "readinessClean": "Readiness score {score} with no significant deductions.",
+    "cleanFocus": "Keep the same calm routine and try an exam route.",
+    "cleanDrill": "Take an exam route and keep every check as clean as today.",
+    "composureFocus": "Smooth, confident control",
+    "composureDrill": "Start braking earlier and release the pedal gently; keep the steering wheel steady between turns.",
+    "rules": {
+      "speeding": {
+        "why": "Speed decides how much time you have to react and how hard a crash is; examiners fail clear overspeeding.",
+        "how": "Check the speedometer after every sign and junction; lift off early and hold the limit instead of catching up.",
+        "focus": "Holding the posted speed limit",
+        "drill": "Drive one route checking the speedometer at every limit sign and staying under it."
+      },
+      "red_light": {
+        "why": "Running a red light is a major fault that fails the exam and causes side-impact crashes.",
+        "how": "Treat amber as a stop signal: cover the brake when approaching junctions and stop at the line.",
+        "focus": "Stopping for red and amber lights",
+        "drill": "Approach signal-controlled junctions with your foot covering the brake and stop at the line on amber."
+      },
+      "stop_sign": {
+        "why": "At a STOP sign the car must stop completely at the line; rolling through is an exam fault.",
+        "how": "Brake progressively so the car stops fully before the line, hold the stop for a second, then look both ways.",
+        "focus": "Full stops at STOP signs",
+        "drill": "Practise full stops at the line at several STOP signs, holding each stop for a full second."
+      },
+      "pedestrian_crossing": {
+        "why": "Pedestrians on a crossing have priority; not yielding endangers the most vulnerable road users.",
+        "how": "Scan both pavements as you approach a crossing, slow down early and stop if anyone is waiting or crossing.",
+        "focus": "Yielding at pedestrian crossings",
+        "drill": "On a route with crossings, slow down before each one and say out loud whether anyone is waiting."
+      },
+      "wrong_way": {
+        "why": "Driving against the traffic on a one-way street risks a head-on collision and fails the exam.",
+        "how": "Look for one-way and no-entry signs before turning and plan the route in advance.",
+        "focus": "Reading one-way and no-entry signs",
+        "drill": "Before each turn, name the sign that allows it; practise in the narrow Old City streets."
+      },
+      "give_way": {
+        "why": "Not giving way forces others to brake or swerve and is a major exam fault.",
+        "how": "Slow down before the give-way line, check traffic on the priority road and go only when it is clear.",
+        "focus": "Giving way at junctions",
+        "drill": "At every give-way junction, slow to walking pace and check both directions before entering."
+      },
+      "collision": {
+        "why": "A collision is a major fault and shows the car was not under control for the situation.",
+        "how": "Leave more space, slow down near obstacles and look further ahead so you can stop within the distance you can see.",
+        "focus": "Space and speed control near obstacles",
+        "drill": "Drive in free mode keeping a generous gap and slowing before every parked car or tight turn."
+      }
+    }
   }
 }

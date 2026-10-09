@@ -63,5 +63,95 @@
     "enterTitle": "Oyundakı kodu daxil edin",
     "check": "Davam et",
     "otherAccount": "Bu kod artıq başqa hesab tərəfindən istifadə olunub."
+  },
+  "readiness": {
+    "bands": {
+      "not_ready": "Hazır deyil",
+      "almost": "Demək olar ki, hazır",
+      "ready": "İmtahana hazır"
+    },
+    "components": {
+      "majors": "Ciddi səhvlər",
+      "minors": "Kiçik səhvlər",
+      "compliance": "Qaydalara riayət",
+      "overspeed": "Həddən artıq sürət vaxtı",
+      "harsh": "Kəskin əyləc və sürətlənmə",
+      "composure": "Sakitlik (sürüş siqnallarına görə)",
+      "exam_bonus": "Keçilmiş imtahan bonusu"
+    }
+  },
+  "history": {
+    "keys": {
+      "compliance_rate": "Qaydalara riayət",
+      "fines_azn": "Cərimələr",
+      "overspeed_time_share": "Həddən artıq sürət vaxtı",
+      "harsh_per_10min": "Kəskin əyləc və sürətlənmə",
+      "composure_index": "Sakitlik"
+    },
+    "improved": "Yaxşılaşıb",
+    "worse": "Pisləşib",
+    "same": "Dəyişməyib"
+  },
+  "instructor": {
+    "summaryClean": "Təmiz sürüş: bütün qayda yoxlamaları ({passed}) keçildi, cərimə yoxdur.",
+    "summaryNoChecks": "Bu sürüşdə qayda yoxlaması qeydə alınmayıb.",
+    "summaryFaults": "{total} qayda yoxlamasından {passed} keçildi, cərimələr {fines} AZN təşkil etdi. Düzəldilməli ən vacib səhv: {rule}.",
+    "issueTitle": "{rule}, {time}",
+    "issueTitleStreet": "{rule}: {street}, {time}",
+    "issueRepeated": "{rule}: sürüş zamanı təkrarlandı",
+    "strengthPasses": "Düzgün: {rules}.",
+    "strengthNoSpeeding": "Sürət həddini aşmadınız.",
+    "strengthComposure": "Sakit və rəvan idarəetmə (sakitlik {composure}).",
+    "progressItem": "{label}: {direction}",
+    "readinessComment": "Hazırlıq balı {score}. Ən çox bal bunlara görə çıxıldı: {list}.",
+    "readinessClean": "Hazırlıq balı {score}, nəzərəçarpan azalma yoxdur.",
+    "cleanFocus": "Eyni sakit üslubu saxlayın və imtahan marşrutunu sınayın.",
+    "cleanDrill": "İmtahan marşrutunu bugünkü kimi təmiz keçin.",
+    "composureFocus": "Rəvan və inamlı idarəetmə",
+    "composureDrill": "Əyləcə daha tez başlayın və pedalı yumşaq buraxın; döngələr arasında sükanı sabit saxlayın.",
+    "rules": {
+      "speeding": {
+        "why": "Sürət reaksiya vaxtını və qəzanın ağırlığını müəyyən edir; açıq-aşkar sürət aşımı imtahanda kəsilmə səbəbidir.",
+        "how": "Hər nişan və yolayrıcından sonra spidometrə baxın; qazı vaxtında buraxın və həddi saxlayın.",
+        "focus": "Sürət həddinə əməl etmək",
+        "drill": "Marşrut boyu hər sürət nişanında spidometri yoxlayın və həddi aşmayın."
+      },
+      "red_light": {
+        "why": "Qırmızı işıqda keçmə imtahanı kəsən ciddi səhvdir və yan zərbəli qəzaların əsas səbəbidir.",
+        "how": "Sarı işığı dayanma siqnalı kimi qəbul edin: yolayrıcına yaxınlaşanda ayağınızı əyləcin üstündə saxlayın və xəttdə dayanın.",
+        "focus": "Qırmızı və sarı işıqda dayanmaq",
+        "drill": "Tənzimlənən yolayrıclarına ayağınız əyləcin üstündə yaxınlaşın və sarı işıqda xəttdə dayanın."
+      },
+      "stop_sign": {
+        "why": "STOP nişanında avtomobil xəttdə tam dayanmalıdır; dayanmadan keçmək imtahan səhvidir.",
+        "how": "Rəvan əyləc edin ki, xəttdən əvvəl tam dayanasınız, bir saniyə gözləyin, sonra hər iki tərəfə baxın.",
+        "focus": "STOP nişanında tam dayanma",
+        "drill": "Bir neçə STOP nişanında xəttdə tam dayanmanı məşq edin, hər dəfə bir saniyə gözləyin."
+      },
+      "pedestrian_crossing": {
+        "why": "Keçiddə piyadaların üstünlüyü var; yol verməmək ən həssas yol iştirakçılarını təhlükəyə atır.",
+        "how": "Keçidə yaxınlaşanda hər iki səkiyə baxın, sürəti əvvəlcədən azaldın və kimsə gözləyirsə və ya keçirsə dayanın.",
+        "focus": "Piyada keçidlərində yol vermək",
+        "drill": "Keçidləri olan marşrutda hər keçiddən əvvəl sürəti azaldın və kiminsə gözləyib-gözləmədiyini ucadan deyin."
+      },
+      "wrong_way": {
+        "why": "Birtərəfli yolda əks istiqamətdə hərəkət baş-başa toqquşma riski yaradır və imtahanı kəsir.",
+        "how": "Dönməzdən əvvəl birtərəfli hərəkət və girişi qadağan edən nişanlara baxın, marşrutu əvvəlcədən planlayın.",
+        "focus": "Birtərəfli hərəkət və giriş qadağası nişanları",
+        "drill": "Hər dönmədən əvvəl ona icazə verən nişanı deyin; İçərişəhərin dar küçələrində məşq edin."
+      },
+      "give_way": {
+        "why": "Yol verməmək digərlərini əyləc etməyə və ya yayınmağa məcbur edir və imtahanda ciddi səhvdir.",
+        "how": "Yol ver xəttindən əvvəl sürəti azaldın, əsas yoldakı hərəkəti yoxlayın və yalnız yol boş olanda girin.",
+        "focus": "Yolayrıclarında yol vermək",
+        "drill": "Hər yol ver nişanlı yolayrıcında sürəti piyada sürətinə endirin və hər iki tərəfə baxın."
+      },
+      "collision": {
+        "why": "Toqquşma ciddi səhvdir və avtomobilin bu vəziyyətdə nəzarətdə olmadığını göstərir.",
+        "how": "Daha çox məsafə saxlayın, maneələrin yanında sürəti azaldın və gördüyünüz məsafədə dayana bilmək üçün irəli baxın.",
+        "focus": "Maneələr yanında məsafə və sürət nəzarəti",
+        "drill": "Sərbəst rejimdə geniş məsafə saxlayaraq sürün, park edilmiş maşınlar və dar döngələr qarşısında yavaşlayın."
+      }
+    }
   }
 }
