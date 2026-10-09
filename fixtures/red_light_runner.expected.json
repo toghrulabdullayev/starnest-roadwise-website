@@ -1,0 +1,20 @@
+{
+  "name": "red_light_runner",
+  "description": "Runs one red light (major) and speeds once (minor); otherwise legal.",
+  "violations": {
+    "red_light": 1,
+    "speeding": 1
+  },
+  "major_count": 1,
+  "minor_count": 1,
+  "must_raise_rules": [
+    "red_light",
+    "speeding"
+  ],
+  "top_issue_rule": "red_light",
+  "readiness_band": "almost",
+  "major_event_ids": [
+    "e3"
+  ],
+  "series": null
+}

@@ -1,0 +1,22 @@
+{
+  "name": "progress_series_2",
+  "description": "Second drive: STOP and crossing now correct, still one speeding minor.",
+  "violations": {
+    "speeding": 1
+  },
+  "major_count": 0,
+  "minor_count": 1,
+  "must_raise_rules": [
+    "speeding"
+  ],
+  "top_issue_rule": "speeding",
+  "readiness_band": "almost",
+  "major_event_ids": [],
+  "series": {
+    "index": 2,
+    "expect_improved": [
+      "compliance_rate",
+      "fines_azn"
+    ]
+  }
+}

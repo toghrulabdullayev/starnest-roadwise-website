@@ -1,0 +1,23 @@
+{
+  "name": "mixed_exam_fail",
+  "description": "Exam: wrong way on a one-way street (major, instant fail), rolled a STOP and did not yield to a pedestrian.",
+  "violations": {
+    "wrong_way": 1,
+    "stop_sign": 1,
+    "pedestrian_crossing": 1
+  },
+  "major_count": 1,
+  "minor_count": 2,
+  "must_raise_rules": [
+    "wrong_way",
+    "stop_sign",
+    "pedestrian_crossing"
+  ],
+  "top_issue_rule": "wrong_way",
+  "readiness_band": "not_ready",
+  "exam_passed": false,
+  "major_event_ids": [
+    "e5"
+  ],
+  "series": null
+}

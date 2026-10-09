@@ -1,0 +1,13 @@
+{
+  "name": "clean_drive",
+  "description": "Calm, legal drive: every rule check passed, smooth speed.",
+  "violations": {},
+  "major_count": 0,
+  "minor_count": 0,
+  "must_raise_rules": [],
+  "top_issue_rule": null,
+  "readiness_band": "ready",
+  "composure_min": 75,
+  "major_event_ids": [],
+  "series": null
+}

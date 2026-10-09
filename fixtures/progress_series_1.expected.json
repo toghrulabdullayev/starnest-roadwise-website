@@ -1,0 +1,23 @@
+{
+  "name": "progress_series_1",
+  "description": "First drive of an improving series: two speeding minors, a rolled STOP, missed a pedestrian.",
+  "violations": {
+    "speeding": 2,
+    "stop_sign": 1,
+    "pedestrian_crossing": 1
+  },
+  "major_count": 0,
+  "minor_count": 4,
+  "must_raise_rules": [
+    "speeding",
+    "stop_sign",
+    "pedestrian_crossing"
+  ],
+  "top_issue_rule": "speeding",
+  "readiness_band": "not_ready",
+  "major_event_ids": [],
+  "series": {
+    "index": 1,
+    "expect_improved": []
+  }
+}
