@@ -94,5 +94,11 @@
       "outsideBuiltUp": "məskunlaşmış ərazidən kənar",
       "motorway": "magistral yol"
     }
+  },
+  "chat": {
+    "fallbackGeneric": "Hazırda cavab verə bilmirəm. Ən yaxın nişana baxın və sürət həddinə əməl edin.",
+    "fallbackFault": "Son pozuntunuz ({rule}) haqqında: {tip}",
+    "examRefusal": "İmtahan zamanı yalnız istiqamətlə bağlı kömək edə bilərəm. Marşruta və nişanlara əməl edin.",
+    "rateLimited": "Yenidən soruşmazdan əvvəl bir az gözləyin."
   }
 }

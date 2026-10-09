@@ -93,5 +93,11 @@
       "outsideBuiltUp": "outside built-up areas",
       "motorway": "motorway"
     }
+  },
+  "chat": {
+    "fallbackGeneric": "I can't answer that right now. Check the nearest sign and keep to the speed limit.",
+    "fallbackFault": "About your last fault ({rule}): {tip}",
+    "examRefusal": "During the exam I can only help with directions. Follow the route and the signs.",
+    "rateLimited": "Please wait a moment before asking again."
   }
 }
