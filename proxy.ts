@@ -4,7 +4,7 @@ import { LOCALE_COOKIE, defaultLocale, isLocale, matchAcceptLanguage } from "@/l
 const ONE_YEAR = 60 * 60 * 24 * 365;
 const SESSION_COOKIE = "rw_session";
 /** Pages that need an account. Proxy only checks the cookie exists; pages do the real check. */
-const PROTECTED = /^\/(en|ru|az)\/(profile|link|drives)(\/|$)/;
+const PROTECTED = /^\/(en|ru|az)\/(profile|link|drives|quiz)(\/|$)/;
 
 export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;

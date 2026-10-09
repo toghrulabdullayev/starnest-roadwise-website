@@ -26,9 +26,9 @@ afterEach(() => {
 });
 
 describe("OpenRouter client", () => {
-  it("is configured only when a key is set, and defaults to Gemini 3.8 Flash", () => {
+  it("is configured only when a key is set, and defaults to Gemini 3.5 Flash-Lite", () => {
     expect(isAiConfigured()).toBe(true);
-    expect(aiModel()).toBe("google/gemini-3.8-flash");
+    expect(aiModel()).toBe("google/gemini-3.5-flash-lite");
     delete process.env.OPENROUTER_API_KEY;
     expect(isAiConfigured()).toBe(false);
   });
@@ -51,7 +51,7 @@ describe("OpenRouter client", () => {
     const { url, headers, body } = sent(fn);
     expect(url).toBe("https://openrouter.ai/api/v1/chat/completions");
     expect(headers.authorization).toBe("Bearer sk-or-test");
-    expect(body.model).toBe("google/gemini-3.8-flash");
+    expect(body.model).toBe("google/gemini-3.5-flash-lite");
     expect(body.temperature).toBe(0.3);
     expect(body.reasoning).toEqual({ effort: "minimal" });
     expect(body.provider).toEqual({ require_parameters: true });
@@ -63,10 +63,10 @@ describe("OpenRouter client", () => {
   });
 
   it("uses OPENROUTER_MODEL and a low reasoning effort by default", async () => {
-    process.env.OPENROUTER_MODEL = "google/gemini-3.5-flash-lite";
+    process.env.OPENROUTER_MODEL = "google/gemini-3.8-flash";
     const fn = mockFetch(200, { choices: [{ message: { content: "{}" } }] });
     const out = await generateJson({ system: "s", input: "i", schema });
-    expect(out.model).toBe("google/gemini-3.5-flash-lite");
+    expect(out.model).toBe("google/gemini-3.8-flash");
     expect(out.inputTokens).toBeNull();
     expect(sent(fn).body.reasoning).toEqual({ effort: "low" });
   });

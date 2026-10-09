@@ -119,3 +119,11 @@ export async function loadQuizFaults(userId: string, limit = QUIZ_FOCUS_WINDOW):
     return quizMistakesAsFaults(result, a.id, a.answered_at);
   });
 }
+
+export async function lastQuizResult(userId: string): Promise<{ correct: number; total: number; answered_at: string } | null> {
+  const row = await queryOne<{ correct: number; total: number; answered_at: string }>(
+    "SELECT correct, total, answered_at FROM quiz_attempts WHERE user_id = ? AND answered_at IS NOT NULL ORDER BY answered_at DESC LIMIT 1",
+    [userId],
+  );
+  return row ? { correct: Number(row.correct), total: Number(row.total), answered_at: row.answered_at } : null;
+}

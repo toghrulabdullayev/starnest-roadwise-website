@@ -28,7 +28,7 @@ export type GenerateJson = (
   request: GenerateJsonRequest,
 ) => Promise<GenerateJsonResult>;
 
-export const DEFAULT_MODEL = "google/gemini-3.8-flash";
+export const DEFAULT_MODEL = "google/gemini-3.5-flash-lite";
 export const DEFAULT_TIMEOUT_MS = 60_000;
 const ENDPOINT = "https://openrouter.ai/api/v1/chat/completions";
 
