@@ -94,7 +94,8 @@
   },
   "units": {
     "kmh": "km/h",
-    "km": "km"
+    "km": "km",
+    "mps3": "m/s³"
   },
   "districts": {
     "baku-center": "central Baku"

@@ -95,7 +95,8 @@
   },
   "units": {
     "kmh": "km/saat",
-    "km": "km"
+    "km": "km",
+    "mps3": "m/san³"
   },
   "districts": {
     "baku-center": "Bakının mərkəzi"

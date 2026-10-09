@@ -1,4 +1,5 @@
 import { intlLocale, type Locale } from "./config";
+import { getDictionary } from "./getDictionary";
 
 export function fmtNumber(locale: Locale, n: number, digits = 0): string {
   return new Intl.NumberFormat(intlLocale[locale], { maximumFractionDigits: digits, minimumFractionDigits: 0 }).format(n);
@@ -11,7 +12,10 @@ export function fmtAzn(locale: Locale, n: number): string {
   return `${fmtNumber(locale, n)} AZN`;
 }
 export function fmtKm(locale: Locale, metres: number): string {
-  return `${fmtNumber(locale, metres / 1000, 1)} km`;
+  return `${fmtNumber(locale, metres / 1000, 1)} ${getDictionary(locale).units.km}`;
+}
+export function fmtKmh(locale: Locale, v: number, digits = 1): string {
+  return `${fmtNumber(locale, v, digits)} ${getDictionary(locale).units.kmh}`;
 }
 export function fmtDate(locale: Locale, iso: string, withTime = true): string {
   return new Intl.DateTimeFormat(intlLocale[locale], {
