@@ -6,7 +6,7 @@
   "minor_count": 0,
   "must_raise_rules": [],
   "top_issue_rule": null,
-  "readiness_band": "almost",
+  "readiness_band": "ready",
   "exam_passed": true,
   "major_event_ids": [],
   "series": {

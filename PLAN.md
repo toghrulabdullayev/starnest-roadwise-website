@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** 3.1 done. Next: **3.2** (readiness + history).
+**Status:** 3.2 done. Next: **3.3** (ingest + drives API).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -26,7 +26,7 @@ Rules for whoever executes this plan:
 
 ## Phase 3 — Ingest and analytics
 - [x] **3.1** `metrics.ts` + one test per metric. — roadwise-ai-instructor §2 — check: fixture expectations match.
-- [ ] **3.2** `readiness.ts`, `history.ts` + tests. — §3–4 — check: `progress_series` shows improvements; bands match expectations.
+- [x] **3.2** `readiness.ts`, `history.ts` + tests. — §3–4 — check: `progress_series` shows improvements; bands match expectations.
 - [ ] **3.3** `lib/drives/ingest.ts`; `POST/GET /api/drives`, `GET /api/drives/:id`. — roadwise-web §6 — check: `scripts/upload.sh fixtures/speeder.json` → 200; re-upload → same id; broken file → 422.
 
 ## Phase 4 — AI instructor
