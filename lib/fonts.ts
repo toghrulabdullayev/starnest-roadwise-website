@@ -22,12 +22,14 @@ export const jetbrainsMono = JetBrains_Mono({
 });
 
 /**
- * Archivo / Archivo Black have no Cyrillic. Inter Tight (a close grotesque) is loaded with
- * Cyrillic subsets only and sits second in both stacks, so Russian text is drawn per glyph
- * in a matching heavy face instead of a thin system fallback.
+ * Archivo / Archivo Black have no Cyrillic, and Archivo Black has no Azerbaijani Ə/ə.
+ * Inter Tight (a close grotesque) sits second in both stacks (see app/globals.css), so those
+ * glyphs are drawn per glyph in a matching heavy face instead of a thin system fallback.
+ * No basic `latin` subset: Latin text stays in Archivo; `latin-ext` is only reached for
+ * glyphs Archivo lacks (Ə).
  */
 export const interTightCyrillic = Inter_Tight({
-  subsets: ["cyrillic", "cyrillic-ext"],
+  subsets: ["latin-ext", "cyrillic", "cyrillic-ext"],
   variable: "--font-cyrillic",
   display: "swap",
 });

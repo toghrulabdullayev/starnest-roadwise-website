@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Open findings: exam-brief weight can rise while a rule's fault count falls (see LEARNING_REPORT), generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
+**Status:** MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:

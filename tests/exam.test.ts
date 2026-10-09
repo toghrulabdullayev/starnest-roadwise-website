@@ -26,7 +26,7 @@ function fixture(id: string) {
 const s1 = fixture("progress_series_1");
 const s2 = fixture("progress_series_2");
 const s3 = fixture("progress_series_3");
-/** wrong way + rolled STOP + missed pedestrian, then progress_series_1: four weak rules, total weight 7 */
+/** wrong way + rolled STOP + missed pedestrian, then progress_series_1: four weak rules, about 4.4 weighted faults per typical drive */
 const struggling = [fixture("mixed_exam_fail"), s1];
 
 describe("exam brief", () => {

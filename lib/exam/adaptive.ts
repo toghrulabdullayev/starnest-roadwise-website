@@ -3,7 +3,7 @@ import type { RuleKey } from "../rules/catalog";
 
 export const BRIEF_VERSION = "exam-brief-1";
 export const MAX_FOCUS_RULES = 3;
-export const STRUGGLING_TOTAL_WEIGHT = 6;
+export const STRUGGLING_TOTAL_WEIGHT = 4;
 
 export const EXAM_PROFILES = {
   easy: { target_length_m: 2500, repeats_per_rule: 3 },

@@ -163,11 +163,11 @@ All of these use `Authorization: Bearer rw_…`, answer in the player's language
 ### 5.1 Weak spots — `GET /api/me/focus`
 
 ```json
-200 {"focus":[{"rule":"speeding","weight":2.2,"count":3,"last_seen":"2026-10-07T09:00:00.000Z","trend":"improved"},
-              {"rule":"stop_sign","weight":0.6,"count":1,"last_seen":"2026-10-06T09:00:00.000Z","trend":"same"}],
+200 {"focus":[{"rule":"speeding","weight":1.38,"count":3,"last_seen":"2026-10-07T09:00:00.000Z","trend":"improved"},
+              {"rule":"stop_sign","weight":0.38,"count":1,"last_seen":"2026-10-06T09:00:00.000Z","trend":"same"}],
      "drives_considered":2}
 ```
-Rules the player breaks, heaviest first. Recent drives count more, major faults count 3 and minor 1, wrong quiz answers count 0.5. `trend` is `improved | same | worse`. An empty list means no recurring faults.
+Rules the player breaks, heaviest first. `weight` is the player's typical number of weighted faults per drive for that rule, taken over the last 10 drives with recent drives counting more (a major fault weighs 3, a minor fault 1, a wrong quiz answer 0.5). It is an average, so it only rises when the player makes more faults than before and falls as they improve. `count` is the faults in the window, `trend` is `improved | same | worse`, and an empty list means no recurring faults.
 
 ### 5.2 Next exam — `GET /api/me/exam-brief`
 
@@ -176,7 +176,7 @@ Rules the player breaks, heaviest first. Recent drives count more, major faults 
        "target_length_m":2500,"repeats_per_rule":3,
        "focus_rules":[{"rule":"speeding","weight":2.2,"trend":"improved"}]}}
 ```
-`reason` is `no_history | clean | weaknesses`; `difficulty` is `easy` (struggling: short route, weak spots repeated), `standard` or `hard` (clean history: long route). **The game builds the route itself** from its road graph: pick junctions and segments tagged with the `focus_rules`, repeat each `repeats_per_rule` times, aim for `target_length_m`. After the exam is uploaded, `GET /api/drives/{id}` carries `exam_comparison` (`results[]` with `outcome` `improved | same | worse` per focus rule, plus the brief it was compared with); it is `null` for non-exam drives or when no brief was requested first.
+`reason` is `no_history | clean | weaknesses`; `difficulty` is `easy` (struggling, at least 4 weighted faults per typical drive: short route, weak spots repeated), `standard` or `hard` (clean history: long route). **The game builds the route itself** from its road graph: pick junctions and segments tagged with the `focus_rules`, repeat each `repeats_per_rule` times, aim for `target_length_m`. After the exam is uploaded, `GET /api/drives/{id}` carries `exam_comparison` (`results[]` with `outcome` `improved | same | worse` per focus rule, plus the brief it was compared with); it is `null` for non-exam drives or when no brief was requested first.
 
 ### 5.3 Practice plan — `POST /api/me/plan`, `GET /api/me/plan/latest`
 

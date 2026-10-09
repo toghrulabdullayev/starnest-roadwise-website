@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   computeFocus,
+  faultsFromTelemetry,
   focusFromTelemetry,
   type DriveFaults,
 } from "../lib/profile/focus";
@@ -90,5 +91,58 @@ describe("weakness profile", () => {
       ],
     };
     expect(computeFocus([drive])[0]).toMatchObject({ rule: "speeding", weight: 2, count: 2, trend: "same" });
+  });
+});
+
+describe("weight is a recency-weighted average per drive", () => {
+  const drive = (n: number, faults: DriveFaults["faults"]): DriveFaults => ({
+    drive_id: `d${n}`,
+    started_at: new Date(Date.UTC(2026, 9, 1 + n)).toISOString(),
+    faults,
+  });
+  const minor = (n: number) => Array.from({ length: n }, () => ({ rule: "speeding" as const, severity: "minor" as const }));
+  const weightAfter = (counts: number[]) =>
+    computeFocus(counts.map((c, i) => drive(i, minor(c))))[0]?.weight ?? 0;
+
+  it("keeps a steady fault rate at the same weight however many drives it spans", () => {
+    expect(weightAfter([2])).toBe(2);
+    expect(weightAfter([2, 2, 2])).toBe(2);
+    expect(weightAfter([2, 2, 2, 2, 2, 2, 2, 2])).toBe(2);
+  });
+
+  it("never rises while the fault count per drive does not rise", () => {
+    expect(weightAfter([2, 1])).toBeLessThan(weightAfter([2]));
+    expect(weightAfter([2, 1, 0])).toBeLessThan(weightAfter([2, 1]));
+    const seen: number[] = [];
+    let state = 12345;
+    const rand = () => (state = (state * 1103515245 + 12345) % 2147483648) / 2147483648;
+    for (let trial = 0; trial < 300; trial++) {
+      const counts: number[] = [];
+      let current = Math.floor(rand() * 8) + 1;
+      for (let i = 0; i < 6; i++) {
+        counts.push(current);
+        if (rand() < 0.6) current = Math.max(0, current - Math.floor(rand() * 3));
+      }
+      let previous = Infinity;
+      for (let k = 1; k <= counts.length; k++) {
+        const w = weightAfter(counts.slice(0, k));
+        expect(w, `counts ${counts.slice(0, k).join(",")}`).toBeLessThanOrEqual(previous + 1e-9);
+        previous = w;
+        seen.push(w);
+      }
+    }
+    expect(seen.length).toBe(1800);
+  });
+
+  it("rises when the fault count rises", () => {
+    expect(weightAfter([1, 3])).toBeGreaterThan(weightAfter([1]));
+  });
+
+  it("falls steadily on the improving fixture series for a rule with repeated faults", () => {
+    const counts = [s1, s2, s3].map((t) => faultsFromTelemetry(t).faults.filter((f) => f.rule === "speeding").length);
+    expect(counts[0]).toBeGreaterThan(counts[1]);
+    const w = [1, 2, 3].map((k) => weightOf(focusFromTelemetry([s1, s2, s3].slice(0, k)), "speeding"));
+    expect(w[1]).toBeLessThan(w[0]);
+    expect(w[2]).toBeLessThan(w[1]);
   });
 });

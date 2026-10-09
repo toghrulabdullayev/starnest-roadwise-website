@@ -8,8 +8,15 @@
  * for fills, borders and large display type.
  */
 @theme {
-  --font-sans: var(--font-archivo), var(--font-cyrillic), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-archivo-black), var(--font-cyrillic), ui-sans-serif, sans-serif;
+  /*
+   * Each next/font variable is "<Family>", "<Family> Fallback", and that fallback is a local
+   * Arial with no unicode-range (Turbopack ignores adjustFontFallback: false). Arial has
+   * Cyrillic and Ə, so it would draw them before Inter Tight is reached. The real family
+   * names come first so Inter Tight sits ahead of the Arial fallbacks; the variables stay
+   * at the end in case the family names ever change.
+   */
+  --font-sans: "Archivo", "Inter Tight", var(--font-archivo), var(--font-cyrillic), ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo Black", "Inter Tight", var(--font-archivo-black), var(--font-cyrillic), ui-sans-serif, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* brand */

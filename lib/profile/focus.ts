@@ -43,10 +43,22 @@ const round2 = (n: number) => Math.round(n * 100) / 100;
 const newestFirstOf = (list: DriveFaults[]) =>
   [...list].sort((a, b) => b.started_at.localeCompare(a.started_at));
 
-/** Quizzes decay on their own timeline, so taking a quiz does not push real drives further into the past. */
+const decaySum = (n: number) => {
+  let total = 0;
+  for (let i = 0; i < n; i++) total += RECENCY_DECAY ** i;
+  return total;
+};
+
+/**
+ * Weight = recency-weighted average of the severity-weighted faults per drive (plus the same for quizzes).
+ * A new drive can only pull the weight toward its own value, so a falling fault count never raises it.
+ * Quizzes decay on their own timeline, so taking a quiz does not push real drives further into the past.
+ */
 export function computeFocus(drives: DriveFaults[], quizzes: DriveFaults[] = []): FocusEntry[] {
   const newestFirst = newestFirstOf(drives);
   const newestQuizzes = newestFirstOf(quizzes);
+  const driveNorm = decaySum(newestFirst.length);
+  const quizNorm = decaySum(newestQuizzes.length);
 
   const entries: FocusEntry[] = [];
   for (const rule of RULE_KEYS) {
@@ -60,7 +72,7 @@ export function computeFocus(drives: DriveFaults[], quizzes: DriveFaults[] = [])
       countsPerDrive.push(mine.length);
       if (mine.length === 0) return;
       const decay = RECENCY_DECAY ** index;
-      weight += decay * mine.reduce((n, f) => n + SEVERITY_FACTOR[f.severity], 0);
+      weight += (decay * mine.reduce((n, f) => n + SEVERITY_FACTOR[f.severity], 0)) / driveNorm;
       count += mine.length;
       if (lastSeen === null || drive.started_at > lastSeen) lastSeen = drive.started_at;
     });
@@ -68,7 +80,7 @@ export function computeFocus(drives: DriveFaults[], quizzes: DriveFaults[] = [])
     newestQuizzes.forEach((quiz, index) => {
       const mine = quiz.faults.filter((f) => f.rule === rule);
       if (mine.length === 0) return;
-      weight += RECENCY_DECAY ** index * mine.reduce((n, f) => n + SEVERITY_FACTOR[f.severity], 0);
+      weight += (RECENCY_DECAY ** index * mine.reduce((n, f) => n + SEVERITY_FACTOR[f.severity], 0)) / quizNorm;
       count += mine.length;
       if (lastSeen === null || quiz.started_at > lastSeen) lastSeen = quiz.started_at;
     });
