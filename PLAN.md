@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1–10.4 done; next 10.5. MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
+**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1–10.5 done; next 10.6. MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -71,7 +71,7 @@ Branch `qa-fixes`. One step per finding group; the owner approves each step befo
 - [x] **10.2** WEB-009 brand: "Roadwise" always renders in English letters (no `ROADWİSE` under `lang="az"` uppercase). — check: logo and headings on `/az` and `/az/download`.
 - [x] **10.3** WEB-002, WEB-010 AI output: progress list built in code with dictionary labels; grounding rejects internal keys and enum values; prompt gets localized labels, numbers and units. — check: regenerated debrief and plan in each locale contain no `snake_case` keys or band/component enums.
 - [x] **10.4** WEB-004 login language: the language switcher and `safeNext` keep the chosen locale in `next`. — check: `/az/profile` → login → EN → log in lands on `/en/profile`.
-- [ ] **10.5** WEB-007, WEB-008 units and district names from the dictionaries. — check: `/ru/drives/<id>` shows "км", "км/ч"; AZ "km/saat"; no `baku-center` slug.
+- [x] **10.5** WEB-007, WEB-008 units and district names from the dictionaries. — check: `/ru/drives/<id>` shows "км", "км/ч"; AZ "km/saat"; no `baku-center` slug.
 - [ ] **10.6** WEB-003 `lang` only on model-written text in the debrief card. — check: EN debrief on `/az` keeps AZ uppercase headings.
 - [ ] **10.7** WEB-006 landing screenshots per locale (EN, RU, AZ), captured after 10.2–10.6. — check: `/ru` and `/az` show their own language in every image.
 - [ ] **10.8** WEB-005 localized not-found page with the site layout. — check: `/ru/nope` is Russian with nav and language switcher.

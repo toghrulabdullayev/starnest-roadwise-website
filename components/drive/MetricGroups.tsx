@@ -3,13 +3,13 @@ import type { History } from "@/lib/history";
 import type { Dictionary } from "@/lib/i18n/getDictionary";
 import { fmt } from "@/lib/i18n/getDictionary";
 import type { Locale } from "@/lib/i18n/config";
-import { fmtAzn, fmtNumber, fmtPercent } from "@/lib/i18n/format";
+import { fmtAzn, fmtKmh, fmtNumber, fmtPercent } from "@/lib/i18n/format";
 import { ruleName } from "@/lib/rules/catalog";
 
 export function MetricGroups({ m, locale, dict }: { m: DriveMetrics; locale: Locale; dict: Dictionary }) {
   const t = dict.drive.metrics;
   const g = dict.drive.groups;
-  const kmh = (v: number) => `${fmtNumber(locale, v, 1)} km/h`;
+  const kmh = (v: number) => fmtKmh(locale, v);
   const groups: { title: string; rows: [string, string][] }[] = [
     {
       title: g.rules,
@@ -34,7 +34,7 @@ export function MetricGroups({ m, locale, dict }: { m: DriveMetrics; locale: Loc
       rows: [
         [t.harshBrake, fmtNumber(locale, m.harsh_brake_count)],
         [t.harshAccel, fmtNumber(locale, m.harsh_accel_count)],
-        [t.jerk, `${fmtNumber(locale, m.jerk_rms, 2)} m/s³`],
+        [t.jerk, `${fmtNumber(locale, m.jerk_rms, 2)} ${dict.units.mps3}`],
       ],
     },
     {

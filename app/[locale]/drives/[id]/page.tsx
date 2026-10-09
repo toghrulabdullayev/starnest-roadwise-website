@@ -42,7 +42,7 @@ export default async function DrivePage({ params }: PageProps<"/[locale]/drives/
       if (e.type === "checkpoint") return { id: e.id, time: mmss(e.t), kind: "checkpoint", title: fmt(t.checkpoint, { n: e.index + 1 }) };
       const notes: string[] = [];
       if (e.outcome === "fail" && e.fine_azn !== undefined) notes.push(fmtAzn(locale, e.fine_azn));
-      if (e.rule === "speeding" && e.detail?.speed_kmh !== undefined) notes.push(`${e.detail.speed_kmh} / ${e.detail.limit_kmh} km/h`);
+      if (e.rule === "speeding" && e.detail?.speed_kmh !== undefined) notes.push(`${e.detail.speed_kmh} / ${e.detail.limit_kmh} ${dict.units.kmh}`);
       return {
         id: e.id,
         time: mmss(e.t),
@@ -68,7 +68,7 @@ export default async function DrivePage({ params }: PageProps<"/[locale]/drives/
         </div>
         <h1 className="text-4xl uppercase leading-tight sm:text-5xl">
           {dict.profile.modes[drive.mode]}
-          {drive.district ? ` · ${drive.district}` : ""}
+          {drive.district ? ` · ${(dict.districts as Record<string, string>)[drive.district] ?? drive.district}` : ""}
         </h1>
         {exam && (
           <p className={`w-fit border-2 px-3 py-1 font-bold uppercase ${exam.passed ? "border-success-ink text-success-ink" : "border-danger-ink text-danger-ink"}`}>
