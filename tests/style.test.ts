@@ -22,3 +22,14 @@ describe("AI text style", () => {
     expect(styleRules("en").join(" ")).not.toContain("decimal comma");
   });
 });
+
+import { safeNext } from "@/lib/auth/currentUser";
+describe("safeNext keeps the chosen language", () => {
+  it("rewrites the locale segment, keeps the rest, still rejects unsafe paths", () => {
+    expect(safeNext("/az/profile", "", "en")).toBe("/en/profile");
+    expect(safeNext("/az/drives/x?a=1", "", "ru")).toBe("/ru/drives/x?a=1");
+    expect(safeNext("/api/me", "", "en")).toBe("/api/me");
+    expect(safeNext("/az/profile", "")).toBe("/az/profile");
+    expect(safeNext("//evil.com", "/x", "en")).toBe("/x");
+  });
+});

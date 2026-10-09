@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { SESSION_COOKIE, SESSION_TTL_MS, validateSession } from "./session";
 import type { User } from "./users";
-import type { Locale } from "@/lib/i18n/config";
+import { isLocale, swapLocale, type Locale } from "@/lib/i18n/config";
 
 export function sessionCookieOptions(expires: Date) {
   return {
@@ -23,10 +23,15 @@ export const getCurrentUser = cache(async (): Promise<User | null> => {
   return session?.user ?? null;
 });
 
-/** Only same-site relative paths are allowed as a post-login destination. */
-export function safeNext(next: unknown, fallback: string): string {
+/**
+ * Only same-site relative paths are allowed as a post-login destination. With `locale`, a leading
+ * /{locale}/ segment is rewritten to it, so switching language on the login page is kept.
+ */
+export function safeNext(next: unknown, fallback: string, locale?: Locale): string {
   if (typeof next !== "string" || !next.startsWith("/") || next.startsWith("//") || next.includes("\\")) return fallback;
-  return next;
+  if (!locale || !isLocale(next.split(/[/?]/)[1])) return next;
+  const [path, ...rest] = next.split("?");
+  return [swapLocale(path, locale), ...rest].join("?");
 }
 
 export function loginUrl(locale: Locale, returnTo: string): string {

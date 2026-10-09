@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/login">)
 export default async function LoginPage({ params, searchParams }: PageProps<"/[locale]/login">) {
   const { locale: l } = await params;
   const locale = isLocale(l) ? l : defaultLocale;
-  const next = safeNext((await searchParams).next, "");
+  const next = safeNext((await searchParams).next, "", locale);
   if (await getCurrentUser()) redirect(next || `/${locale}/profile`);
   const t = getDictionary(locale).auth;
   return (
