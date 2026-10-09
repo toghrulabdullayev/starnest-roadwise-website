@@ -12,8 +12,10 @@ import { usePathname } from "next/navigation";
  * position: fixed) and moved to the scroll position each frame with OVERDRAW px
  * of margin. Being ordinary page content, it scrolls and rubber-bands with the
  * page; the margin hides any frame where scrolling gets ahead of the redraw.
- * Only on screens >= 1400px wide (where the gutters are empty); static under
- * prefers-reduced-motion, hidden in forced-colors mode.
+ * On screens >= 1400px wide the gutters are empty, so the side roads fit there. On
+ * narrower screens (tablets, phones) the content fills the width: only the horizontal
+ * roads on the seams remain, with zebras and walkers but no side roads or junction
+ * lights. Static under prefers-reduced-motion, hidden in forced-colors mode.
  */
 
 /*
@@ -210,9 +212,9 @@ function makeCar(axis: Axis, dir: 1 | -1, road: number, lane: number, pos: numbe
   };
 }
 
-function build(vw: number, docH: number, crosses: number[]): World {
+function build(vw: number, docH: number, crosses: number[], narrow: boolean): World {
   const gutter = (vw - CONTENT_W / SCALE) / 2;
-  const roads = [Math.round(gutter / 2), Math.round(vw - gutter / 2)];
+  const roads = narrow ? [] : [Math.round(gutter / 2), Math.round(vw - gutter / 2)];
   const room = gutter / 2 - ROAD_HALF; // free space either side of a side road
   const nearCross = (y: number, pad: number) => crosses.some((c) => Math.abs(y - c) < CROSS_HALF + pad);
 
@@ -247,8 +249,9 @@ function build(vw: number, docH: number, crosses: number[]): World {
     }
   });
   for (const y of crosses) {
-    zebras.push({ axis: "h", road: y, at: roads[0] + ROAD_HALF + 36, signal: null });
-    zebras.push({ axis: "h", road: y, at: roads[1] - ROAD_HALF - 36, signal: null });
+    const [left, right] = narrow ? [vw * 0.22, vw * 0.78] : [roads[0] + ROAD_HALF + 36, roads[1] - ROAD_HALF - 36];
+    zebras.push({ axis: "h", road: y, at: left, signal: null });
+    zebras.push({ axis: "h", road: y, at: right, signal: null });
   }
 
   const w: World = {
@@ -774,8 +777,8 @@ function draw(ctx: CanvasRenderingContext2D, w: World, t: number, originY: numbe
 /* ---------- component ---------- */
 
 // Inline on purpose: the layer is page content (absolute, page-tall, not
-// fixed), so it scrolls and rubber-bands with the page. Shown only when wide
-// enough and not in forced-colors mode (decided in relayout()).
+// fixed), so it scrolls and rubber-bands with the page. Shown at every width
+// except in forced-colors mode (decided in relayout()).
 const TRACK_STYLE: CSSProperties = {
   display: "none",
   position: "absolute",
@@ -842,7 +845,7 @@ export function RoadScene() {
       cancelAnimationFrame(raf);
       raf = 0;
       const track = trackRef.current;
-      const show = wide.matches && !forced.matches && track !== null;
+      const show = !forced.matches && track !== null;
       if (track) track.style.display = show ? "block" : "none";
       if (!show) {
         world = null;
@@ -860,10 +863,11 @@ export function RoadScene() {
       const docH = document.documentElement.scrollHeight;
       track.style.height = `${docH}px`;
       const seams = findSeams(vw);
-      const sig = `${vw}|${docH}|${seams.join(",")}`;
+      const narrow = !wide.matches;
+      const sig = `${vw}|${docH}|${narrow}|${seams.join(",")}`;
       if (sig !== signature) {
         signature = sig;
-        world = build(vw / SCALE, docH / SCALE, seams);
+        world = build(vw / SCALE, docH / SCALE, seams, narrow);
       }
       render();
       if (!reduced.matches) {
