@@ -1,7 +1,12 @@
 {
   "meta": {
     "title": "Roadwise — learn to drive in Baku",
-    "description": "A Baku driving simulator with an AI instructor that explains every drive and tracks your exam readiness."
+    "description": "A Baku driving simulator with an AI instructor that explains every drive and tracks your exam readiness.",
+    "pages": {
+      "download": "Download the free Roadwise driving simulator for Baku and sign in from the game in under a minute.",
+      "login": "Log in to Roadwise to see your drives, instructor debriefs and exam readiness.",
+      "signup": "Create a free Roadwise account to track every drive and see when you are exam-ready."
+    }
   },
   "nav": {
     "home": "Home",

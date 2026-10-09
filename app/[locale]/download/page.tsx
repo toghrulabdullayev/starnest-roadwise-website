@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { isLocale, defaultLocale } from "@/lib/i18n/config";
 import { fmt, getDictionary } from "@/lib/i18n/getDictionary";
 import { buttonClass, Card, Eyebrow, withBrand } from "@/components/ui";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/download">): Promise<Metadata> {
-  return { title: getDictionary((await params).locale).download.title };
+  const { locale: l } = await params;
+  const locale = isLocale(l) ? l : defaultLocale;
+  const dict = getDictionary(locale);
+  return pageMetadata(locale, "/download", { title: dict.download.title, index: true, description: dict.meta.pages.download });
 }
 
 export default async function DownloadPage({ params }: PageProps<"/[locale]/download">) {

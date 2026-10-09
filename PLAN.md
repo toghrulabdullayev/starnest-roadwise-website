@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1–10.8 done; next 10.9. MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
+**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1–10.9 done; next 10.10. MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -75,7 +75,7 @@ Branch `qa-fixes`. One step per finding group; the owner approves each step befo
 - [x] **10.6** WEB-003 `lang` only on model-written text in the debrief card. — check: EN debrief on `/az` keeps AZ uppercase headings.
 - [x] **10.7** WEB-006 landing screenshots per locale (EN, RU, AZ), captured after 10.2–10.6. — check: `/ru` and `/az` show their own language in every image.
 - [x] **10.8** WEB-005 localized not-found page with the site layout. — check: `/ru/nope` is Russian with nav and language switcher.
-- [ ] **10.9** WEB-017 metadata: `hreflang` alternates, canonical, Open Graph, per-page descriptions. — check: page `<head>` in each locale.
+- [x] **10.9** WEB-017 metadata: `hreflang` alternates, canonical, Open Graph, per-page descriptions. — check: page `<head>` in each locale.
 - [ ] **10.10** WEB-011, WEB-012 forms: required-field errors on login; focus moves to the first invalid field. — check: empty login and sign-up in each locale.
 - [ ] **10.11** WEB-013, WEB-014 no-wrap badges and values; 24 px minimum target for table links. — check: AZ exam history and drive table at 390 px.
 - [ ] **10.12** WEB-015 quiz: natural per-rule wording, no repeated eyebrow/title. — check: quiz in each locale.

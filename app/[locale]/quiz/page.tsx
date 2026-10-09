@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { requireUser } from "@/lib/auth/currentUser";
 import { isLocale, defaultLocale } from "@/lib/i18n/config";
@@ -11,7 +12,10 @@ import { Eyebrow } from "@/components/ui";
 import { QuizRunner } from "@/components/quiz/QuizRunner";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/quiz">): Promise<Metadata> {
-  return { title: getDictionary((await params).locale).learn.quizTitle };
+  const { locale: l } = await params;
+  const locale = isLocale(l) ? l : defaultLocale;
+  const dict = getDictionary(locale);
+  return pageMetadata(locale, "/quiz", { title: dict.learn.quizTitle, index: false });
 }
 
 export default async function QuizPage({ params }: PageProps<"/[locale]/quiz">) {

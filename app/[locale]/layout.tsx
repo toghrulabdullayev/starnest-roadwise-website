@@ -6,6 +6,7 @@ import { getDictionary } from "@/lib/i18n/getDictionary";
 import { SiteHeader } from "@/components/SiteHeader";
 import { RoadScene } from "@/components/RoadScene";
 import { getCurrentUser } from "@/lib/auth/currentUser";
+import { metadataBase, pageMetadata } from "@/lib/seo";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -15,7 +16,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  return { title: { default: dict.meta.title, template: "%s · Roadwise" }, description: dict.meta.description };
+  // Pages add their own canonical, alternates and Open Graph; the layout gives the home-page defaults.
+  return {
+    metadataBase: metadataBase(),
+    title: { default: dict.meta.title, template: "%s · Roadwise" },
+    ...(isLocale(locale) ? pageMetadata(locale, "") : { description: dict.meta.description }),
+  };
 }
 
 export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
