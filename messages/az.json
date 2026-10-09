@@ -419,17 +419,17 @@
     "trendSame": "Hələlik dəyişiklik yoxdur."
   },
   "quiz": {
-    "fineQuestion": "Bu pozuntuya görə cərimə nə qədərdir: {rule}?",
+    "fineQuestion": "«{rule}» pozuntusuna görə cərimə nə qədərdir?",
     "fineExplain": "«{rule}» üzrə cərimə {fine} AZN-dir.",
     "fineUnit": "{fine} AZN",
-    "severityQuestion": "İmtahanda bu səhv necə qiymətləndirilir: {rule}?",
+    "severityQuestion": "İmtahanda «{rule}» necə qiymətləndirilir?",
     "severityMajor": "Kobud səhv: imtahan dərhal uğursuz bitir",
     "severityMinor": "Yüngül səhv: əleyhinizə sayılır",
     "severityNone": "İmtahanda cəza yoxdur",
     "severityWarning": "Yalnız xəbərdarlıq",
     "severityExplainMajor": "«{rule}» kobud səhvdir, ona görə imtahan dərhal uğursuz bitir.",
     "severityExplainMinor": "«{rule}» yüngül səhvdir; yüngül səhvlər imtahan boyu toplanır.",
-    "limitQuestion": "Bu ərazidə sürət həddi nə qədərdir: {zone}?",
+    "limitQuestion": "«{zone}» üçün sürət həddi nə qədərdir?",
     "limitExplain": "«{zone}» üçün sürət həddi {limit} km/saatdır.",
     "limitUnit": "{limit} km/saat",
     "zones": {
