@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-09T11:40:58.220Z",
+  "generated_at": "2026-10-09T13:10:13.448Z",
   "prompt_version": "debrief-v1",
-  "model": "gemini-3.8-flash",
+  "model": "google/gemini-3.5-flash-lite",
   "config": {
-    "runs": 3,
+    "runs": 1,
     "locales": [
       "en",
       "ru",
@@ -21,49 +21,52 @@
     ]
   },
   "unit_tests": {
-    "files": 34,
-    "tests": 132,
-    "passed": 132,
+    "files": 84,
+    "tests": 288,
+    "passed": 288,
     "failed": 0
   },
-  "ai_available": false,
-  "api_errors": [
-    "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}"
-  ],
+  "ai_available": true,
+  "api_errors": [],
   "totals": {
-    "pipeline_runs": 72,
-    "ai_ready": 0,
-    "fallback": 72,
-    "model_calls": 0
+    "pipeline_runs": 24,
+    "ai_ready": 24,
+    "fallback": 0,
+    "model_calls": 26
   },
   "measures": {
-    "schema_validity_first_attempt_pct": null,
-    "grounding_rate_first_attempt_pct": null,
+    "schema_validity_first_attempt_pct": 100,
+    "grounding_rate_first_attempt_pct": 100,
     "hallucinated_references_first_attempt": {
       "unknown_event": 0,
       "unknown_rule": 0,
       "invented_number": 0
     },
-    "major_fault_recall_ai_pct": null,
-    "major_fault_recall_fallback_pct": 100,
-    "prioritisation_ai_pct": null,
+    "major_fault_recall_ai_pct": 100,
+    "major_fault_recall_fallback_pct": null,
+    "prioritisation_ai_pct": 93.3,
     "consistency_top_issue_pct": null,
-    "fallback_rate_pct": 100,
-    "language_check_ai_pct": null,
+    "fallback_rate_pct": 0,
+    "language_check_ai_pct": 100,
     "language_check_all_pct": 100,
     "latency_ms": {
-      "p50": null,
-      "max": null
+      "p50": 1277,
+      "max": 1899
     },
     "input_tokens": {
-      "p50": null,
-      "max": null
+      "p50": 954,
+      "max": 1083
     },
     "output_tokens": {
-      "p50": null,
-      "max": null
+      "p50": 554,
+      "max": 925
     },
-    "cost_usd_per_debrief": "prices not set"
+    "cost_usd_per_debrief": {
+      "p50": 0.0017042000000000001,
+      "max": 0.0026041,
+      "price_in_per_m": 0.3,
+      "price_out_per_m": 2.5
+    }
   },
   "comparison": [
     {
@@ -81,7 +84,11 @@
         "prioritised": null,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 2,
+        "cross_drive": 0,
+        "prioritised": null
+      }
     },
     {
       "case": "speeder",
@@ -102,7 +109,11 @@
         "prioritised": true,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 4,
+        "cross_drive": 0,
+        "prioritised": true
+      }
     },
     {
       "case": "red_light_runner",
@@ -122,7 +133,11 @@
         "prioritised": true,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 4,
+        "cross_drive": 0,
+        "prioritised": true
+      }
     },
     {
       "case": "nervous",
@@ -139,7 +154,11 @@
         "prioritised": null,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 2,
+        "cross_drive": 0,
+        "prioritised": null
+      }
     },
     {
       "case": "mixed_exam_fail",
@@ -160,7 +179,11 @@
         "prioritised": true,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 5,
+        "cross_drive": 0,
+        "prioritised": true
+      }
     },
     {
       "case": "progress_series_1",
@@ -182,7 +205,11 @@
         "prioritised": true,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 7,
+        "cross_drive": 0,
+        "prioritised": true
+      }
     },
     {
       "case": "progress_series_2",
@@ -201,7 +228,11 @@
         "prioritised": true,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 2,
+        "cross_drive": 5,
+        "prioritised": true
+      }
     },
     {
       "case": "progress_series_3",
@@ -218,7 +249,11 @@
         "prioritised": null,
         "grounded": true
       },
-      "ai": null
+      "ai": {
+        "actionable": 2,
+        "cross_drive": 5,
+        "prioritised": null
+      }
     }
   ],
   "history_comparison": [
@@ -226,14 +261,14 @@
       "case": "progress_series_2",
       "previous_drives": 1,
       "ai_with": {
-        "runs": 0,
-        "cross_drive": null,
-        "actionable": null
+        "runs": 1,
+        "cross_drive": 5,
+        "actionable": 2
       },
       "ai_without": {
-        "runs": 0,
-        "cross_drive": null,
-        "actionable": null
+        "runs": 1,
+        "cross_drive": 0,
+        "actionable": 2
       },
       "fallback_with": {
         "cross_drive": 5
@@ -246,14 +281,14 @@
       "case": "progress_series_3",
       "previous_drives": 2,
       "ai_with": {
-        "runs": 0,
-        "cross_drive": null,
-        "actionable": null
+        "runs": 1,
+        "cross_drive": 5,
+        "actionable": 2
       },
       "ai_without": {
-        "runs": 0,
-        "cross_drive": null,
-        "actionable": null
+        "runs": 1,
+        "cross_drive": 0,
+        "actionable": 2
       },
       "fallback_with": {
         "cross_drive": 4
@@ -270,10 +305,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -283,87 +318,19 @@
       "prioritised": null,
       "top_rule": null,
       "language_ok": true,
-      "actionable": 1,
+      "actionable": 2,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 813,
+      "output_tokens": 243,
+      "latency_ms": 1488,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "clean_drive",
-      "locale": "en",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "clean_drive",
-      "locale": "en",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 813,
+          "output_tokens": 243,
+          "latency_ms": 1488
         }
       ]
     },
@@ -372,10 +339,10 @@
       "locale": "ru",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -385,87 +352,19 @@
       "prioritised": null,
       "top_rule": null,
       "language_ok": true,
-      "actionable": 1,
+      "actionable": 2,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 829,
+      "output_tokens": 338,
+      "latency_ms": 1464,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "clean_drive",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "clean_drive",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 829,
+          "output_tokens": 338,
+          "latency_ms": 1464
         }
       ]
     },
@@ -474,10 +373,10 @@
       "locale": "az",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -489,85 +388,17 @@
       "language_ok": true,
       "actionable": 1,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 826,
+      "output_tokens": 275,
+      "latency_ms": 1047,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "clean_drive",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "clean_drive",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 826,
+          "output_tokens": 275,
+          "latency_ms": 1047
         }
       ]
     },
@@ -576,10 +407,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -589,87 +420,19 @@
       "prioritised": true,
       "top_rule": "speeding",
       "language_ok": true,
-      "actionable": 2,
+      "actionable": 4,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 992,
+      "output_tokens": 668,
+      "latency_ms": 1671,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "speeder",
-      "locale": "en",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "speeder",
-      "locale": "en",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 992,
+          "output_tokens": 668,
+          "latency_ms": 1671
         }
       ]
     },
@@ -678,10 +441,10 @@
       "locale": "ru",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -691,87 +454,19 @@
       "prioritised": true,
       "top_rule": "speeding",
       "language_ok": true,
-      "actionable": 2,
+      "actionable": 5,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 1010,
+      "output_tokens": 688,
+      "latency_ms": 1372,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "speeder",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "speeder",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1010,
+          "output_tokens": 688,
+          "latency_ms": 1372
         }
       ]
     },
@@ -780,10 +475,10 @@
       "locale": "az",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -793,87 +488,19 @@
       "prioritised": true,
       "top_rule": "speeding",
       "language_ok": true,
-      "actionable": 2,
+      "actionable": 4,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 1011,
+      "output_tokens": 811,
+      "latency_ms": 1306,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "speeder",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "speeder",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1011,
+          "output_tokens": 811,
+          "latency_ms": 1306
         }
       ]
     },
@@ -882,10 +509,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -897,29 +524,29 @@
       "language_ok": true,
       "actionable": 4,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 910,
+      "output_tokens": 507,
+      "latency_ms": 1255,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 910,
+          "output_tokens": 507,
+          "latency_ms": 1255
         }
       ]
     },
     {
       "case": "red_light_runner",
-      "locale": "en",
-      "run": 2,
+      "locale": "ru",
+      "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -931,29 +558,29 @@
       "language_ok": true,
       "actionable": 4,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 928,
+      "output_tokens": 629,
+      "latency_ms": 1510,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 928,
+          "output_tokens": 629,
+          "latency_ms": 1510
         }
       ]
     },
     {
       "case": "red_light_runner",
-      "locale": "en",
-      "run": 3,
+      "locale": "az",
+      "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -965,221 +592,17 @@
       "language_ok": true,
       "actionable": 4,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 929,
+      "output_tokens": 668,
+      "latency_ms": 1488,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "red_light_runner",
-      "locale": "ru",
-      "run": 1,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "red_light",
-      "language_ok": true,
-      "actionable": 4,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "red_light_runner",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "red_light",
-      "language_ok": true,
-      "actionable": 4,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "red_light_runner",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "red_light",
-      "language_ok": true,
-      "actionable": 4,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "red_light_runner",
-      "locale": "az",
-      "run": 1,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "red_light",
-      "language_ok": true,
-      "actionable": 4,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "red_light_runner",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "red_light",
-      "language_ok": true,
-      "actionable": 4,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "red_light_runner",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "red_light",
-      "language_ok": true,
-      "actionable": 4,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 929,
+          "output_tokens": 668,
+          "latency_ms": 1488
         }
       ]
     },
@@ -1188,10 +611,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -1201,87 +624,19 @@
       "prioritised": null,
       "top_rule": null,
       "language_ok": true,
-      "actionable": 1,
+      "actionable": 2,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 762,
+      "output_tokens": 279,
+      "latency_ms": 1107,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "nervous",
-      "locale": "en",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "nervous",
-      "locale": "en",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 762,
+          "output_tokens": 279,
+          "latency_ms": 1107
         }
       ]
     },
@@ -1290,10 +645,10 @@
       "locale": "ru",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -1305,85 +660,17 @@
       "language_ok": true,
       "actionable": 1,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 778,
+      "output_tokens": 273,
+      "latency_ms": 1324,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "nervous",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "nervous",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 778,
+          "output_tokens": 273,
+          "latency_ms": 1324
         }
       ]
     },
@@ -1392,10 +679,10 @@
       "locale": "az",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -1405,87 +692,19 @@
       "prioritised": null,
       "top_rule": null,
       "language_ok": true,
-      "actionable": 1,
+      "actionable": 2,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 775,
+      "output_tokens": 346,
+      "latency_ms": 1198,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "nervous",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "nervous",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 775,
+          "output_tokens": 346,
+          "latency_ms": 1198
         }
       ]
     },
@@ -1494,10 +713,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -1509,29 +728,63 @@
       "language_ok": true,
       "actionable": 5,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 845,
+      "output_tokens": 553,
+      "latency_ms": 1582,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 845,
+          "output_tokens": 553,
+          "latency_ms": 1582
         }
       ]
     },
     {
       "case": "mixed_exam_fail",
-      "locale": "en",
-      "run": 2,
+      "locale": "ru",
+      "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
+      "first_errors": [],
+      "attempts": 1,
+      "recall": {
+        "covered": 1,
+        "total": 1
+      },
+      "prioritised": true,
+      "top_rule": "wrong_way",
+      "language_ok": true,
+      "actionable": 6,
+      "cross_drive": 0,
+      "input_tokens": 862,
+      "output_tokens": 703,
+      "latency_ms": 1899,
+      "attempts_detail": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "errors": [],
+          "input_tokens": 862,
+          "output_tokens": 703,
+          "latency_ms": 1899
+        }
+      ]
+    },
+    {
+      "case": "mixed_exam_fail",
+      "locale": "az",
+      "run": 1,
+      "with_history": true,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -1543,255 +796,17 @@
       "language_ok": true,
       "actionable": 5,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 866,
+      "output_tokens": 696,
+      "latency_ms": 1195,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "mixed_exam_fail",
-      "locale": "en",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "wrong_way",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "mixed_exam_fail",
-      "locale": "ru",
-      "run": 1,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "wrong_way",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "mixed_exam_fail",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "wrong_way",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "mixed_exam_fail",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "wrong_way",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "mixed_exam_fail",
-      "locale": "az",
-      "run": 1,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "wrong_way",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "mixed_exam_fail",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "wrong_way",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "mixed_exam_fail",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 1,
-        "total": 1
-      },
-      "prioritised": true,
-      "top_rule": "wrong_way",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 866,
+          "output_tokens": 696,
+          "latency_ms": 1195
         }
       ]
     },
@@ -1800,10 +815,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -1813,87 +828,19 @@
       "prioritised": true,
       "top_rule": "speeding",
       "language_ok": true,
-      "actionable": 5,
+      "actionable": 7,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 954,
+      "output_tokens": 774,
+      "latency_ms": 1089,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_1",
-      "locale": "en",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_1",
-      "locale": "en",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 954,
+          "output_tokens": 774,
+          "latency_ms": 1089
         }
       ]
     },
@@ -1902,10 +849,10 @@
       "locale": "ru",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -1915,87 +862,19 @@
       "prioritised": true,
       "top_rule": "speeding",
       "language_ok": true,
-      "actionable": 5,
+      "actionable": 6,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 972,
+      "output_tokens": 925,
+      "latency_ms": 1200,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_1",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_1",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 972,
+          "output_tokens": 925,
+          "latency_ms": 1200
         }
       ]
     },
@@ -2004,100 +883,32 @@
       "locale": "az",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
         "covered": 0,
         "total": 0
       },
-      "prioritised": true,
-      "top_rule": "speeding",
+      "prioritised": false,
+      "top_rule": "pedestrian_crossing",
       "language_ok": true,
       "actionable": 5,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 973,
+      "output_tokens": 779,
+      "latency_ms": 1105,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_1",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_1",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 5,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 973,
+          "output_tokens": 779,
+          "latency_ms": 1105
         }
       ]
     },
@@ -2106,10 +917,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2121,85 +932,17 @@
       "language_ok": true,
       "actionable": 2,
       "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 1064,
+      "output_tokens": 554,
+      "latency_ms": 1126,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "en",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "en",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1064,
+          "output_tokens": 554,
+          "latency_ms": 1126
         }
       ]
     },
@@ -2208,10 +951,10 @@
       "locale": "ru",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2223,85 +966,17 @@
       "language_ok": true,
       "actionable": 2,
       "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 1082,
+      "output_tokens": 469,
+      "latency_ms": 1260,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1082,
+          "output_tokens": 469,
+          "latency_ms": 1260
         }
       ]
     },
@@ -2310,10 +985,10 @@
       "locale": "az",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2325,85 +1000,17 @@
       "language_ok": true,
       "actionable": 2,
       "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 1083,
+      "output_tokens": 574,
+      "latency_ms": 1228,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 5,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1083,
+          "output_tokens": 574,
+          "latency_ms": 1228
         }
       ]
     },
@@ -2412,10 +1019,10 @@
       "locale": "en",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2425,87 +1032,19 @@
       "prioritised": null,
       "top_rule": null,
       "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "actionable": 2,
+      "cross_drive": 5,
+      "input_tokens": 1011,
+      "output_tokens": 424,
+      "latency_ms": 1302,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "en",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "en",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1011,
+          "output_tokens": 424,
+          "latency_ms": 1302
         }
       ]
     },
@@ -2514,10 +1053,10 @@
       "locale": "ru",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2528,86 +1067,18 @@
       "top_rule": null,
       "language_ok": true,
       "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "cross_drive": 5,
+      "input_tokens": 1027,
+      "output_tokens": 460,
+      "latency_ms": 1277,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "ru",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "ru",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1027,
+          "output_tokens": 460,
+          "latency_ms": 1277
         }
       ]
     },
@@ -2616,10 +1087,10 @@
       "locale": "az",
       "run": 1,
       "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2630,86 +1101,18 @@
       "top_rule": null,
       "language_ok": true,
       "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "cross_drive": 3,
+      "input_tokens": 1024,
+      "output_tokens": 409,
+      "latency_ms": 1065,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "az",
-      "run": 2,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "az",
-      "run": 3,
-      "with_history": true,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 4,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 1024,
+          "output_tokens": 409,
+          "latency_ms": 1065
         }
       ]
     },
@@ -2718,10 +1121,10 @@
       "locale": "en",
       "run": 1,
       "with_history": false,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2733,85 +1136,17 @@
       "language_ok": true,
       "actionable": 2,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 870,
+      "output_tokens": 348,
+      "latency_ms": 1250,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "en",
-      "run": 2,
-      "with_history": false,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_2",
-      "locale": "en",
-      "run": 3,
-      "with_history": false,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": true,
-      "top_rule": "speeding",
-      "language_ok": true,
-      "actionable": 2,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 870,
+          "output_tokens": 348,
+          "latency_ms": 1250
         }
       ]
     },
@@ -2820,10 +1155,10 @@
       "locale": "en",
       "run": 1,
       "with_history": false,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
+      "status": "ready",
+      "api_error": null,
+      "first_schema_valid": true,
+      "first_grounded": true,
       "first_errors": [],
       "attempts": 1,
       "recall": {
@@ -2832,88 +1167,20 @@
       },
       "prioritised": null,
       "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
+      "language_ok": false,
+      "actionable": 2,
       "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
+      "input_tokens": 810,
+      "output_tokens": 350,
+      "latency_ms": 1103,
       "attempts_detail": [
         {
           "attempt": 1,
-          "ok": false,
+          "ok": true,
           "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "en",
-      "run": 2,
-      "with_history": false,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
-        }
-      ]
-    },
-    {
-      "case": "progress_series_3",
-      "locale": "en",
-      "run": 3,
-      "with_history": false,
-      "status": "fallback",
-      "api_error": "attempt 1 [api_error] 401 API error occurred: {\"httpMeta\":{\"response\":{},\"request\":{}}}",
-      "first_schema_valid": null,
-      "first_grounded": null,
-      "first_errors": [],
-      "attempts": 1,
-      "recall": {
-        "covered": 0,
-        "total": 0
-      },
-      "prioritised": null,
-      "top_rule": null,
-      "language_ok": true,
-      "actionable": 1,
-      "cross_drive": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "latency_ms": 0,
-      "attempts_detail": [
-        {
-          "attempt": 1,
-          "ok": false,
-          "errors": [],
-          "input_tokens": 0,
-          "output_tokens": 0,
-          "latency_ms": 0
+          "input_tokens": 810,
+          "output_tokens": 350,
+          "latency_ms": 1103
         }
       ]
     }

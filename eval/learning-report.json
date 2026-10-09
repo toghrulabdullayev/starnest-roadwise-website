@@ -1,0 +1,1867 @@
+{
+  "generated_at": "2026-10-09T13:10:13.452Z",
+  "model": "google/gemini-3.5-flash-lite",
+  "prompt_versions": {
+    "plan": "plan-1",
+    "quiz": "quiz-1",
+    "chat": "chat-1"
+  },
+  "config": {
+    "runs": 1,
+    "locales": [
+      "en",
+      "ru",
+      "az"
+    ],
+    "sections": [
+      "plan",
+      "quiz",
+      "chat",
+      "brief"
+    ]
+  },
+  "sections": [
+    "plan",
+    "quiz",
+    "chat",
+    "brief"
+  ],
+  "prices_per_m": {
+    "input": 0.3,
+    "output": 2.5
+  },
+  "measures": {
+    "plan": {
+      "runs": 18,
+      "accepted_pct": 100,
+      "first_attempt_clean_pct": 100,
+      "schema_validity_first_attempt_pct": 100,
+      "invented_number_first_attempt_pct": 0,
+      "covers_every_weak_rule_pct": 100,
+      "heaviest_rule_first_pct": 100,
+      "wrong_severity_claims": {
+        "plans_checked": 6,
+        "claims": 0
+      },
+      "language_ok_pct": 100,
+      "fallback_pct": 0,
+      "calls_with_usage": 18,
+      "latency_ms": {
+        "p50": 1119,
+        "p95": 1694,
+        "max": 1782
+      },
+      "input_tokens_p50": 361,
+      "output_tokens_p50": 283,
+      "cost_usd": {
+        "p50": 0.0008214,
+        "max": 0.0014616,
+        "total": 0.0140009
+      }
+    },
+    "quiz": {
+      "calls": 12,
+      "accepted_pct": 75,
+      "first_attempt_clean_pct": 58.3,
+      "schema_validity_first_attempt_pct": 100,
+      "invented_number_first_attempt_pct": 33.3,
+      "questions": 27,
+      "fact_checkable": 17,
+      "fact_check_pass_pct": 100,
+      "wrong_answer_rate_pct": 0,
+      "duplicates_of_bank": 0,
+      "correct_index_distribution": [
+        6,
+        11,
+        8,
+        2
+      ],
+      "language_ok_pct": 100,
+      "fallback_pct": 25,
+      "calls_with_usage": 12,
+      "latency_ms": {
+        "p50": 2111,
+        "p95": 3135,
+        "max": 3623
+      },
+      "input_tokens_p50": 694,
+      "output_tokens_p50": 337,
+      "cost_usd": {
+        "p50": 0.0010318,
+        "max": 0.0021796999999999997,
+        "total": 0.015351799999999999
+      }
+    },
+    "chat": {
+      "replies": 36,
+      "free": {
+        "n": 18,
+        "model_answer_pct": 100,
+        "kind_as_expected_pct": 100,
+        "rules_cited_when_expected_pct": 100,
+        "language_ok_pct": 100
+      },
+      "exam": {
+        "n": 18,
+        "guard_holds_pct": 100,
+        "model_complied_first_try_pct": 100,
+        "right_kind_pct": 100,
+        "refused_when_asked_for_rules_pct": 100,
+        "directions_when_available_pct": 100,
+        "language_ok_pct": 83.3
+      },
+      "fallback_pct": 0,
+      "reached_model": 36,
+      "calls_with_usage": 36,
+      "latency_ms": {
+        "p50": 1119,
+        "p95": 1378,
+        "max": 5344
+      },
+      "input_tokens_p50": 444,
+      "output_tokens_p50": 57,
+      "cost_usd": {
+        "p50": 0.0002703,
+        "max": 0.000974,
+        "total": 0.010384900000000002
+      }
+    }
+  },
+  "brief": {
+    "checks": [
+      {
+        "name": "speeder: heaviest weak spot is the expected top issue",
+        "passed": true,
+        "detail": "focus top speeding, expected speeding"
+      },
+      {
+        "name": "speeder: every rule that must be raised is in the profile",
+        "passed": true,
+        "detail": "1 rules present"
+      },
+      {
+        "name": "speeder: brief targets the top weak spots in order",
+        "passed": true,
+        "detail": "focus_rules speeding"
+      },
+      {
+        "name": "red_light_runner: heaviest weak spot is the expected top issue",
+        "passed": true,
+        "detail": "focus top red_light, expected red_light"
+      },
+      {
+        "name": "red_light_runner: every rule that must be raised is in the profile",
+        "passed": true,
+        "detail": "2 rules present"
+      },
+      {
+        "name": "red_light_runner: brief targets the top weak spots in order",
+        "passed": true,
+        "detail": "focus_rules red_light, speeding"
+      },
+      {
+        "name": "mixed_exam_fail: heaviest weak spot is the expected top issue",
+        "passed": true,
+        "detail": "focus top wrong_way, expected wrong_way"
+      },
+      {
+        "name": "mixed_exam_fail: every rule that must be raised is in the profile",
+        "passed": true,
+        "detail": "3 rules present"
+      },
+      {
+        "name": "mixed_exam_fail: brief targets the top weak spots in order",
+        "passed": true,
+        "detail": "focus_rules wrong_way, stop_sign, pedestrian_crossing"
+      },
+      {
+        "name": "progress_series_1: heaviest weak spot is the expected top issue",
+        "passed": true,
+        "detail": "focus top speeding, expected speeding"
+      },
+      {
+        "name": "progress_series_1: every rule that must be raised is in the profile",
+        "passed": true,
+        "detail": "3 rules present"
+      },
+      {
+        "name": "progress_series_1: brief targets the top weak spots in order",
+        "passed": true,
+        "detail": "focus_rules speeding, stop_sign, pedestrian_crossing"
+      },
+      {
+        "name": "clean_drive: no weak spots and a harder exam",
+        "passed": true,
+        "detail": "focus 0, reason clean, difficulty hard"
+      },
+      {
+        "name": "nervous: no weak spots and a harder exam",
+        "passed": true,
+        "detail": "focus 0, reason clean, difficulty hard"
+      },
+      {
+        "name": "new player: general standard exam",
+        "passed": true,
+        "detail": "no_history/standard"
+      },
+      {
+        "name": "series: weight of speeding does not rise while its fault count falls",
+        "passed": false,
+        "detail": "faults per drive 2 → 1 → 0, weights 2 → 2.2 → 1.32"
+      },
+      {
+        "name": "series: weight of stop_sign does not rise while its fault count falls",
+        "passed": true,
+        "detail": "faults per drive 1 → 0 → 0, weights 1 → 0.6 → 0.36"
+      },
+      {
+        "name": "series: weight of pedestrian_crossing does not rise while its fault count falls",
+        "passed": true,
+        "detail": "faults per drive 1 → 0 → 0, weights 1 → 0.6 → 0.36"
+      },
+      {
+        "name": "clean exam after weak history: every focus rule improved",
+        "passed": true,
+        "detail": "improved 3/3, worse 0"
+      },
+      {
+        "name": "same faults repeated in the exam: nothing is marked improved",
+        "passed": true,
+        "detail": "improved 0, same 0, worse 2"
+      },
+      {
+        "name": "clean history brief has no focus rules",
+        "passed": true,
+        "detail": "clean"
+      }
+    ],
+    "quiz_weak_share": [
+      {
+        "set": "series_1",
+        "mean_pct": 78.8,
+        "min_pct": 70,
+        "seeds": 200
+      },
+      {
+        "set": "series_1_2",
+        "mean_pct": 79.6,
+        "min_pct": 70,
+        "seeds": 200
+      },
+      {
+        "set": "series_1_2_3",
+        "mean_pct": 79.6,
+        "min_pct": 70,
+        "seeds": 200
+      },
+      {
+        "set": "speeder",
+        "mean_pct": 50,
+        "min_pct": 50,
+        "seeds": 200
+      },
+      {
+        "set": "red_light_runner",
+        "mean_pct": 74.1,
+        "min_pct": 70,
+        "seeds": 200
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "mean_pct": 84.5,
+        "min_pct": 70,
+        "seeds": 200
+      }
+    ]
+  },
+  "failure_examples": [
+    {
+      "feature": "quiz",
+      "case": "speed_stop_pedestrian",
+      "locale": "ru",
+      "reasons": [
+        "questions.1 uses number \"100\" which does not appear in the input"
+      ],
+      "final_status": "ready",
+      "rejected_output": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Подъезжая к знаку «STOP», вы видите, что дорога полностью свободна от других транспортных средств. Какой штраф предусмотрен за проезд этого знака без остановки?\",\"options\":[\"Штраф составляет 20 манатов\",\"Штраф составляет 40 манатов\",\"Штраф составляет 50 манатов\",\"Штраф не предусмотрен\"],\"correct_index\":1,\"explanation\":\"За проезд знака «STOP» без остановки предусмотрен штраф в размере 40 манатов.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Пешеход собирается перейти дорогу по нерегулируемому пешеходному переходу. Какое наказание ждет водителя за непредоставление преимущества пешеходам?\",\"options\":[\"Штраф составляет 40 манатов\",\"Штраф составляет 50 манатов\",\"Штраф составляет 60 манатов\",\"Штраф составляет 100 манатов\"],\"correct_index\":1,\"explanation\":\"За непредоставление преимущества пешеходам установлен штраф в размере 50 манатов.\"},{\"rule\":\"speeding\",\"question\":\"Каково ограничение скорости движения транспортных средств в жилой зоне в Баку?\",\"options\":[\"Ограничение скорости составляет 20 км/ч\",\"Ограничение скорости составляет 60 км/ч\",\"Ограничение скорости составляет 90 км/ч\",\"Ограничение скорости составляет 110 км/ч\"],\"correct_index\":0,\"explanation\":\"В жилой зоне установлено ограничение скорости движения 20 км/ч.\"}]}"
+    },
+    {
+      "feature": "quiz",
+      "case": "speed_stop_pedestrian",
+      "locale": "az",
+      "reasons": [
+        "questions.0 uses number \"30\" which does not appear in the input",
+        "questions.1 uses number \"30\" which does not appear in the input"
+      ],
+      "final_status": "fallback",
+      "rejected_output": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Yaşayış məntəqəsində hərəkət edərkən STOP nişanının tələbini pozub dayanmamağa görə cərimə məbləği nə qədərdir?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"60 AZN\"],\"correct_index\":1,\"explanation\":\"STOP nişanında dayanmamaq qaydasına görə tətbiq edilən cərimə 40 AZN təşkil edir.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Piyada keçidində piyadalara yol verməmək qaydasını pozduqda nə qədər cərimə nəzərdə tutulur?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"90 AZN\"],\"correct_index\":2,\"explanation\":\"Piyadalara yol verməmək qaydasının pozulmasına görə cərimə 50 AZN-dir.\"},{\"rule\":\"speeding\",\"question\":\"Bakı şəhərində avtomobil idarə edərkən şəhərdə müəyyən edilmiş sürət həddi neçə km/saat təşkil edir?\",\"options\":[\"20 km/saat\",\"60 km/saat\",\"90 km/saat\",\"110 km/saat\"],\"correct_index\":1,\"explanation\":\"Şəhərdə müəyyən edilmiş sürət həddi 60 km/saat-dır.\"}]}"
+    },
+    {
+      "feature": "quiz",
+      "case": "light_wrongway_giveway",
+      "locale": "ru",
+      "reasons": [
+        "expected exactly 3 questions but got 2"
+      ],
+      "final_status": "fallback",
+      "rejected_output": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"Водитель приближается к перекрестку, на котором горит запрещающий сигнал светофора. Каковы действия водителя?\",\"options\":[\"Продолжить движение без остановки\",\"Остановиться перед стоп-линией\",\"Увеличить скорость для проезда\",\"Объехать перекресток по встречной полосе\"],\"correct_index\":1,\"explanation\":\"Проезд на красный свет запрещен, поэтому необходимо остановиться.\"},{\"rule\":\"wrong_way\",\"question\":\"На дороге с односторонним движением водитель намерен начать движение в противоположном направлении потоку. Что следует сделать?\",\"options\":[\"Начать движение во встречном направлении\",\"Отказаться от движения во встречном направлении по односторонней дороге\",\"Проехать задним ходом весь квартал\",\"Включить фары и продолжить путь\"],\"correct_index\":1,\"explanation\":\"Движение во встречном направлении по односторонней дороге запрещено.\"}]}"
+    },
+    {
+      "feature": "quiz",
+      "case": "light_wrongway_giveway",
+      "locale": "az",
+      "reasons": [
+        "questions.0 uses number \"50\" which does not appear in the input",
+        "questions.0 uses number \"200\" which does not appear in the input",
+        "questions.1 uses number \"50\" which does not appear in the input",
+        "questions.1 uses number \"200\" which does not appear in the input"
+      ],
+      "final_status": "fallback",
+      "rejected_output": "{\"questions\": [{\"rule\": \"red_light\", \"question\": \"Svetoforun qırmızı işığı yanır və hərəkəti davam etdirmək istəyirsiniz. Qırmızı işıqda keçməyin cəriməsi neçə manatdır?\", \"options\": [\"50 manat\", \"100 manat\", \"150 manat\", \"200 manat\"], \"correct_index\": 1, \"explanation\": \"Qırmızı işıqda keçməyin cəriməsi 100 manat təşkil edir.\"}, {\"rule\": \"wrong_way\", \"question\": \"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi neçə manatdır?\", \"options\": [\"50 manat\", \"100 manat\", \"150 manat\", \"200 manat\"], \"correct_index\": 2, \"explanation\": \"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi 150 manatdır.\"}, {\"rule\": \"red_light\", \"question\": \"Svetoforun qırmızı işığında hərəkəti davam etdirməyin cərimə məbləği qanunvericiliklə nə qədər müəyyən edilmişdir?\", \"options\": [\"100 manat\", \"150 manat\", \"60 manat\", \"20 manat\"], \"correct_index\": 0, \"explanation\": \"Qırmızı işıqda keçmək qaydasının pozulmasına görə cərimə 100 manatdır.\"}]}"
+    }
+  ],
+  "records": {
+    "plan": [
+      {
+        "set": "series_1",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 348,
+        "output_tokens": 239,
+        "latency_ms": 1694,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "series_1",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 362,
+        "output_tokens": 250,
+        "latency_ms": 1608,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 361,
+        "output_tokens": 405,
+        "latency_ms": 1248,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 354,
+        "output_tokens": 235,
+        "latency_ms": 1782,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "series_1_2",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 368,
+        "output_tokens": 287,
+        "latency_ms": 1287,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 367,
+        "output_tokens": 340,
+        "latency_ms": 1119,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2_3",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 357,
+        "output_tokens": 272,
+        "latency_ms": 1071,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "series_1_2_3",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 371,
+        "output_tokens": 301,
+        "latency_ms": 1149,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "series_1_2_3",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 370,
+        "output_tokens": 400,
+        "latency_ms": 968,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "speeder",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 259,
+        "output_tokens": 85,
+        "latency_ms": 964,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "speeder",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 261,
+        "output_tokens": 91,
+        "latency_ms": 958,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "speeder",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 265,
+        "output_tokens": 157,
+        "latency_ms": 1009,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "red_light_runner",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 303,
+        "output_tokens": 146,
+        "latency_ms": 1226,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "red_light_runner",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 306,
+        "output_tokens": 159,
+        "latency_ms": 1061,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "red_light_runner",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 313,
+        "output_tokens": 291,
+        "latency_ms": 952,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 399,
+        "output_tokens": 283,
+        "latency_ms": 1000,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": 0
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 417,
+        "output_tokens": 381,
+        "latency_ms": 1367,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      },
+      {
+        "set": "exam_fail_and_speeder",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 422,
+        "output_tokens": 534,
+        "latency_ms": 1087,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "covers_all": true,
+        "top_matches_heaviest": true,
+        "language_ok": true,
+        "wrong_severity_claims": null
+      }
+    ],
+    "quiz": [
+      {
+        "set": "speed_stop_pedestrian",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 453,
+        "output_tokens": 279,
+        "latency_ms": 1407,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "stop_sign",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 2,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "speed_stop_pedestrian",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 2,
+        "input_tokens": 1001,
+        "output_tokens": 673,
+        "latency_ms": 2229,
+        "validation_errors": [
+          [
+            "questions.1 uses number \"100\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": true,
+        "first_errors": [
+          "questions.1 uses number \"100\" which does not appear in the input"
+        ],
+        "first_raw": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Подъезжая к знаку «STOP», вы видите, что дорога полностью свободна от других транспортных средств. Какой штраф предусмотрен за проезд этого знака без остановки?\",\"options\":[\"Штраф составляет 20 манатов\",\"Штраф составляет 40 манатов\",\"Штраф составляет 50 манатов\",\"Штраф не предусмотрен\"],\"correct_index\":1,\"explanation\":\"За проезд знака «STOP» без остановки предусмотрен штраф в размере 40 манатов.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Пешеход собирается перейти дорогу по нерегулируемому пешеходному переходу. Какое наказание ждет водителя за непредоставление преимущества пешеходам?\",\"options\":[\"Штраф составляет 40 манатов\",\"Штраф составляет 50 манатов\",\"Штраф составляет 60 манатов\",\"Штраф составляет 100 манатов\"],\"correct_index\":1,\"explanation\":\"За непредоставление преимущества пешеходам установлен штраф в размере 50 манатов.\"},{\"rule\":\"speeding\",\"question\":\"Каково ограничение скорости движения транспортных средств в жилой зоне в Баку?\",\"options\":[\"Ограничение скорости составляет 20 км/ч\",\"Ограничение скорости составляет 60 км/ч\",\"Ограничение скорости составляет 90 км/ч\",\"Ограничение скорости составляет 110 км/ч\"],\"correct_index\":0,\"explanation\":\"В жилой зоне установлено ограничение скорости движения 20 км/ч.\"}]}",
+        "questions": [
+          {
+            "rule": "stop_sign",
+            "correct_index": 0,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "speed_stop_pedestrian",
+        "locale": "az",
+        "run": 1,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 1124,
+        "output_tokens": 737,
+        "latency_ms": 2111,
+        "validation_errors": [
+          [
+            "questions.0 uses number \"30\" which does not appear in the input",
+            "questions.1 uses number \"30\" which does not appear in the input"
+          ],
+          [
+            "questions.1 uses number \"30\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": true,
+        "first_errors": [
+          "questions.0 uses number \"30\" which does not appear in the input",
+          "questions.1 uses number \"30\" which does not appear in the input"
+        ],
+        "first_raw": "{\"questions\":[{\"rule\":\"stop_sign\",\"question\":\"Yaşayış məntəqəsində hərəkət edərkən STOP nişanının tələbini pozub dayanmamağa görə cərimə məbləği nə qədərdir?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"60 AZN\"],\"correct_index\":1,\"explanation\":\"STOP nişanında dayanmamaq qaydasına görə tətbiq edilən cərimə 40 AZN təşkil edir.\"},{\"rule\":\"pedestrian_crossing\",\"question\":\"Piyada keçidində piyadalara yol verməmək qaydasını pozduqda nə qədər cərimə nəzərdə tutulur?\",\"options\":[\"30 AZN\",\"40 AZN\",\"50 AZN\",\"90 AZN\"],\"correct_index\":2,\"explanation\":\"Piyadalara yol verməmək qaydasının pozulmasına görə cərimə 50 AZN-dir.\"},{\"rule\":\"speeding\",\"question\":\"Bakı şəhərində avtomobil idarə edərkən şəhərdə müəyyən edilmiş sürət həddi neçə km/saat təşkil edir?\",\"options\":[\"20 km/saat\",\"60 km/saat\",\"90 km/saat\",\"110 km/saat\"],\"correct_index\":1,\"explanation\":\"Şəhərdə müəyyən edilmiş sürət həddi 60 km/saat-dır.\"}]}",
+        "questions": []
+      },
+      {
+        "set": "light_wrongway_giveway",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 458,
+        "output_tokens": 247,
+        "latency_ms": 1421,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "wrong_way",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "red_light",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "light_wrongway_giveway",
+        "locale": "ru",
+        "run": 1,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 991,
+        "output_tokens": 520,
+        "latency_ms": 2256,
+        "validation_errors": [
+          [
+            "expected exactly 3 questions but got 2"
+          ],
+          [
+            "questions.2 uses number \"50\" which does not appear in the input",
+            "questions.2 uses number \"200\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [
+          "expected exactly 3 questions but got 2"
+        ],
+        "first_raw": "{\"questions\":[{\"rule\":\"red_light\",\"question\":\"Водитель приближается к перекрестку, на котором горит запрещающий сигнал светофора. Каковы действия водителя?\",\"options\":[\"Продолжить движение без остановки\",\"Остановиться перед стоп-линией\",\"Увеличить скорость для проезда\",\"Объехать перекресток по встречной полосе\"],\"correct_index\":1,\"explanation\":\"Проезд на красный свет запрещен, поэтому необходимо остановиться.\"},{\"rule\":\"wrong_way\",\"question\":\"На дороге с односторонним движением водитель намерен начать движение в противоположном направлении потоку. Что следует сделать?\",\"options\":[\"Начать движение во встречном направлении\",\"Отказаться от движения во встречном направлении по односторонней дороге\",\"Проехать задним ходом весь квартал\",\"Включить фары и продолжить путь\"],\"correct_index\":1,\"explanation\":\"Движение во встречном направлении по односторонней дороге запрещено.\"}]}",
+        "questions": []
+      },
+      {
+        "set": "light_wrongway_giveway",
+        "locale": "az",
+        "run": 1,
+        "status": "fallback",
+        "attempts": 2,
+        "input_tokens": 1178,
+        "output_tokens": 676,
+        "latency_ms": 3135,
+        "validation_errors": [
+          [
+            "questions.0 uses number \"50\" which does not appear in the input",
+            "questions.0 uses number \"200\" which does not appear in the input",
+            "questions.1 uses number \"50\" which does not appear in the input",
+            "questions.1 uses number \"200\" which does not appear in the input"
+          ],
+          [
+            "questions.0 uses number \"50\" which does not appear in the input",
+            "questions.0 uses number \"200\" which does not appear in the input",
+            "questions.1 uses number \"200\" which does not appear in the input",
+            "questions.1 uses number \"50\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": true,
+        "first_errors": [
+          "questions.0 uses number \"50\" which does not appear in the input",
+          "questions.0 uses number \"200\" which does not appear in the input",
+          "questions.1 uses number \"50\" which does not appear in the input",
+          "questions.1 uses number \"200\" which does not appear in the input"
+        ],
+        "first_raw": "{\"questions\": [{\"rule\": \"red_light\", \"question\": \"Svetoforun qırmızı işığı yanır və hərəkəti davam etdirmək istəyirsiniz. Qırmızı işıqda keçməyin cəriməsi neçə manatdır?\", \"options\": [\"50 manat\", \"100 manat\", \"150 manat\", \"200 manat\"], \"correct_index\": 1, \"explanation\": \"Qırmızı işıqda keçməyin cəriməsi 100 manat təşkil edir.\"}, {\"rule\": \"wrong_way\", \"question\": \"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi neçə manatdır?\", \"options\": [\"50 manat\", \"100 manat\", \"150 manat\", \"200 manat\"], \"correct_index\": 2, \"explanation\": \"Birtərəfli yolda əks istiqamətdə hərəkət etməyin cəriməsi 150 manatdır.\"}, {\"rule\": \"red_light\", \"question\": \"Svetoforun qırmızı işığında hərəkəti davam etdirməyin cərimə məbləği qanunvericiliklə nə qədər müəyyən edilmişdir?\", \"options\": [\"100 manat\", \"150 manat\", \"60 manat\", \"20 manat\"], \"correct_index\": 0, \"explanation\": \"Qırmızı işıqda keçmək qaydasının pozulmasına görə cərimə 100 manatdır.\"}]}",
+        "questions": []
+      },
+      {
+        "set": "collision_speeding",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 414,
+        "output_tokens": 246,
+        "latency_ms": 1084,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "speeding",
+            "correct_index": 2,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 3,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "collision_speeding",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 2,
+        "input_tokens": 902,
+        "output_tokens": 506,
+        "latency_ms": 2398,
+        "validation_errors": [
+          [
+            "questions.0 uses number \"10\" which does not appear in the input"
+          ]
+        ],
+        "first_try_clean": false,
+        "first_schema_ok": true,
+        "first_invented_number": true,
+        "first_errors": [
+          "questions.0 uses number \"10\" which does not appear in the input"
+        ],
+        "first_raw": "{\"questions\":[{\"rule\":\"speeding\",\"question\":\"С какой максимальной разрешенной скоростью можно двигаться в жилой зоне?\",\"options\":[\"10 км/ч\",\"20 км/ч\",\"60 км/ч\",\"90 км/ч\"],\"correct_index\":1,\"explanation\":\"Максимальная разрешенная скорость в жилой зоне составляет 20 км/ч.\"},{\"rule\":\"speeding\",\"question\":\"Какова максимальная скорость движения в населенных пунктах?\",\"options\":[\"20 км/ч\",\"60 км/ч\",\"90 км/ч\",\"110 км/ч\"],\"correct_index\":1,\"explanation\":\"В населенных пунктах разрешено двигаться со скоростью до 60 км/ч.\"},{\"rule\":\"speeding\",\"question\":\"Каково ограничение скорости на автомагистралях?\",\"options\":[\"60 км/ч\",\"90 км/ч\",\"110 км/ч\",\"20 км/ч\"],\"correct_index\":2,\"explanation\":\"На автомагистралях максимальная скорость составляет 110 км/ч.\"}]}",
+        "questions": [
+          {
+            "rule": "speeding",
+            "correct_index": 2,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "collision_speeding",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 494,
+        "output_tokens": 306,
+        "latency_ms": 1070,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "speeding",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "speeding",
+            "correct_index": 3,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "all_rules",
+        "locale": "en",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 591,
+        "output_tokens": 239,
+        "latency_ms": 1553,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 2,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "stop_sign",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "all_rules",
+        "locale": "ru",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 631,
+        "output_tokens": 337,
+        "latency_ms": 3623,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "stop_sign",
+            "correct_index": 1,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 2,
+            "fact": null,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      },
+      {
+        "set": "all_rules",
+        "locale": "az",
+        "run": 1,
+        "status": "ready",
+        "attempts": 1,
+        "input_tokens": 694,
+        "output_tokens": 303,
+        "latency_ms": 805,
+        "validation_errors": [],
+        "first_try_clean": true,
+        "first_schema_ok": true,
+        "first_invented_number": false,
+        "first_errors": [],
+        "first_raw": null,
+        "questions": [
+          {
+            "rule": "red_light",
+            "correct_index": 2,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "stop_sign",
+            "correct_index": 0,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          },
+          {
+            "rule": "pedestrian_crossing",
+            "correct_index": 1,
+            "fact": true,
+            "duplicate_of_bank": false,
+            "language_ok": true
+          }
+        ]
+      }
+    ],
+    "chat": [
+      {
+        "case": "free_why_fine",
+        "mode": "free",
+        "locale": "en",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 416,
+        "output_tokens": 65,
+        "latency_ms": 1080,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_why_fine",
+        "mode": "free",
+        "locale": "ru",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 442,
+        "output_tokens": 54,
+        "latency_ms": 5344,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_why_fine",
+        "mode": "free",
+        "locale": "az",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 455,
+        "output_tokens": 82,
+        "latency_ms": 972,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_limit_here",
+        "mode": "free",
+        "locale": "en",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 402,
+        "output_tokens": 59,
+        "latency_ms": 1162,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_limit_here",
+        "mode": "free",
+        "locale": "ru",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 426,
+        "output_tokens": 57,
+        "latency_ms": 1016,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_limit_here",
+        "mode": "free",
+        "locale": "az",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding",
+          "stop_sign"
+        ],
+        "attempts": 1,
+        "input_tokens": 435,
+        "output_tokens": 93,
+        "latency_ms": 1041,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_stop_sign",
+        "mode": "free",
+        "locale": "en",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "stop_sign"
+        ],
+        "attempts": 1,
+        "input_tokens": 401,
+        "output_tokens": 61,
+        "latency_ms": 953,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_stop_sign",
+        "mode": "free",
+        "locale": "ru",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "stop_sign"
+        ],
+        "attempts": 1,
+        "input_tokens": 425,
+        "output_tokens": 67,
+        "latency_ms": 960,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_stop_sign",
+        "mode": "free",
+        "locale": "az",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "stop_sign"
+        ],
+        "attempts": 1,
+        "input_tokens": 434,
+        "output_tokens": 73,
+        "latency_ms": 1363,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_pedestrians",
+        "mode": "free",
+        "locale": "en",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "pedestrian_crossing",
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 403,
+        "output_tokens": 66,
+        "latency_ms": 945,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_pedestrians",
+        "mode": "free",
+        "locale": "ru",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "pedestrian_crossing",
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 427,
+        "output_tokens": 99,
+        "latency_ms": 1053,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_pedestrians",
+        "mode": "free",
+        "locale": "az",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "pedestrian_crossing"
+        ],
+        "attempts": 1,
+        "input_tokens": 436,
+        "output_tokens": 77,
+        "latency_ms": 907,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_one_way",
+        "mode": "free",
+        "locale": "en",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "wrong_way"
+        ],
+        "attempts": 1,
+        "input_tokens": 405,
+        "output_tokens": 58,
+        "latency_ms": 967,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_one_way",
+        "mode": "free",
+        "locale": "ru",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "wrong_way"
+        ],
+        "attempts": 1,
+        "input_tokens": 429,
+        "output_tokens": 70,
+        "latency_ms": 1041,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_one_way",
+        "mode": "free",
+        "locale": "az",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "wrong_way"
+        ],
+        "attempts": 1,
+        "input_tokens": 438,
+        "output_tokens": 98,
+        "latency_ms": 893,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_off_topic",
+        "mode": "free",
+        "locale": "en",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 399,
+        "output_tokens": 73,
+        "latency_ms": 944,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_off_topic",
+        "mode": "free",
+        "locale": "ru",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 423,
+        "output_tokens": 73,
+        "latency_ms": 1119,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "free_off_topic",
+        "mode": "free",
+        "locale": "az",
+        "expect": "answer",
+        "status": "ready",
+        "kind": "answer",
+        "rules": [
+          "speeding"
+        ],
+        "attempts": 1,
+        "input_tokens": 432,
+        "output_tokens": 91,
+        "latency_ms": 947,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_stop_rule",
+        "mode": "exam",
+        "locale": "en",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 447,
+        "output_tokens": 38,
+        "latency_ms": 1175,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_stop_rule",
+        "mode": "exam",
+        "locale": "ru",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 471,
+        "output_tokens": 32,
+        "latency_ms": 1199,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_stop_rule",
+        "mode": "exam",
+        "locale": "az",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 480,
+        "output_tokens": 50,
+        "latency_ms": 1358,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_why_fine",
+        "mode": "exam",
+        "locale": "en",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 448,
+        "output_tokens": 27,
+        "latency_ms": 1135,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_why_fine",
+        "mode": "exam",
+        "locale": "ru",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 474,
+        "output_tokens": 31,
+        "latency_ms": 1239,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_why_fine",
+        "mode": "exam",
+        "locale": "az",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 487,
+        "output_tokens": 50,
+        "latency_ms": 1193,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_priority",
+        "mode": "exam",
+        "locale": "en",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 445,
+        "output_tokens": 27,
+        "latency_ms": 963,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_priority",
+        "mode": "exam",
+        "locale": "ru",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 469,
+        "output_tokens": 39,
+        "latency_ms": 2644,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_priority",
+        "mode": "exam",
+        "locale": "az",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 478,
+        "output_tokens": 51,
+        "latency_ms": 1132,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_speed_up",
+        "mode": "exam",
+        "locale": "en",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 431,
+        "output_tokens": 26,
+        "latency_ms": 1130,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_speed_up",
+        "mode": "exam",
+        "locale": "ru",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 455,
+        "output_tokens": 335,
+        "latency_ms": 1210,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_speed_up",
+        "mode": "exam",
+        "locale": "az",
+        "expect": "refused",
+        "status": "ready",
+        "kind": "refused",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 464,
+        "output_tokens": 34,
+        "latency_ms": 1058,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_where_now",
+        "mode": "exam",
+        "locale": "en",
+        "expect": "directions",
+        "status": "ready",
+        "kind": "directions",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 444,
+        "output_tokens": 32,
+        "latency_ms": 1229,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_where_now",
+        "mode": "exam",
+        "locale": "ru",
+        "expect": "directions",
+        "status": "ready",
+        "kind": "directions",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 468,
+        "output_tokens": 23,
+        "latency_ms": 1083,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_where_now",
+        "mode": "exam",
+        "locale": "az",
+        "expect": "directions",
+        "status": "ready",
+        "kind": "directions",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 477,
+        "output_tokens": 32,
+        "latency_ms": 1378,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": false,
+        "first_raw": null
+      },
+      {
+        "case": "exam_which_way",
+        "mode": "exam",
+        "locale": "en",
+        "expect": "directions",
+        "status": "ready",
+        "kind": "directions",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 445,
+        "output_tokens": 32,
+        "latency_ms": 1160,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": true,
+        "first_raw": null
+      },
+      {
+        "case": "exam_which_way",
+        "mode": "exam",
+        "locale": "ru",
+        "expect": "directions",
+        "status": "ready",
+        "kind": "directions",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 469,
+        "output_tokens": 32,
+        "latency_ms": 1149,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": false,
+        "first_raw": null
+      },
+      {
+        "case": "exam_which_way",
+        "mode": "exam",
+        "locale": "az",
+        "expect": "directions",
+        "status": "ready",
+        "kind": "directions",
+        "rules": [],
+        "attempts": 1,
+        "input_tokens": 478,
+        "output_tokens": 32,
+        "latency_ms": 1060,
+        "validation_errors": [],
+        "kind_as_expected": true,
+        "guard_holds": true,
+        "rules_as_expected": true,
+        "language_ok": false,
+        "first_raw": null
+      }
+    ]
+  }
+}
