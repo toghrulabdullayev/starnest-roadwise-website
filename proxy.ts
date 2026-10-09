@@ -29,8 +29,11 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Remember the language the visitor is reading in.
-  const response = NextResponse.next();
+  // Remember the language the visitor is reading in. The header lets not-found.tsx (which gets no
+  // params) answer in the language of the URL, not of an older cookie.
+  const forwarded = new Headers(request.headers);
+  forwarded.set("x-locale", first);
+  const response = NextResponse.next({ request: { headers: forwarded } });
   if (request.method === "GET" && request.cookies.get(LOCALE_COOKIE)?.value !== first) {
     response.cookies.set(LOCALE_COOKIE, first, { path: "/", maxAge: ONE_YEAR, sameSite: "lax" });
   }
