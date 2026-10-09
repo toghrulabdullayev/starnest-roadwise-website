@@ -3,6 +3,7 @@ import { Archivo_Black, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { AuthNav } from "@/components/AuthNav";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
@@ -43,8 +44,6 @@ export default async function LocaleLayout({
   const links = [
     { href: `/${locale}`, label: dict.nav.home },
     { href: `/${locale}/download`, label: dict.nav.download },
-    { href: `/${locale}/login`, label: dict.nav.login },
-    { href: `/${locale}/signup`, label: dict.nav.signup },
   ];
 
   return (
@@ -64,6 +63,9 @@ export default async function LocaleLayout({
                 {link.label}
               </Link>
             ))}
+            <Suspense fallback={null}>
+              <AuthNav locale={locale} nav={dict.nav} />
+            </Suspense>
           </nav>
           <Suspense fallback={null}>
             <LanguageSwitcher current={locale} label={dict.language.label} />

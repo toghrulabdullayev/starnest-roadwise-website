@@ -1,8 +1,9 @@
 import { createHash, randomBytes } from "node:crypto";
 import type { Client } from "@libsql/client";
 import { getDb } from "../db";
+import { SESSION_COOKIE } from "./cookie";
 
-export const SESSION_COOKIE = "rw_session";
+export { SESSION_COOKIE };
 export const SESSION_DAYS = 30;
 export const RENEW_BELOW_DAYS = 15;
 

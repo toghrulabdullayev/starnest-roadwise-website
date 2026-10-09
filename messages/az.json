@@ -9,7 +9,9 @@
     "download": "Yüklə",
     "login": "Daxil ol",
     "signup": "Qeydiyyat",
-    "menu": "Əsas naviqasiya"
+    "menu": "Əsas naviqasiya",
+    "profile": "Profil",
+    "logout": "Çıxış"
   },
   "language": {
     "label": "Dil"
@@ -17,5 +19,32 @@
   "home": {
     "title": "Roadwise",
     "tagline": "Bakıda sür. Qaydaları öyrən. Süni intellektli instruktorla məşq et."
+  },
+  "auth": {
+    "loginTitle": "Daxil ol",
+    "signupTitle": "Hesab yarat",
+    "email": "E-poçt",
+    "password": "Parol",
+    "displayName": "Adınız",
+    "passwordHint": "Ən azı 8 simvol.",
+    "loginSubmit": "Daxil ol",
+    "signupSubmit": "Qeydiyyatdan keç",
+    "submitting": "Gözləyin…",
+    "noAccount": "Hesabınız yoxdur?",
+    "haveAccount": "Artıq hesabınız var?",
+    "errors": {
+      "invalid_credentials": "E-poçt və ya parol yanlışdır.",
+      "email_taken": "Bu e-poçt ilə hesab artıq mövcuddur.",
+      "invalid_email": "Düzgün e-poçt ünvanı daxil edin.",
+      "password_too_short": "Parol ən azı 8 simvoldan ibarət olmalıdır.",
+      "password_too_long": "Parol ən çoxu 128 simvoldan ibarət ola bilər.",
+      "name_required": "Adınızı daxil edin.",
+      "too_many_attempts": "Çox sayda cəhd. Bir neçə dəqiqədən sonra yenidən yoxlayın.",
+      "generic": "Xəta baş verdi. Yenidən cəhd edin."
+    }
+  },
+  "profile": {
+    "title": "Profiliniz",
+    "welcome": "Xoş gəldiniz, {name}"
   }
 }
