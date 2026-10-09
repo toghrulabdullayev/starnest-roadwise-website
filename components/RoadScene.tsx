@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
  * seam between full-width sections, with traffic lights, zebra crossings,
  * signs, pedestrians and the occasional (rare) fender-bender.
  *
- * One sticky, aria-hidden canvas with no pointer events; the world is laid out
+ * One fixed, aria-hidden canvas with no pointer events; the world is laid out
  * in document coordinates and drawn offset by scrollY, so the roads scroll with
  * the page. Only on screens >= 1400px wide (where the gutters are empty);
  * static under prefers-reduced-motion, hidden in forced-colors mode (CSS).
@@ -851,11 +851,5 @@ export function RoadScene() {
     relayoutRef.current();
   }, [pathname]);
 
-  // a sticky canvas inside a page-tall track, not position: fixed, so it moves
-  // with the page during overscroll rubber-banding
-  return (
-    <div aria-hidden="true" className="road-scene-track">
-      <canvas ref={canvasRef} className="road-scene" />
-    </div>
-  );
+  return <canvas ref={canvasRef} aria-hidden="true" className="road-scene" />;
 }
