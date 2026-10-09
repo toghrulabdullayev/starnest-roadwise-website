@@ -1,5 +1,5 @@
 /**
- * Debrief pipeline: Gemini → grounding validator → one retry with the errors → template fallback.
+ * Debrief pipeline: LLM → grounding validator → one retry with the errors → template fallback.
  * Pure apart from the injected LLM client, so the eval harness runs it directly.
  */
 import { PROMPT_VERSION, type Debrief } from "@/lib/prompts/debrief";
@@ -53,7 +53,7 @@ export async function runDebriefPipeline(input: DebriefInput, locale: Locale, cl
   });
 
   if (!client) {
-    reasons.push("GEMINI_API_KEY not configured");
+    reasons.push("OPENAI_API_KEY not configured");
     return done("fallback", buildFallbackDebrief(input, locale));
   }
 

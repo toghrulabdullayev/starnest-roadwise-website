@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it, vi } from "vitest";
 import { useTempDb } from "./helpers/db";
 import { anonymous, bearer, fixture, newPlayer } from "./helpers/api";
-import type { GenerateJson } from "@/lib/ai/gemini";
+import type { GenerateJson } from "@/lib/ai/llm";
 import { ingestDrive } from "@/lib/drives/ingest";
 import { createPlan, latestPlan } from "@/lib/learning/plans";
 import { query } from "@/lib/db";
