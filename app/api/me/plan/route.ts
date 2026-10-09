@@ -1,6 +1,7 @@
 import { aiLimiter } from "@/lib/ai/limits";
 import { getRequestUser } from "@/lib/auth/requestUser";
-import { forbidden, json, readJson, sameOrigin, tooManyRequests, unauthorized } from "@/lib/http";
+import { forbidden, tooManyRequests } from "@/lib/ai/http";
+import { json, readJson, sameOrigin, unauthorized } from "@/lib/http";
 import { isLocale } from "@/lib/i18n/config";
 import { createPlan } from "@/lib/learning/plans";
 
