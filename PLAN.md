@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1–10.13 done; next 10.14 (owner: Vercel env vars). Still needs a native speaker: RU/AZ strings flagged in docs/qa/multilingual-audit-2026-10-09.md §4 WEB-018 (AZ Windows menu label «Hər halda işə sal», AZ quiz wording). MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
+**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1–10.14 done (download is a static Google Drive link). Still needs a native speaker: RU/AZ strings flagged in docs/qa/multilingual-audit-2026-10-09.md §4 WEB-018 (AZ Windows menu label «Hər halda işə sal», AZ quiz wording). MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -80,7 +80,7 @@ Branch `qa-fixes`. One step per finding group; the owner approves each step befo
 - [x] **10.11** WEB-013, WEB-014 no-wrap badges and values; 24 px minimum target for table links. — check: AZ exam history and drive table at 390 px.
 - [x] **10.12** WEB-015 quiz: natural per-rule wording, no repeated eyebrow/title. — check: quiz in each locale.
 - [x] **10.13** WEB-018 translation consistency (terminology, plurals, Sign in vs Log in). — check: strings listed in the report.
-- [ ] **10.14** WEB-016 download URL: owner sets `NEXT_PUBLIC_DOWNLOAD_URL` and `NEXT_PUBLIC_GAME_VERSION` in Vercel (config only).
+- [x] **10.14** WEB-016 download URL: static Google Drive link in the download page (no env var); `NEXT_PUBLIC_GAME_VERSION` stays optional in Vercel.
 
 ## Cut lines (drop in this order if behind)
 1. Landing polish. 2. Exam history table and device revoke. 3. Regenerate-in-locale. 4. With/without-history comparison. 5. Voice (9.3). 6. Streaming (9.2).

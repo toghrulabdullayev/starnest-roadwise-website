@@ -5,6 +5,9 @@ import { isLocale, defaultLocale } from "@/lib/i18n/config";
 import { fmt, getDictionary } from "@/lib/i18n/getDictionary";
 import { buttonClass, Card, Eyebrow, withBrand } from "@/components/ui";
 
+// The game build is a static file on Google Drive.
+const DOWNLOAD_URL = "https://drive.google.com/file/d/1o-KVIi5WvCOcUGRE0Ry0nqSIBVhO1jz_/view?usp=sharing";
+
 export async function generateMetadata({ params }: PageProps<"/[locale]/download">): Promise<Metadata> {
   const { locale: l } = await params;
   const locale = isLocale(l) ? l : defaultLocale;
@@ -17,7 +20,6 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
   const locale = isLocale(l) ? l : defaultLocale;
   const dict = getDictionary(locale);
   const t = dict.download;
-  const url = process.env.NEXT_PUBLIC_DOWNLOAD_URL;
   const version = process.env.NEXT_PUBLIC_GAME_VERSION;
 
   return (
@@ -28,15 +30,9 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
           <h1 className="text-4xl uppercase sm:text-5xl">{withBrand(t.title)}</h1>
           <p className="max-w-2xl text-lg text-text-on-dark-muted">{t.lead}</p>
           <div className="flex flex-wrap items-center gap-4">
-            {url ? (
-              <a href={url} className={buttonClass("primary", "border-text-on-dark text-lg")} rel="noopener">
-                ↓ {t.button}
-              </a>
-            ) : (
-              <p role="status" className="border-2 border-warning bg-surface-2 px-4 py-3 font-semibold text-[#fcd34d]">
-                {t.unavailable}
-              </p>
-            )}
+            <a href={DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className={buttonClass("primary", "border-text-on-dark text-lg")}>
+              ↓ {t.button}
+            </a>
             <div className="text-sm text-text-on-dark-muted">
               {version && <p>{fmt(t.version, { version })}</p>}
               <p>{t.releases}</p>
