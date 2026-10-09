@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
+/*
+ * Roadwise design tokens — from the "Bold" design skill (.claude/skills/design-system).
+ * Raw brand values live here only; components use the semantic tokens.
+ * Accessibility over aesthetics: where a brand hue fails WCAG AA as text on its
+ * background, a darker/lighter "-ink" variant is used for text and the brand hue
+ * for fills, borders and large display type.
+ */
+@theme {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo-black), var(--font-archivo), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* brand */
+  --color-primary: #0077bc;
+  --color-primary-hover: #005f96;
+  --color-primary-ink: #0077bc;        /* 4.9:1 on white */
+  --color-primary-on-dark: #5cbcf0;    /* 8.6:1 on #111 */
+  --color-secondary: #009866;
+  --color-secondary-ink: #007a52;      /* 5.3:1 on white */
+  --color-secondary-on-dark: #3ddc9f;
+
+  /* status */
+  --color-success: #16a34a;
+  --color-success-ink: #15803d;
+  --color-warning: #d97706;
+  --color-warning-ink: #b45309;
+  --color-danger: #dc2626;
+  --color-danger-ink: #b91c1c;
+
+  /* neutrals */
+  --color-surface: #111111;            /* dark, commanding blocks */
+  --color-surface-2: #1d1d1d;
+  --color-text: #111827;
+  --color-text-muted: #4b5563;         /* 7.6:1 on white */
+  --color-text-on-dark: #f9fafb;
+  --color-text-on-dark-muted: #c7cbd1;
+  --color-canvas: #ffffff;
+  --color-canvas-2: #f3f4f6;
+  --color-line: #111827;
+  --color-line-soft: #d1d5db;
+
+  /* spacing scale 4/8/12/16/24/32 — Tailwind's 1,2,3,4,6,8 map exactly */
+  --radius-card: 4px;
+  --shadow-bold: 4px 4px 0 0 #111111;
+  --shadow-bold-sm: 2px 2px 0 0 #111111;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-canvas);
+  color: var(--color-text);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-text);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* visible focus everywhere, keyboard-first */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.on-dark :focus-visible {
+  outline-color: var(--color-primary-on-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .btn { border: 2px solid ButtonText; }
 }
