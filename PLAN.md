@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** 7.2 done (AI measures + 4.1 live check pending: Gemini key rejected). Next: **7.3** (deploy: Turso + Vercel).
+**Status:** Blocked on secrets. Next: **7.3** deploy once a valid Turso token + Vercel access exist; then rerun `npm run eval` with a valid `GEMINI_API_KEY` (4.1 live check + 7.2 AI measures pending). 7.4 waits for real game drives.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -44,8 +44,8 @@ Rules for whoever executes this plan:
 ## Phase 7 — Evidence and deploy
 - [x] **7.1** `scripts/seed-demo.ts` through `ingestDrive()`. — check: demo account shows a progress story.
 - [x] **7.2** `npm run eval` → `eval/REPORT.md` + `report.json` (all measures in roadwise-ai-instructor §7, rules-only vs fallback vs AI side by side, with vs without history, failure examples, cost per debrief from logged tokens). — check: report generated from a real run, numbers not hand-written. **AI measures PENDING:** the current run recorded Gemini 401 for every call (100% fallback); rerun `npm run eval` once `npm run gemini:check` passes. Harness self-test: `npx tsx eval/run.ts --fake-llm --runs 1 --out /tmp/x`.
-- [ ] **7.3** Deploy: Turso database, Vercel env vars, build command `npm run db:migrate && next build`. — check: `device-flow.sh` and `upload.sh` pass against the production URL; sign-up works there.
-- [ ] **7.4** When real game drives arrive: calibrate thresholds (`eval/CALIBRATION.md`), add them to `eval/real/`, rerun eval.
+- [ ] **7.3** Deploy: Turso database, Vercel env vars, build command `npm run db:migrate && next build`. — check: `device-flow.sh` and `upload.sh` pass against the production URL; sign-up works there. **BLOCKED (needs owner):** the Turso token in `.env.local` returns 401 and there is no Vercel access here. Prepared: `vercel.json` (build command), README deploy steps.
+- [ ] **7.4** (waiting for real game drives) When real game drives arrive: calibrate thresholds (`eval/CALIBRATION.md`), add them to `eval/real/`, rerun eval.
 
 ## Cut lines (drop in this order if behind)
 1. Landing polish. 2. Exam history table and device revoke. 3. Regenerate-in-locale. 4. With/without-history comparison.
