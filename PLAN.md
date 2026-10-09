@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** Phase 2 done. Next: **3.1** (metrics).
+**Status:** 3.1 done. Next: **3.2** (readiness + history).
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -25,7 +25,7 @@ Rules for whoever executes this plan:
 - [x] **2.3** Device link: `/api/device/start`, `/[locale]/link` + `approveDevice`, `/api/device/token`, `gameToken.ts`, `/api/me`. — roadwise-platform §7, roadwise-web §5–6 — check: `scripts/device-flow.sh` passes; tests for expired, double-consume and revoked tokens.
 
 ## Phase 3 — Ingest and analytics
-- [ ] **3.1** `metrics.ts` + one test per metric. — roadwise-ai-instructor §2 — check: fixture expectations match.
+- [x] **3.1** `metrics.ts` + one test per metric. — roadwise-ai-instructor §2 — check: fixture expectations match.
 - [ ] **3.2** `readiness.ts`, `history.ts` + tests. — §3–4 — check: `progress_series` shows improvements; bands match expectations.
 - [ ] **3.3** `lib/drives/ingest.ts`; `POST/GET /api/drives`, `GET /api/drives/:id`. — roadwise-web §6 — check: `scripts/upload.sh fixtures/speeder.json` → 200; re-upload → same id; broken file → 422.
 

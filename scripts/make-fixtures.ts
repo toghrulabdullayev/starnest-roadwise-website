@@ -204,7 +204,18 @@ function simulate(s: Scenario): DriveTelemetry {
       }
       if (!speedingDone) addEvent({ rule: "speeding", outcome: "fail" }, leg.street, seg, peak);
       if (seg.endSpeed === 0) {
-        v = 0;
+        // finish braking at the same rate (a few metres past the line) instead of snapping to 0
+        while (v > 0) {
+          const nv = Math.max(0, v - decel * DT);
+          const step = ((v + nv) / 2) * DT;
+          const realA = (nv - v) / DT;
+          v = nv;
+          distance += step;
+          x += dx * step;
+          z += dz * step;
+          t += DT;
+          push(seg, realA, 0);
+        }
         const wait = seg.wait ?? 0;
         for (let w = 0; w < wait; w += DT) {
           t += DT;
