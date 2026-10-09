@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "Roadwise — learn to drive in Baku",
+    "description": "A Baku driving simulator with an AI instructor that explains every drive and tracks your exam readiness."
+  },
+  "nav": {
+    "home": "Home",
+    "download": "Download",
+    "profile": "Profile",
+    "login": "Log in",
+    "signup": "Sign up",
+    "logout": "Log out",
+    "language": "Language",
+    "skipToContent": "Skip to content",
+    "mainNav": "Main navigation"
+  },
+  "footer": {
+    "tagline": "Real Baku streets. Real Azerbaijani rules.",
+    "provisional": "Russian and Azerbaijani translations are provisional."
+  }
+}

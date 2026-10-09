@@ -1,0 +1,22 @@
+{
+  "_review": true,
+  "meta": {
+    "title": "Roadwise — Bakıda sürməyi öyrənin",
+    "description": "Hər sürüşü izah edən və imtahana hazırlığınızı izləyən süni intellekt təlimatçısı ilə Bakı sürücülük simulyatoru."
+  },
+  "nav": {
+    "home": "Ana səhifə",
+    "download": "Yüklə",
+    "profile": "Profil",
+    "login": "Daxil ol",
+    "signup": "Qeydiyyat",
+    "logout": "Çıxış",
+    "language": "Dil",
+    "skipToContent": "Məzmuna keç",
+    "mainNav": "Əsas naviqasiya"
+  },
+  "footer": {
+    "tagline": "Bakının real küçələri. Azərbaycanın real qaydaları.",
+    "provisional": "Rus və Azərbaycan dilində tərcümələr ilkindir."
+  }
+}
