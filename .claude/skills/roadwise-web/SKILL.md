@@ -17,7 +17,7 @@ description: Use when building or changing the Roadwise website and API — Next
 | UI | **Follow the design skill in `.claude/skills/`** | It decides styling, components, typography, colour. Where it is silent: Tailwind + Recharts. |
 | AI | OpenRouter, model `google/gemini-3.5-flash-lite`, plain `fetch` (`lib/ai/llm.ts`) | See roadwise-ai-instructor |
 | Tests | Vitest | |
-| Game files | GitHub Releases link | Nothing large on Vercel |
+| Game files | Static Google Drive link | Nothing large on Vercel |
 
 **Why not a plain SQLite file or in-memory JSON on Vercel:** Vercel functions have a read-only filesystem (only `/tmp`, which is per-instance and wiped), and each request can hit a different instance. Users and drives would disappear or diverge. libSQL keeps SQLite semantics and a local file for development while production writes go to a hosted SQLite (Turso).
 
@@ -63,7 +63,6 @@ DATABASE_AUTH_TOKEN=                     # prod only
 OPENROUTER_API_KEY=
 OPENROUTER_MODEL=                       # default google/gemini-3.5-flash-lite
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_DOWNLOAD_URL=                # GitHub Releases latest asset
 ```
 Provide `.env.example`; never commit `.env.local` or `data/`.
 
@@ -166,7 +165,7 @@ CREATE TABLE drive_debriefs (
 ## 8. Pages (content; visuals per the design skill)
 
 - **Landing:** hero (one sentence + game screenshot), the problem, how it works (drive → AI instructor → progress), product screenshots (debrief, profile), "real Baku streets, real Azerbaijani rules", CTAs Sign up / Download. No unverified statistics.
-- **Download:** OS button → `NEXT_PUBLIC_DOWNLOAD_URL`, version, "Run anyway" note for unsigned builds, 3-step "log in from the game".
+- **Download:** button → the Google Drive link (`DOWNLOAD_URL` in the download page), version, "Run anyway" note for unsigned builds, 3-step "log in from the game".
 - **Link:** shows code + client; Authorise button; success "Return to the game"; expired/invalid states.
 - **Profile:** readiness card with component breakdown; KPI tiles (drives, km, compliance %, fines); progress chart per drive (compliance, fines, composure); violations by rule; exam history; drive list; connected devices with Revoke; language preference.
 - **Drive:** header (mode, district, date, duration, pass/fail); `TraceMap` (SVG polyline of `x,z`, coloured by overspeed, markers on failed checks; click marker ↔ timeline row); `EventTimeline`; metric groups; `DebriefCard` (issues link to events); deltas vs previous; poll every 3 s while `pending`; "sample data" badge when `source='fixture'`.

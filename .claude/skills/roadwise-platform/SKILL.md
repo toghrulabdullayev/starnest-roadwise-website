@@ -69,7 +69,7 @@ Vercel: Next.js (App Router, TypeScript) — website + API
   lib/metrics   deterministic, tested
   lib/readiness deterministic score with breakdown
   lib/instructor LLM (OpenRouter) → JSON debrief → grounding validator → fallback
-Game installers: GitHub Releases (link only)
+Game installers: static Google Drive link (link only)
 ```
 
 Rule: **the LLM never computes numbers.** It explains and prioritises numbers produced by code, citing event ids and rule keys that exist in its input.

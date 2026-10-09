@@ -34,7 +34,7 @@ If `.env.local` points `DATABASE_URL` at Turso, create `.env.development.local` 
 
 1. Turso: `turso db create roadwise` → `turso db show roadwise --url` (→ `DATABASE_URL`) and `turso db tokens create roadwise` (→ `DATABASE_AUTH_TOKEN`).
 2. Vercel: import this GitHub repo. `vercel.json` sets the build command `npm run db:migrate && next build`, so migrations run on every deploy.
-3. Environment variables (Production): `DATABASE_URL`, `DATABASE_AUTH_TOKEN`, `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` (default `google/gemini-3.5-flash-lite`), `NEXT_PUBLIC_SITE_URL` (the production URL, no trailing slash — used for device-link URLs and the CSRF origin check), `NEXT_PUBLIC_DOWNLOAD_URL` (GitHub Releases asset), optionally `NEXT_PUBLIC_GAME_VERSION`.
+3. Environment variables (Production): `DATABASE_URL`, `DATABASE_AUTH_TOKEN`, `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` (default `google/gemini-3.5-flash-lite`), `NEXT_PUBLIC_SITE_URL` (the production URL, no trailing slash — used for device-link URLs and the CSRF origin check), optionally `NEXT_PUBLIC_GAME_VERSION`. The game download link is a static Google Drive URL in `app/[locale]/download/page.tsx`.
 4. Seed the demo account against production: `DATABASE_URL=… DATABASE_AUTH_TOKEN=… OPENROUTER_API_KEY=… npm run seed:demo`.
 5. Verify: `BASE_URL=https://<site> scripts/device-flow.sh` (authorise in the browser when asked), then `BASE_URL=https://<site> scripts/upload.sh fixtures/red_light_runner.json`, and sign up on the site.
 
