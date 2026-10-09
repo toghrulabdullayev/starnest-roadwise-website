@@ -94,20 +94,26 @@ h1, h2, h3, .font-display {
 }
 
 /* ---- decorative traffic canvas (components/RoadScene.tsx) ---- */
-.road-scene { display: none; }
+.road-scene-track { display: none; }
 
 @media (min-width: 1400px) {
-  .road-scene {
+  body { position: relative; }
+  .road-scene-track {
     display: block;
-    position: fixed;
+    position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
     z-index: 10;
     pointer-events: none;
+  }
+  .road-scene {
+    position: sticky;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100vh;
   }
 }
 
 @media (forced-colors: active) {
-  .road-scene { display: none; }
+  .road-scene-track { display: none; }
 }
