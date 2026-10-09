@@ -1,15 +1,6 @@
 import type { DebriefInput } from "./input";
+import { ungroundedNumbers } from "../numbers.ts";
 import { debriefSchema, type Debrief } from "./schema.ts";
-
-const NUMBER = /\d+(?:[.,]\d+)?/g;
-
-function normalizeNumber(token: string): string {
-  return token.replace(",", ".").replace(/^0+(?=\d)/, "");
-}
-
-function numbersIn(text: string): string[] {
-  return (text.match(NUMBER) ?? []).map(normalizeNumber);
-}
 
 function freeTexts(d: Debrief): string[] {
   return [
@@ -75,14 +66,7 @@ export function validateDebrief(
     }
   });
 
-  const allowed = new Set(numbersIn(JSON.stringify(input)));
-  const invented = new Set<string>();
-  for (const text of freeTexts(debrief)) {
-    for (const n of numbersIn(text)) {
-      if (!allowed.has(n)) invented.add(n);
-    }
-  }
-  for (const n of invented) {
+  for (const n of ungroundedNumbers(freeTexts(debrief), JSON.stringify(input))) {
     errors.push(`number "${n}" does not appear in the input`);
   }
 

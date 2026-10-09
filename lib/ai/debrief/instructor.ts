@@ -1,12 +1,8 @@
 import type { Locale } from "../../i18n/config";
 import type { Dictionary } from "../../i18n/getDictionary";
 import type { DriveTelemetry } from "../../telemetry/schema.ts";
-import {
-  AiUnavailableError,
-  generateJson,
-  isAiConfigured,
-  type GenerateJson,
-} from "../gemini.ts";
+import type { GenerateJson } from "../gemini.ts";
+import { runGrounded } from "../runner.ts";
 import { buildFallbackDebrief } from "./fallback.ts";
 import { validateDebrief } from "./grounding.ts";
 import { buildDebriefInput, type DebriefInput } from "./input.ts";
@@ -36,66 +32,41 @@ export async function generateDebrief(options: {
   dictionary?: Dictionary["debrief"];
 }): Promise<DebriefResult> {
   const { telemetry, locale } = options;
-  const generate = options.generate ?? generateJson;
-  const configured = options.configured ?? isAiConfigured();
   const input = buildDebriefInput(telemetry, locale);
 
-  const result: DebriefResult = {
-    status: "fallback",
-    debrief: undefined as unknown as Debrief,
-    input,
-    model: null,
-    prompt_version: PROMPT_VERSION,
-    input_tokens: null,
-    output_tokens: null,
-    latency_ms: null,
-    attempts: 0,
-    validation_errors: [],
-  };
+  const outcome = await runGrounded<Debrief>({
+    system: systemPrompt(locale),
+    buildInput: (errors) => userMessage(input, errors),
+    schema: debriefJsonSchema(),
+    validate: (raw) => {
+      const checked = validateDebrief(raw, input);
+      return checked.ok
+        ? { ok: true, value: checked.debrief }
+        : { ok: false, errors: checked.errors };
+    },
+    generate: options.generate,
+    configured: options.configured,
+    maxAttempts: MAX_ATTEMPTS,
+  });
 
-  if (configured) {
-    const schema = debriefJsonSchema();
-    let errors: string[] | undefined;
-    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-      result.attempts = attempt;
-      let text: string;
-      try {
-        const out = await generate({
-          system: systemPrompt(locale),
-          input: userMessage(input, errors),
-          schema,
-          temperature: 0.2,
-        });
-        text = out.text;
-        result.model = out.model;
-        result.input_tokens = (result.input_tokens ?? 0) + (out.inputTokens ?? 0);
-        result.output_tokens = (result.output_tokens ?? 0) + (out.outputTokens ?? 0);
-        result.latency_ms = (result.latency_ms ?? 0) + out.latencyMs;
-      } catch (err) {
-        const message =
-          err instanceof AiUnavailableError
-            ? "ai_unavailable"
-            : `request_failed: ${err instanceof Error ? err.message : String(err)}`;
-        result.validation_errors.push([message]);
-        break;
-      }
-
-      const checked = validateDebrief(text, input);
-      if (checked.ok) {
-        result.status = "ready";
-        result.debrief = checked.debrief;
-        return result;
-      }
-      errors = checked.errors;
-      result.validation_errors.push(checked.errors);
-    }
-  } else {
-    result.validation_errors.push(["ai_unavailable"]);
+  let debrief = outcome.value;
+  if (!debrief) {
+    const dictionary =
+      options.dictionary ??
+      (await (await import("../../i18n/getDictionary")).getDictionary(locale)).debrief;
+    debrief = buildFallbackDebrief(input, locale, dictionary);
   }
 
-  const dictionary =
-    options.dictionary ??
-    (await import("../../i18n/getDictionary")).getDictionary(locale).then((d) => d.debrief);
-  result.debrief = buildFallbackDebrief(input, locale, await dictionary);
-  return result;
+  return {
+    status: outcome.status,
+    debrief,
+    input,
+    model: outcome.model,
+    prompt_version: PROMPT_VERSION,
+    input_tokens: outcome.input_tokens,
+    output_tokens: outcome.output_tokens,
+    latency_ms: outcome.latency_ms,
+    attempts: outcome.attempts,
+    validation_errors: outcome.validation_errors,
+  };
 }

@@ -64,5 +64,13 @@
       "give_way": "Slow down at give-way signs and let traffic on the priority road pass before you go.",
       "collision": "Keep a safe distance and look further ahead so you can avoid obstacles."
     }
+  },
+  "plan": {
+    "summary": "Your main weak spots right now: {rules}.",
+    "empty": "No recurring faults yet. Keep practising on varied routes.",
+    "why": "Recorded {count} time(s); last seen {last}.",
+    "trendImproved": "This is getting better.",
+    "trendWorse": "This is getting worse.",
+    "trendSame": "This has not changed yet."
   }
 }

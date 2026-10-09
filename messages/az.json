@@ -65,5 +65,13 @@
       "give_way": "«Yol ver» nişanında sürəti azaldın və əsas yolda gedən nəqliyyatı buraxın.",
       "collision": "Təhlükəsiz məsafə saxlayın və maneələri vaxtında görmək üçün daha uzağa baxın."
     }
+  },
+  "plan": {
+    "summary": "Hazırda əsas zəif nöqtələriniz: {rules}.",
+    "empty": "Hələ təkrarlanan pozuntu yoxdur. Müxtəlif marşrutlarda məşq etməyə davam edin.",
+    "why": "Qeydə alınma sayı: {count}; sonuncu dəfə: {last}.",
+    "trendImproved": "Vəziyyət yaxşılaşır.",
+    "trendWorse": "Vəziyyət pisləşir.",
+    "trendSame": "Hələlik dəyişiklik yoxdur."
   }
 }
