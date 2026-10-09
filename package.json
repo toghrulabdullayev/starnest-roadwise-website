@@ -16,7 +16,8 @@
     "seed:demo": "tsx scripts/seed-demo.ts",
     "eval": "tsx eval/run.ts",
     "ai:live": "tsx scripts/ai-live.ts",
-    "ai:check": "tsx scripts/ai-check.ts"
+    "ai:check": "tsx scripts/ai-check.ts",
+    "eval:learning": "tsx eval/learning.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",

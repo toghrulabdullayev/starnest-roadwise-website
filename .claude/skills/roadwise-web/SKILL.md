@@ -15,7 +15,7 @@ description: Use when building or changing the Roadwise website and API — Next
 | Validation | `zod` | Shared by API and telemetry |
 | i18n | `[locale]` route segment + JSON dictionaries | `en` (default), `ru`, `az` |
 | UI | **Follow the design skill in `.claude/skills/`** | It decides styling, components, typography, colour. Where it is silent: Tailwind + Recharts. |
-| AI | OpenRouter, model `google/gemini-3.8-flash`, plain `fetch` (`lib/ai/llm.ts`) | See roadwise-ai-instructor |
+| AI | OpenRouter, model `google/gemini-3.5-flash-lite`, plain `fetch` (`lib/ai/llm.ts`) | See roadwise-ai-instructor |
 | Tests | Vitest | |
 | Game files | GitHub Releases link | Nothing large on Vercel |
 
@@ -61,7 +61,7 @@ data/                          local DB file (gitignored)
 DATABASE_URL=file:./data/roadwise.db     # prod: libsql://<db>.turso.io
 DATABASE_AUTH_TOKEN=                     # prod only
 OPENROUTER_API_KEY=
-OPENROUTER_MODEL=                       # default google/gemini-3.8-flash
+OPENROUTER_MODEL=                       # default google/gemini-3.5-flash-lite
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_DOWNLOAD_URL=                # GitHub Releases latest asset
 ```

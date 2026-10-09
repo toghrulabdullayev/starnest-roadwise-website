@@ -59,7 +59,7 @@ Current drive vs mean of up to 4 previous drives: compliance_rate, fines, oversp
 
 ## 5. LLM debrief (`lib/instructor/`; the shared call is `lib/ai/llm.ts`)
 
-- Provider: OpenRouter chat completions through plain `fetch` (no SDK) with `response_format: json_schema` (`strict: false`, `provider.require_parameters: true`; our zod validators are the real check). Model `google/gemini-3.8-flash`; `reasoning.effort` is `low` (`minimal` for the live chat). Live runs: `npm run ai:check`, `npm run ai:live -- en|ru|az`.
+- Provider: OpenRouter chat completions through plain `fetch` (no SDK) with `response_format: json_schema` (`strict: false`, `provider.require_parameters: true`; our zod validators are the real check). Model `google/gemini-3.5-flash-lite`; `reasoning.effort` is `low` (`minimal` for the live chat). Live runs: `npm run ai:check`, `npm run ai:live -- en|ru|az`.
 - Env: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL`.
 - Temperature 0.2. Log `model, prompt_version, input_tokens, output_tokens, latency_ms, attempts` per call. Cost per debrief = logged tokens × the model price on the OpenRouter models page; never hard-code prices.
 

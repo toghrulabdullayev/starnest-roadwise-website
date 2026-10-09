@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.8-flash`). Branch `ai-pages` (on top of `ai-routes`): 8.6 pages done — weak spots with trend badges, practice plan with build button, next-exam card and quiz call to action on the profile; `/[locale]/quiz`; exam comparison card on exam drive pages. Developer walkthrough in the browser pending. Next: 8.7 eval with real numbers, 9.2 streaming, 9.3 voice, 7.3 deploy.
+**Status:** MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). Branch `ai-pages` (on top of `ai-routes`): 8.6 pages done — weak spots with trend badges, practice plan with build button, next-exam card and quiz call to action on the profile; `/[locale]/quiz`; exam comparison card on exam drive pages. Developer walkthrough in the browser pending. Next: 8.7 eval with real numbers, 9.2 streaming, 9.3 voice, 7.3 deploy.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
