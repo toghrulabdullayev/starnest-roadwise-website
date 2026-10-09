@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** 1.2 done. Next: 1.3 (fixtures).
+**Status:** Phase 1 done. Next: 2.1 (password, session, rate limit).
 **Scope:** website + API + AI instructor + eval, then the learning loop (weakness profile, practice plan, quiz, adaptive exam brief; Phase 8) and the live in-game instructor (chat and voice; Phase 9). The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -17,7 +17,7 @@ Rules for whoever executes this plan:
 ## Phase 1 — Contracts and fixtures
 - [x] **1.1** `lib/rules/catalog.ts` (keys, EN/RU/AZ names, severities, fines, speeding bands). — roadwise-platform §3.
 - [x] **1.2** `lib/telemetry/schema.ts` (zod for `roadwise.drive.v1`) + `contracts/roadwise.drive.v1.schema.json`. — roadwise-platform §8 — check: unit tests accept the skill's example and reject unknown rule keys, bad `fields`, duplicate event ids.
-- [ ] **1.3** `scripts/make-fixtures.ts` → `fixtures/*.json` + `*.expected.json` (clean_drive, speeder, red_light_runner, nervous, mixed_exam_fail, progress_series_1..3). — roadwise-ai-instructor §7 — check: all fixtures validate.
+- [x] **1.3** `scripts/make-fixtures.ts` → `fixtures/*.json` + `*.expected.json` (clean_drive, speeder, red_light_runner, nervous, mixed_exam_fail, progress_series_1..3). — roadwise-ai-instructor §7 — check: all fixtures validate.
 
 ## Phase 2 — Auth
 - [ ] **2.1** `password.ts`, `session.ts`, `rateLimit.ts` + tests (hash/verify, wrong password, expiry, renewal). — roadwise-web §5.
@@ -26,7 +26,7 @@ Rules for whoever executes this plan:
 
 ## Phase 3 — Ingest and analytics
 - [ ] **3.1** `metrics.ts` + one test per metric. — roadwise-ai-instructor §2 — check: fixture expectations match.
-- [ ] **3.2** `readiness.ts`, `history.ts` + tests. — §3–4 — check: `progress_series` shows improvements; bands match expectations.
+- [ ] **3.2** `readiness.ts`, `history.ts` + tests. — §3–4 — check: `progress_series` shows improvements; bands match expectations. The fixtures ship with `readiness_band: null`; fill it in each `*.expected.json` from the implemented formula (via `scripts/make-fixtures.ts`) and sanity-check the intent first (clean_drive ready, speeder and progress_series_1 not_ready).
 - [ ] **3.3** `lib/drives/ingest.ts`; `POST/GET /api/drives`, `GET /api/drives/:id`. — roadwise-web §6 — check: `scripts/upload.sh fixtures/speeder.json` → 200; re-upload → same id; broken file → 422.
 - [ ] **3.4** Mistake records: migration `0002_drive_events.sql` adds `drive_events` (`id`, `drive_id` FK cascade, `user_id`, `rule` catalog key, `severity`, `t_s`, `x`, `z`, `street_id`, `junction_id`, `mode`, `fields` JSON; indexes on `(user_id, rule)` and `(drive_id)`). `ingestDrive()` writes one row per failed check in the same transaction as the drive; re-upload replaces them, never duplicates. — roadwise-web §4, §6 — check: after `upload.sh fixtures/speeder.json` the row count equals the fixture's failed checks; re-upload keeps the count; `DELETE` of the drive removes its events.
 

@@ -1,0 +1,38 @@
+{
+  "fixture": "progress_series_1",
+  "previous": null,
+  "checks_total": 6,
+  "checks_passed": 1,
+  "violations_by_rule": {
+    "red_light": {
+      "count": 1,
+      "fines_azn": 100
+    },
+    "pedestrian_crossing": {
+      "count": 1,
+      "fines_azn": 50
+    },
+    "speeding": {
+      "count": 2,
+      "fines_azn": 250
+    },
+    "stop_sign": {
+      "count": 1,
+      "fines_azn": 40
+    }
+  },
+  "fines_total_azn": 440,
+  "major_count": 2,
+  "minor_count": 3,
+  "collisions": 0,
+  "required_issue_rules": [
+    "red_light",
+    "pedestrian_crossing",
+    "speeding",
+    "stop_sign"
+  ],
+  "top_issue_rule": "speeding",
+  "hesitation_stops": 0,
+  "nervous": false,
+  "readiness_band": null
+}

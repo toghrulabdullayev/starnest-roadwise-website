@@ -1,0 +1,33 @@
+{
+  "fixture": "mixed_exam_fail",
+  "previous": null,
+  "checks_total": 5,
+  "checks_passed": 2,
+  "violations_by_rule": {
+    "speeding": {
+      "count": 1,
+      "fines_azn": 10
+    },
+    "stop_sign": {
+      "count": 1,
+      "fines_azn": 40
+    },
+    "give_way": {
+      "count": 1,
+      "fines_azn": 100
+    }
+  },
+  "fines_total_azn": 150,
+  "major_count": 1,
+  "minor_count": 2,
+  "collisions": 0,
+  "required_issue_rules": [
+    "speeding",
+    "stop_sign",
+    "give_way"
+  ],
+  "top_issue_rule": "give_way",
+  "hesitation_stops": 0,
+  "nervous": false,
+  "readiness_band": null
+}

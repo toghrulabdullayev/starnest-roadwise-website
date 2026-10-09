@@ -1,0 +1,28 @@
+{
+  "fixture": "progress_series_2",
+  "previous": "progress_series_1",
+  "checks_total": 5,
+  "checks_passed": 3,
+  "violations_by_rule": {
+    "speeding": {
+      "count": 1,
+      "fines_azn": 10
+    },
+    "stop_sign": {
+      "count": 1,
+      "fines_azn": 40
+    }
+  },
+  "fines_total_azn": 50,
+  "major_count": 0,
+  "minor_count": 2,
+  "collisions": 0,
+  "required_issue_rules": [
+    "speeding",
+    "stop_sign"
+  ],
+  "top_issue_rule": "stop_sign",
+  "hesitation_stops": 0,
+  "nervous": false,
+  "readiness_band": null
+}

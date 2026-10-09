@@ -1,0 +1,16 @@
+{
+  "fixture": "nervous",
+  "previous": null,
+  "checks_total": 2,
+  "checks_passed": 2,
+  "violations_by_rule": {},
+  "fines_total_azn": 0,
+  "major_count": 0,
+  "minor_count": 0,
+  "collisions": 0,
+  "required_issue_rules": [],
+  "top_issue_rule": null,
+  "hesitation_stops": 3,
+  "nervous": true,
+  "readiness_band": null
+}

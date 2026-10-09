@@ -1,0 +1,16 @@
+{
+  "fixture": "clean_drive",
+  "previous": null,
+  "checks_total": 6,
+  "checks_passed": 6,
+  "violations_by_rule": {},
+  "fines_total_azn": 0,
+  "major_count": 0,
+  "minor_count": 0,
+  "collisions": 0,
+  "required_issue_rules": [],
+  "top_issue_rule": null,
+  "hesitation_stops": 0,
+  "nervous": false,
+  "readiness_band": null
+}
