@@ -10,7 +10,8 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "db:migrate": "tsx scripts/migrate.ts",
-    "db:reset": "tsx scripts/migrate.ts --reset"
+    "db:reset": "tsx scripts/migrate.ts --reset",
+    "contracts": "tsx scripts/export-schema.ts"
   },
   "dependencies": {
     "@google/genai": "^2.28.0",
