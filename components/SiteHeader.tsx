@@ -33,6 +33,9 @@ export function SiteHeader({ locale, dict, user }: { locale: Locale; dict: Dicti
                 <Link href={`/${locale}/profile`} className={navLink}>
                   {t.profile}
                 </Link>
+                <Link href={`/${locale}/quiz`} className={navLink}>
+                  {t.quiz}
+                </Link>
                 <form action={logOutAction}>
                   <input type="hidden" name="locale" value={locale} />
                   <button type="submit" className={`${navLink} cursor-pointer`}>

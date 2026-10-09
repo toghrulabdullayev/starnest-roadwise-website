@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { requireUser } from "@/lib/auth/currentUser";
 import { getProfileData } from "@/lib/drives/profile";
+import { getLearningData } from "@/lib/learning/page";
 import { isLocale, defaultLocale } from "@/lib/i18n/config";
 import { fmt, getDictionary } from "@/lib/i18n/getDictionary";
 import { fmtShortDate } from "@/lib/i18n/format";
@@ -14,6 +15,7 @@ import { ViolationBars } from "@/components/profile/ViolationBars";
 import { ExamHistory } from "@/components/profile/ExamHistory";
 import { DriveTable } from "@/components/profile/DriveTable";
 import { Devices } from "@/components/profile/Devices";
+import { ExamBriefCard, PlanCard, QuizCta, WeakSpots } from "@/components/profile/LearningCards";
 import { LanguagePreference } from "@/components/profile/LanguagePreference";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/profile">): Promise<Metadata> {
@@ -40,7 +42,7 @@ export default async function ProfilePage({ params, searchParams }: PageProps<"/
   const user = await requireUser(locale, `/${locale}/profile`);
   const dict = getDictionary(locale);
   const t = dict.profile;
-  const data = await getProfileData(user.id);
+  const [data, learning] = await Promise.all([getProfileData(user.id), getLearningData(user.id, locale)]);
   const saved = (await searchParams).saved === "1";
 
   const points: ProgressPoint[] = data.series.map((d, i) => ({
@@ -63,6 +65,17 @@ export default async function ProfilePage({ params, searchParams }: PageProps<"/
         <>
           <ReadinessCard readiness={data.latest.readiness} locale={locale} dict={dict} />
           <KpiTiles totals={data.totals} locale={locale} dict={dict} />
+          <div className="grid gap-12 lg:grid-cols-2">
+            <Section id="weak" title={dict.learn.weakTitle} lead={dict.learn.weakLead}>
+              <WeakSpots focus={learning.focus} locale={locale} dict={dict} />
+            </Section>
+            <Section id="exam-next" title={dict.learn.examTitle} lead={dict.learn.examLead}>
+              <ExamBriefCard brief={learning.brief} locale={locale} dict={dict} />
+            </Section>
+          </div>
+          <Section id="plan" title={dict.learn.planTitle} lead={dict.learn.planLead}>
+            <PlanCard plan={learning.plan} focus={learning.focus} locale={locale} dict={dict} />
+          </Section>
           <Section id="progress" title={t.progressTitle} lead={t.progressLead}>
             <ProgressCharts data={points} labels={t.chart} />
           </Section>
@@ -95,6 +108,8 @@ export default async function ProfilePage({ params, searchParams }: PageProps<"/
           </Link>
         </Card>
       )}
+
+      <QuizCta lastQuiz={learning.lastQuiz} locale={locale} dict={dict} />
 
       <div className="grid gap-12 lg:grid-cols-2">
         <Section id="devices" title={t.devicesTitle}>

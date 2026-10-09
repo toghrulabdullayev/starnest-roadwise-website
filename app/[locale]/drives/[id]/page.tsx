@@ -10,6 +10,8 @@ import { RULE_KEYS, ruleName, type RuleKey } from "@/lib/rules/catalog";
 import { buildTrace } from "@/lib/trace";
 import { mmss } from "@/lib/instructor/input";
 import { resolveStalePending } from "@/lib/instructor/store";
+import { examComparisonFor } from "@/lib/exam/briefs";
+import { ExamComparisonCard } from "@/components/profile/LearningCards";
 import { Badge, Eyebrow } from "@/components/ui";
 import { DriveExplorer, type DebriefView, type TimelineItem } from "@/components/drive/DriveExplorer";
 import { Deltas, MetricGroups } from "@/components/drive/MetricGroups";
@@ -53,6 +55,7 @@ export default async function DrivePage({ params }: PageProps<"/[locale]/drives/
     .sort((a, b) => a.time.localeCompare(b.time));
 
   const exam = drive.metrics.exam;
+  const comparison = await examComparisonFor(drive.id);
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-10 sm:px-6">
       <header className="flex flex-col gap-4">
@@ -98,6 +101,18 @@ export default async function DrivePage({ params }: PageProps<"/[locale]/drives/
         labels={t}
         ruleNames={ruleNames}
       />
+
+      {comparison && (
+        <section aria-labelledby="compare-title" className="flex flex-col gap-4">
+          <div>
+            <h2 id="compare-title" className="text-2xl uppercase sm:text-3xl">
+              {dict.learn.compareTitle}
+            </h2>
+            <p className="text-text-muted">{dict.learn.compareLead}</p>
+          </div>
+          <ExamComparisonCard comparison={comparison} locale={locale} dict={dict} />
+        </section>
+      )}
 
       <section aria-labelledby="deltas-title" className="flex flex-col gap-4">
         <h2 id="deltas-title" className="text-2xl uppercase sm:text-3xl">

@@ -12,7 +12,8 @@
     "logout": "Log out",
     "language": "Language",
     "skipToContent": "Skip to content",
-    "mainNav": "Main navigation"
+    "mainNav": "Main navigation",
+    "quiz": "Quiz"
   },
   "footer": {
     "tagline": "Real Baku streets. Real Azerbaijani rules.",
@@ -423,5 +424,78 @@
     "fallbackFault": "About your last fault ({rule}): {tip}",
     "examRefusal": "During the exam I can only help with directions. Follow the route and the signs.",
     "rateLimited": "Please wait a moment before asking again."
+  },
+  "learn": {
+    "weakTitle": "Your weak spots",
+    "weakLead": "The rules you break most. Recent drives count more.",
+    "weakEmpty": "No recurring faults. Keep it up.",
+    "seen": "{n}× · last on {date}",
+    "trend": {
+      "improved": "Improving",
+      "same": "No change",
+      "worse": "Getting worse"
+    },
+    "planTitle": "Practice plan",
+    "planLead": "Written from your weak spots.",
+    "planEmpty": "No plan yet. Build one from your weak spots.",
+    "planNothing": "You have no recurring faults, so there is nothing to practise yet.",
+    "planBuild": "Build my plan",
+    "planRebuild": "Build a new plan",
+    "planBuilding": "Building…",
+    "planAi": "Written by the AI instructor",
+    "planStandard": "Standard tips",
+    "planBuilt": "Built on {date}",
+    "planPractice": "Practice",
+    "planLimit": "Too many requests. Try again in a minute.",
+    "planError": "Could not build the plan. Try again.",
+    "examTitle": "Next exam",
+    "examLead": "What your next exam should practise.",
+    "examReason": {
+      "no_history": "No drives yet, so this is a general exam.",
+      "clean": "No recurring faults, so this exam is longer and harder.",
+      "weaknesses": "Built around your weak spots."
+    },
+    "examDifficulty": {
+      "easy": "Focused",
+      "standard": "Standard",
+      "hard": "Hard"
+    },
+    "examLength": "Route length",
+    "examRepeats": "Repeats per weak spot",
+    "examFocus": "Focus rules",
+    "examFocusNone": "No focus rules.",
+    "examGame": "The game builds the route when you start exam mode.",
+    "quizTitle": "Quiz",
+    "quizLead": "Ten questions on the rules, weighted toward your weak spots.",
+    "quizStart": "Start quiz",
+    "quizLoading": "Loading…",
+    "quizQuestion": "Question {n} of {total}",
+    "quizAnswered": "{n} of {total} answered",
+    "quizSubmit": "Check my answers",
+    "quizChecking": "Checking…",
+    "quizUnanswered": "{n} unanswered questions count as wrong.",
+    "quizScore": "{correct} of {total} correct",
+    "quizRetry": "New quiz",
+    "quizBack": "Back to profile",
+    "quizCorrect": "Correct",
+    "quizWrong": "Wrong",
+    "quizYourAnswer": "Your answer",
+    "quizRightAnswer": "Correct answer",
+    "quizNoAnswer": "No answer",
+    "quizFocus": "Focus: {rules}",
+    "quizError": "Something went wrong. Try again.",
+    "quizLast": "Last quiz: {correct} of {total} on {date}",
+    "quizCtaTitle": "Test yourself",
+    "quizCtaLead": "Ten questions on the rules. Wrong answers feed your weak spots.",
+    "quizCta": "Take a quiz",
+    "compareTitle": "Compared with your exam plan",
+    "compareLead": "How this exam went on the rules it was built around.",
+    "outcome": {
+      "improved": "Improved",
+      "same": "Same",
+      "worse": "Worse"
+    },
+    "compareFaults": "{n} fault(s) in this exam",
+    "compareNone": "No faults of this rule."
   }
 }

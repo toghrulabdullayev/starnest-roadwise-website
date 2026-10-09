@@ -13,7 +13,8 @@
     "logout": "Çıxış",
     "language": "Dil",
     "skipToContent": "Məzmuna keç",
-    "mainNav": "Əsas naviqasiya"
+    "mainNav": "Əsas naviqasiya",
+    "quiz": "Test"
   },
   "footer": {
     "tagline": "Bakının real küçələri. Azərbaycanın real yol qaydaları.",
@@ -424,5 +425,78 @@
     "fallbackFault": "Son pozuntunuz ({rule}) haqqında: {tip}",
     "examRefusal": "İmtahan zamanı yalnız istiqamətlə bağlı kömək edə bilərəm. Marşruta və nişanlara əməl edin.",
     "rateLimited": "Yenidən soruşmazdan əvvəl bir az gözləyin."
+  },
+  "learn": {
+    "weakTitle": "Zəif nöqtələriniz",
+    "weakLead": "Ən çox pozduğunuz qaydalar. Son sürüşlər daha çox nəzərə alınır.",
+    "weakEmpty": "Təkrarlanan pozuntu yoxdur. Belə davam edin.",
+    "seen": "{n}× · son dəfə {date}",
+    "trend": {
+      "improved": "Yaxşılaşır",
+      "same": "Dəyişiklik yoxdur",
+      "worse": "Pisləşir"
+    },
+    "planTitle": "Məşq planı",
+    "planLead": "Zəif nöqtələrinizə əsasən tərtib edilib.",
+    "planEmpty": "Hələ plan yoxdur. Zəif nöqtələrinizə əsasən plan tərtib edin.",
+    "planNothing": "Təkrarlanan pozuntunuz yoxdur, ona görə də hələlik məşq etməli bir şey yoxdur.",
+    "planBuild": "Plan tərtib et",
+    "planRebuild": "Yeni plan tərtib et",
+    "planBuilding": "Tərtib olunur…",
+    "planAi": "Süni intellektli instruktor yazıb",
+    "planStandard": "Standart məsləhətlər",
+    "planBuilt": "{date} tarixində tərtib edilib",
+    "planPractice": "Məşq",
+    "planLimit": "Çox sorğu göndərilib. Bir dəqiqədən sonra yenidən yoxlayın.",
+    "planError": "Plan tərtib etmək mümkün olmadı. Yenidən cəhd edin.",
+    "examTitle": "Növbəti imtahan",
+    "examLead": "Növbəti imtahanda nəyi məşq etməlisiniz.",
+    "examReason": {
+      "no_history": "Hələ sürüş yoxdur, ona görə imtahan ümumidir.",
+      "clean": "Təkrarlanan pozuntu yoxdur, ona görə imtahan daha uzun və çətindir.",
+      "weaknesses": "Zəif nöqtələrinizə uyğun qurulub."
+    },
+    "examDifficulty": {
+      "easy": "Diqqət mərkəzli",
+      "standard": "Standart",
+      "hard": "Çətin"
+    },
+    "examLength": "Marşrutun uzunluğu",
+    "examRepeats": "Hər zəif nöqtə üçün təkrar",
+    "examFocus": "Diqqət mərkəzindəki qaydalar",
+    "examFocusNone": "Diqqət mərkəzində qayda yoxdur.",
+    "examGame": "İmtahan rejimini başlatdıqda marşrutu oyun qurur.",
+    "quizTitle": "Test",
+    "quizLead": "Qaydalar üzrə on sual, zəif nöqtələrinizə üstünlük verilir.",
+    "quizStart": "Testə başla",
+    "quizLoading": "Yüklənir…",
+    "quizQuestion": "Sual {n} / {total}",
+    "quizAnswered": "Cavablanıb: {n} / {total}",
+    "quizSubmit": "Cavabları yoxla",
+    "quizChecking": "Yoxlanılır…",
+    "quizUnanswered": "Cavabsız qalan suallar ({n}) səhv sayılır.",
+    "quizScore": "Düzgün: {correct} / {total}",
+    "quizRetry": "Yeni test",
+    "quizBack": "Profilə qayıt",
+    "quizCorrect": "Düzgün",
+    "quizWrong": "Səhv",
+    "quizYourAnswer": "Sizin cavabınız",
+    "quizRightAnswer": "Düzgün cavab",
+    "quizNoAnswer": "Cavab yoxdur",
+    "quizFocus": "Diqqət mərkəzində: {rules}",
+    "quizError": "Xəta baş verdi. Yenidən cəhd edin.",
+    "quizLast": "Son test: {correct} / {total}, {date}",
+    "quizCtaTitle": "Özünüzü yoxlayın",
+    "quizCtaLead": "Qaydalar üzrə on sual. Səhv cavablar zəif nöqtələrinizə əlavə olunur.",
+    "quizCta": "Test həll et",
+    "compareTitle": "İmtahan planı ilə müqayisə",
+    "compareLead": "Bu imtahan, onun qurulduğu qaydalar üzrə necə keçdi.",
+    "outcome": {
+      "improved": "Yaxşılaşıb",
+      "same": "Eyni",
+      "worse": "Pisləşib"
+    },
+    "compareFaults": "Bu imtahanda pozuntu sayı: {n}",
+    "compareNone": "Bu qayda üzrə pozuntu yoxdur."
   }
 }
