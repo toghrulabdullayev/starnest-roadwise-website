@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { isLocale, defaultLocale } from "@/lib/i18n/config";
 import { fmt, getDictionary } from "@/lib/i18n/getDictionary";
-import { buttonClass, Card, Eyebrow } from "@/components/ui";
+import { buttonClass, Card, Eyebrow, withBrand } from "@/components/ui";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/download">): Promise<Metadata> {
   return { title: getDictionary((await params).locale).download.title };
@@ -20,8 +20,8 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
     <div className="flex flex-col">
       <section className="on-dark bg-surface text-text-on-dark">
         <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-14 sm:px-6">
-          <Eyebrow onDark>Roadwise</Eyebrow>
-          <h1 className="text-4xl uppercase sm:text-5xl">{t.title}</h1>
+          <Eyebrow onDark>{withBrand("Roadwise")}</Eyebrow>
+          <h1 className="text-4xl uppercase sm:text-5xl">{withBrand(t.title)}</h1>
           <p className="max-w-2xl text-lg text-text-on-dark-muted">{t.lead}</p>
           <div className="flex flex-wrap items-center gap-4">
             {url ? (

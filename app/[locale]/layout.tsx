@@ -30,7 +30,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         </main>
         <footer className="on-dark border-t-4 border-primary bg-surface text-text-on-dark-muted">
           <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-6 text-sm sm:px-6">
-            <p className="font-display text-text-on-dark">Roadwise</p>
+            <p lang="en" className="font-display text-text-on-dark">Roadwise</p>
             <p>{dict.footer.tagline}</p>
             {locale !== "en" && <p>{dict.footer.provisional}</p>}
           </div>

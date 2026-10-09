@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1 done; next 10.2. MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
+**Status:** QA fixes in progress on branch `qa-fixes` (Phase 10): 10.1–10.2 done; next 10.3. MVP code done through 7.2; AI via OpenRouter (`google/gemini-3.5-flash-lite`). 8.6 pages and 8.7 evals done (`eval/REPORT.md`, `eval/LEARNING_REPORT.md`, one run per case). Weak-spot weight is now a recency-weighted average per drive, so it never rises while fault counts fall. Open findings: generated quiz questions need a retry in 42% of calls, single-rule weak profiles give only a 50% weak-rule quiz. Browser walkthrough of the new pages pending. Next: 9.2 streaming, 9.3 voice, 7.3 deploy.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -68,7 +68,7 @@ Principle for every step: code computes weaknesses, scores and routes; the model
 ## Phase 10 — QA fixes (from `docs/qa/multilingual-audit-2026-10-09.md`)
 Branch `qa-fixes`. One step per finding group; the owner approves each step before the next. Each check is run in EN, RU and AZ.
 - [x] **10.1** WEB-001 fonts: real family names first in `app/globals.css` so Inter Tight (Cyrillic + `latin-ext` for Ə) sits ahead of next/font's local-Arial fallbacks (Turbopack ignores `adjustFontFallback: false`). — check: `/ru`, `/ru/download`, `/az` headings are heavy with no thin glyphs; EN unchanged.
-- [ ] **10.2** WEB-009 brand: "Roadwise" always renders in English letters (no `ROADWİSE` under `lang="az"` uppercase). — check: logo and headings on `/az` and `/az/download`.
+- [x] **10.2** WEB-009 brand: "Roadwise" always renders in English letters (no `ROADWİSE` under `lang="az"` uppercase). — check: logo and headings on `/az` and `/az/download`.
 - [ ] **10.3** WEB-002, WEB-010 AI output: progress list built in code with dictionary labels; grounding rejects internal keys and enum values; prompt gets localized labels, numbers and units. — check: regenerated debrief and plan in each locale contain no `snake_case` keys or band/component enums.
 - [ ] **10.4** WEB-004 login language: the language switcher and `safeNext` keep the chosen locale in `next`. — check: `/az/profile` → login → EN → log in lands on `/en/profile`.
 - [ ] **10.5** WEB-007, WEB-008 units and district names from the dictionaries. — check: `/ru/drives/<id>` shows "км", "км/ч"; AZ "km/saat"; no `baku-center` slug.

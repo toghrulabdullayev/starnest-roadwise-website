@@ -92,6 +92,16 @@ export function Card({ children, className = "", as: Tag = "section" }: { childr
   return <Tag className={`border-2 border-surface bg-canvas p-4 shadow-bold sm:p-6 ${className}`}>{children}</Tag>;
 }
 
+/**
+ * The product name is English in every locale. Marking it lang="en" keeps uppercase text
+ * "ROADWISE": under lang="az" the browser would uppercase its i as the dotted "İ".
+ */
+export function withBrand(text: string): ReactNode {
+  const parts = text.split("Roadwise");
+  if (parts.length === 1) return text;
+  return parts.flatMap((part, i) => (i === 0 ? [part] : [<span key={i} lang="en">Roadwise</span>, part]));
+}
+
 export function Eyebrow({ children, onDark = false }: { children: ReactNode; onDark?: boolean }) {
   return (
     <p className={`font-mono text-xs font-bold uppercase tracking-[0.2em] ${onDark ? "text-primary-on-dark" : "text-primary-ink"}`}>

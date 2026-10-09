@@ -20,7 +20,7 @@ export function SiteHeader({ locale, dict, user }: { locale: Locale; dict: Dicti
         {t.skipToContent}
       </a>
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
-        <Link href={`/${locale}`} className="flex min-h-11 items-center font-display text-2xl uppercase tracking-tight">
+        <Link href={`/${locale}`} lang="en" className="flex min-h-11 items-center font-display text-2xl uppercase tracking-tight">
           Road<span className="text-primary-on-dark">wise</span>
         </Link>
         <div className="flex flex-wrap items-center gap-2">
