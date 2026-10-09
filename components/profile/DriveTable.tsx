@@ -50,7 +50,7 @@ export function DriveTable({ drives, locale, dict }: { drives: DriveSummary[]; l
               <td className="px-3 py-2 text-right">
                 <Link
                   href={`/${locale}/drives/${d.id}`}
-                  className="inline-flex min-h-11 items-center font-bold text-primary-ink underline decoration-2 underline-offset-4 hover:text-primary-hover"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center font-bold text-primary-ink underline decoration-2 underline-offset-4 hover:text-primary-hover"
                 >
                   {t.open}
                 </Link>

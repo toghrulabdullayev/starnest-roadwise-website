@@ -104,7 +104,7 @@ export function Deltas({ history, locale, dict }: { history: History | null; loc
             <span className="font-semibold">{r.label}</span>
             <span className="flex flex-wrap items-center gap-x-2">
               <span className="whitespace-nowrap font-mono text-sm tabular-nums">
-                {r.cur} <span className="text-text-muted">({t.previous} {r.prev})</span>
+                {r.cur} <span className="whitespace-nowrap text-text-muted">({t.previous} {r.prev})</span>
               </span>
               <span className={`whitespace-nowrap font-mono text-sm font-bold ${tone[r.dir]}`}>
                 {arrow[r.dir]} {dict.history[r.dir]}
