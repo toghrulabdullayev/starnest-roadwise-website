@@ -4,6 +4,7 @@ import { isLocale, defaultLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { RULE_KEYS, RULES } from "@/lib/rules/catalog";
 import { buttonClass, Eyebrow } from "@/components/ui";
+import { screens, type ScreenKey } from "@/lib/screens";
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
   const { locale: l } = await params;
@@ -31,7 +32,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
           </div>
           <div className="relative">
             <div className="max-h-[30rem] overflow-hidden border-2 border-text-on-dark bg-canvas shadow-[8px_8px_0_0_#0077bc]">
-              <Image src="/screens/debrief.png" alt={t.heroAlt} width={1105} height={1190} priority className="h-auto w-full" />
+              <Image src={screens[locale].debrief} alt={t.heroAlt} priority className="h-auto w-full" />
             </div>
           </div>
         </div>
@@ -70,17 +71,10 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
             {t.shotsTitle}
           </h2>
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
-            {(
-              [
-                ["readiness", 1105, 375],
-                ["route", 626, 584],
-                ["progress", 1105, 301],
-                ["debrief", 1105, 1190],
-              ] as const
-            ).map(([key, w, h]) => (
+            {(["readiness", "route", "progress", "debrief"] as ScreenKey[]).map((key) => (
               <figure key={key} className="flex flex-col gap-3">
                 <div className={`overflow-hidden border-2 border-surface bg-canvas shadow-bold ${key === "debrief" ? "max-h-80" : ""}`}>
-                  <Image src={`/screens/${key}.png`} alt={t.shots[key]} width={w} height={h} className="h-auto w-full" />
+                  <Image src={screens[locale][key]} alt={t.shots[key]} className="h-auto w-full" />
                 </div>
                 <figcaption className="font-semibold">{t.shots[key]}</figcaption>
               </figure>
