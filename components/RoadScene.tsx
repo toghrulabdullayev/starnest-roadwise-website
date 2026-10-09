@@ -141,19 +141,43 @@ function roomAt(el: Element, side: "top" | "bottom"): number {
   return px(el, `padding-${side}`) + px(el, `border-${side}-width`) + px(child, `padding-${side}`);
 }
 
-/** y of every seam between two adjacent full-width blocks with room for a road. */
+/**
+ * The page as a vertical stack of blocks: header, main and footer, with every
+ * full-width wrapper opened up into its children (so a page's own full-width
+ * sections count, wherever they are nested). Narrower children stay whole.
+ */
+function stackedBlocks(vw: number): Element[] {
+  const full = (e: Element) => e.getBoundingClientRect().width >= vw - 2;
+  const inFlow = (e: Element) => {
+    const s = getComputedStyle(e);
+    return s.display !== "none" && s.position !== "absolute" && s.position !== "fixed" && e.getBoundingClientRect().height > 0;
+  };
+  const expand = (e: Element): Element[] => {
+    const kids = [...e.children].filter(inFlow);
+    if (!kids.some(full)) return [e];
+    return kids.flatMap((k) => (full(k) ? expand(k) : [k]));
+  };
+  return [document.querySelector("body > header"), document.querySelector("main"), document.querySelector("body > footer")]
+    .filter((e): e is Element => e !== null)
+    .flatMap(expand);
+}
+
+/**
+ * y of every seam between two stacked blocks with room for a road on both sides.
+ * The road sits on top of the lower block; empty space between the blocks (e.g.
+ * a short page whose main stretches down to the footer) counts as room above.
+ */
 function findSeams(vw: number): number[] {
-  const blocks = [...document.querySelectorAll("main > section"), document.querySelector("body > footer")].filter(
-    (e): e is Element => e !== null,
-  );
+  const blocks = stackedBlocks(vw);
+  const need = (CROSS_HALF + 4) * SCALE;
   const seams: number[] = [];
   for (let i = 0; i + 1 < blocks.length; i++) {
     const a = blocks[i].getBoundingClientRect();
     const b = blocks[i + 1].getBoundingClientRect();
-    if (Math.abs(a.bottom - b.top) > 1 || a.width < vw - 2 || b.width < vw - 2) continue;
-    const need = (CROSS_HALF + 4) * SCALE;
-    if (roomAt(blocks[i], "bottom") < need || roomAt(blocks[i + 1], "top") < need) continue;
-    seams.push((a.bottom + window.scrollY) / SCALE);
+    const gap = b.top - a.bottom;
+    if (gap < -1) continue;
+    if (gap + roomAt(blocks[i], "bottom") < need || roomAt(blocks[i + 1], "top") < need) continue;
+    seams.push((b.top + window.scrollY) / SCALE);
   }
   return seams;
 }
