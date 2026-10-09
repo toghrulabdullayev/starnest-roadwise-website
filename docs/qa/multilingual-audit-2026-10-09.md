@@ -220,3 +220,34 @@ WEB-001 (fonts) affects every RU and AZ page and is not repeated in each cell.
   - Visit `/ru/nope`.
   - Check units on `/ru/drives/<id>`.
   - At 390 px, check horizontal overflow on all routes in all locales.
+
+## 10. Status after fixes (re-verified 2026-10-09, local dev server, branch `main`)
+
+Re-checked on `/en`, `/ru`, `/az` with the same tools as the audit: browser (navigation, DOM, computed styles, screenshots), HTTP requests for headers and metadata, a scan of every stored debrief, and typecheck, lint, 301 unit tests and a production build (all green).
+
+| ID | Status | Verified how |
+|---|---|---|
+| WEB-001 fonts | FIXED | `/ru`, `/ru/download`, `/az` headings heavy; Inter Tight sits ahead of next/font's Arial fallbacks (`app/globals.css`) |
+| WEB-002 internal keys in AI text | FIXED | New validator check 7 + labels in the prompt input; 13 of 13 stored debriefs regenerated on `debrief-v2` contain no keys; debrief eval 24/24 grounded, 0% fallback |
+| WEB-003 `lang` on the debrief card | FIXED | RU page with an AZ debrief: headings Russian, model text tagged `az` |
+| WEB-004 language lost after login | FIXED | `/az/profile` → login → EN → lands on `/en/profile`; unit test for `safeNext` |
+| WEB-005 404 pages | FIXED | `/ru/nope`, `/az/a/b`, `/fr`: localized page with header and switcher, status 404 |
+| WEB-006 English-only screenshots | FIXED | 12 captures in `public/screens/{en,ru,az}`; landing checked in all three languages |
+| WEB-007 hard-coded units | FIXED | RU "км/ч", AZ "km/saat" on the drive page; `plural`/units come from the dictionaries |
+| WEB-008 raw district slug | FIXED | Titles "ЦЕНТР БАКУ", "BAKININ MƏRKƏZİ", "CENTRAL BAKU"; AI input carries the localized name |
+| WEB-009 "ROADWİSE" | FIXED | Logo, footer, download eyebrow and title read "ROADWISE" on `/az` |
+| WEB-010 AI formatting and terms | MOSTLY FIXED | Decimal comma applied to RU/AZ output; local dates and site terms in the prompts. Wording still needs a native speaker |
+| WEB-011 empty login | FIXED | Per-field messages in all languages; empty submits do not count as attempts |
+| WEB-012 focus after errors | FIXED | Focus lands on the first invalid field, or on the alert for form-level errors (login checked; sign-up uses the same component) |
+| WEB-013 wrapping | FIXED | No-wrap badges, labels and previous values; 0 multi-line no-wrap spans at 390 px |
+| WEB-014 small target | FIXED | "Open" link is at least 44 px wide; no target under 24 px at 390 px |
+| WEB-015 quiz wording | FIXED, REVIEW NEEDED | New sentence templates; duplicate eyebrow removed. Native review of RU/AZ wording |
+| WEB-016 download link | OPEN (owner) | Set `NEXT_PUBLIC_DOWNLOAD_URL` and `NEXT_PUBLIC_GAME_VERSION` in Vercel; the deployed site still shows "not configured" |
+| WEB-017 metadata | FIXED | Canonical, hreflang (en/ru/az/x-default), Open Graph, per-page descriptions; private pages `noindex`. Set `NEXT_PUBLIC_SITE_URL` in Vercel so links are not localhost |
+| WEB-018 consistency | PARTLY FIXED, REVIEW NEEDED | Plural forms, AZ "təlimatçı", EN "Log in". Remaining items need a native speaker: AZ Windows menu label «Hər halda işə sal», AZ "xal"/"bal", person switch in the AZ "problem" paragraph |
+
+**Not re-tested:** tablet width (768 px), colour contrast, 200% zoom, screen readers, sign-up focus behaviour, the English quiz page, and the production build on Vercel (the deployed site has none of these fixes until `main` is pushed and redeployed).
+
+**New observations while fixing**
+- The dev server (Turbopack) served stale CSS after branch switches; editing `app/globals.css` refreshed it. The production build was correct throughout.
+- Clicking a button through an element reference did not submit forms in the test browser; coordinate clicks did. This is a tool quirk, not a site defect.
