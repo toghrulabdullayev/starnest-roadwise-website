@@ -4,7 +4,7 @@ import { fontVariables } from "@/lib/fonts";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SideRoads } from "@/components/SideRoads";
+import { RoadScene } from "@/components/RoadScene";
 import { getCurrentUser } from "@/lib/auth/currentUser";
 import "../globals.css";
 
@@ -25,7 +25,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   return (
     <html lang={locale} className={`${fontVariables} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <SideRoads />
+        <RoadScene />
         <SiteHeader locale={locale} dict={dict} user={await getCurrentUser()} />
         <main id="main" className="flex flex-1 flex-col">
           {children}
