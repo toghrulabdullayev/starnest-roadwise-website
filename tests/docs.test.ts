@@ -23,7 +23,21 @@ describe("docs/GAME_INTEGRATION.md matches the implementation", () => {
 
   it("documents the game-facing endpoints", () => {
     expect(new Set(endpoints.map((e) => `${e.method} ${e.path.split("?")[0]}`))).toEqual(
-      new Set(["POST /api/device/start", "POST /api/device/token", "GET /api/me", "POST /api/drives", "GET /api/drives", "GET /api/drives/{id}"]),
+      new Set([
+        "POST /api/device/start",
+        "POST /api/device/token",
+        "GET /api/me",
+        "POST /api/drives",
+        "GET /api/drives",
+        "GET /api/drives/{id}",
+        "GET /api/me/focus",
+        "GET /api/me/exam-brief",
+        "POST /api/me/plan",
+        "GET /api/me/plan/latest",
+        "GET /api/quiz/next",
+        "POST /api/quiz/answer",
+        "POST /api/chat",
+      ]),
     );
   });
 
@@ -35,14 +49,31 @@ describe("docs/GAME_INTEGRATION.md matches the implementation", () => {
     });
   }
 
-  const docErrors = new Set([...doc.matchAll(/"error":"(\w+)"|`(authorization_pending|expired_token|invalid_grant|invalid_request|slow_down|unauthorized|not_found)`/g)].map((m) => m[1] ?? m[2]));
+  const docErrors = new Set([...doc.matchAll(/"error":"(\w+)"|`(authorization_pending|expired_token|invalid_grant|invalid_request|slow_down|unauthorized|not_found|rate_limited|already_answered|forbidden)`/g)].map((m) => m[1] ?? m[2]));
 
   it("every documented error code is produced by the code", () => {
     for (const e of docErrors) expect(code.includes(`"${e}"`), e).toBe(true);
   });
 
   it("every error code the game API can return is documented", () => {
-    const gameRoutes = ["app/api/device/start/route.ts", "app/api/device/token/route.ts", "app/api/me/route.ts", "app/api/drives/route.ts", "app/api/drives/[id]/route.ts", "lib/http.ts", "lib/auth/deviceLink.ts"];
+    const gameRoutes = [
+      "app/api/device/start/route.ts",
+      "app/api/device/token/route.ts",
+      "app/api/me/route.ts",
+      "app/api/drives/route.ts",
+      "app/api/drives/[id]/route.ts",
+      "app/api/me/focus/route.ts",
+      "app/api/me/exam-brief/route.ts",
+      "app/api/me/plan/route.ts",
+      "app/api/me/plan/latest/route.ts",
+      "app/api/quiz/next/route.ts",
+      "app/api/quiz/answer/route.ts",
+      "app/api/chat/route.ts",
+      "lib/http.ts",
+      "lib/ai/http.ts",
+      "lib/quiz/store.ts",
+      "lib/auth/deviceLink.ts",
+    ];
     const produced = new Set<string>();
     for (const f of gameRoutes)
       for (const m of readFileSync(f, "utf8").matchAll(/error: "(\w+)"|error:\s*"(\w+)"|"(authorization_pending|expired_token|invalid_grant)"/g)) produced.add(m[1] ?? m[2] ?? m[3]);

@@ -423,7 +423,7 @@ function DebriefCard({
       </div>
 
       <p lang={currentLocale} className="border-t-2 border-line-soft pt-3 text-sm text-text-muted">
-        {debrief!.status === "ready" ? fill(labels.sourceAi, { model: debrief!.model ?? "Gemini" }) : labels.sourceFallback}
+        {debrief!.status === "ready" ? fill(labels.sourceAi, { model: debrief!.model ?? "AI" }) : labels.sourceFallback}
       </p>
     </article>
   );

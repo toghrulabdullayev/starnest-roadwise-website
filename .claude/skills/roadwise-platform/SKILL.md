@@ -51,7 +51,7 @@ AI Gaming + AI Enterprise tracks. Round 1 is scored by GPT and Claude reading th
 
 ## 5. Scope
 
-**MVP:** landing · sign up / log in (own email + password sessions) · download page · in-game login via device link · drive upload · deterministic metrics + readiness · Gemini debrief (structured, grounded, with fallback) · profile with progress · drive detail page with trace map, timeline, debrief · EN/RU/AZ · eval report.
+**MVP:** landing · sign up / log in (own email + password sessions) · download page · in-game login via device link · drive upload · deterministic metrics + readiness · LLM debrief (structured, grounded, with fallback) · profile with progress · drive detail page with trace map, timeline, debrief · EN/RU/AZ · eval report.
 **Stretch:** "Ask your instructor" chat grounded in the user's drives.
 **Out:** live LLM calls while driving, biometrics, payments, mobile, multi-role accounts, microservices.
 
@@ -68,7 +68,7 @@ Vercel: Next.js (App Router, TypeScript) — website + API
   lib/db        libSQL (SQLite): local file in dev, Turso in production
   lib/metrics   deterministic, tested
   lib/readiness deterministic score with breakdown
-  lib/instructor Gemini → JSON debrief → grounding validator → fallback
+  lib/instructor LLM (OpenRouter) → JSON debrief → grounding validator → fallback
 Game installers: GitHub Releases (link only)
 ```
 

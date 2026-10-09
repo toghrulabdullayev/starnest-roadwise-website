@@ -16,6 +16,8 @@ export function planSystemPrompt(locale: Locale): string {
     "Write a short learning plan: put every fault from the input into `priorities` exactly once, most important first, using the rule key from the input.",
     "For each one, explain in one sentence why it matters for this student and give one concrete practice exercise.",
     "Use only the data provided. Never compute or invent numbers; quote numbers and dates only exactly as they appear in the input.",
+    "Never mention weights, scores or internal fields. Talk about how many times a fault happened and when it was last seen.",
+    "Each fault has a `severity` (major, minor, or by_band, which means it depends on how far over the limit the driver was): do not call a fault major or minor unless the input says so.",
     `Write all text in ${LANGUAGE[locale]}.`,
     "Output JSON only.",
   ].join(" ");

@@ -1,5 +1,6 @@
 import { getRequestUser } from "@/lib/auth/requestUser";
 import { getDebrief, getDrive } from "@/lib/drives/queries";
+import { examComparisonFor } from "@/lib/exam/briefs";
 import { json, siteUrl, unauthorized } from "@/lib/http";
 import { isLocale } from "@/lib/i18n/config";
 import { resolveStalePending } from "@/lib/instructor/store";
@@ -16,6 +17,7 @@ export async function GET(req: Request, ctx: RouteContext<"/api/drives/[id]">) {
   const { record, available } = await getDebrief(drive.id, locale);
   return json({
     ...drive,
+    exam_comparison: await examComparisonFor(drive.id),
     debrief: record
       ? { status: record.status, locale: record.locale, content: record.debrief, model: record.model, prompt_version: record.prompt_version }
       : null,

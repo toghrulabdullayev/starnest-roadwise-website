@@ -1,6 +1,6 @@
 # Roadwise web — implementation plan
 
-**Status:** MVP code done through 7.2; `ai` branch merged (learning-loop libraries 8.1/8.2/8.4/8.5 and examiner chat 9.1, not yet wired to routes/pages). Blocked on secrets: 7.3 deploy (Turso token, Vercel), Gemini key for the 4.1 live check and 7.2 AI measures. Next unblocked work: **3.4** mistake records, then wiring Phase 8 routes and **8.6** pages.
+**Status:** MVP code done through 7.2. AI provider is OpenRouter (`google/gemini-3.8-flash`, plain fetch); live runs of plan, quiz generation and chat pass in en, ru and az. Branch `ai-routes`: wired 3.4 drive_events, focus, exam-brief (+ comparison), plan, quiz and chat routes; documented in GAME_INTEGRATION.md section 5. Next: pages 8.6, eval 8.7 with real numbers, streaming 9.2, voice 9.3, deploy 7.3.
 **Scope:** website + API + AI instructor + eval. The Unity game is built by other agents; this repo only provides `docs/GAME_INTEGRATION.md` for them.
 
 Rules for whoever executes this plan:
@@ -10,7 +10,7 @@ Rules for whoever executes this plan:
 - Do not start stretch work until every MVP box is ticked.
 
 ## Phase 0 — Scaffold
-- [x] **0.1** Next.js (App Router, TS strict, ESLint) in the repo root; Vitest; zod; `@libsql/client`; `@google/genai`; Recharts; styling per design skill. `.env.example`, `.gitignore` (`data/`, `.env*.local`). — skills: roadwise-web §1–3, design — check: `npm run dev` serves a page; `npm run typecheck` green.
+- [x] **0.1** Next.js (App Router, TS strict, ESLint) in the repo root; Vitest; zod; `@libsql/client`; Recharts; styling per design skill. `.env.example`, `.gitignore` (`data/`, `.env*.local`). — skills: roadwise-web §1–3, design — check: `npm run dev` serves a page; `npm run typecheck` green.
 - [x] **0.2** `lib/db.ts`, `db/migrations/0001_init.sql`, `scripts/migrate.ts`, npm scripts `db:migrate`, `db:reset`. — roadwise-web §4 — check: migrate twice locally, second run is a no-op; tables exist.
 - [x] **0.3** i18n: `[locale]` segment, middleware redirect, `messages/{en,ru,az}.json`, `getDictionary`, language switcher in layout. — roadwise-web §7 — check: `/` → `/en`; switching to `/ru` and `/az` changes nav text.
 
@@ -28,10 +28,10 @@ Rules for whoever executes this plan:
 - [x] **3.1** `metrics.ts` + one test per metric. — roadwise-ai-instructor §2 — check: fixture expectations match.
 - [x] **3.2** `readiness.ts`, `history.ts` + tests. — §3–4 — check: `progress_series` shows improvements; bands match expectations.
 - [x] **3.3** `lib/drives/ingest.ts`; `POST/GET /api/drives`, `GET /api/drives/:id`. — roadwise-web §6 — check: `scripts/upload.sh fixtures/speeder.json` → 200; re-upload → same id; broken file → 422.
-- [ ] **3.4** Mistake records: migration `0002_drive_events.sql` adds `drive_events` (`id`, `drive_id` FK cascade, `user_id`, `rule` catalog key, `severity`, `t_s`, `x`, `z`, `street_id`, `junction_id`, `mode`, `fields` JSON; indexes on `(user_id, rule)` and `(drive_id)`). `ingestDrive()` writes one row per failed check in the same transaction as the drive; re-upload replaces them, never duplicates. — roadwise-web §4, §6 — check: after `upload.sh fixtures/speeder.json` the row count equals the fixture's failed checks; re-upload keeps the count; `DELETE` of the drive removes its events.
+- [x] **3.4** Mistake records: migration `0002_drive_events.sql` adds `drive_events` (`id`, `drive_id` FK cascade, `user_id`, `rule` catalog key, `severity`, `t_s`, `x`, `z`, `street_id`, `junction_id`, `mode`, `fields` JSON; indexes on `(user_id, rule)` and `(drive_id)`). `ingestDrive()` writes one row per failed check in the same transaction as the drive; re-upload replaces them, never duplicates. — roadwise-web §4, §6 — check: after `upload.sh fixtures/speeder.json` the row count equals the fixture's failed checks; re-upload keeps the count; `DELETE` of the drive removes its events.
 
 ## Phase 4 — AI instructor
-- [x] **4.1** Read the current Gemini structured-output docs; `prompts/debrief.ts` (PROMPT_VERSION), `instructor.ts` with token/latency logging, locale parameter. — roadwise-ai-instructor §5 — check: `red_light_runner` debrief cites its red-light event in EN, RU and AZ. **Live check PENDING:** the `GEMINI_API_KEY` in `.env.local` is rejected by Gemini (401 UNAUTHENTICATED); run `npm run gemini:check` with a valid AI Studio key, then `npm run eval`.
+- [x] **4.1** Read the OpenRouter structured-output docs; `prompts/debrief.ts` (PROMPT_VERSION), `instructor.ts` with token/latency logging, locale parameter. — roadwise-ai-instructor §5 — check: `red_light_runner` debrief cites its red-light event in EN, RU and AZ. **Live check PENDING:** the `GEMINI_API_KEY` in `.env.local` is rejected by Gemini (401 UNAUTHENTICATED); run `npm run gemini:check` with a valid AI Studio key, then `npm run eval`.
 - [x] **4.2** `grounding.ts` (6 checks) + retry + `fallback.ts`; wire into `after()`; regenerate route. — §6 — check: tests feed bad outputs (unknown event, unknown rule, invented number, uncovered major) and each is rejected; with `GEMINI_API_KEY` unset the drive gets a localized fallback.
 
 ## Phase 5 — Pages (design skill for every step)
@@ -62,7 +62,7 @@ Principle for every step: code computes weaknesses, scores and routes; the model
 ## Phase 9 — Live instructor (needs the game to send a context snapshot)
 - [x] **9.1** `POST /api/chat` (Bearer for the game, session for the website): input is the question plus a snapshot `{ mode, speed_kmh, limit_kmh, street_id, next_sign, recent_faults }` validated by zod; the context also includes the user's focus weights and rules glossary. Answer is one or two sentences in the user's locale citing rule keys. In `mode: "exam"` the prompt allows directions only and refuses rule hints. Validator: rule keys are catalog keys, numbers appear in the snapshot or catalog; fallback is a short canned answer. Rate limit per user. — roadwise-ai-instructor §8 — check: tests for exam-mode refusal, unknown rule key and rate limit; unset key returns the canned answer. The route itself belongs to the main service; the pure part is `lib/ai/chat` (`answerDrivingQuestion`, `chatLimiter`). **Merged from the `ai` branch:** the pure library and its tests are in; the route, migration and page wiring listed here is still open.
 - [ ] **9.2** Streaming: stream the answer to the game and log first-token latency. — check: p50 first token is recorded in logs; the game can show partial text.
-- [ ] **9.3** Voice: audio question in, audio answer out through the Gemini audio features, behind a flag. Read the current Gemini audio docs first; record latency and cost per exchange. — check: a recorded question returns a spoken answer in EN, RU and AZ; the AZ output is flagged for native review.
+- [ ] **9.3** Voice: audio question in, audio answer out through an audio-capable model on OpenRouter, behind a flag. Read the current OpenRouter audio docs first; record latency and cost per exchange. — check: a recorded question returns a spoken answer in EN, RU and AZ; the AZ output is flagged for native review.
 - [ ] **9.4** Update `docs/GAME_INTEGRATION.md` with the snapshot, focus, plan, road catalog, exam brief and chat contracts, with real examples from tests. — check: every endpoint and error code in the doc exists.
 
 ## Cut lines (drop in this order if behind)

@@ -1,6 +1,6 @@
 # Roadwise — game integration guide (for the Unity agents)
 
-The website owns accounts, analytics and the AI instructor. The game needs three things: **log in**, **record a drive**, **upload it and show the debrief**.
+The website owns accounts, analytics and the AI instructor. The game needs three things: **log in**, **record a drive**, **upload it and show the debrief**. Section 5 adds the optional learning loop: weak spots, practice plan, quiz, adaptive exam brief and the live instructor chat.
 
 - Base URL: `https://<roadwise-site>` (keep it in a config asset; `http://localhost:3000` for local testing).
 - All bodies are JSON (`Content-Type: application/json`). Every response is JSON.
@@ -17,6 +17,13 @@ The website owns accounts, analytics and the AI instructor. The game needs three
 | `POST /api/drives` | Bearer | 200 drive | 401 `unauthorized`, 413 (over 4 MB), 422 `issues` |
 | `GET /api/drives` | Bearer | 200 `{ drives: [...] }` (latest 50) | 401 `unauthorized` |
 | `GET /api/drives/{id}?locale=en\|ru\|az` | Bearer | 200 drive + debrief | 401 `unauthorized`, 404 `not_found` |
+| `GET /api/me/focus` | Bearer | 200 `{ focus, drives_considered }` | 401 `unauthorized` |
+| `GET /api/me/exam-brief` | Bearer | 200 `{ brief_id, brief }` | 401 `unauthorized` |
+| `POST /api/me/plan` | Bearer | 200 plan | 401 `unauthorized`, 429 `rate_limited` |
+| `GET /api/me/plan/latest?locale=en\|ru\|az` | Bearer | 200 plan | 401 `unauthorized`, 404 `not_found` |
+| `GET /api/quiz/next?locale=en\|ru\|az` | Bearer | 200 quiz (no answers) | 401 `unauthorized` |
+| `POST /api/quiz/answer` | Bearer | 200 results | 401 `unauthorized`, 404 `not_found`, 409 `already_answered`, 422 `invalid_request` |
+| `POST /api/chat` | Bearer | 200 reply | 401 `unauthorized`, 422 `invalid_request`, 429 `rate_limited` |
 
 ## 1. Log in (device link)
 
@@ -127,7 +134,7 @@ JSON Schema: `contracts/roadwise.drive.v1.schema.json`. Valid examples: `fixture
 
    ```json
    200 {"id":"1ebfff69-…",
-        "debrief":{"status":"fallback","locale":"az","model":"gemini-3.8-flash","prompt_version":"debrief-v1",
+        "debrief":{"status":"fallback","locale":"az","model":"google/gemini-3.8-flash","prompt_version":"debrief-v1",
           "content":{
             "summary":"6 qayda yoxlamasından 4 keçildi, cərimələr 110 AZN təşkil etdi. …",
             "strengths":[{"text":"…","event_ids":["e1","e2"]}],
@@ -148,3 +155,83 @@ JSON Schema: `contracts/roadwise.drive.v1.schema.json`. Valid examples: `fixture
 
 - `fixtures/*.json` are valid uploads; compare your output's shape with them. `fixtures/invalid/*.json` must be rejected with 422.
 - `scripts/device-flow.sh` runs the whole login flow against any `BASE_URL`; `scripts/upload.sh <file>` uploads any telemetry file with the saved token.
+
+## 5. Learning loop and instructor chat (optional)
+
+All of these use `Authorization: Bearer rw_…`, answer in the player's language (`?locale=` or a `locale` field overrides it) and **never fail because the AI is down**: when the model is unavailable or its answer does not pass the grounding checks, a deterministic localized fallback is returned (`"status":"fallback"`). Numbers always come from code, never from the model. The `POST` routes also answer `forbidden` (403) to browser (cookie) requests from another origin; a game with a Bearer token never sees it.
+
+### 5.1 Weak spots — `GET /api/me/focus`
+
+```json
+200 {"focus":[{"rule":"speeding","weight":2.2,"count":3,"last_seen":"2026-10-07T09:00:00.000Z","trend":"improved"},
+              {"rule":"stop_sign","weight":0.6,"count":1,"last_seen":"2026-10-06T09:00:00.000Z","trend":"same"}],
+     "drives_considered":2}
+```
+Rules the player breaks, heaviest first. Recent drives count more, major faults count 3 and minor 1, wrong quiz answers count 0.5. `trend` is `improved | same | worse`. An empty list means no recurring faults.
+
+### 5.2 Next exam — `GET /api/me/exam-brief`
+
+```json
+200 {"brief_id":"6a0c…","brief":{"version":"exam-brief-1","reason":"weaknesses","difficulty":"easy",
+       "target_length_m":2500,"repeats_per_rule":3,
+       "focus_rules":[{"rule":"speeding","weight":2.2,"trend":"improved"}]}}
+```
+`reason` is `no_history | clean | weaknesses`; `difficulty` is `easy` (struggling: short route, weak spots repeated), `standard` or `hard` (clean history: long route). **The game builds the route itself** from its road graph: pick junctions and segments tagged with the `focus_rules`, repeat each `repeats_per_rule` times, aim for `target_length_m`. After the exam is uploaded, `GET /api/drives/{id}` carries `exam_comparison` (`results[]` with `outcome` `improved | same | worse` per focus rule, plus the brief it was compared with); it is `null` for non-exam drives or when no brief was requested first.
+
+### 5.3 Practice plan — `POST /api/me/plan`, `GET /api/me/plan/latest`
+
+`POST` body is optional: `{"locale":"az"}`. Limit: 5 per minute per player. Takes a few seconds.
+
+```json
+200 {"id":"c3d1…","locale":"en","status":"ready","created_at":"2026-10-09T12:40:11.532Z",
+     "plan":{"summary":"…","priorities":[
+        {"rule":"speeding","why":"This fault happened 3 times and was last seen on 2026-10-07, …","practice":"Practice driving on central avenues while …"}]},
+     "practice_tags":["speeding","stop_sign","pedestrian_crossing"],
+     "focus":[…]}
+```
+`practice_tags` are rule keys, most important first: use them to choose where to send the player for practice. `GET …/latest` returns the newest plan (`404 not_found` when there is none).
+
+### 5.4 Quiz — `GET /api/quiz/next`, `POST /api/quiz/answer`
+
+```json
+200 {"quiz_id":"9b2e…","locale":"en","weak_rules":["speeding","stop_sign"],
+     "questions":[{"id":"tpl:limit:city","rule":"speeding","text":"What is the speed limit in this place: city (built-up area)?",
+                   "options":["60 km/h","20 km/h","110 km/h","90 km/h"]}]}
+```
+Ten questions, about 70% on the player's weak rules. The correct answers are **not** in this response.
+
+```http
+POST /api/quiz/answer
+{"quiz_id":"9b2e…","answers":[{"question_id":"tpl:limit:city","chosen_index":0}]}
+```
+```json
+200 {"quiz_id":"9b2e…","correct":9,"total":10,
+     "results":[{"question_id":"tpl:limit:city","rule":"speeding","correct":true,"chosen_index":0,"correct_index":0,
+                 "explanation":"The limit for \"city (built-up area)\" is 60 km/h."}]}
+```
+`chosen_index` is 0–3. Unanswered questions count as wrong. A quiz can be answered once (`409 already_answered`); someone else's or an unknown quiz is `404 not_found`; a malformed body is `422 invalid_request` with `issues`.
+
+### 5.5 Ask the instructor — `POST /api/chat`
+
+Send the question with a snapshot of the moment (all fields in `snapshot` are validated):
+
+```json
+POST /api/chat
+{"question":"Why did I just get a fine?","locale":"en",
+ "snapshot":{"mode":"free","speed_kmh":72,"limit_kmh":60,"street":"Nizami küç.","next_sign":"STOP",
+             "next_instruction":"Turn right in 120 m",
+             "recent_faults":[{"rule":"speeding","seconds_ago":25}]}}
+```
+```json
+200 {"status":"ready","kind":"answer","answer":"You were fined for speeding 25 seconds ago …","rules":["speeding"]}
+```
+- `mode`: `free` or `exam`. `limit_kmh` may be `null`. `recent_faults` holds at most 5 entries; `question` at most 300 characters.
+- **Free drive:** `kind` is `answer`, one or two sentences; `rules` lists the rule keys it is about (show them as links to the rule if you like).
+- **Exam:** like a real examiner the instructor does not coach. `kind` is `directions` (it repeats `next_instruction`, so **send it during exams**) or `refused`; `rules` is always empty.
+- `status` is `ready` (model answer that passed the checks) or `fallback` (canned answer; in a free drive it is a tip about the last fault).
+- `422 invalid_request` with `issues`. `429 rate_limited` after 12 questions in a minute, with a `Retry-After` header and a localized `message` you can show:
+
+```json
+429 {"error":"rate_limited","retry_after_s":23,"message":"Please wait a moment before asking again."}
+```
+Keep the question box short-lived and non-blocking: answers take 2–5 seconds.

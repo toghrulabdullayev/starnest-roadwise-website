@@ -40,10 +40,13 @@ export function faultsFromTelemetry(telemetry: DriveTelemetry): DriveFaults {
 
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
-export function computeFocus(drives: DriveFaults[]): FocusEntry[] {
-  const newestFirst = [...drives].sort((a, b) =>
-    b.started_at.localeCompare(a.started_at),
-  );
+const newestFirstOf = (list: DriveFaults[]) =>
+  [...list].sort((a, b) => b.started_at.localeCompare(a.started_at));
+
+/** Quizzes decay on their own timeline, so taking a quiz does not push real drives further into the past. */
+export function computeFocus(drives: DriveFaults[], quizzes: DriveFaults[] = []): FocusEntry[] {
+  const newestFirst = newestFirstOf(drives);
+  const newestQuizzes = newestFirstOf(quizzes);
 
   const entries: FocusEntry[] = [];
   for (const rule of RULE_KEYS) {
@@ -59,7 +62,15 @@ export function computeFocus(drives: DriveFaults[]): FocusEntry[] {
       const decay = RECENCY_DECAY ** index;
       weight += decay * mine.reduce((n, f) => n + SEVERITY_FACTOR[f.severity], 0);
       count += mine.length;
-      lastSeen ??= drive.started_at;
+      if (lastSeen === null || drive.started_at > lastSeen) lastSeen = drive.started_at;
+    });
+
+    newestQuizzes.forEach((quiz, index) => {
+      const mine = quiz.faults.filter((f) => f.rule === rule);
+      if (mine.length === 0) return;
+      weight += RECENCY_DECAY ** index * mine.reduce((n, f) => n + SEVERITY_FACTOR[f.severity], 0);
+      count += mine.length;
+      if (lastSeen === null || quiz.started_at > lastSeen) lastSeen = quiz.started_at;
     });
 
     if (weight === 0 || lastSeen === null) continue;

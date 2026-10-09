@@ -9,6 +9,8 @@ import { computeMetrics, type DriveMetrics } from "@/lib/metrics";
 import { computeReadiness, type Readiness } from "@/lib/readiness";
 import { computeHistory, MAX_PREVIOUS, type History } from "@/lib/history";
 import { READINESS_WEIGHTS } from "@/lib/readiness";
+import { eventStatements } from "@/lib/drives/events";
+import { recordExamComparison } from "@/lib/exam/briefs";
 import type { DriveTelemetry } from "@/lib/telemetry/schema";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -93,6 +95,7 @@ export async function ingestDrive(
         ],
       },
       { sql: "INSERT INTO drive_debriefs (drive_id, locale, status) VALUES (?, ?, 'pending')", args: [id, user.locale] },
+      ...eventStatements(id, user.id, telemetry, startedAt),
     ]);
   } catch (err) {
     // A concurrent upload of the same drive won the UNIQUE (user_id, client_drive_id) race.
@@ -102,5 +105,6 @@ export async function ingestDrive(
     }
     throw err;
   }
+  await recordExamComparison(user.id, id, telemetry);
   return { id, created: true, metrics, readiness, history, debrief_status: "pending", locale: user.locale };
 }

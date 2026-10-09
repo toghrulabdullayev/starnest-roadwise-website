@@ -3,7 +3,8 @@ import {
   generateJson,
   isAiConfigured,
   type GenerateJson,
-} from "./gemini";
+  type Thinking,
+} from "./llm";
 
 export type RunnerOutcome<T> = {
   status: "ready" | "fallback";
@@ -27,6 +28,7 @@ export async function runGrounded<T>(options: {
   configured?: boolean;
   maxAttempts?: number;
   temperature?: number;
+  thinking?: Thinking;
 }): Promise<RunnerOutcome<T>> {
   const generate = options.generate ?? generateJson;
   const configured = options.configured ?? isAiConfigured();
@@ -58,6 +60,7 @@ export async function runGrounded<T>(options: {
         input: options.buildInput(errors),
         schema: options.schema,
         temperature: options.temperature ?? 0.2,
+        thinking: options.thinking,
       });
       text = out.text;
       outcome.model = out.model;

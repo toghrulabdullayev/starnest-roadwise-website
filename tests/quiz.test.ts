@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import type { GenerateJson } from "../lib/ai/gemini";
+import type { GenerateJson } from "../lib/ai/llm";
 import { generateQuizQuestions, QUIZ_MAX_ATTEMPTS } from "../lib/ai/quiz/generator";
 import { buildQuizGenInput } from "../lib/ai/quiz/input";
 import { validateGeneratedQuiz } from "../lib/ai/quiz/grounding";
