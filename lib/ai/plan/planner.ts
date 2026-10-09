@@ -66,7 +66,7 @@ export async function generateLearningPlan(options: {
     let dictionary = options.dictionary;
     if (!dictionary) {
       const dict = await (await import("../../i18n/getDictionary")).getDictionary(locale);
-      dictionary = { plan: dict.plan, tips: ruleTips(dict) };
+      dictionary = { locale, plan: dict.plan, tips: ruleTips(dict) };
     }
     plan = buildFallbackPlan(input, dictionary);
   }

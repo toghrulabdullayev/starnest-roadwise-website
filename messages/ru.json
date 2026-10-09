@@ -189,7 +189,7 @@
     "readinessBasis": "По последним поездкам: {n}.",
     "readinessBreakdown": "Из чего складывается оценка",
     "readinessStart": "Начальная оценка — 100",
-    "points": "балл.",
+    "points": "балл|балла|баллов|балла",
     "noDeduction": "Без вычета",
     "kpi": {
       "drives": "Поездки",

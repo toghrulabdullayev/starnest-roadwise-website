@@ -1,9 +1,10 @@
-import type { Dictionary } from "../../i18n/getDictionary";
+import { plural, type Dictionary } from "../../i18n/getDictionary";
 import type { RuleTips } from "../tips";
 import type { PlanInput } from "./input";
 import type { LearningPlan } from "./schema";
 
 export type PlanDictionary = {
+  locale?: string;
   plan: Dictionary["plan"];
   tips: RuleTips;
 };
@@ -27,7 +28,7 @@ export function buildFallbackPlan(input: PlanInput, dict: PlanDictionary): Learn
     }),
     priorities: input.focus.map((f) => ({
       rule: f.rule,
-      why: `${fill(dict.plan.why, { count: f.count, last: f.last_seen })} ${trendText[f.trend]}`,
+      why: `${fill(plural(dict.locale ?? "en", dict.plan.why, f.count), { count: f.count, last: f.last_seen })} ${trendText[f.trend]}`,
       practice: dict.tips[f.rule],
     })),
   };

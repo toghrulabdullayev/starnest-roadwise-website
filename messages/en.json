@@ -56,7 +56,7 @@
     "loginToContinue": "Log in to continue."
   },
   "link": {
-    "title": "Sign in to the game",
+    "title": "Log in to the game",
     "eyebrow": "Device link",
     "lead": "Check that this code matches the one shown in Roadwise, then authorise.",
     "codeLabel": "Code from the game",
@@ -185,7 +185,7 @@
     "greeting": "Hi, {name}",
     "lead": "Every drive you upload from the game shows up here.",
     "readinessTitle": "Exam readiness",
-    "readinessBasis": "Based on your last {n} drives.",
+    "readinessBasis": "Based on your last drive.|Based on your last {n} drives.",
     "readinessBreakdown": "How the score is built",
     "readinessStart": "Starts at 100",
     "points": "pts",
@@ -312,7 +312,7 @@
     },
     "deltasTitle": "Compared with your previous drives",
     "deltasFirst": "This is your first drive — the comparison starts with the next one.",
-    "deltasBasis": "Mean of your previous {n} drives.",
+    "deltasBasis": "Your previous drive.|Mean of your previous {n} drives.",
     "previous": "before",
     "debriefTitle": "Your instructor",
     "pending": "Your instructor is reviewing the drive…",
@@ -412,7 +412,7 @@
   "plan": {
     "summary": "Your main weak spots right now: {rules}.",
     "empty": "No recurring faults yet. Keep practising on varied routes.",
-    "why": "Recorded {count} time(s); last seen {last}.",
+    "why": "Recorded once; last seen {last}.|Recorded {count} times; last seen {last}.",
     "trendImproved": "This is getting better.",
     "trendWorse": "This is getting worse.",
     "trendSame": "This has not changed yet."
@@ -492,7 +492,7 @@
     "quizAnswered": "{n} of {total} answered",
     "quizSubmit": "Check my answers",
     "quizChecking": "Checking…",
-    "quizUnanswered": "{n} unanswered questions count as wrong.",
+    "quizUnanswered": "{n} unanswered question counts as wrong.|{n} unanswered questions count as wrong.",
     "quizScore": "{correct} of {total} correct",
     "quizRetry": "New quiz",
     "quizBack": "Back to profile",
@@ -514,7 +514,7 @@
       "same": "Same",
       "worse": "Worse"
     },
-    "compareFaults": "{n} fault(s) in this exam",
+    "compareFaults": "{n} fault in this exam|{n} faults in this exam",
     "compareNone": "No faults of this rule."
   }
 }
